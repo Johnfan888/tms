@@ -1,0 +1,139 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>身份证阅读器</title>
+
+<script language="javascript" type="text/javascript">
+function byId(id)
+{
+	return document.getElementById(id);
+}
+function Init()
+{
+	var obj=byId("CardReader1");
+//设置端口号，1表示串口1，2表示串口2，依此类推；1001表示USB，依此类推。
+	obj.setPortNum(0);
+}
+function setPort()
+{
+	var obj=byId("CardReader1");
+	var form1=byId("formCard");
+	var iPort=form1.port.value;
+	obj.setPortNum(iPort);
+}
+//function getState()
+//{
+//	var obj=byId("CardReader1");
+//	obj.GetState();
+//}
+function readCard()
+{
+	var cardId;
+	var path;
+	var obj = byId("CardReader1");
+	var form1=byId("formCard");
+//设置照片保存路径，默认为系统临时目录,照片文件名per.bmp
+    obj.Flag=1;
+    path=form1.photoPath.value;
+	obj.PhotoPath=path;	
+//读卡
+	var rst = obj.ReadCard();
+//获取各项信息
+	form1.name1.value  =obj.NameL();
+	form1.sex.value    =obj.SexL();
+	form1.nation.value =obj.NationL();
+	form1.address.value=obj.Address();
+	cardId=obj.CardNo();
+	form1.idnum.value  =cardId;
+	form1.born.value   =obj.BornL();
+	form1.agent.value  =obj.Police();
+	//在日期中不需要小数点的话请调用Activity()方法。
+	form1.validDate.value=obj.ActivityL();
+	form1.validDateFrom.value=obj.ActivityLFrom();
+	form1.validDateTo.value=obj.ActivityLTo();
+
+	form1.name2.value=obj.Name();
+	form1.sexCode.value=obj.Sex();
+	form1.nationCode.value=obj.Nation();
+	form1.born2.value=obj.Born();
+	form1.validDate2.value=obj.Activity();
+}
+</script>
+</head>
+
+<body onload="Init()">
+<object id="CardReader1" codebase="FirstActivex.cab#version=1,0,3,1" classid="CLSID:F225795B-A882-4FBA-934C-805E1B2FBD1B" >
+	<param name="_Version" value="65536"/>
+	<param name="_ExtentX" value="2646"/>
+	<param name="_ExtentY" value="1323"/>
+	<param name="_StockProps" value="0"/>
+	<param name="port" value="串口1"/>
+	<param name="PhotoPath" value=""/>
+	<param name="ActivityLFrom" value=""/>
+	<param name="ActivityLTo" value="" />
+	</object>
+
+<form id="formCard">
+<label>端口:</label><input type="text" size="20" name="port" id="text12" />
+<table border="0" width="100%">
+<tr>
+<td style="width: 100px; text-align: center;">姓名:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="name1" id="text1" /></td>
+<td style="width: 100px; text-align: center;">出生日期:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="born" id="text2" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">性别:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="5" name="sex" id="text3" /></td>
+<td style="width: 100px; text-align: center;">签发机构:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="30" name="agent" id="text4" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">民族:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="10" name="nation" id="text5" /></td>
+<td style="width: 100px; text-align: center;">有效日期:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="25" name="validDate" id="text6" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">地址:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="40" name="address" id="text7" /></td>
+<td style="width: 100px; text-align: center;">起始有效期:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="10" name="validDateFrom" id="text8" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">身份证号码:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="idnum" id="text9" /></td>
+<td style="width: 100px; text-align: center;">终止有效期:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="10" name="validDateTo" id="text10" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">姓名:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="name2" /></td>
+<td style="width: 100px; text-align: center;">性别代码:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="10" name="sexCode" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">民族代码:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="nationCode" /></td>
+<td style="width: 100px; text-align: center;">生日2:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="10" name="born2" /></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">有效期2:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="20" name="validDate2" /></td>
+<td style="width: 100px; text-align: center;"></td>
+<td style="width: 100px; text-align: left;"></td>
+</tr>
+<tr>
+<td style="width: 100px; text-align: center;">照片保存路径:</td>
+<td style="width: 100px; text-align: left;"><input type="text" size="30" name="photoPath" id="text11" /></td>
+<td style="width: 100px; text-align: center;"></td>
+<td style="width: 100px; text-align: center;"></td>
+</tr>
+</table>
+ <input id="button2" onclick="setPort()" type="button" name="btnPort" value="设置端口" />
+ <input id="button1" onclick="readCard()" type="button" value="读取身份证信息" name="btnRead" />
+<!-- <input type="button" name="btnState" onclick="getState()" value="状态" />-->
+</form>
+<!--<p style="text-align: center;"><img name="perImg" src="" alt="照片" /></p>-->
+</body>
+</html>

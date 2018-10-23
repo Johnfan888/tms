@@ -1,0 +1,5 @@
+"safecheck" => "安全检查"
+"safecheck" => array("vehiclecheck" => "车辆安检","checkquery" => "安检查询","checkitem" => "安检项目管理","resetticket"=>"重置安检单")
+"safecheck-vehiclecheck" => "../safecheck/tms_v1_safecheck_VehicleCheck.php","safecheck-checkquery" => "../safecheck/tms_v1_safecheck_VehicleCheck_Query.php",	"safecheck-checkitem" => "../safecheck/tms_v1_safecheck_searcheckitem.php","safecheck-resetticket" => "../safecheck/tms_v1_safecheck_resetingticket.php"
+"safecheck-vehiclecheck" => "车辆安检","safecheck-checkquery" => "安检查询","safecheck-checkitem" => "安检项目管理","safecheck-resetticket"=>"重置安检单"
+"safecheck-vehiclecheck" => "images/folder/03.png","safecheck-checkquery" => "images/folder/04.png","safecheck-checkitem" => "images/folder/05.png","safecheck-resetticket"=>"images/folder/11.png"

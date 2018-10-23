@@ -1,0 +1,122 @@
+<html>
+<head>
+	<title>我的第一个打印文档</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- 插入打印控件 -->
+	<OBJECT  ID="jatoolsPrinter" CLASSID="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,1,0"></OBJECT>  
+	<script> 
+		function doPrintKP() {
+			var myDoc = {
+				settings:{
+					printer: '客票',		// 设置到客票打印机
+					//paperName: 'czkp',	// 选择czkp纸张进行打印
+					orientation: 1,   	// 选择横向打印,1为纵向，2为横向
+					// 指定纸张的高宽和上下左右页边距,单位是 1/10毫米,本设置实际是指定为a4大小
+					paperWidth: 2100,
+					paperHeight: 2970,
+					topMargin: 0,
+					leftMargin: 0,
+					bottomMargin: 0,
+					rightMargin: 0
+				},
+				documents: document,
+				/*
+				 要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+				 作为首页打印id 为'page2'的作为第二页打印            */
+				copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须   
+			};
+			jatoolsPrinter.print(myDoc, false); // 直接打印，不弹出打印机设置对话框 
+			//jatoolsPrinter.print(myDoc, true); 
+		}
+		function doPrintBX() {
+			var myDoc = {
+				settings:{
+					printer: '保险票',	// 设置到保险票打印机
+					//paperName: 'czbx',	// 选择czbx纸张进行打印
+					orientation: 1,   	// 选择横向打印,1为纵向，2为横向
+					// 指定纸张的高宽和上下左右页边距,单位是 1/10毫米,本设置实际是指定为a4大小
+					paperWidth: 2100,
+					paperHeight: 2970,
+					topMargin: 0,
+					leftMargin: 0,
+					bottomMargin: 0,
+					rightMargin: 0
+				},
+				documents: document,
+				/*
+				 要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+				 作为首页打印id 为'page2'的作为第二页打印            */
+				copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须   
+			};
+			jatoolsPrinter.print(myDoc, false); // 直接打印，不弹出打印机设置对话框 
+			//jatoolsPrinter.print(myDoc, true); 
+		}
+		function doPrint() {
+			var myDoc = {
+					settings:{
+						printer: '客票',		// 设置到客票打印机
+						//paperName: 'czkp',	// 选择czkp纸张进行打印
+						orientation: 1,   	// 选择横向打印,1为纵向，2为横向
+						// 指定纸张的高宽和上下左右页边距,单位是 1/10毫米,本设置实际是指定为a4大小
+						paperWidth: 2100,
+						paperHeight: 2970,
+						topMargin: 0,
+						leftMargin: 0,
+						bottomMargin: 0,
+						rightMargin: 0
+					},
+					documents: document,
+					/*
+					 要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+					 作为首页打印id 为'page2'的作为第二页打印            */
+					copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须   
+			};
+			myDoc.done=function(err){
+				/*	打印结束时调用。如果打印成功，则err为空，如果打印出错，err表示出错原因信息。
+					注意，这里的打印成功，表示打印内容已经成功发送到打印队列，并不表示已经成功输出到打印机，
+					也就是说，一些打印机错误，比如卡纸等情况，不在此函数监控之列。*/
+				if(!err) {
+					alert("打印客票成功！");
+					
+					var myDoc = {
+						settings:{
+							printer: '保险票',	// 设置到保险票打印机
+							//paperName: 'czbx',	// 选择czbx纸张进行打印
+							orientation: 1,   	// 选择横向打印,1为纵向，2为横向
+							// 指定纸张的高宽和上下左右页边距,单位是 1/10毫米,本设置实际是指定为a4大小
+							paperWidth: 2100,
+							paperHeight: 2970,
+							topMargin: 0,
+							leftMargin: 0,
+							bottomMargin: 0,
+							rightMargin: 0
+						},
+						documents: document,
+						/*
+						 要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+						 作为首页打印id 为'page2'的作为第二页打印            */
+						copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须   
+					};
+					myDoc.done=function(err){
+						if(!err)	
+							alert("打印成功！");
+						else
+							alert(err);
+					}	
+					jatoolsPrinter.print(myDoc, false); // 直接打印，不弹出打印机设置对话框 
+					//jatoolsPrinter.print(myDoc, true); 
+				}	
+				else
+					alert(err);
+			} 
+			//jatoolsPrinter.print(myDoc, false); // 直接打印，不弹出打印机设置对话框 
+			jatoolsPrinter.print(myDoc, true); 
+		}
+	</script> 
+</head>
+<body style='padding:10px;'>
+	<span style='color:#B7C1D3;font-size:25px;font-family:"Microsoft YaHei","黑体",​"Segoe UI",​sans-serif'>我的第一个打印文档</span><br><br>
+	<input type="button" value="打印" onClick='doPrint();'>
+	<div id='page1' style='width:300px;height:300px;border:2px solid green'>Hello world</div>
+</body>
+</html>

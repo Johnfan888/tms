@@ -1,0 +1,5 @@
+"schedule" => "调度管理"
+"schedule" => array("schedulereport" => "调度日志","busreport"=>"报班查询","bus" => "车辆管理" ,"idcard" => "车辆卡管理")
+"schedule-schedulereport" => "../schedule/tms_v1_schedule_noofrun.php",	"schedule-busreport"=>"../schedule/tms_v1_schedule_querybusreport.php","schedule-bus" => "../basedata/tms_v1_basedata_searbus.php", "schedule-idcard" => "../system/tms_v1_system_searidcard.php"
+"schedule-schedulereport" => "调度日志", "schedule-busreport"=>"报班查询","schedule-bus" => "车辆管理","schedule-idcard" => "车辆信息卡"
+"schedule-schedulereport" => "images/folder/08.png","schedule-busreport"=>"images/folder/09.png","schedule-bus" => "images/folder/13.png","schedule-idcard" => "images/folder/08.png"

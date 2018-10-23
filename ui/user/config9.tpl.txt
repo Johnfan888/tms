@@ -1,0 +1,5 @@
+"charterbus" => "包车管理"
+"charterbus" => array("charterbusquery" => "包车查询","resetticket"=>"重置包车单")
+"charterbus-charterbusquery" => "../charterbus/tms_v1_basedata_searcharterebus.php","charterbus-resetticket" => "../charterbus/tms_v1_charterbus_resetingticket.php"
+"charterbus-charterbusquery" => "包车管理","charterbus-resetticket"=>"重置包车单"
+"charterbus-charterbusquery" => "images/folder/12.png","charterbus-resetticket" =>"images/folder/11.png"

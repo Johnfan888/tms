@@ -1,0 +1,5 @@
+"ticket" => "票据管理"
+"ticket" => array("ticketadd"=>"票据入库","ticketnum" => "票据库存查询","ticketprovide"=>"票据领用查询")
+"ticket-ticketadd"=>"../basedata/tms_v1_basedata_ticketadd.php","ticket-ticketnum" => "../basedata/tms_v1_basedata_searticketadd.php","ticket-ticketprovide" => "../basedata/tms_v1_basedata_searticketprovide.php"
+"ticket-ticketadd" => "票据入库","ticket-ticketnum"=>"票据库存查询","ticket-ticketprovide"=>"票据领用查询"
+"ticket-ticketadd" => "images/folder/11.png","ticket-ticketnum"=>"images/folder/06.png","ticket-ticketprovide" =>"images/folder/01.png"

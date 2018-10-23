@@ -1,0 +1,5 @@
+"checkin" => "检票管理"
+"checkin" => array("checkall" => "多班检票","querybalance"=>"客凭处理")
+"checkin-checkall" => "../checkin/tms_v1_checkin_checkticket.php","checkin-querybalance"=>"../checkin/tms_v1_checkin_querybalance.php"
+"checkin-checkall" => "检票管理","checkin-querybalance"=>"客凭处理"
+"checkin-checkall" => "images/folder/04.png","checkin-querybalance"=>"images/folder/08.png"

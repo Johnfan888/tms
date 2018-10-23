@@ -1,0 +1,115 @@
+<html> 
+<head> 
+<title>报表</title> 
+<script type="text/javascript" src="../js/tms_v1_print.js"></script>
+<script>
+function printTicket()
+{
+	// prepare data
+	var allKPData = '<div class="paging"><table style="width:492px;height:266px;margin-left:0px;margin-top:0px;font-size:13px;border:1"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10030</div><div style="margin-left:340px;">10030</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">40.0<span style="margin-left:90px;">2</span></div><div style="margin-left:350px;">40.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-15</div><div style="margin-left:350px;">2014-05-15</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">2</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div>';
+	var allBXData = '<div class="paging"><table style="width:400px;height:440px;margin-left:10px;margin-top:0px;font-size:10px;border:1"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043004032</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-15&nbsp;8:00</div><div style="margin-left:160px;">2014-05-15 11:02:24</div></div>';	
+/*	var doc = kpData.document.open("text/html","replace");
+	doc.write('<html>\n<head>\n');
+	doc.write('<link rel="stylesheet" type="text/css" href="../ui/images/style_main.css" />\n');
+	//doc.write('<object id="printWB" width=0 height=0 classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\n');
+	doc.write('<script type="text/javascript" src="../js/tms_v1_print.js">\<\/script>\n');
+	doc.write('<script>\n');
+	doc.write('var Wsh = new ActiveXObject("WScript.Shell");\n');
+	doc.write('printPageSetup(Wsh);\n');
+	doc.write("var cmd = 'C:\\Windows\\System32\\rundll32.exe';\n");
+	doc.write("var para1 = 'printui.dll,PrintUIEntry';\n");
+	doc.write("var para2 = '/y';\n");
+	doc.write("var para3 = '/n';\n");
+	doc.write("var para4 = '客票';\n");
+	doc.write("var para5 = '保险票';\n");
+	doc.write("Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para4);\n");
+	doc.write('\<\/script>\n</head>\n<body>');
+	doc.write('onbeforeprint = function() {alert("Before printing KP");};\n');
+	doc.write('onafterprint = function() {alert("After printing KP");};\n');
+	doc.write('onprintcomplete = function() {alert("Printing KP completed");};\n');
+	doc.write(allKPData);
+	doc.write('\n</body>\n</html>');
+	doc.close();
+//	printFrame(kpData, onfinish)
+	//kpData.execScript("printWB.ExecWB 6, 1");
+	//kpData.printWB.ExecWB(6,1);
+	var doc = bxData.document.open("text/html","replace");
+	doc.write('<html>\n<head>\n');
+	doc.write('<link rel="stylesheet" type="text/css" href="../ui/images/style_main.css" />\n');
+	doc.write('<object id="printWB" width=0 height=0 classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\n');
+	doc.write('<script type="text/javascript" src="../js/tms_v1_print.js">\<\/script>\n');
+	doc.write('<script>\n');
+	doc.write('var Wsh = new ActiveXObject("WScript.Shell");\n');
+	doc.write('printPageSetup(Wsh);\n');
+	doc.write("var cmd = 'C:\\Windows\\System32\\rundll32.exe';\n");
+	doc.write("var para1 = 'printui.dll,PrintUIEntry';\n");
+	doc.write("var para2 = '/y';\n");
+	doc.write("var para3 = '/n';\n");
+	doc.write("var para4 = '客票';\n");
+	doc.write("var para5 = '保险票';\n");
+	doc.write("Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para5);\n");
+	doc.write('window.onbeforeprint = function() {alert("Before printing BX");};\n');
+	doc.write('window.onafterprint = function() {alert("After printing BX");};\n');
+	doc.write('window.onprintcomplete = function() {alert("Printing BX completed");};\n');
+	doc.write('\<\/script>\n</head>\n<body>');
+	doc.write(allBXData);
+	doc.write('\n</body>\n</html>');
+	doc.close();
+	//bxData.printWB.ExecWB(6,1);
+
+	var Wsh = new ActiveXObject("WScript.Shell");
+	printPageSetup(Wsh);
+
+	// set printer
+	var cmd = 'C:\\Windows\\System32\\rundll32.exe'; 
+	var para1 = 'printui.dll,PrintUIEntry'; 
+	var para2 = '/y'; 
+	var para3 = '/n'; 
+	var para4 = '客票'; 
+	var para5 = '保险票';
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","客票,winspool,Ne05:","REG_SZ");
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\Printer","客票");
+	//do the same thing as
+//	Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para4);
+//	kpData.printWB.ExecWB(6,1);
+//	execCommand = "printWB.ExecWB 6, 1";
+//	printFrame(kpData,execCommand);*/
+	//printHiddenHtmlKP(allKPData);
+	//printHiddenHtmlKP(allBXData);
+	printHiddenHtmlKPBX(allKPData,allBXData);
+	//printHiddenHtmlWithFrameName("kpData",allKPData);
+//	printHiddenHtml(allKPData);
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","保险票,winspool,Ne05:","REG_SZ");
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\Printer","保险票");
+//	Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para5);
+//	bxData.printWB.ExecWB(6,1);
+//	printFrame(bxData,execCommand);
+	//printHiddenHtmlWithFrameName("bxData",allBXData);
+}
+</script>
+<style media="print" type="text/css"> 
+	.Noprint{display:none;} 
+	.PageNext{page-break-after: always;} 
+</style> 
+</head> 
+<body> 
+<div class="Noprint"> 
+<input type="button" value="print" onclick="document.all.WebBrowser.ExecWB(6,6)"> 
+<input type="button" value="printset" onclick="document.all.WebBrowser.ExecWB(8,1)"> 
+<input type="button" value="view" onclick="document.all.WebBrowser.ExecWB(7,1)"> 
+<input type="button" value="frame" onclick='printHidden("../js/printTemplateTestPage.html")'> 
+<input type="button" value="printTicket" onclick='printTicket()'> 
+</div> 
+<div class="PageNext"> 
+1 
+</div> 
+<div class="PageNext"> 
+2 
+</div> 
+<iframe name="FrameId" width="100%" height="30%" src="../js/printTemplateTestPage.html"></iframe>
+<!-- 
+<iframe name="kpData" width="100%" height="30%"></iframe>
+<iframe name="bxData" width="100%" height="30%"></iframe>
+ -->
+</body> 
+</html> 

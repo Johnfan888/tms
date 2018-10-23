@@ -1,0 +1,139 @@
+<?php
+//定义页面必须验证是否登录
+define("AUTH", "TRUE");
+
+//载入初始化文件
+require_once("tms_v1_sell_sellprintdata.php");
+require_once("tms_v1_sell_insureprintdata.php");
+require_once("../ui/inc/init.inc.php");
+?>
+
+<html> 
+<head> 
+<title>报表</title>
+<object id="WebBrowser" width=0 height=0 classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>
+<script type="text/javascript" src="../js/tms_v1_print.js"></script>
+<script>
+function printTicket()
+{
+	// prepare data
+	var allKPData = '<div class="PageNext"><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10339</div><div style="margin-left:340px;">10339</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">1</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">1</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div><div class="PageNext"><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10340</div><div style="margin-left:340px;">10340</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">2</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">2</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div><div><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10341</div><div style="margin-left:340px;">10341</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">3</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">3</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div>';
+	var allBXData = '<div class="PageNext"><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003145</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div><div class="PageNext"><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003146</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div><div><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003147</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div>';	
+
+	function printKP() {
+		kpWin.document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n');
+		kpWin.document.write('<html xmlns="http://www.w3.org/1999/xhtml">\n<head>\n');
+		kpWin.document.write('<title>客票打印</title>\n');
+		kpWin.document.write('<style media="print" type="text/css">\n');
+		kpWin.document.write('.Noprint{display:none;}\n');
+		kpWin.document.write('.PageNext{page-break-after:always;}\n');
+		kpWin.document.write('</style>\n');
+		kpWin.document.write('<object id="printWB" width=0 height=0 classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\n');
+		kpWin.document.write('<script type="text/javascript" src="../js/tms_v1_print.js">\<\/script>\n');
+		kpWin.document.write('<script>\n');
+		kpWin.document.write('var Wsh = new ActiveXObject("WScript.Shell");\n');
+		kpWin.document.write('printPageSetup(Wsh);\n');
+	//	kpWin.document.write('window.onbeforeprint = function() {alert("Before printing KP");};\n');
+	//	kpWin.document.write('window.onafterprint = function() {alert("After printing KP");};\n');
+	//	kpWin.document.write('window.onlayoutcomplete = function() {alert("KP Layout completed");};\n');
+		kpWin.document.write('\<\/script>\n</head>\n');
+		kpWin.document.write('<body>\n');
+		kpWin.document.write(allKPData);
+		kpWin.document.write('\n<script>\n');
+		//kpWin.document.write('printWB.ExecWB(6,1);');
+		kpWin.document.write('printWB.ExecWB(6,1);');
+		kpWin.document.write('\n\<\/script>');
+		kpWin.document.write('\n</body>\n</html>');
+	//	kpWin.close();
+	}
+
+	function printBX() {
+		bxWin.document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n');
+		bxWin.document.write('<html xmlns="http://www.w3.org/1999/xhtml">\n<head>\n');
+		bxWin.document.write('<title>保险票打印</title>\n');
+		bxWin.document.write('<style media="print" type="text/css">\n');
+		bxWin.document.write('.Noprint{display:none;}\n');
+		bxWin.document.write('.PageNext{page-break-after:always;}\n');
+		bxWin.document.write('</style>\n');
+		bxWin.document.write('<object id="printWB" width=0 height=0 classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\n');
+		bxWin.document.write('<script type="text/javascript" src="../js/tms_v1_print.js">\<\/script>\n');
+		bxWin.document.write('<script>\n');
+		bxWin.document.write('var Wsh = new ActiveXObject("WScript.Shell");\n');
+		bxWin.document.write('printPageSetup(Wsh);\n');
+		bxWin.document.write('<script>\n');
+	//	bxWin.document.write('window.onbeforeprint = function() {alert("Before printing BX");};\n');
+	//	bxWin.document.write('window.onafterprint = function() {alert("After printing BX");};\n');
+	//	bxWin.document.write('window.onlayoutcomplete = function() {alert("BX Layout completed");};\n');
+		bxWin.document.write('\<\/script>\n</head>\n');
+		bxWin.document.write('<body>\n');
+		bxWin.document.write(allBXData);
+		bxWin.document.write('\n<script>\n');
+		//bxWin.document.write('printWB.ExecWB(6,1);');
+		bxWin.document.write('printWB.ExecWB(6,1);');
+		bxWin.document.write('\n\<\/script>');
+		bxWin.document.write('\n</body>\n</html>');
+	//	bxWin.close();
+	}
+
+	var Wsh = new ActiveXObject("WScript.Shell");
+	printPageSetup(Wsh);
+
+	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","客票,winspool,Ne00:","REG_SZ");
+	/* This seems to do the same thing as the above
+	var cmd = 'C:\\Windows\\System32\\rundll32.exe'; 
+	var para1 = 'printui.dll,PrintUIEntry'; 
+	var para2 = '/y'; 
+	var para3 = '/n'; 
+	var para4 = '客票'; 
+	var para5 = '保险票';
+	Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para4);
+	*/
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\Printer","客票");
+	var kpWin = window.open('','kpWin','width=800,height=640,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no'); 
+	printKP();
+
+	while (!kpWin.closed);
+	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","保险票,winspool,Ne01:","REG_SZ");
+// Wsh.Run(cmd + ' ' + para1 + ' ' + para2 + ' ' + para3 + ' ' + para5);
+// Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\Printer","保险票");
+	var bxWin = window.open ('','bxWin','width=800,height=640,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no'); 
+	printBX();
+}
+
+var Wsh = new ActiveXObject("WScript.Shell");
+printPageSetup(Wsh);
+
+Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","客票,winspool,Ne00:","REG_SZ");
+//Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","保险票,winspool,Ne01:","REG_SZ");
+</script>
+<style media="print" type="text/css"> 
+	.Noprint{display:none;} 
+	.PageNext{page-break-after: always;} 
+</style> 
+</head> 
+<body> 
+	<div class="Noprint"> 
+		<input type="button" value="print" onclick="document.all.WebBrowser.ExecWB(6,6)"> 
+		<input type="button" value="printset" onclick="document.all.WebBrowser.ExecWB(8,1)"> 
+		<input type="button" value="view" onclick="document.all.WebBrowser.ExecWB(7,1)"> 
+		<input type="button" value="frame" onclick='printHidden("../js/printTemplateTestPage.html")'> 
+		<input type="button" value="printTicket" onclick='printTicket()'> 
+	</div> 
+<!-- 
+	<div class="PageNext"> 
+	1 
+	</div> 
+	<div class="PageNext"> 
+	2 
+	</div>
+--> 
+	<div class="PageNext"><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10339</div><div style="margin-left:340px;">10339</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">1</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">1</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div><div class="PageNext"><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10340</div><div style="margin-left:340px;">10340</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">2</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">2</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div><div><table style="width:488px;height:265px;margin-left:0px;margin-top:0px;font-size:13px;border:0"><tr><td><div style="margin-top:40px;"><div style="margin-left:100px;float:left;">10341</div><div style="margin-left:340px;">10341</div></div><div style="margin-top:25px;"><div style="margin-left:80px;float:left">郴州总站<span style="margin-left:20px;">嘉禾</span></div><div style="margin-left:325px;">郴州总站<span style="margin-left:20px;">嘉禾</span></div></div><div style="margin-top:10px;"><div style="margin-left:110px;float:left">28.0<span style="margin-left:90px;">3</span></div><div style="margin-left:350px;">28.0</div></div><div style="margin-top:6px;"><div style="margin-left:110px;float:left">100002<span style="margin-left:60px;">8:00</span></div><div style="margin-left:350px;">100002</div></div><div style="margin-top:6px;"><div style="margin-left:130px;float:left">2014-05-24</div><div style="margin-left:350px;">2014-05-24</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">3</div></div><div style="margin-top:4px;"><div style="margin-left:350px;float:left">zzsp1</div></div></td></tr></table></div>
+<!-- 
+	<div class="PageNext"><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003145</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div><div class="PageNext"><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003146</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div><div><table style="width:280px;height:480px;margin-left:0px;margin-top:0px;font-size:10px;border:0"><tr><td><div style="margin-top:10px;"><div style="margin-left:75px;float:left;">4310030043003147</div><div style="margin-left:px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:130px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">null</div><div style="margin-left:120px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:80px;float:left">12000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:5px;"><div style="margin-left:120px;float:left">2000.0</div><div style="margin-left:150px;">&nbsp;</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2.0</div><div style="margin-left:150px;">100002</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">2014-05-24&nbsp;8:00</div><div style="margin-left:160px;">2014-05-24 16:59:11</div></div><div style="margin-top:10px;"><div style="margin-left:80px;float:left">43003F300025</div><div style="margin-left:160px;">4310035041</div></div></td></tr></table></div>
+-->
+	<div class="PageNext"> 
+ 		<iframe name="FrameId" width="100%" height="30%" src="../js/printTemplateTestPage.html"></iframe>
+ 	</div>
+</body> 
+</html>
+

@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+div.tableContainer { 
+clear: both; 
+border-collapse: collapse; 
+border: 2px solid #d5d5d5;
+height: expression(document.body.clientHeight-document.getElementById("tableContainer").offsetTop);
+overflow: auto; 
+width: 100%; 
+} 
+div.tableContainer table { 
+float: left; 
+width: 100%; 
+border-collapse: collapse; 
+empty-cells: hide; 
+} 
+thead.fixedHeader tr { 
+position: relative; 
+top: expression(document.getElementById("tableContainer").scrollTop-2); 
+} 
+thead.fixedHeader th { 
+border-left: 1px solid #d5d5d5; 
+border-right: 1px solid #d5d5d5; 
+border-top: 1px solid #d5d5d5; 
+border-bottom: 1px solid #d5d5d5; 
+font-weight: normal; 
+padding: 4px 3px; 
+text-align: center; 
+} 
+tbody.scrollContent td, tbody.scrollContent tr td { 
+border-bottom: 1px solid #d5d5d5; 
+border-left: 1px solid #d5d5d5; 
+border-right: 1px solid #d5d5d5; 
+border-top: 1px solid #d5d5d5; 
+padding: 2px 3px; 
+} 

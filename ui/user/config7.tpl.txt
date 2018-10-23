@@ -1,0 +1,5 @@
+"lugconsign" => "行包托运"
+"lugconsign" => array("lugconsign"=>"行包收件","lugquery" => "行包查询","resetticket"=>"重置托运单")
+"lugconsign-lugquery" => "../lugconsign/tms_v1_lugconsign_query.php","lugconsign-lugconsign"=>"../lugconsign/tms_v1_lugconsign_receive.php","lugconsign-resetticket" => "../lugconsign/tms_v1_lugconsign_resetingticket.php"
+"lugconsign-lugconsign"=>"行包收件","lugconsign-lugquery" => "行包查询","lugconsign-resetticket"=>"重置托运单"
+"lugconsign-lugconsign"=>"images/folder/07.png","lugconsign-lugquery" => "images/folder/12.png","lugconsign-resetticket" =>"images/folder/11.png"

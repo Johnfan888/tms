@@ -1,0 +1,2 @@
+# */2 * * * * /srv/www/htdocs/tms/tms10/tms20131006/system/cron/tms_v1_sql_dm.sh
+59 23 * * * /srv/www/htdocs/tms/tms10/tms20131006/system/cron/tms_v1_sql_dm.sh > /dev/null 2>&1

@@ -1,0 +1,66 @@
+﻿<HTML>
+<HEAD>
+<TITLE>javascript打印-打印页面设置-打印预览代码</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf8" />
+<script type="text/javascript" src="../js/tms_v1_print.js"></script>
+<object id="factory" style="display:none" classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="http://192.168.38.10/isbtc/tms/smsx.cab#Version=7,4,0,8"></object>  
+<script>
+function printit() //打印函数 
+{ 
+	var Wsh = new ActiveXObject("WScript.Shell");
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","czkprinter,winspool,Ne05:","REG_SZ");
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","Adobe PDF,winspool,Ne07:","REG_SZ");
+//	document.body.insertAdjacentHTML("beforeEnd","<object id=\"WebBrowser\" width=0 height=0 classid=\"clsid:8856F961-340A-11D0-A96B-00C04FD705A2\">");
+//	WebBrowser.ExecWB(6,1);//打印 
+//	WebBrowser.ExecWB(6,2);//直接打印 
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","czbxprinter,winspool,Ne06:","REG_SZ");
+//	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","Microsoft Office Document Image Writer,winspool,Ne01:","REG_SZ");
+//	WebBrowser.ExecWB(6,2);//直接打印 
+
+	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","Adobe PDF,winspool,Ne07:","REG_SZ");
+	factory.printing.printer = "Adobe PDF";
+	factory.printing.Print(true);
+	Wsh.RegWrite("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\Device","czbxprinter,winspool,Ne06:","REG_SZ");
+	factory.printing.printer = "czbxprinter";
+	factory.printing.Print(true);
+
+/*	document.body.insertAdjacentHTML("beforeEnd","<object id=\"WebBrowser\" width=0 height=0 classid=\"clsid:8856F961-340A-11D0-A96B-00C04FD705A2\">");
+	var defaultPrinter='Adobe PDF';//默认打印机
+	var localtor=new ActiveXObject("WbemScripting.SWbemLocator");
+	var service=localtor.ConnectServer(".");
+	var properties=service.ExecQuery("SELECT * FROM Win32_Printer");
+	var printName='Adobe PDF';//实际打印机
+    //修改成指定打印机
+    var e=new Enumerator(properties);
+    for(;!e.atEnd();e.moveNext()){
+        var p=e.item();
+        //alert(p.Name);
+        if(p.Name==printName){ 
+        	p.setDefaultPrinter();
+        	break;
+        }
+    } 
+	WebBrowser.ExecWB(6,2);//直接打印 
+	
+	var printName='czbxprinter';//实际打印机
+    //修改成指定打印机
+    for(;!e.atEnd();e.moveNext()){
+        var p=e.item();
+        if(p.Name==printName){ 
+        	p.setDefaultPrinter();
+        	break;
+        }
+    } 
+	WebBrowser.ExecWB(6,2);//直接打印
+	*/ 
+}
+</script>
+</HEAD>
+<BODY>
+	<DIV align=center>
+		<INPUT onclick="printit();" type=button value=打印 name=button_print />
+		<INPUT onclick="printsetup();" type=button value=打印页面设置 name=button_setup />
+		<INPUT onclick="printpreview();" type=button value=打印预览 name=button_show />
+	</DIV>
+</BODY>
+</HTML>
