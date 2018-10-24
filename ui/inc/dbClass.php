@@ -52,9 +52,15 @@ class Class_Mysql_conn
 
 	function getmysqlinfo()
 	{
-		$this -> mysqlinfo = mysql_get_server_info($this->myconn);
-		$this -> mysqlinfo = substr($this->mysqlinfo,0,2);
-	}
+		if($this->mysql_conn_type == "mysqli") {
+            $this -> mysqlinfo = mysqli_get_server_info($this->myconn);
+            $this -> mysqlinfo = substr($this->mysqlinfo,0,2);
+		
+		} else {
+            $this -> mysqlinfo = mysql_get_server_info($this->myconn);
+            $this -> mysqlinfo = substr($this->mysqlinfo,0,2);
+		}
+    }
 
 	function mysql_DefaultLang()
 	{

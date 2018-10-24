@@ -26,42 +26,42 @@
 
 		function CheckDBConnection($sqlIp, $sqlUsername, $sqlPassword)
 		{
-			 @$conn = mysql_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,message:"'.mysql_error().'",code:"' . mysql_errno() . '"}');
+			 @$conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,message:"'.mysqli_error().'",code:"' . mysqli_errno() . '"}');
 			 echo '{result:true,message:"连接成功"}';
 		}
 
 		function DBSourceExist($sqlIp, $sqlUsername, $sqlPassword, $databaseName)
 		{
-			$conn = mysql_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysql_errno() . '"}');
+			$conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysqli_errno() . '"}');
 
-			mysql_select_db($databaseName) or die('{result:false,code:"' . mysql_errno() . '"}');
+			mysqli_select_db($databaseName) or die('{result:false,code:"' . mysqli_errno() . '"}');
 			
 			echo "{result:true,message:\"数据库已存在\",code:0}";
 		}
 
 		function CreateDatabase($sqlIp, $sqlUsername, $sqlPassword, $databaseName)
 		{
-			$conn = mysql_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysql_errno() . '"}');
-			mysql_query("CREATE DATABASE IF NOT EXISTS {$databaseName}") or die('{result:false,code:"' . mysql_errno() . '"}');
+			$conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysqli_errno() . '"}');
+			mysqli_query("CREATE DATABASE IF NOT EXISTS {$databaseName}") or die('{result:false,code:"' . mysqli_errno() . '"}');
 			echo "{result:true,message:\"数据库创建成功\"}";
 		}
 
 		function CreateTable($sqlIp, $sqlUsername, $sqlPassword, $databaseName)
 		{
-			$conn = mysql_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysql_errno() . '"}');
-			mysql_select_db($databaseName) or die('{result:false,code:"' . mysql_errno() . '"}');
+			$conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysqli_errno() . '"}');
+			mysqli_select_db($databaseName) or die('{result:false,code:"' . mysqli_errno() . '"}');
 
-			mysql_query("SET NAMES 'utf8'");
+			mysqli_query("SET NAMES 'utf8'");
 			$sql=file_get_contents("tms_v1_sql_tables.sql");
 			foreach(explode(";", trim($sql)) as $query)
 			{
-				mysql_query($query) or die('{result:false(creating tables),code:"' . mysql_errno() . '"}');
+				mysqli_query($query) or die('{result:false(creating tables),code:"' . mysqli_errno() . '"}');
 			}
 			/* no storage procedures needed any more
 			$sql=file_get_contents("tms_v1_sql_sps.sql");
 			foreach(explode("//", trim($sql)) as $query)
 			{
-				mysql_query($query) or die('{result:false(creating storage procedures),code:"' . mysql_errno() . '"}');
+				mysqli_query($query) or die('{result:false(creating storage procedures),code:"' . mysqli_errno() . '"}');
 			}*/
 			$config = file_get_contents("config.db.txt");
 			$config = str_replace("@HOST", $sqlIp, $config);
