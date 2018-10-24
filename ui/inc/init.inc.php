@@ -25,7 +25,8 @@ require_once(INC_PATH . '/config.inc.php');
 require_once(INC_PATH . '/config.db.php');
 
 // 设置MYSQL连接请求的方式，值可选"mysql"或者"mysqli"
-$mysql_conn_type = 'mysql';	
+//$mysql_conn_type = 'mysql';	
+$mysql_conn_type = 'mysqli';	
 
 // 设置MYSQL使用的默认字符集
 $DefaultDBLang = 'utf8';
