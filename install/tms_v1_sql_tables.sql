@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `tms_bd_RegionSet` (      
 	`rs_RegionCode` varchar(10)  NOT NULL ,           
 	`rs_RegionName` varchar(20)  NULL ,                
-        `rs_RegionFullName` varchar(50)  NULL ,             
+    `rs_RegionFullName` varchar(50)  NULL ,             
 	`rs_HelpCode` varchar(10)  NULL ,                 
 	`rs_IdCode` varchar(10)  NULL ,  
 	`rs_AdderID` varchar(20)  NULL , 
@@ -38,14 +38,14 @@ CREATE TABLE IF NOT EXISTS `tms_bd_SiteSet` (
 
 CREATE TABLE IF NOT EXISTS `tms_bd_LineInfo` (	
 	`li_LineID` varchar(30)  NOT NULL ,    	
-     	`li_RunLineID` varchar(20) NULL ,      
+    `li_RunLineID` varchar(20) NULL ,      
 	`li_LineName` varchar(50) NOT NULL ,      	
-    	`li_LineKind` varchar(8)  NULL ,      
-    	`li_LineDegree` varchar(8)  NULL ,    
-    	`li_LineType` varchar(8)  NULL ,      
-    	`li_Direction` varchar(8) NULL ,			
-    	`li_Kilometer` decimal(12,2)  NULL ,        
-    	`li_Hours` decimal(12,2)  NULL ,         	
+    `li_LineKind` varchar(8)  NULL ,      
+    `li_LineDegree` varchar(8)  NULL ,    
+    `li_LineType` varchar(8)  NULL ,      
+    `li_Direction` varchar(8) NULL ,			
+    `li_Kilometer` decimal(12,2)  NULL ,        
+    `li_Hours` decimal(12,2)  NULL ,         	
 	`li_BeginLocation` varchar(50) NOT  NULL ,   
 	`li_BeginSite` varchar(50) NOT NULL ,     	
 	`li_BeginSiteID` varchar(20) NOT NULL ,   	
@@ -59,10 +59,10 @@ CREATE TABLE IF NOT EXISTS `tms_bd_LineInfo` (
 	`li_AdderID` varchar(20)  NULL ,
 	`li_Adder` varchar(30)  NULL ,
 	`li_AddTime` datetime  NULL , 
-    	`li_ModerID` varchar(20)  NULL ,
+    `li_ModerID` varchar(20)  NULL ,
 	`li_Moder` varchar(30)  NULL ,
 	`li_ModTime` datetime  NULL ,
-     	`li_Remark` varchar(50)  NULL ,       
+    `li_Remark` varchar(50)  NULL ,       
 	PRIMARY KEY (`li_LineID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_SectionInfo` (
 	`si_IsDock` tinyint NULL ,                    
 	`si_IsGetOnSite` tinyint NULL ,                
 	`si_IsCheckInSite` tinyint NULL ,               
-    	`si_IsTollInSite` tinyint NULL ,                 
+    `si_IsTollInSite` tinyint NULL ,                 
 	`si_IsServiceFee` tinyint NULL ,                 
 	`si_ServiceFee` decimal(12,2) NULL ,             
 	`si_otherFee1` decimal(12,2) NULL ,              
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_SectionInfo` (
 	`si_otherFee5` decimal(12,2) NULL ,
 	`si_otherFee6` decimal(12,2) NULL ,
 	`si_Remark` varchar(50) NULL ,                
-    	PRIMARY KEY (`si_LineID`, `si_SectionID`)
+    PRIMARY KEY (`si_LineID`, `si_SectionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `tms_bd_NoRunsInfo` ( 	
@@ -102,11 +102,11 @@ CREATE TABLE IF NOT EXISTS `tms_bd_NoRunsInfo` (
 	`nri_Type` varchar(10)  NULL ,
 	`nri_State` varchar(20)  NULL ,
 	`nri_DealCategory` varchar(20) NULL ,    			    
-    	`nri_DealStyle` varchar(20) NULL ,                   
-    	`nri_RunHours` varchar(8) NULL ,                      
+    `nri_DealStyle` varchar(20) NULL ,                   
+    `nri_RunHours` varchar(8) NULL ,                      
    	`nri_SeverFeeRate` decimal(12,2)  NULL ,           
-    	`nri_TempAddFee` decimal(12,1)  NULL ,           
-    	`nri_BalanceModel` varchar(50) NULL ,            
+    `nri_TempAddFee` decimal(12,1)  NULL ,           
+    `nri_BalanceModel` varchar(50) NULL ,            
 	`nri_CheckTicketWindow` varchar(2) NULL ,       			
 	`nri_SellWindow` varchar(2) NULL ,         			
 	`nri_RunRegion` varchar(50)  NULL ,     			
@@ -119,11 +119,11 @@ CREATE TABLE IF NOT EXISTS `tms_bd_NoRunsInfo` (
 	`nri_StationDeal` tinyint NULL ,
 	`nri_WeekLoop` varchar(30) NULL,
 	`nri_MonthLoop` varchar(100) NULL,             
-     	`nri_IsNightAddition` tinyint NULL ,            
-     	`nri_IsSucceedLine` tinyint NULL ,            
-     	`nri_IsThroughAddition` tinyint NULL ,          
-     	`nri_IsExclusive` tinyint NULL ,                 
-     	`nri_IsReturn` tinyint NULL ,                    
+    `nri_IsNightAddition` tinyint NULL ,            
+    `nri_IsSucceedLine` tinyint NULL ,            
+    `nri_IsThroughAddition` tinyint NULL ,          
+    `nri_IsExclusive` tinyint NULL ,                 
+    `nri_IsReturn` tinyint NULL ,                    
 	`nri_AllowSell` tinyint NULL ,                     
 	`nri_AddNoRuns` tinyint NULL ,                    
 	`nri_PrintTime` varchar(50)  NULL ,                   
@@ -131,10 +131,10 @@ CREATE TABLE IF NOT EXISTS `tms_bd_NoRunsInfo` (
 	`nri_AdderID` varchar(20)  NULL ,
 	`nri_Adder` varchar(30)  NULL ,
 	`nri_AddTime` datetime  NULL , 
-    	`nri_ModerID` varchar(20)  NULL ,
+   	`nri_ModerID` varchar(20)  NULL ,
 	`nri_Moder` varchar(30)  NULL ,
-	`nri_ModTime` datetime  NULL ,                    
-    	`nri_Remark` varchar(50)  NULL ,                    
+	`nri_ModTime` datetime  NULL ,
+    `nri_Remark` varchar(50)  NULL ,                    
 	PRIMARY KEY (`nri_NoOfRunsID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -148,7 +148,6 @@ CREATE TABLE IF NOT EXISTS `tms_bd_NoRunsDockSite` (
 	`nds_CheckInSite` tinyint NULL ,                     
 	`nds_DepartureTime` char(5)  NULL ,
 	`nds_RunHours` varchar(8)  NULL ,                 
---	`nds_CheckTicketWindow` tinyint NULL ,            
 	`nds_CheckTicketWindow` varchar(2) NULL ,            
 	`nds_IsServiceFee` tinyint NOT NULL ,             
 	`nds_ServiceFee` decimal(12,2) NULL ,              
@@ -186,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_GroupLoopBus` (
 	`glb_LoopID` int NOT NULL ,                 
 	`glb_ModelID` varchar(50) NULL ,             
 	`glb_ModelName` varchar(50) NULL ,        
-	`glb_BusID` varchar(50)  NULL ,             
+	`glb_BusID` varchar(50)  NOT NULL ,             
 	`glb_BusCard` varchar(50) NULL ,             
 	`glb_Seating` int NULL ,                    
 	`glb_AddSeating` int NULL ,                 
@@ -200,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_GroupLoopBus` (
 
 CREATE TABLE IF NOT EXISTS `tms_bd_GroupLoopNoRuns` ( 
 	`gln_LoopID` int NOT NULL ,            
-	`gln_NoOfRunsID` varchar(50)  NULL,     
+	`gln_NoOfRunsID` varchar(50)  NOT NULL,     
 	`gln_LineName` varchar(50)  NULL ,       
 	`gln_DepartureTime` char(5)  NULL ,      
 	`gln_UserID` varchar(50)  NOT NULL ,    
@@ -211,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_ScheduleReserve` (
 	`sr_NoOfRunsID` varchar(10)  NOT NULL ,         
 	`sr_SellerID` varchar(10)  NULL ,
 	`sr_Seller` varchar(30)  NULL ,             
-	`sr_ModelID` varchar(10)  NULL ,
+	`sr_ModelID` varchar(10)  NOT NULL ,
 	`sr_ModelName` varchar(30)  NULL ,               
 	`sr_ReserveSeatNO` varchar(255) NULL ,         
 	`sr_ReserveSeatS` tinyint NULL ,                
@@ -225,9 +224,9 @@ CREATE TABLE IF NOT EXISTS `tms_bd_Reserve` (
 	`re_NoOfRunsdate` char(10)  NOT NULL ,      
 	`re_ReserveSeatNO` varchar(50)  NOT NULL ,   
 	`re_ReserveSeatS` tinyint NULL ,               
-	`re_OnStationID` varchar(20)  NULL ,          
+	`re_OnStationID` varchar(20)  NOT NULL ,          
 	`re_OnStation` varchar(50)  NULL ,            
-    	`re_ReserveUserID` varchar(20)  NULL ,        
+    `re_ReserveUserID` varchar(20)  NULL ,        
 	`re_ReserveUser` varchar(20)  NULL ,          
 	`re_DateTime` datetime NULL ,           
 	`re_Remark` varchar(200)  NULL ,             
@@ -358,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_TicketMode` (
 	`tml_Updatedby` varchar(50)  NULL ,          
 	`tml_BusModelID` varchar(20)  NULL ,            
 	`tml_BusModel` varchar(50)  NULL ,              
-	`tml_BusID` varchar(20) not NULL ,                 
+	`tml_BusID` varchar(20) NOT NULL ,                 
 	`tml_BusCard` varchar(20)  NULL , 
 	`tml_BusUnit` varchar(100)  NULL ,               
 	`tml_FreeSeats` int NULL ,                       
@@ -554,16 +553,16 @@ CREATE TABLE IF NOT EXISTS `tms_bd_BusUnitShell` (
 	PRIMARY KEY (`bus_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `tms_bd_BusCard` (  
-	`bc_CardID` varchar(20)  NOT NULL ,         
-	`bc_BusID` varchar(20)  NULL ,              
+CREATE TABLE IF NOT EXISTS `tms_bd_BusCard` (
+    `bc_CardID` varchar(20)  NOT NULL ,
+    `bc_BusID` varchar(20)  NULL ,              
 	`bc_BusNumber` varchar(20)  NULL ,        
 	`bc_RegDate` char(10)  NULL ,              
 	`bc_state` varchar(50)  NULL ,               
 	`bc_StationID` varchar(20)  NULL ,           
 	`bc_Station` varchar(50)  NULL ,             
-	`bc_Remark` varchar(200)  NULL , 
- 	`bc_addpeople` varchar(20)  NULL ,
+	`bc_Remark` varchar(200)  NULL ,
+    `bc_addpeople` varchar(20)  NULL ,
 	`bc_moddate` varchar(20)  NULL , 
 	`bc_modpeople` varchar(20)  NULL , 
 	`bc_modderID` varchar(20)  NULL , 
@@ -606,7 +605,6 @@ CREATE TABLE IF NOT EXISTS `tms_bd_DriverInfo` (
 	`di_IdCard` varchar(50)  NULL ,                 
 	`di_CYZGZNumber` varchar(50)  NULL ,        
 	`di_Photo` varchar(200) NULL ,
--- di_BusNumber用来存放所属单位
 	`di_BusNumber` varchar(50)  NULL ,            
 	`di_DriverCard` varchar(50)  NULL ,             
 	`di_AllowBusType` varchar(50)  NULL ,          
@@ -655,7 +653,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_TicketProvide` (
 	`tp_BeginTicket` varchar(20)  NULL ,               
 	`tp_CurrentTicket` varchar(20)  NULL ,              
 	`tp_EndTicket` varchar(20)  NULL ,                 
-     	`tp_InceptTicketNum` int NULL ,                   
+  	`tp_InceptTicketNum` int NULL ,                   
 	`tp_UseState` varchar(20)  NULL ,                  
 	`tp_Type` varchar(20)  NULL ,
 	`tp_ProvideUserID` varchar(20)  NULL ,                    
@@ -704,7 +702,7 @@ CREATE TABLE IF NOT EXISTS `tms_bd_DelTicket` (
 	`dt_ProvideDate` char(10)  NULL ,                  
 	`dt_BeginTicket` varchar(20)  NULL ,                            
 	`dt_EndTicket` varchar(20)  NULL ,                 
-     	`dt_DelTicketNum` int NULL ,                  
+   	`dt_DelTicketNum` int NULL ,                  
 	`dt_Type` varchar(20)  NULL ,     
 	`dt_DeleteTime` datetime  NULL ,            
 	`dt_DeletorID` varchar(20)  NULL ,                    
@@ -820,8 +818,8 @@ CREATE TABLE IF NOT EXISTS `tms_bd_AdOrg` (
 	`ao_OrgName` varchar(100) NULL ,           
 	`ao_HelpCode` varchar(10)  NULL ,
 	`ao_AdderID` varchar(20) NULL ,           
-	`ao_Adder` varchar(30)  NULL ,                
-        `ao_AddTime` datetime NULL ,             
+	`ao_Adder` varchar(30)  NULL ,
+    `ao_AddTime` datetime NULL ,             
 	`ao_ModerID` varchar(20)  NULL ,                 
 	`ao_Moder` varchar(30)  NULL ,
 	`ao_ModTime` datetime NULL ,   
@@ -946,7 +944,7 @@ CREATE TABLE IF NOT EXISTS `tms_sell_SellTicketTemp` (
 
 CREATE TABLE IF NOT EXISTS `tms_sell_ReturnTicket` (    
 	`rtk_TicketID` varchar(20)  NOT NULL ,              
-	`rtk_ReturnTicketID` varchar(20)  NULL ,            
+	`rtk_ReturnTicketID` varchar(20)  NOT NULL ,            
 	`rtk_ReturnType` varchar(50)  NULL ,                
 	`rtk_ReturnPrice` decimal(12,1) NULL ,
 	`rtk_SignTime` char(5)  NULL ,                   
@@ -1173,10 +1171,10 @@ CREATE TABLE IF NOT EXISTS `tms_chk_CheckTicket` (
 	`ct_StopStationTime` char(5)  NULL ,           
 	`ct_Distance` decimal(12,2) NULL ,                     
 	`ct_BeginStationID` varchar(20)  NULL ,       
-	`ct_BeginStation` varchar(50)  NULL ,         
-	`ct_FromStationID` varchar(20)  NULL ,       
-	`ct_FromStation` varchar(50)  NULL ,          
-	`ct_ReachStationID` varchar(20)  NULL ,        
+	`ct_BeginStation` varchar(50)  NULL ,
+    `ct_FromStationID` varchar(20)  NULL ,
+    `ct_FromStation` varchar(50)  NULL ,
+    `ct_ReachStationID` varchar(20)  NULL ,        
 	`ct_ReachStation` varchar(50)  NULL ,          
 	`ct_EndStationID` varchar(20)  NULL ,         
 	`ct_EndStation` varchar(50)  NULL ,           
@@ -1201,10 +1199,10 @@ CREATE TABLE IF NOT EXISTS `tms_chk_CheckTicket` (
 	`ct_SellTime` char(8)  NULL ,               
 	`ct_BusModelID` varchar(20)  NULL ,        
 	`ct_BusModel` varchar(50)  NULL ,          
-     	`ct_BusID` varchar(20)  NULL ,            
-     	`ct_BusNumber` varchar(20)  NULL ,       
+    `ct_BusID` varchar(20)  NULL ,            
+    `ct_BusNumber` varchar(20)  NULL ,       
 	`ct_SeatID` varchar(200)  NULL ,          
-     	`ct_SellID` varchar(20)  NULL ,             
+    `ct_SellID` varchar(20)  NULL ,             
 	`ct_SellName` varchar(30)  NULL ,          
 	`ct_FreeSeats` smallint NULL ,             
 	`ct_SafetyTicketID` varchar(20)  NULL ,
@@ -1260,7 +1258,7 @@ CREATE TABLE IF NOT EXISTS `tms_chk_CheckTicketTemp` (
 	`ctt_BusModelID` varchar(20)  NULL ,               
 	`ctt_BusModel` varchar(50)  NULL ,                 
 	`ctt_BusID` varchar(20)  NULL ,                    
-    	`ctt_BusNumber` varchar(50)  NULL ,               
+    `ctt_BusNumber` varchar(50)  NULL ,               
 	`ctt_SeatID` varchar(200)  NULL ,                  
 	`ctt_SellID` varchar(20)  NULL ,                    
 	`ctt_SellName` varchar(30)  NULL ,                 
@@ -1276,7 +1274,7 @@ CREATE TABLE IF NOT EXISTS `tms_chk_CheckTicketTemp` (
 	`ctt_Checker` varchar(30)  NULL ,                 
 	`ctt_CheckDate` char(10)  NULL ,                 
 	`ctt_CheckTime` char(5)  NULL ,                 
---	`ctt_BalanceNO` varchar(50)  NULL ,             
+	`ctt_BalanceNO` varchar(50)  NULL ,             
 	PRIMARY KEY (`ctt_TicketID`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1299,7 +1297,6 @@ CREATE TABLE IF NOT EXISTS `tms_chk_CheckTemp` (
 	`ct_SoldTicketNum` smallint DEFAULT 0 ,
 	`ct_CheckedTicketNum` smallint DEFAULT 0 ,
 	PRIMARY KEY (`ct_ID`)
---	PRIMARY KEY (`ct_NoOfRunsID`, `ct_NoOfRunsdate`, `ct_BusID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `tms_sch_Report` (   
@@ -1335,15 +1332,14 @@ CREATE TABLE IF NOT EXISTS `tms_sch_Report` (
 	`rt_SeatNum` smallint NULL ,
 	`rt_CheckTicketWindow` varchar(20)  NULL ,             
 	PRIMARY KEY (`rt_ID`)
---	PRIMARY KEY (`rt_NoOfRunsID`, `rt_NoOfRunsdate`, `rt_BusID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `tms_sch_AndNoOfRuns` (                  
 	`anr_NoOfRunsID` varchar(20) NOT NULL ,
-	`anr_NoOfRunsdate` char(10)  NULL , 
+	`anr_NoOfRunsdate` char(10)  NOT NULL , 
 	`anr_AndNoOfRunsID` varchar(20)  NULL ,                                       
 	`anr_AndNoOfRunsdate` char(10)  NULL ,
-        `anr_AndTime` datetime  NULL ,
+    `anr_AndTime` datetime  NULL ,
 	`anr_AnderID` varchar(20)  NULL ,
 	`anr_Ander` varchar(30)  NULL , 
 	`anr_Seats` int  NULL , 
@@ -1484,7 +1480,7 @@ CREATE TABLE IF NOT EXISTS `tms_acct_BusRate` (
 	`br_EndDate` char(10) NULL ,
 	`br_AdderID` varchar(20) NULL ,           
 	`br_Adder` varchar(30)  NULL ,                
-        `br_AddTime` datetime NULL ,             
+    `br_AddTime` datetime NULL ,             
 	`br_ModerID` varchar(20)  NULL ,                 
 	`br_Moder` varchar(30)  NULL ,
 	`br_ModTime` datetime NULL , 
@@ -1617,7 +1613,7 @@ CREATE TABLE IF NOT EXISTS `tms_acct_BusAccountTemp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `tms_acct_BalanceInHand` ( 
-	`bh_BalanceNO` varchar(50)  NULL ,      
+	`bh_BalanceNO` varchar(50)  NOT NULL ,      
 	`bh_BusID` varchar(20)  NULL ,          
 	`bh_BusNumber` varchar(20)  NULL ,      
 	`bh_BusUnit` varchar(50)  ,               
@@ -1709,7 +1705,7 @@ CREATE TABLE IF NOT EXISTS `tms_acct_BalanceInHandTemp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
 CREATE TABLE IF NOT EXISTS `tms_acct_BalanceList` ( 
-	`bl_BalanceNO` varchar(50)  NULL ,              
+	`bl_BalanceNO` varchar(50)  NOT NULL ,              
 	`bl_ReachStationID` varchar(20) NULL  ,         
 	`bl_ReachStation` varchar(50)  NULL ,           
 	`bl_Distance` decimal(12,2) NULL ,               
@@ -1799,7 +1795,7 @@ CREATE TABLE IF NOT EXISTS `tms_lug_LuggageCons` (
 	`lc_UnloadPaperID` varchar(20)  NULL ,                
 	`lc_UnloadAdd` varchar(50)  NULL ,                               
 	`lc_CargoName` varchar(50)  NULL ,
-        `lc_Numbers` smallint NULL ,  
+    `lc_Numbers` smallint NULL ,  
 	`lc_Weight` decimal(12,2) NULL ,  
 	`lc_CargoDescription` varchar(50)  NULL ,            
 	`lc_ConsignMoney` decimal(12,1) NULL ,
@@ -1814,7 +1810,7 @@ CREATE TABLE IF NOT EXISTS `tms_lug_LuggageCons` (
 	`lc_ExtractionUserID` varchar(20)  NULL ,
 	`lc_ExtractionUser`  varchar(30)  NULL ,        
 	`lc_Isvalueinsure` tinyint NULL ,
-        `lc_InsureMoney` decimal(12,1) NULL ,
+    `lc_InsureMoney` decimal(12,1) NULL ,
 	`lc_InsureFee` decimal(12,1) NULL ,
 	`lc_PayStyle` varchar(50) NULL ,
 	`lc_Allmoney` decimal(12,1) NULL ,
@@ -1868,7 +1864,7 @@ CREATE TABLE IF NOT EXISTS `tms_sf_CheckItem` (
 	`ci_CheckContent` varchar(100) NOT NULL ,       
 	`ci_AdderID` varchar(20) NULL ,           
 	`ci_Adder` varchar(30)  NULL ,                
-        `ci_Addertime` datetime NULL ,             
+    `ci_Addertime` datetime NULL ,             
 	`ci_ModerID` varchar(20)  NULL ,                 
 	`ci_Moder` varchar(30)  NULL ,
 	`ci_Modertime` datetime NULL ,   
@@ -1925,7 +1921,7 @@ CREATE TABLE IF NOT EXISTS `tms_sf_OutCheck` (
 	`oc_NoOfRunsID` varchar(50)  NULL ,          
 	`oc_RenNo` varchar(20)  NULL ,               
 	`oc_FreeSeats` varchar(20)  NULL ,            
-    	`oc_Remark` varchar(500)  NULL ,            
+    `oc_Remark` varchar(500)  NULL ,            
 	PRIMARY KEY (`oc_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2037,10 +2033,10 @@ CREATE TABLE IF NOT EXISTS `tms_bd_CharteredPayMoney` (
 
 CREATE TABLE IF NOT EXISTS `tms_bd_WebUserRegister` (
 	`wur_ID` int auto_increment NOT NULL ,  
-	`wur_UserRegisterName` varchar(30) NOT NULL ,       
-	`wur_Password` varchar(50) NOT NULL ,           
-	`wur_UserName` varchar(30)  NOT NULL ,                
-        `wur_CertificateType` varchar(50) NULL ,             
+	`wur_UserRegisterName` varchar(30) NOT NULL ,
+    `wur_Password` varchar(50) NOT NULL ,
+    `wur_UserName` varchar(30)  NOT NULL ,                
+    `wur_CertificateType` varchar(50) NULL ,             
 	`wur_CertificateNumber` varchar(30)  NULL ,                 
 	`wur_Emaile` varchar(50)  NULL ,  
 	`wur_Phone` varchar(30)  NULL ,                    
@@ -2118,3 +2114,78 @@ CREATE TABLE IF NOT EXISTS `tms_led_LedSynInfo` (
   `lsi_Remark` varchar(500) default NULL,
   PRIMARY KEY  (`lsi_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+tms_acct_BalanceInHandTemp   |
+| tms_acct_BalanceListTemp     |
+| tms_acct_BusAccount          |
+| tms_acct_BusAccountTemp      |
+| tms_acct_SellPay             |
+| tms_acct_StationBalance      |
+| tms_acct_TemPay              |
+| tms_bd_AddPrice              |
+| tms_bd_AgioType              |
+| tms_bd_BusArt                |
+| tms_bd_BusCard               |
+| tms_bd_BusInfo               |
+| tms_bd_BusModel              |
+| tms_bd_BusUnit               |
+| tms_bd_BusUnitShell          |
+| tms_bd_CharteredBus          |
+| tms_bd_CharteredPayMoney     |
+| tms_bd_DriverInfo            |
+| tms_bd_FeeType               |
+| tms_bd_InsureInfo            |
+| tms_bd_InsureType            |
+| tms_bd_LineInfo              |
+| tms_bd_NoRunsAdjustPrice     |
+| tms_bd_NoRunsAdjustPriceTemp |
+| tms_bd_NoRunsDockSite        |
+| tms_bd_NoRunsDockSiteTemp    |
+| tms_bd_NoRunsInfo            |
+| tms_bd_NoRunsLoop            |
+| tms_bd_PriceDetail           |
+| tms_bd_RegionSet             |
+| tms_bd_ScheduleLong          |
+| tms_bd_SectionInfo           |
+| tms_bd_ServiceFeeAdjust      |
+| tms_bd_ServiceFeeSet         |
+| tms_bd_SiteSet               |
+| tms_bd_TicketAdd             |
+| tms_bd_TicketMode            |
+| tms_bd_TicketPriceFactor     |
+| tms_bd_TicketProvide         |
+| tms_bd_TicketType            |
+| tms_bd_WebUserRegister       |
+| tms_chk_CheckTemp            |
+| tms_chk_CheckTicket          |
+| tms_chk_CheckTicketTemp      |
+| tms_led_LedSynInfo           |
+| tms_lug_CloakRoom            |
+| tms_lug_LuggagePayMoney      |
+| tms_sch_AndNoOfRuns          |
+| tms_sch_NoticeInfo           |
+| tms_sch_PreviousTime         |
+| tms_sch_Report               |
+| tms_sch_ReportInfo           |
+| tms_sch_SpeechNoOfRunsAttemp |
+| tms_sch_SpeechNoOfRunsID     |
+| tms_sell_ErrInsureTicket     |
+| tms_sell_HisSellTicket       |
+| tms_sell_InsureTicket        |
+| tms_sell_LockSeat            |
+| tms_sell_ResetTicket         |
+| tms_sell_SellTicket          |
+| tms_sell_SellTicketTemp      |
+| tms_sf_CheckItem             |
+| tms_sf_OutCheck              |
+| tms_sf_SafetyCheck           |
+| tms_sys_OnLine               |
+| tms_sys_OnlineUser           |
+| tms_sys_UsInfor              |
+| tms_sys_UsType               |
+| tms_sys_WordBook             |
+| tms_sys_WordLog              |
+| tms_ticket_DelResult         |
+| tms_ticket_ErrDelResult      |
+| tms_ticket_ResetResult       |
+| tms_websell_WebSellTicket    |

@@ -26,7 +26,7 @@
 
 		function CheckDBConnection($sqlIp, $sqlUsername, $sqlPassword)
 		{
-			 @$conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,message:"'.mysqli_connect_error().'",code:"' . mysqli_errno($conn) . '"}');
+			 $conn = mysqli_connect($sqlIp,$sqlUsername,$sqlPassword) or die('{result:false,code:"' . mysqli_connect_error() . '"}');
 			 echo '{result:true,message:"连接成功"}';
 		}
 
