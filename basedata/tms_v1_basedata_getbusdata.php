@@ -13,13 +13,13 @@ switch ($op)
 		if($BusNumber!=""){
 			$queryString="SELECT bi_BusNumber,bi_SeatS FROM tms_bd_BusInfo WHERE bi_BusNumber LIKE '%$BusNumber%'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(!mysql_num_rows($result)) {
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.mysql_error(), 'sql' => $queryString);
+			if(!mysqli_num_rows($result)) {
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.->my_error(), 'sql' => $queryString);
 				echo json_encode($retData);
 				exit();
 			}
 			else{
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array('retVal' => 'SUCC',
 					'BusNumber' => $row['bi_BusNumber'],'Seats' => $row['bi_SeatS']);
 			}
@@ -37,7 +37,7 @@ switch ($op)
 		if($BusNumber!=""){
 			$queryString="SELECT bi_BusNumber,bi_BusID FROM tms_bd_BusInfo WHERE bi_BusNumber LIKE '%$BusNumber%'";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array(
 					'BusNumber' => $row['bi_BusNumber'],'BusID' => $row['bi_BusID']);
 			}
@@ -58,7 +58,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			$row = mysql_fetch_array($result);
+			$row = mysqli_fetch_array($result);
 			$retData = array(
 				'BusID' => $row['bi_BusID'],
 				'BusType' => $row['bi_BusType'],

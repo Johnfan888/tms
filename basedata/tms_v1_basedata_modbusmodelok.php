@@ -18,13 +18,13 @@
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_BusModel where bm_ModelID='{$ModelID}'";
 	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $ModelI==$ModelID){
+	if(!mysqli_fetch_array($sele) || $ModelI==$ModelID){
 		$update="UPDATE tms_bd_BusModel SET bm_ModelID='{$ModelID}', bm_ModelName='{$ModelName}',bm_Rank='{$Rank}',
 			bm_Category='{$Category}',bm_Seating='{$Seating}',bm_AddSeating='{$AddSeating}',bm_AllowHalfSeats='{$AllowHalfSeats}',
 			bm_Weight='{$Weight}',bm_ModerID='{$userID}',bm_Moder='{$userName}',bm_ModTime='{$CurTime}',bm_Closing='{$Closing}',
 			bm_Remark='{$Remark}' WHERE  bm_ModelID='{$ModelI}'";	
 		$query =$class_mysql_default->my_query($update);
-	//	if (!$query) echo "SQL错误：".mysql_error();
+	//	if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searbusmodel.php'</script>";
 		}else{

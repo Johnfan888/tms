@@ -13,7 +13,7 @@
 		$sql1 = "SELECT COUNT(br_BusID) AS number FROM `tms_acct_BusRate` WHERE br_BusID like '$BusID%' AND 
 			br_BusNumber like '$BusNumber%' AND br_BusUnit like '$BusUnit%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	  if($RegionCode2 == 'excel'){
 	  	//获取收费类型
@@ -33,7 +33,7 @@
 		  global $z;
 		  $z=7;
 		  $queryed=$class_mysql_default->my_query($selected);
-		  while($rowed=mysql_fetch_array($queryed)){
+		  while($rowed=mysqli_fetch_array($queryed)){
 			if($rowed['ft_FeeTypeComputer']=="按百分比收费"){
 			   $FeeTypeName1 = $rowed['ft_FeeTypeName'].'(%)';	
     		$i=$i+1;
@@ -62,7 +62,7 @@
 		  $queryString = "SELECT * FROM `tms_acct_BusRate` WHERE br_BusID like '$BusID%' AND br_BusNumber like '$BusNumber%' AND 
 						  br_BusUnit like '$BusUnit%'";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	global $j;
 		  	global $rate;
 		  	$rate=7;
@@ -200,7 +200,7 @@ function delregion(){
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($results=mysql_fetch_array($sel)){ 
+					while($results=mysqli_fetch_array($sel)){ 
 							if($BusUnit!=$results['bu_UnitName']){
     			?>
     			<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
@@ -236,7 +236,7 @@ function delregion(){
     	$i=0;
 		$selected="SELECT ft_FeeTypeName,ft_FeeTypeComputer FROM tms_bd_FeeType";
 		$queryed=$class_mysql_default->my_query($selected);
-		while($rowed=mysql_fetch_array($queryed)){
+		while($rowed=mysqli_fetch_array($queryed)){
 			if($rowed['ft_FeeTypeComputer']=="按百分比收费"){
     ?>
     <th nowrap="nowrap" align="center" bgcolor="#006699"><?php echo $rowed['ft_FeeTypeName'].'(%)';?></th>
@@ -275,7 +275,7 @@ function delregion(){
 			$sql = "SELECT * FROM `tms_acct_BusRate` WHERE br_BusID like '$BusID%' AND br_BusNumber like '$BusNumber%' AND 
 				br_BusUnit like '$BusUnit%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'BusID1')">
 		<td align="center" nowrap="nowrap"><?php echo $row['br_BusID'];?></td>

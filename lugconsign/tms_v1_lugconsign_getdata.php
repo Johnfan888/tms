@@ -21,7 +21,7 @@
 		$stationName = "%";
 		$queryString = "SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$stationName}' AND ui_UserGroup='行包组'";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$retData[] = array(
 				'sellerID' => $row['ui_UserID']);
 		}
@@ -37,7 +37,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		$row= mysql_fetch_array($result);
+		$row= mysqli_fetch_array($result);
 		$retData = array(
 			'BusNumber' => $row['bi_BusNumber'],
 			'BusTypeID' => $row['bi_BusTypeID'],

@@ -34,7 +34,7 @@ if(isset($_GET['tid']))
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
 		    exit();
 		}
-		$rows = mysql_fetch_array($resultselet);
+		$rows = mysqli_fetch_array($resultselet);
 		$returnSXprice=$rows['st_SellPrice']-$rows['st_SellPrice']*$returnrate;
 		$returnmoney=$rows['st_SellPrice']*$returnrate;
 		if(!empty($rows[0]))
@@ -48,7 +48,7 @@ if(isset($_GET['tid']))
 				echo "<script>alert('锁定票版数据失败！');history.back();</script>";
 				exit();
 			}
-	     	$rowsmodel1 = mysql_fetch_array($resultmodel1);
+	     	$rowsmodel1 = mysqli_fetch_array($resultmodel1);
 	     	$seatStatus1 = $rowsmodel1['tml_SeatStatus'];
 	     	$seatStatus1 = substr_replace($seatStatus1, '0', $rows['st_SeatID']-1, 1);
 	     	if ($rows['st_SellPriceType']=='半票'){
@@ -73,7 +73,7 @@ if(isset($_GET['tid']))
 					echo "<script>alert('查询并班数据失败！');history.back();</script>";
 					exit();
 	     		}
-	     		$rowandrun=mysql_fetch_array($queryandrun);
+	     		$rowandrun=mysqli_fetch_array($queryandrun);
 	     		$selectmodel2="SELECT tml_SeatStatus, tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowandrun['anr_AndNoOfRunsID']}' AND 
 	     			tml_NoOfRunsdate='{$rowandrun['anr_AndNoOfRunsdate']}' FOR UPDATE";
 		     	$resultmodel2 = $class_mysql_default->my_query("$selectmodel2");
@@ -82,7 +82,7 @@ if(isset($_GET['tid']))
 					echo "<script>alert('锁定票版数据失败2！');history.back();</script>";
 					exit();
 				}
-				$rowsmodel2 = mysql_fetch_array($resultmodel2);
+				$rowsmodel2 = mysqli_fetch_array($resultmodel2);
 				$seatStatus2 = $rowsmodel2['tml_SeatStatus'];
 	     		$seatStatus2 = substr_replace($seatStatus2, '0', stripos($seatStatus2, '7'), 1);
 	     		$rowandrun['anr_Seats']=$rowandrun['anr_Seats']-1;
@@ -124,7 +124,7 @@ if(isset($_GET['tid']))
 	foreach (explode(",",$ticketID) as $key =>$ticketIDs){
 	//$strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketID'";
 	//$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	//$rows = @mysql_fetch_array($resultselet);
+	//$rows = @mysqli_fetch_array($resultselet);
 	//if(!empty($rows[0]))
 	//{
 	//	$strsqlselet = "INSERT INTO `tms_sell_ReturnTicket` (`rtk_TicketID` ,`rtk_ReturnTicketID` ,`rtk_ReturnType` ,`rtk_ReturnPrice` ,
@@ -458,7 +458,7 @@ if(isset($_GET['tid']))
 			//echo $strsqlselet;
 			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
 		}
- 		while($rows = @mysql_fetch_array($resultselet)){
+ 		while($rows = @mysqli_fetch_array($resultselet)){
 ?>
   <tr align="center" bgcolor="#CCCCCC" id="table1">
     <td><?=$rows['rtk_TicketID']?></td>

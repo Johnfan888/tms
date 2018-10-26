@@ -128,7 +128,7 @@ else{
 			}
 		//echo $queryString;
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -220,7 +220,7 @@ else{
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -347,7 +347,7 @@ else{
 			}
 			//echo $strDate;
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['itt_SyncCode'];?></td>

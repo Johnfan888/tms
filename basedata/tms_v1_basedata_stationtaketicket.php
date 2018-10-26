@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sql="SELECT * FROM tms_bd_TicketAdd where  ta_ID='{$clnumber}'";
 	$query = $class_mysql_default->my_query($sql);
-	$row = mysql_fetch_array($query);
+	$row = mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" >

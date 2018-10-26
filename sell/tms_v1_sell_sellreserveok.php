@@ -30,7 +30,7 @@ if(isset($_POST['AllPrice'])) {
 	$selectprice="SELECT * FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoofrunsID}' AND pd_NoOfRunsdate='{$NoOfRunsdate}' AND 
 		pd_FromStation='{$Fromstation}' AND pd_ReachStation='{$Reachstation}'";
 	$resultprice=$class_mysql_default ->my_query("$selectprice");
-	$rowsprice= @mysql_fetch_array($resultprice);
+	$rowsprice= @mysqli_fetch_array($resultprice);
 	
 	//还需要锁表或锁记录
 	$class_mysql_default->my_query("BEGIN");
@@ -43,7 +43,7 @@ if(isset($_POST['AllPrice'])) {
 		echo "<script>alert('锁定票版失败！ 请返回。');location.assign('tms_v1_sell_sellreserve.php');</script>";	
 	}
 	
-	$rows = mysql_fetch_array($resultquery);
+	$rows = mysqli_fetch_array($resultquery);
 	$rows[1]=$rows[1]-$seats;
 	$rows[4]=$rows[4]-$HalfNumber;
 
@@ -94,7 +94,7 @@ else {
 		tms_bd_PriceDetail, tms_bd_TicketMode WHERE pd_NoOfRunsID=tml_NoOfRunsID AND pd_NoOfRunsdate=tml_NoOfRunsdate AND
 		pd_NoOfRunsID='{$NoofrunsID}' AND pd_NoOfRunsdate='{$Selldate}' AND pd_FromStation='{$FromStation}' AND pd_ReachStation='{$ReachStation}'";
 	$resultselect = $class_mysql_default->my_query("$Select"); 
-	$rows = mysql_fetch_array($resultselect);
+	$rows = mysqli_fetch_array($resultselect);
 }
 ?>
 

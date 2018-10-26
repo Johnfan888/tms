@@ -57,8 +57,8 @@ if($verify_result) {//验证成功
     			wst_TotalMan,wst_SellPrice,wst_FullNumber,wst_HalfNumber,wst_NoOfRunsID,wst_SeatID,wst_CertificateNumber 
     			FROM tms_websell_WebSellTicket WHERE wst_WebSellID = '$out_trade_no'";
     	$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
-			$rows = mysql_fetch_array($result);
+		if(mysqli_num_rows($result) == 1) {
+			$rows = mysqli_fetch_array($result);
 			if($rows['wst_TicketState'] == '1') {
 				echo "<script>alert('此订单已在窗口完成支付！');location.assign('../tms_v1_websell_websearchreserve.php');</script>";
 			}
@@ -86,7 +86,7 @@ if($verify_result) {//验证成功
 					$class_mysql_default->my_query("ROLLBACK");
 					echo "<script>alert('锁定票版数据失败！');location.assign('../tms_v1_websell_websearchreserve.php');</script>";
 				}
-				$rows = mysql_fetch_array($result);
+				$rows = mysqli_fetch_array($result);
 				$seatStatus = $rows['tml_SeatStatus'];
 	  			$seatArray = explode(",", trim($seatnos));
 				

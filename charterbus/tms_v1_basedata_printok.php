@@ -59,7 +59,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$result3=mysql_fetch_array($query3);
+		$result3=mysqli_fetch_array($query3);
 		if ($result3[0]==0){
 			$update4="UPDATE tms_bd_TicketProvide SET tp_UseState='用完' WHERE tp_ID='{$tpID}'";
 			$query4=$class_mysql_default->my_query($update4);

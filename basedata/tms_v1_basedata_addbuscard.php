@@ -10,10 +10,10 @@
 	$clnumber=$_GET['clnumber'];
 	$select="SELECT bi_BusID, bi_BusNumber,bi_RegDate,bi_InStationID,bi_InStation FROM tms_bd_BusInfo  WHERE bi_BusID='{$clnumber}'";
 	$query=$class_mysql_default->my_query($select);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 	$select1="SELECT bc_CardID,bc_RegDate,bc_Remark FROM tms_bd_BusCard WHERE bc_BusID='{$clnumber}'";
 	$query1=$class_mysql_default->my_query($select1);
-	$result1=mysql_fetch_array($query1);
+	$result1=mysqli_fetch_array($query1);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

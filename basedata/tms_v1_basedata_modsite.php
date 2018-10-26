@@ -8,7 +8,7 @@
 	$clnumber = $_GET['clnumber'];
 	$sql = "select* FROM `tms_bd_SiteSet` WHERE sset_SiteID='{$clnumber}'";
 	$query = $class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript">
@@ -180,7 +180,7 @@ $(document).ready(function(){
     			<?php 
     				$select="SELECT ao_OrgName FROM tms_bd_AdOrg";
     				$query =$class_mysql_default->my_query($select);
-					while ($row=mysql_fetch_array($query)){
+					while ($row=mysqli_fetch_array($query)){
 						if($row['ao_OrgName']!=$result['sset_StationAdOrg']){
     			?>
       				<option value="<?php echo $row['ao_OrgName'];?>"><?php echo $row['ao_OrgName'];?></option>

@@ -114,7 +114,7 @@
 							WHERE pd_FromStation like '$schStation%'".$strDate.$strsta.$strStatus.$strstate.$strRuned.$strChecked."GROUP BY rt_NoOfRunsID,rt_NoOfRunsdate,rt_ReportDateTime";
 		  $result = $class_mysql_default->my_query("$queryString");
 		    $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 		  	$str="SELECT GROUP_CONCAT(DISTINCT ndst_SiteName ORDER BY ndst_ID ASC) AS SiteName from tms_bd_NoRunsDockSiteTemp 
 					  WHERE ndst_NoOfRunsID='{$row['tml_NoOfRunsID']}' AND ndst_NoOfRunsdate='{$row['tml_NoOfRunsdate']}' AND 
@@ -126,7 +126,7 @@
 					  pd_NoOfRunsdate='{$row['tml_NoOfRunsdate']}'))
 					  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";
 				$result2 = $class_mysql_default ->my_query("$str");
-				$rows2=mysql_fetch_array($result2);
+				$rows2=mysqli_fetch_array($result2);
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -312,7 +312,7 @@
 				<?php 
 						$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 						$result = $class_mysql_default->my_query("$queryString");
-				        while($res = mysql_fetch_array($result)) {
+				        while($res = mysqli_fetch_array($result)) {
 		            		if($res['sset_SiteName'] != $schStation) {
 				?>
 	            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -383,9 +383,9 @@
 							LEFT OUTER JOIN tms_chk_CheckTemp ON ct_NoOfRunsID=rt_NoOfRunsID AND ct_NoOfRunsdate=rt_NoOfRunsdate AND ct_BusID=rt_BusID AND ct_ReportDateTime=rt_ReportDateTime
 							WHERE pd_FromStation like '$schStation%'".$strDate.$strsta.$strStatus.$strstate.$strRuned.$strChecked."GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate";	
 			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-			if(!$resultselet) echo mysql_error();
+			if(!$resultselet) echo ->my_error();
 			$i = 0;
-			while($rows = @mysql_fetch_array($resultselet))	{
+			while($rows = @mysqli_fetch_array($resultselet))	{
 				$i++;
 				$str="SELECT GROUP_CONCAT(DISTINCT ndst_SiteName ORDER BY ndst_ID ASC) AS SiteName from tms_bd_NoRunsDockSiteTemp 
 					  WHERE ndst_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND ndst_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}' AND 
@@ -397,7 +397,7 @@
 					  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 					  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";
 				$result2 = $class_mysql_default ->my_query("$str");
-				$rows2=mysql_fetch_array($result2);
+				$rows2=mysqli_fetch_array($result2);
 				/*if($rows['tml_AllowSell']==0 && $rows['tml_StopRun']==0) $curStatus = '暂停';  //蓝色
 				if($rows['tml_AllowSell']==1 && $rows['tml_StopRun']==0) $curStatus = '在售';  //绿色
 				if($rows['tml_StopRun']==1) $curStatus = '发班'; //红色

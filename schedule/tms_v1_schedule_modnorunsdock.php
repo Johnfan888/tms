@@ -9,7 +9,7 @@
 	$noid=$_GET['noid'];
 	$sql = "select* FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$NoOfRunsID}'and nds_ID='{$noid}'";
 	$query = $class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 
 	<script type="text/javascript" src="../js/jquery.js"></script>
@@ -229,7 +229,7 @@ function getvalueanddis(){
 	<?php 
 		$sqlss= "select nds_SiteName FROM `tms_bd_NoRunsDockSite` WHERE nds_NoOfRunsID='{$NoOfRunsID}' and nds_ID=$noid-1";
 		$queryss =$class_mysql_default->my_query($sqlss);
-		$resultss=mysql_fetch_array($queryss);
+		$resultss=mysqli_fetch_array($queryss);
 	?>
 	<tr> 
     	<td  nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 前站点名：</span></td>
@@ -248,7 +248,7 @@ function getvalueanddis(){
 				<?php 
 					$sqls = "select si_SiteNameID, si_SiteName FROM tms_bd_SectionInfo WHERE si_LineID=(SELECT nri_LineID FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID=$NoOfRunsID) AND si_SectionID>1 AND si_SectionID<(SELECT MAX(si_SectionID) FROM tms_bd_SectionInfo WHERE si_LineID=(SELECT nri_LineID FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID=$NoOfRunsID))";
 					$querys= $class_mysql_default->my_query($sqls);
-					while($results=mysql_fetch_array($querys)){
+					while($results=mysqli_fetch_array($querys)){
 						if($results['si_SiteName']){	
 				?>
 				<option value="<?php echo $results['si_SiteName'].','.$results['si_SiteNameID'];?>"><?php echo $results['si_SiteName'];?></option>

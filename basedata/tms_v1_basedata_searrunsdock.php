@@ -7,10 +7,10 @@
 	$clnumber = $_GET['clnumber'];
 	$sqls = "select nri_NoOfRunsID,nri_LineID,nri_LineName,nri_BeginSite,nri_EndSite FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$clnumber}'";
 	$querys =$class_mysql_default->my_query($sqls);
-	$results=mysql_fetch_array($querys);
+	$results=mysqli_fetch_array($querys);
 	$select="SELECT count(nds_ID) FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber}'";
   	$query1 =$class_mysql_default->my_query($select); 
-  	$row=mysql_fetch_array($query1);
+  	$row=mysqli_fetch_array($query1);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -148,7 +148,7 @@ function modnorunsdock(){
   	<?php
 		$sql = "select* FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber}'";
 		$query =$class_mysql_default->my_query($sql);
-		while($result=mysql_fetch_array($query)){
+		while($result=mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
 		<td nowrap="nowrap" align="center"><?php echo $result['nds_ID'];?></td>

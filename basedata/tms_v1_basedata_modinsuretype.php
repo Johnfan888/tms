@@ -9,7 +9,7 @@
 	$sql = "select it_InsureProductName,it_EffectiveDate,it_Price,it_RiskCode,it_MakeCode,it_RationType,it_AgentCode,
 	 	it_VisaCode,it_Perfix,it_AInsuranceValue,it_BInsuranceValue FROM `tms_bd_InsureType` WHERE it_InsureProductName='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
@@ -158,7 +158,7 @@ function search(){
 		$BINSURANCEVALUE=$_POST['BINSURANCEVALUE'];
 		$select="select it_InsureProductName from tms_bd_InsureType  where it_InsureProductName='{$INSUREPRODUCTNAME}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)|| $INSUREPRODUCTNAME==$INSUREPRODUCTNAM){
+		if(!mysqli_fetch_array($sele)|| $INSUREPRODUCTNAME==$INSUREPRODUCTNAM){
 			$update="UPDATE tms_bd_InsureType SET it_InsureProductName='{$INSUREPRODUCTNAME}',it_EffectiveDate='{$EFFECTIVEDATE}',it_Price='{$PRICE}',
 				it_RiskCode='{$RISKCODE}',it_MakeCode='{$MAKECODE}',it_RationType='{$RATIONTYP}',it_AgentCode='{$AGENTCODE}',it_VisaCode='{$VISACODE}',
 				it_Perfix='{$PERFIX}',it_AInsuranceValue='{$AINSURANCEVALUE}',it_BInsuranceValue='{$BINSURANCEVALUE}' WHERE it_InsureProductName='{$INSUREPRODUCTNAM}'";

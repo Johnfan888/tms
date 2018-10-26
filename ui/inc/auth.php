@@ -10,7 +10,7 @@ $userStationName = $_COOKIE["{$config_cookie_head}_UserStationName"];
 
 $strsql = "select ui_UserGroupID from tms_sys_UsInfor where ui_UserID = '$userID' and ui_UserPassword = '$userPass' and ui_UserGroupID = '$userGroupID'";
 $result = $class_mysql_default ->my_query($strsql);
-if(mysql_num_rows($result) != 1)
+if(mysqli_num_rows($result) != 1)
 {
 	echo "<script>alert('您无权访问此页面!请检查是否正确登录。');history.back();</script>";
 }
@@ -20,14 +20,14 @@ $userIP = $_SERVER['REMOTE_ADDR'];
 $userState = "在线";
 $str = "select * from tms_sys_OnlineUser where ui_UserID = '$userID'";//";//'$userID'";
 $query = $class_mysql_default ->my_query($str);
-if(mysql_num_rows($result)!=1)
+if(mysqli_num_rows($result)!=1)
 {
         echo "<script>alert('您无权访问此页面!请检查是否正确登录。');
         top.location.href = '../ui/login.php?action=login';
         </script>";        
 }
 
-$rows = mysql_fetch_array($query);
+$rows = mysqli_fetch_array($query);
 $ip = $rows['ui_UserIP'];
 $status = $rows['ui_UserState'];
    

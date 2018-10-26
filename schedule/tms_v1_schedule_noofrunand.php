@@ -85,7 +85,7 @@ function GetXmlHttpObject(){
 <?
 $strsqlselet = "SELECT `tml_NoOfRunsdate`,`tml_NoOfRunsID`,`tml_NoOfRunstime`,`tml_Endstation`,`tml_BusModel`,`tml_TotalSeats`,`tml_SeatStatus`  FROM `tms_bd_TicketMode` WHERE `tml_NoOfRunsID`='$noofrunsID';";
 $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-$rowsA = @mysql_fetch_array($resultselet);
+$rowsA = @mysqli_fetch_array($resultselet);
 ?>
 <form id="addpro" name="addpro" method="post" action="">
 <table id="addpro" width="100%" border="1" align="center" cellpadding="1" cellspacing="1">
@@ -98,7 +98,7 @@ $rowsA = @mysql_fetch_array($resultselet);
             <?php
                      $strsqlselet ="SELECT `tml_NoOfRunsID` FROM `tms_bd_TicketMode` WHERE tml_NoOfRunsdate='$nowdate';";
                      $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-                     while($rows = @mysql_fetch_array($resultselet)){
+                     while($rows = @mysqli_fetch_array($resultselet)){
                          if($andnoofrusnID==$rows[0])
                          {
                              echo "<option selected=\"selected\" value=\"{$rows[0]}\">{$rows[0]}</option>";

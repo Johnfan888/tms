@@ -11,7 +11,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_InsureType  where it_InsureType='{$InsureType}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 		$insert="INSERT INTO `tms_bd_InsureType` (`it_InsureType`,`it_InsureFee`,`it_UserID` ,`it_User`,`it_Remark`) 
 			VALUES ('{$InsureType}', '{$InsureFee}','{$userID}','{$user}','{$Remark}');";
 		$query = $class_mysql_default->my_query($insert);

@@ -11,7 +11,7 @@ $ReturnTimeBegin = $_POST['ReturnTimeBegin'];
 $ReturnTimeEnd=$_POST['ReturnTimeEnd'];
 $select="select * from tms_sell_ReturnType where rte_ReturnType='{$ReturnType}'";
 $sele= $class_mysql_default->my_query($select);
-$result=mysql_fetch_array($sele);
+$result=mysqli_fetch_array($sele);
 if($result==false ||$ReturnType==$ReturnTyp){
 	$update="update tms_sell_ReturnType set rte_ReturnType='{$ReturnType}', rte_ReturnRate='{$ReturnRate}', rte_ReturnTimeBegin='{$ReturnTimeBegin}', 
 		rte_ReturnTimeEnd='{$ReturnTimeEnd}' where rte_ReturnType='{$ReturnTyp}'";

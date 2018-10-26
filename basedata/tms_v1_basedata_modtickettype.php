@@ -8,7 +8,7 @@
 	$clnumber = $_GET['clnumber'];
 	$sql = "select* FROM `tms_bd_TicketType` WHERE tt_ID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -99,7 +99,7 @@ if(isset($_POST['TypeName'])) {
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select tt_ID from tms_bd_TicketType where tt_TypeName='{$TypeName}'";
 	$sele= $class_mysql_default->my_query($select);
-	$results=mysql_fetch_array($sele);
+	$results=mysqli_fetch_array($sele);
 	if($results==false ||$ID==$results['tt_ID']){
 		$update="UPDATE tms_bd_TicketType SET tt_TypeName='{$TypeName}', tt_ModerID='{$userID}', tt_Moder='{$userName}', 
 				tt_ModTime='{$CurTime}', tt_Remark='{$Remark}' WHERE tt_ID='{$ID}'";
@@ -107,7 +107,7 @@ if(isset($_POST['TypeName'])) {
 		if($query){
 			echo"<script>alert('修改成功!');window.location.href='tms_v1_basedata_seartickettype.php'</script>";
 		}else{
-		//	echo "SQL错误：".mysql_error();
+		//	echo "SQL错误：".->my_error();
 			echo"<script>alert('修改失败');window.location.href='tms_v1_basedata_seartickettype.php'</script>";
 			}
 	}else{

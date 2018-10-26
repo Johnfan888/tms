@@ -80,8 +80,8 @@ function modnorunsreserve(){
   <?php 
 		$sql = "select* FROM tms_bd_ScheduleReserve WHERE sr_NoOfRunsID='{$clnumber}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".mysql_error();
-		while($result=mysql_fetch_array($query)){
+	//	if (!$query) echo "SQL错误：".->my_error();
+		while($result=mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ModelID1')">
 		<td nowrap="nowrap" align="center"><?php echo $result['sr_ModelID'];?></td>

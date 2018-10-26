@@ -69,7 +69,7 @@ else{
 					AND rtk_SignUserID LIKE '{$sellerID}%' 
 					AND rtk_TicketID LIKE '{$rtk_TicketID}%'".$strDate;
 		$result1 = $class_mysql_default->my_query("$queryString1");
-		while ($row1 = mysql_fetch_array($result1)) {
+		while ($row1 = mysqli_fetch_array($result1)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -161,7 +161,7 @@ else{
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -243,7 +243,7 @@ else{
 				}
 				//echo $sellerID;
 					$result1 = $class_mysql_default->my_query("$queryString1");
-					while ($row1 = mysql_fetch_array($result1)) {
+					while ($row1 = mysqli_fetch_array($result1)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['rtk_TicketID'];?></td>

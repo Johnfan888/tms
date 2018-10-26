@@ -21,11 +21,11 @@ $Select="SELECT pd_FromStationID,pd_ReachStationID,pd_BeginStationTime,pd_StopSt
 /*$Select="SELECT pd_FromStation,pd_ReachStation,pd_BeginStationTime,pd_StopStationTime,pd_FullPrice,pd_HalfPrice FROM tms_bd_PriceDetail WHERE 
 	pd_NoOfRunsID='{$NoofrunsID}' AND pd_NoOfRunsdate='{$Selldate}' AND pd_FromStation='{$FromStation}' AND pd_ReachStation='{$ReachStation}'";*/
 $resultselect = $class_mysql_default ->my_query("$Select"); 
-$rows = @mysql_fetch_array($resultselect);
+$rows = @mysqli_fetch_array($resultselect);
 
 //$selectuser="SELECT wur_UserName,wur_CertificateType,wur_CertificateNumber FROM tms_bd_WebUserRegister WHERE wur_UserRegisterName='{$UserRegisterName}'";
 //$resultuser = $class_mysql_default ->my_query("$selectuser"); 
-//$rowsuser=@mysql_fetch_array($resultuser);
+//$rowsuser=@mysqli_fetch_array($resultuser);
 //获取查询初始化界面参数
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

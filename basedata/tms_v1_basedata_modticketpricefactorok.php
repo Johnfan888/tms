@@ -14,7 +14,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_TicketPriceFactor where tpf_ModelID='{$ModelID}' and tpf_PriceProject='{$PriceProject}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $PriceProjec==$PriceProject){
+	if(!mysqli_fetch_array($sele) || $PriceProjec==$PriceProject){
 		$update="update tms_bd_TicketPriceFactor set tpf_PriceProject='{$PriceProject}',tpf_BeginDate='{$BeginDate}',
 			tpf_EndDate='{$EndDate}',tpf_MoneyRenKil='{$MoneyRenKil}',tpf_Remark='{$Remark}' where tpf_ModelID='{$ModelID}' and
 			tpf_PriceProject='{$PriceProjec}' ";	

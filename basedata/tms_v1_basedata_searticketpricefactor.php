@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sql="SELECT * FROM tms_bd_BusModel where bm_ModelID='{$clnumber}'";
 	$query=$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -99,8 +99,8 @@ function mod(){
 		
 		$sqls = "SELECT * FROM tms_bd_TicketPriceFactor where tpf_ModelID='{$clnumber}'";
 		$querys =$class_mysql_default->my_query($sqls);
-		//if (!$query) echo "SQL错误：".mysql_error();
-		while ($row = mysql_fetch_array($querys)) {
+		//if (!$query) echo "SQL错误：".->my_error();
+		while ($row = mysqli_fetch_array($querys)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'PriceProject1')">
 		<td align="center"><?php echo $row['tpf_PriceProject'];?></td>

@@ -53,11 +53,11 @@
   		$sql1="SELECT COUNT(tp_ID) AS number FROM tms_bd_TicketProvide WHERE tp_InceptUserID LIKE '{$InceptUserID}%'  
   			   AND tp_Type LIKE '{$Type}%' AND tp_UseState='当前' AND tp_InceptTicketNum !='0'".$strsta.$str;
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 		if($rows['number']=='') $num1=0; else $num1=$rows['number'];
 		$resetsql="SELECT COUNT(rt_ID) AS number FROM tms_sell_ResetTicket where rt_ResetUserID like '{$InceptUserID}%' AND rt_Type LIKE '{$Type}%' AND rt_InceptTicketNum !='0'".$resetstrsta.$resetstr;
 		$resetquery =$class_mysql_default->my_query($resetsql);
-		$resetrow1 = mysql_fetch_array($resetquery);
+		$resetrow1 = mysqli_fetch_array($resetquery);
 		if($resetrow1['number']=='') $num2=0; else $num2=$resetrow1['number'];
 		$num=$num1+$num2;
 //	}
@@ -198,9 +198,9 @@ $(document).ready(function(){
 		$sql="SELECT * FROM tms_bd_TicketProvide where tp_InceptUserID like '{$InceptUserID}%' AND tp_Type LIKE '{$Type}%' AND tp_UseState='当前' AND tp_InceptTicketNum !='0'".$strsta.$str;
 //			AND tp_ProvideData>='{$DataBeginDate}' AND tp_ProvideData<='{$DataEndDate}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".mysql_error();
+	//	if (!$query) echo "SQL错误：".->my_error();
 	    $i=0;
-		while ($row = mysql_fetch_array($query)){
+		while ($row = mysqli_fetch_array($query)){
 			$i++;
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
@@ -222,8 +222,8 @@ $(document).ready(function(){
 	//		}
 		$resetsql="SELECT * FROM tms_sell_ResetTicket where rt_ResetUserID like '{$InceptUserID}%' AND rt_Type LIKE '{$Type}%' AND rt_InceptTicketNum !='0'".$resetstrsta.$resetstr;
 		$resetquery =$class_mysql_default->my_query($resetsql);
-	//	if (!$query) echo "SQL错误：".mysql_error();
-		while ($resetrow = mysql_fetch_array($resetquery)){
+	//	if (!$query) echo "SQL错误：".->my_error();
+		while ($resetrow = mysqli_fetch_array($resetquery)){
 			$i++;
 	?>
 	<tr id="tr1"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID2')">

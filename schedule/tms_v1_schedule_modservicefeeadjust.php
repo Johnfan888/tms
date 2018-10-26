@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sqlsf="SELECT * FROM tms_bd_ServiceFeeAdjust WHERE sfa_ID='{$clnumber}'";
 	$querysf = $class_mysql_default->my_query($sqlsf);
-	$resultsf=mysql_fetch_array($querysf);
+	$resultsf=mysqli_fetch_array($querysf);
 ?>
 
 <script type="text/javascript" src="../js/jquery.js"></script>

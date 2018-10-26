@@ -20,12 +20,12 @@ class test
 		$selectTicketProvide="SELECT tp_CurrentTicket,tp_EndTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$Opercode}'
 			AND tp_InceptTicketNum>0 AND tp_UseState='当前'";
 		$queryTicketProvide=$class_mysql_default->my_query("$selectTicketProvide");
-	//	$rowTicketProvide=mysql_fetch_array($queryTicketProvide);
+	//	$rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 		if ($queryTicketProvide){
-			if(mysql_num_rows($queryTicketProvide) == 0){
+			if(mysqli_num_rows($queryTicketProvide) == 0){
 				$retData = array('Result' => '1002' ,'Msg' =>'取票号失败');
 			}else{
-				$rowTicketProvide=mysql_fetch_array($queryTicketProvide);
+				$rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 				$retData = array('Result' => '0' ,'Msg' =>urlencode('取票号成功'), 'curTicketNo'=>$rowTicketProvide['tp_CurrentTicket'], 
 					'endTicketNO'=>$rowTicketProvide['tp_EndTicket']);
 			}
@@ -47,7 +47,7 @@ class test
 			$retData = array('Result' => '1003' ,'Msg' =>'取站点失败');
 			return json_encode($retData);
 		}
-		$rowSiteSet=mysql_fetch_array($querySiteSet);
+		$rowSiteSet=mysqli_fetch_array($querySiteSet);
 		$retData = array('Result' => '0' ,'Msg' =>urlencode('取站点成功'),'NodeCode'=>$StationCode,'NodeName'=>urlencode($rowSiteSet['sset_SiteName']),
 			'NodeSC'=>$rowSiteSet['sset_HelpCode'],'provinceCode'=>'','NodeProvince'=>'','NodeCity'=>'','NodeDistrict'=>urlencode($rowSiteSet['sset_Region']));
 		return json_encode($retData);
@@ -57,7 +57,7 @@ class test
 		require_once("../ui/inc/init.inc.php");
 	//	$selectusinfor="SELECT ui_UserSationID FROM tms_sys_UsInfor WHERE ui_UserID='{$Opercode}'";
 	//	$queryusinfor=$class_mysql_default->my_query("$selectusinfor");
-	//	$rowusifor=mysql_fetch_array($queryusinfor);
+	//	$rowusifor=mysqli_fetch_array($queryusinfor);
 		$selectruns="SELECT pd_NoOfRunsID,pd_LineID,pd_NoOfRunsdate,pd_BeginStationTime,pd_Distance,pd_StopStationTime,
 			pd_BeginStation,pd_EndStation,tml_LeaveSeats,tml_BusModel,tml_CheckTicketWindow,pd_FullPrice,pd_HalfPrice,tml_Allticket,
 			li_LineID,li_LineName,li_LineType,li_BeginSite,li_EndSite,GROUP_CONCAT( nds_SiteName ORDER BY nds_ID ASC) AS SiteName 
@@ -69,7 +69,7 @@ class test
 			$retData = array('Result' => '1004' ,'Msg' =>'取班次失败');
 			return json_encode($retData);
 		}
-		while($rowruns=mysql_fetch_array($queryruns)){
+		while($rowruns=mysqli_fetch_array($queryruns)){
 			if($rowruns['tml_Allticket']==0){
 				$SchType='定时班';
 			}else{
@@ -89,7 +89,7 @@ class test
 		$selectprice="SELECT pd_FullPrice,pd_HalfPrice,pd_FromStation,pd_ReachStation FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$SchCode}' AND pd_NoOfRunsdate='{$SchDate}' AND pd_FromStationID='{$StationCode}' 
 			AND pd_ReachStationID='{$NodeCode}'";
 		$queryprice=$class_mysql_default->my_query("$selectprice");
-		$rowprice=@mysql_fetch_array($queryprice);
+		$rowprice=@mysqli_fetch_array($queryprice);
 		$class_mysql_default->my_query("BEGIN");
 		$selectticketmodel="SELECT tml_SeatStatus,tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$SchCode}' AND tml_NoOfRunsdate='{$SchDate}'
 			FOR UPDATE";
@@ -99,7 +99,7 @@ class test
 			$retData = array('Result' => '1005' ,'Msg' =>'锁座位失败1');
 			return json_encode($retData);
 		}
-		$rowsticketmodel = @mysql_fetch_array($queryticketmodel);
+		$rowsticketmodel = @mysqli_fetch_array($queryticketmodel);
 		$SeatStatus=$rowsticketmodel['tml_SeatStatus'];
 		$LeaveSeats=$rowsticketmodel['tml_LeaveSeats'];
 		$LeaveHalfSeats=$rowsticketmodel['tml_LeaveHalfSeats'];
@@ -154,7 +154,7 @@ class test
 			$retData = array('Result' => '1006' ,'Msg' =>'取消锁位失败');
 			return json_encode($retData);
 		}
-		$rowlockID1=mysql_fetch_array($querylockID1);
+		$rowlockID1=mysqli_fetch_array($querylockID1);
 		$class_mysql_default->my_query("BEGIN");
 		$selectticketmodel="SELECT tml_SeatStatus,tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowlockID1['ls_NoOfRunsID']}' AND 
 		 tml_NoOfRunsdate='{$rowlockID1['ls_NoOfRunsdate']}' FOR UPDATE";
@@ -164,7 +164,7 @@ class test
 			$retData = array('Result' => '1006' ,'Msg' =>'取消锁位失败');
 			return json_encode($retData);
 		}
-		$rowsticketmodel = @mysql_fetch_array($queryticketmodel);
+		$rowsticketmodel = @mysqli_fetch_array($queryticketmodel);
 		$SeatStatus=$rowsticketmodel['tml_SeatStatus'];
 		$LeaveSeats=$rowsticketmodel['tml_LeaveSeats'];
 		$LeaveHalfSeats=$rowsticketmodel['tml_LeaveHalfSeats'];
@@ -175,7 +175,7 @@ class test
 			$retData = array('Result' => '1006' ,'Msg' =>'取消锁位失败');
 			return json_encode($retData);
 		}
-		while($rowlockID=mysql_fetch_array($querylockID)){
+		while($rowlockID=mysqli_fetch_array($querylockID)){
 	//		$i=$i+1;
 			$seatID=$rowlockID['ls_SeatID'];
 			$SeatStatus=substr_replace($SeatStatus, '0', $seatID, 1);
@@ -225,7 +225,7 @@ class test
 			$retData = array('Result' => '10071' ,'Msg' =>'售票更新失败');
 			return json_encode($retData);
 		}
-		$rowlockseat=mysql_fetch_array($querylockseat);
+		$rowlockseat=mysqli_fetch_array($querylockseat);
 		if ($rowlockseat['ls_Type']==1){
 			$SellPriceType = "全票";
 		}else{
@@ -249,7 +249,7 @@ class test
 		$queryinsert=$class_mysql_default->my_query("$insertsellticket");
 		if(!$queryinsert){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('Result' => '10072' ,'Msg' =>'售票更新失败'.mysql_error());
+			$retData = array('Result' => '10072' ,'Msg' =>'售票更新失败'.->my_error());
 			return json_encode($retData);
 		}
 		$TicketNo=$CTicketNo+1;
@@ -307,7 +307,7 @@ class test
 			$retData = array('Result' => '1009' ,'Msg' =>'取票查询失败');
 			return json_encode($retData);
 		}
-		while($rowWebSellTicket=mysql_fetch_array($queryWebSellTicket)){
+		while($rowWebSellTicket=mysqli_fetch_array($queryWebSellTicket)){
 			foreach (explode(",",$rowWebSellTicket['wst_SeatID']) as $key =>$SeatID){
 				$TicketID=time().'D'.$SeatID;
 				$retData[]=array('Result' => '0','TicketID'=>$TicketID, 'OrderNo'=>$rowWebSellTicket['wst_WebSellID'],'StationName'=>$rowWebSellTicket['wst_FromStation'],'NodeName'=>$rowWebSellTicket['wst_ReachStation'],
@@ -327,7 +327,7 @@ class test
 			$retData = array('Result' => '10101','Msg' =>'取票打印失败');
 			return json_encode($retData);
 		}
-		$rowWebSellTicket=mysql_fetch_array($queryWebSellTicket);
+		$rowWebSellTicket=mysqli_fetch_array($queryWebSellTicket);
 		//座位号
 		$str=explode('D',$TicketID);
 		$SeatID=$str[1];
@@ -340,7 +340,7 @@ class test
 			$retData = array('Result' => '10102' ,'Msg' =>'取票打印失败');
 			return json_encode($retData);
 		}
-		$rowTicketProvide=mysql_fetch_array($queryTicketProvide);
+		$rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 		$class_mysql_default->my_query("BEGIN");
 		$insertsellticket="INSERT INTO tms_sell_SellTicket (st_TicketID,st_NoOfRunsID,st_LineID,st_NoOfRunsdate,st_BeginStationTime,st_StopStationTime,st_Distance,
 			st_BeginStationID,st_BeginStation,st_FromStationID,st_FromStation,st_ReachStationID,st_ReachStation,st_EndStationID,st_EndStation,st_SellPrice,st_SellPriceType,

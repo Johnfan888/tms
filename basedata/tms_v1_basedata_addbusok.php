@@ -95,7 +95,7 @@
 
 	$select="select * from tms_bd_BusInfo where bi_BusID='{$BusID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 			$insert="insert into tms_bd_BusInfo (bi_BusID,bi_BusNumber,bi_BusUnit,bi_SeatS,bi_AddSeatS,bi_AllowHalfSeats,bi_DriverID,
 				bi_Driver,bi_Driver1ID,bi_Driver1,bi_Driver2ID,bi_Driver2,bi_RegDate,bi_Tonnage,bi_OwnerName,bi_OwnerAdd,
 				bi_OwnerTel,bi_OwnerIdCard,bi_BusTypeID,bi_BusType,bi_EngineType,bi_EngineNumber,bi_BusIdentify,bi_BusChangeType,
@@ -112,7 +112,7 @@
 				'{$Business}','{$SpringCheckEndDate}','{$ExaminationEndDate}','{$TwoEndDate}','{$RankEndDate}','{$TravelEndDatete}','{$MonthEndDate}','{$CNGEndDate}','{$Sign}',
 				'{$InStationID}','{$InStation}','{$userID}','{$userName}','{$CurTime}','{$fileName}','{$saveFilePath}')";
 			$query = $class_mysql_default->my_query($insert);
-		//	if (!$query) echo "SQL错误：".mysql_error();
+		//	if (!$query) echo "SQL错误：".->my_error();
 			if($query){
 				echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addbus.php'</script>";
 			}else{

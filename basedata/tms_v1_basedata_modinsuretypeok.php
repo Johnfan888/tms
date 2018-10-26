@@ -13,7 +13,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_InsureType  where it_InsureType='{$InsureType}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)|| $InsureType==$InsureTyp){
+	if(!mysqli_fetch_array($sele)|| $InsureType==$InsureTyp){
 		$update="UPDATE tms_bd_InsureType SET it_InsureType='{$InsureType}',it_InsureFee='{$InsureFee}',it_UserID='{$userID}',
 			it_User='{$user}',it_Remark='{$Remark}' WHERE it_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($update);

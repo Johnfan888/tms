@@ -38,7 +38,7 @@ if(isset($_GET['tid']))
 		 //	echo "<script>alert('查询售票数据失败！');history.back();</script>";
 			exit();
 		 }
-		 $rows = @mysql_fetch_array($resultselet);
+		 $rows = @mysqli_fetch_array($resultselet);
 	     $selectprice="SELECT tml_NoOfRunsID,pd_LineID,pd_BeginStation,pd_EndStation,pd_FromStation,pd_ReachStation,pd_FullPrice,pd_HalfPrice,pd_BeginStationTime,pd_StopStationTime,
 	     	pd_Distance,tml_BusModel,tml_LeaveSeats,tml_LeaveHalfSeats,nri_LineName,nri_Allticket FROM tms_bd_PriceDetail LEFT OUTER JOIN tms_bd_TicketMode ON 
 	     	tms_bd_PriceDetail.pd_NoOfRunsID = tms_bd_TicketMode.tml_NoOfRunsID AND tms_bd_PriceDetail.pd_NoOfRunsdate = tms_bd_TicketMode.tml_NoOfRunsdate LEFT OUTER JOIN tms_bd_NoRunsInfo 
@@ -50,7 +50,7 @@ if(isset($_GET['tid']))
 	  	 	echo "<script>alert('查询票价数据失败！');history.back();</script>";
 			exit();
 		  }
-	     $rowsprice = @mysql_fetch_array($resultprice);
+	     $rowsprice = @mysqli_fetch_array($resultprice);
 	     if(!empty($rows[0]))
 	     {
 	         //写改签票表
@@ -63,7 +63,7 @@ if(isset($_GET['tid']))
 				echo "<script>alert('锁定票版1数据失败！');history.back();</script>";
 				exit();
 			}
-	     	$rowsmodel1 = @mysql_fetch_array($resultmodel1);
+	     	$rowsmodel1 = @mysqli_fetch_array($resultmodel1);
 	     	$seatStatus1 = $rowsmodel1['tml_SeatStatus'];
 	     	$seatStatus1 = substr_replace($seatStatus1, '0', $rows['st_SeatID']-1, 1);
 	     	if ($rows['st_SellPriceType']=='半票'){
@@ -86,7 +86,7 @@ if(isset($_GET['tid']))
 				echo "<script>alert('锁定票版2数据失败！');history.back();</script>";
 				exit();
 			}
-	     	$rowsmodel2 = @mysql_fetch_array($resultmodel2);
+	     	$rowsmodel2 = @mysqli_fetch_array($resultmodel2);
 	     	$seatStatus2 = $rowsmodel2['tml_SeatStatus'];
 	     	if(strpos($seatStatus2,'0')===false){
 	     		$class_mysql_default->my_query("ROLLBACK");
@@ -139,7 +139,7 @@ if(isset($_GET['tid']))
 					echo "<script>alert('查询并班数据失败！');history.back();</script>";
 					exit();
 	     		}
-	     		$rowandrun=mysql_fetch_array($queryandrun);
+	     		$rowandrun=mysqli_fetch_array($queryandrun);
 	     		$selectmodel2="SELECT tml_SeatStatus, tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowandrun['anr_AndNoOfRunsID']}' AND 
 	     			tml_NoOfRunsdate='{$rowandrun['anr_AndNoOfRunsdate']}' FOR UPDATE";
 		     	$resultmodel2 = $class_mysql_default->my_query("$selectmodel2");
@@ -148,7 +148,7 @@ if(isset($_GET['tid']))
 					echo "<script>alert('锁定票版数据失败2！');history.back();</script>";
 					exit();
 				}
-				$rowsmodel2 = mysql_fetch_array($resultmodel2);
+				$rowsmodel2 = mysqli_fetch_array($resultmodel2);
 				$seatStatus2 = $rowsmodel2['tml_SeatStatus'];
 	     		$seatStatus2 = substr_replace($seatStatus2, '0', stripos($seatStatus2, '7'), 1);
 	     		$rowandrun['anr_Seats']=$rowandrun['anr_Seats']-1;
@@ -483,8 +483,8 @@ if(isset($_GET['tid']))
 			$selectticket="SELECT st_NoOfRunsID,st_NoOfRunsdate,st_FromStation, st_ReachStation,st_BeginStationTime,st_SellPrice,st_SellPriceType,st_TotalMan,
 				st_BusModel,st_SeatID,nri_Allticket FROM tms_sell_SellTicket LEFT OUTER JOIN tms_bd_NoRunsInfo ON st_NoOfRunsID=nri_NoOfRunsID WHERE st_TicketID='{$ticketIDs}'";
 			$resultticket = $class_mysql_default ->my_query("$selectticket");
-			if(!$resultticket) echo mysql_error();
-			$rowsticket = @mysql_fetch_array($resultticket);
+			if(!$resultticket) echo ->my_error();
+			$rowsticket = @mysqli_fetch_array($resultticket);
 ?>
 	<tr bgcolor="#CCCCCC">
 		<td align="center"><?=$ticketIDs?></td>
@@ -548,7 +548,7 @@ if(isset($_GET['tid']))
 		WHERE pd_FromStation='{$rowsticket['st_FromStation']}' AND  pd_ReachStation='{$rowsticket['st_ReachStation']}' AND pd_NoOfRunsdate = '{$alertdate}' AND tml_AllowSell = '1' 
 		AND tml_LeaveSeats > 0 ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";
   $resultnoruns = $class_mysql_default ->my_query("$selectnoruns");
-  while($rowsnoruns = @mysql_fetch_array($resultnoruns))
+  while($rowsnoruns = @mysqli_fetch_array($resultnoruns))
   {
 ?>
   <tr align="center" bgcolor="#CCCCCC">

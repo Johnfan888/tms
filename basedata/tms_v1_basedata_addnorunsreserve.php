@@ -59,7 +59,7 @@ function getnumbers(){
       			<?php
       				$sql="SELECT * FROM tms_bd_BusModel"; 
       				$query =$class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
       			?>
       			<option value="<?php echo $result['bm_ModelID'].','.$result['bm_ModelName'];?>"><?php echo $result['bm_ModelName'];?></option>
       			<?php 

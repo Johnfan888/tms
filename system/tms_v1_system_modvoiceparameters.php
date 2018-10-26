@@ -83,8 +83,8 @@ require_once("../ui/inc/init.inc.php");
 					$CurrentRepeat=$_REQUEST['CurrentRepeat'];
 					$WaitRepeat=$_REQUEST['WaitRepeat'];
 					$str ="SELECT * FROM tms_sch_PreviousTime WHERE pt_code='2'";
-					$selectstr=mysql_query($str) ;
-					$rows=mysql_fetch_array($selectstr);
+					$selectstr=$class_mysql_default->my_query($str) ;
+					$rows=mysqli_fetch_array($selectstr);
 			        if($Stop == null){
 					 $Stop=$rows['pt_Stop'];
 			          }
@@ -108,7 +108,7 @@ require_once("../ui/inc/init.inc.php");
 					}
 					//echo $carcheck,$secdmaint,$insure,$licencheck,$contime,$spareleave;
 						$update = "UPDATE tms_sch_PreviousTime SET pt_Stop='$Stop' , pt_Current='$Current' , pt_Hasten = '$Hasten' , pt_StopRepeat='$StopRepeat' , pt_HastenRepeat='$HastenRepeat',pt_CurrentRepeat='$CurrentRepeat', pt_WaitRepeat='$WaitRepeat' WHERE pt_Code='2'";
-		   				$result = mysql_query($update);
+		   				$result = $class_mysql_default->my_query($update);
 		   				if($result){
 		   					echo "<script>";
 		   					echo "alert('修改成功')";

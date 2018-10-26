@@ -352,7 +352,7 @@
       			<?php
       				$sql="SELECT bm_ModelID,bm_ModelName,bm_Seating,bm_AddSeating FROM tms_bd_BusModel"; 
       				$query =$class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
       			?>
       			<option value="<?php echo $result['bm_ModelID'].','.$result['bm_ModelName'].','.$result['bm_Seating'].','.$result['bm_AddSeating'];?>"><?php echo $result['bm_ModelName'];?></option>
       			<?php 
@@ -382,7 +382,7 @@
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($results=mysql_fetch_array($sel)){ 
+					while($results=mysqli_fetch_array($sel)){ 
     			?>
     			<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
     			<?php 
@@ -413,7 +413,7 @@
 					?><option></option><?php 
 					$sql = "select sset_SiteID, sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1";
 					$query = $class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
 			//			if($result['sset_SiteName']){
 				?>	
 					<option value="<?php echo $result['sset_SiteID'].','.$result['sset_SiteName'];?>"><?php echo $result['sset_SiteName'];?></option>
@@ -690,7 +690,7 @@
 	$sele=$class_mysql_default->my_query($select);
 	$select="select * from tms_bd_BusInfo where bi_BusNumber='$BusNumber'";
 	$sele1=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) && !mysql_fetch_array($sele1)){
+	if(!mysqli_fetch_array($sele) && !mysqli_fetch_array($sele1)){
 			$insert="insert into tms_bd_BusInfo (bi_BusID,bi_BusNumber,bi_BusUnit,bi_SeatS,bi_AddSeatS,bi_AllowHalfSeats,bi_DriverID,
 				bi_Driver,bi_Driver1ID,bi_Driver1,bi_Driver2ID,bi_Driver2,bi_RegDate,bi_Tonnage,bi_OwnerName,bi_OwnerAdd,
 				bi_OwnerTel,bi_OwnerIdCard,bi_BusTypeID,bi_BusType,bi_EngineType,bi_EngineNumber,bi_BusIdentify,bi_BusChangeType,
@@ -707,13 +707,13 @@
 				'{$Business}','{$SpringCheckEndDate}','{$ExaminationEndDate}','{$TwoEndDate}','{$RankEndDate}','{$TravelEndDatete}','{$MonthEndDate}','{$CNGEndDate}','{$Sign}',
 				'{$InStationID}','{$InStation}','{$userID}','{$userName}','{$CurTime}','{$fileName}','{$saveFilePath}')";
 			$query = $class_mysql_default->my_query($insert);
-		//	if (!$query) echo "SQL错误：".mysql_error();
+		//	if (!$query) echo "SQL错误：".->my_error();
 			if($query){
 				echo"<script>alert('恭喜您！添加成功!');</script>";
 			}else{
 				echo"<script>alert('添加失败');</script>";
 			}
-	}elseif(mysql_fetch_array($sele) && !mysql_fetch_array($sele1)){
+	}elseif(mysqli_fetch_array($sele) && !mysqli_fetch_array($sele1)){
 			echo"<script>alert('车辆编号已存在，请重新输入！');</script>";
 		}
 	else{

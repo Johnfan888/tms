@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$selectnoruns="SELECT li_LineID,li_LineName FROM tms_bd_LineInfo WHERE li_LineID='{$clnumber}'";
 	$querynoruns=$class_mysql_default->my_query($selectnoruns);
-	$resultnoruns=mysql_fetch_array($querynoruns);
+	$resultnoruns=mysqli_fetch_array($querynoruns);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -118,8 +118,8 @@ function modlineservicefeeadjust(){
   	$i=0;
 	$sql="SELECT * FROM tms_bd_ServiceFeeAdjust where sfa_LineAdjust='{$clnumber}' and sfa_ISNoRunsAdjust='0' and (sfa_NoRunsAdjust is NULL)";
 	$query =$class_mysql_default->my_query($sql);
-//	if (!$query) echo "SQL错误：".mysql_error();
-	while ($row = mysql_fetch_array($query)){
+//	if (!$query) echo "SQL错误：".->my_error();
+	while ($row = mysqli_fetch_array($query)){
 			$i++;
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC"  onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

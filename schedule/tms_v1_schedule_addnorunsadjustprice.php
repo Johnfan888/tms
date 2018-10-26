@@ -282,7 +282,7 @@ function append(){
 			<?php
 				$select="SELECT nrl_Unit,nrl_ModelID,nrl_ModelName FROM tms_bd_NoRunsLoop WHERE nrl_NoOfRunsID='{$clnumber1}' AND nrl_LoopID='1'";
 				$querysql=$class_mysql_default->my_query($select);
-				$row=mysql_fetch_array($querysql);
+				$row=mysqli_fetch_array($querysql);
 			?>
 			<input type="hidden" name="Units" id="Units" value="<?php echo $row['nrl_Unit'];?>"/>
 			<input type="hidden" name="Unit" id="Unit" value="<?php echo $row['nrl_Unit'];?>"/>
@@ -319,8 +319,8 @@ function append(){
 	      			<?php 
 	      				$sqls = "SELECT nds_SiteName,nds_SiteID,nds_ID FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber1}' and nds_GetOnSite='1'";
 						$querys = $class_mysql_default->my_query($sqls);
-						//$result=mysql_fetch_array($query);
-						while($results=mysql_fetch_array($querys)){
+						//$result=mysqli_fetch_array($query);
+						while($results=mysqli_fetch_array($querys)){
 					?>	
 					<option value="<?php echo $results['nds_SiteName'].','.$results['nds_SiteID'].','.$results['nds_ID'];?>"><?php echo $results['nds_SiteName'];?></option>
 					<?php 
@@ -346,8 +346,8 @@ function append(){
 	      			<?php 
 	      				$sqlss = "SELECT nds_SiteName,nds_SiteID,nds_ID FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber1}' and nds_IsDock='1'";
 						$queryss =$class_mysql_default->my_query($sqlss);
-						//$result=mysql_fetch_array($query);
-						while($resultss=mysql_fetch_array($queryss)){
+						//$result=mysqli_fetch_array($query);
+						while($resultss=mysqli_fetch_array($queryss)){
 					?>	
 					<option value="<?php echo $resultss['nds_SiteName'].','.$resultss['nds_SiteID'].','.$resultss['nds_ID'];?>"><?php echo $resultss['nds_SiteName'];?></option>
 					<?php 

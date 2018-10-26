@@ -380,7 +380,7 @@ $(document).ready(function(){ //正驾驶匹配驾照信息
       			<?php
       				$sql="SELECT bm_ModelID,bm_ModelName,bm_Seating,bm_AddSeating FROM tms_bd_BusModel"; 
       				$query =$class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
       			?>
       			<option value="<?php echo $result['bm_ModelID'].','.$result['bm_ModelName'].','.$result['bm_Seating'].','.$result['bm_AddSeating'];?>"><?php echo $result['bm_ModelName'];?></option>
       			<?php 
@@ -408,7 +408,7 @@ $(document).ready(function(){ //正驾驶匹配驾照信息
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($results=mysql_fetch_array($sel)){ 
+					while($results=mysqli_fetch_array($sel)){ 
     			?>
     			<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
     			<?php 
@@ -439,8 +439,8 @@ $(document).ready(function(){ //正驾驶匹配驾照信息
 					?><option></option><?php 
 					$sql = "select sset_SiteID, sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1";
 					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 			//			if($result['sset_SiteName']){
 				?>	
 					<option value="<?php echo $result['sset_SiteID'].','.$result['sset_SiteName'];?>"><?php echo $result['sset_SiteName'];?></option>

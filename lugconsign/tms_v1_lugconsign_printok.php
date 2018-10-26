@@ -54,7 +54,7 @@ switch ($op)
 		
 		$str = "select sset_SiteID from tms_bd_SiteSet where sset_SiteName = '{$Destination}'";	
 		$result = $class_mysql_default->my_query("$str");
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$DestinationID = $row['sset_SiteID'];
 		$IsStationBalance = "0";
 		
@@ -98,7 +98,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$result3=mysql_fetch_array($query3);
+		$result3=mysqli_fetch_array($query3);
 		if ($result3[0]==0){
 			$update4="UPDATE tms_bd_TicketProvide SET tp_UseState='用完' WHERE tp_ID='{$tpID}'";
 			$query4=$class_mysql_default->my_query($update4);

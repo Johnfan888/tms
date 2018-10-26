@@ -7,8 +7,8 @@
 	require_once("../ui/inc/init.inc.php");
 	$clnumber = $_GET['clnumber'];
 	$sqll="select * FROM tms_bd_LineInfo WHERE li_LineID='{$clnumber}'";
-	$queryl =$class_mysql_default->my_query($sqll);
-	$results=mysql_fetch_array($queryl); 
+	$queryl =$class_mysql_default$class_mysql_default->my_query($sqll);
+	$results=mysqli_fetch_array($queryl); 
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -544,9 +544,9 @@ font-family: arial, sans-serif;
 				if($userStationName == "全部车站"){
 				?><option></option><?php 
 					$sql = "select sset_SiteID,sset_SiteName,sset_Region FROM tms_bd_SiteSet where sset_IsStation=1";
-					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					$query = $class_mysql_default$class_mysql_default->my_query($sql);
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){
 							if($result['sset_SiteName']==$results['li_Station']){
 				?>	
@@ -561,8 +561,8 @@ font-family: arial, sans-serif;
 					}
 				}else{
 					$sql1="SELECT sset_Region FROM tms_bd_SiteSet WHERE sset_SiteID ='$userStationID' AND sset_SiteName ='$userStationName'";
-					$query1=mysql_query($sql1);
-					$result1=mysql_fetch_array($query1);
+					$query1=$class_mysql_default->my_query($sql1);
+					$result1=mysqli_fetch_array($query1);
 				?>	
 					<option value="<?php echo $userStationID.','.$userStationName.','.$result1['sset_Region'];?>" selected="selected"><?php echo $userStationName;?></option>
 				<?php 

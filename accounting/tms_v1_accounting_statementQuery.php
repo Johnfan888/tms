@@ -68,7 +68,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 				AND (ct_IsBalance = 0) AND (bi_BusUnit='{$BusUnit}') AND (ct_BusID=bi_BusID)  GROUP BY ct_BalanceNO ORDER BY ct_BalanceNO ASC";
 		}
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -292,7 +292,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 				      					}
 	    								$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
 	    								$sel =$class_mysql_default->my_query($select);
-										while($results=mysql_fetch_array($sel)){ 
+										while($results=mysqli_fetch_array($sel)){ 
 											if($BusUnit!=$results['bu_UnitName']){
 	    							?>
 	    						<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
@@ -375,7 +375,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 							AND (ct_IsBalance = 0) AND (bi_BusUnit='{$BusUnit}') AND (ct_BusID=bi_BusID)  GROUP BY ct_BalanceNO ORDER BY ct_BalanceNO ASC";
 					}
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 						$ct_otherFee3 = ($row['ct_sumMoney']-$row['ct_sumServiceFee'])*$row['ct_otherFee3'];
 
 						//取得结算金额 （结算价是否区分半价和全价车票？如果区分，这里需要根据结算单号取出每条记录，单独处理）

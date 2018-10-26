@@ -33,7 +33,7 @@ if (isset($_GET['op']))
 			$strsqlselet="DELETE FROM tms_sch_Report WHERE rt_NoOfRunsID='$NoOfRunsID' AND rt_NoOfRunsdate='$NoOfRunsdate' AND rt_BusCard='$BusNumber' 
 				AND rt_AttemperStation='{$thisStation}'";
 			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-			if(!$resultselet) echo mysql_error();
+			if(!$resultselet) echo ->my_error();
 			if(!$resultselet){
 				$class_mysql_default->my_query("ROLLBACK");
 				echo "<script>alert('删除调度信息失败！');</script>";
@@ -526,7 +526,7 @@ if(isset($_POST['resultquery']))
 			<?php 
 					$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 					$result = $class_mysql_default->my_query("$queryString");
-			        while($res = mysql_fetch_array($result)) {
+			        while($res = mysqli_fetch_array($result)) {
 	            		if($res['sset_SiteName'] != $schStation) {
 			?>
             		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -563,7 +563,7 @@ if(isset($_POST['resultquery']))
 					}
 					$selectbusunit="SELECT bu_UnitName FROM tms_bd_BusUnit";
 					$resultbusunit = $class_mysql_default->my_query("$selectbusunit");
-					 while($rowbusunit = mysql_fetch_array($resultbusunit)) { 
+					 while($rowbusunit = mysqli_fetch_array($resultbusunit)) { 
 					 	if($rowbusunit['bu_UnitName'] != $BusUnit) {
 				?>
 					<option value="<?php echo $rowbusunit['bu_UnitName'];?>"><?php echo $rowbusunit['bu_UnitName'];?></option>
@@ -802,8 +802,8 @@ if(isset($_POST['resultquery']))
 		".$strdate.$strStatus.$strRuned.$strChecked." GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate 
 		ORDER BY STR_TO_DATE(tml_NoOfRunstime,'%H:%i') ASC";
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo mysql_error();
-	while($rows = @mysql_fetch_array($resultselet))	{
+	if(!$resultselet) echo ->my_error();
+	while($rows = @mysqli_fetch_array($resultselet))	{
 	/*	$str="select GROUP_CONCAT(DISTINCT pd_ReachStation ORDER BY nds_ID) AS SiteName from tms_bd_PriceDetail LEFT OUTER JOIN 
 			  tms_bd_NoRunsDockSite ON  pd_NoOfRunsID=nds_NoOfRunsID  
 			  WHERE pd_ReachStation=nds_SiteName AND pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'
@@ -831,8 +831,8 @@ if(isset($_POST['resultquery']))
 			  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 			  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";   
 		$result1 = $class_mysql_default ->my_query("$str"); 
-		if(!$result1) echo mysql_error();
-		$rows1=mysql_fetch_array($result1); 
+		if(!$result1) echo ->my_error();
+		$rows1=mysqli_fetch_array($result1); 
 		if (!$rows['bi_BusUnit']) $RealBusUnit = $rows['tml_BusUnit']; 
 		else $RealBusUnit = $rows['bi_BusUnit'];
 		if($rows['tml_AllowSell']==0 && $rows['tml_StopRun']==0) $curStatus = '暂停';  //蓝色
@@ -858,7 +858,7 @@ if(isset($_POST['resultquery']))
 		else $RealCheckTicketWindow = $rows['tml_CheckTicketWindow'];
 		$selectprice="SELECT pd_StopStationTime FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}' AND pd_ReachStationID=pd_EndStationID";
 		$resultprice = $class_mysql_default ->my_query("$selectprice");
-		$rowprice=@mysql_fetch_array($resultprice);
+		$rowprice=@mysqli_fetch_array($resultprice);
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
 		<td nowrap="nowrap"><?=$RealBusUnit?></td>
@@ -943,8 +943,8 @@ if(isset($_POST['resultquery']))
 		$queryString = "SELECT lsi_ID FROM tms_led_LedSynInfo WHERE (lsi_NoOfRunsID = '{$rows['tml_NoOfRunsID']}') 
 					AND	(lsi_NoOfRunsdate = '{$rows['tml_NoOfRunsdate']}')";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
-			$rowslsi = mysql_fetch_array($result);			
+		if(mysqli_num_rows($result) == 1) {
+			$rowslsi = mysqli_fetch_array($result);			
 			$queryString = "UPDATE tms_led_LedSynInfo SET lsi_CheckTicketWindow = '$RealCheckTicketWindow', lsi_TotalSeats = '{$rows['tml_TotalSeats']}', 
 			lsi_LeaveSeats = '{$rows['tml_LeaveSeats']}', lsi_BusUnit = '$RealBusUnit', lsi_Status = '$curStatus', 
 			lsi_BusCard = '{$rows['rt_BusCard']}' WHERE lsi_ID = '{$rowslsi['lsi_ID']}'";
@@ -957,7 +957,7 @@ if(isset($_POST['resultquery']))
 			$queryString = "SELECT `nrap_ReferPrice`,`nrap_RunPrice` FROM tms_bd_NoRunsAdjustPrice WHERE nrap_NoRunsAdjust = '{$rows['tml_NoOfRunsID']}' 
 			AND nrap_DepartureSite = '{$rows['tml_Beginstation']}' AND nrap_GetToSite = '{$rows['tml_Endstation']}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			$rowsprice = mysql_fetch_array($result);			
+			$rowsprice = mysqli_fetch_array($result);			
 			$queryString = "INSERT INTO `tms_led_LedSynInfo` (`lsi_LineName`, `lsi_NoOfRunsID`, `lsi_DepartureTime`, `lsi_CheckTicketWindow`, 
 				`lsi_BusModel`, `lsi_StandardPrice`, `lsi_FullPrice`, `lsi_TotalSeats`, `lsi_LeaveSeats`, `lsi_BusUnit`, 
 				`lsi_SiteName`, `lsi_Status`, `lsi_NoOfRunsdate`, `lsi_BusCard`, `lsi_Beginstation`, `lsi_Endstation`, `lsi_Remark`) VALUES 

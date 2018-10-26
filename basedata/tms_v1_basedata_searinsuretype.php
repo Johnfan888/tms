@@ -10,7 +10,7 @@
 		$INSUREPRODUCTNAME=$_POST['INSUREPRODUCTNAME'];
 		$sql = "SELECT * FROM `tms_bd_InsureType` where it_InsureProductName like '%{$INSUREPRODUCTNAME}%'";
 		$query =$class_mysql_default->my_query($sql);
-		$row =mysql_fetch_array($query);
+		$row =mysqli_fetch_array($query);
 //	}
 	  if($RegionCode2 == 'excel'){
 		  $file_name = "searinsuretype.csv";
@@ -30,7 +30,7 @@
 				   		  it_AgentCode,it_VisaCode,it_Perfix,it_AInsuranceValue,it_BInsuranceValue
 				   		  FROM `tms_bd_InsureType` where it_InsureProductName like '%{$INSUREPRODUCTNAME}%'";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -237,8 +237,8 @@ function delinsuretype(){
 				   it_AgentCode,it_VisaCode,it_Perfix,it_AInsuranceValue,it_BInsuranceValue
 				   FROM `tms_bd_InsureType` where it_InsureProductName like '%{$INSUREPRODUCTNAME}%'";
 			$query =$class_mysql_default->my_query($sql);
-			if (!$query) echo "SQL错误：".mysql_error();
-			while ($row = mysql_fetch_array($query)) {
+			if (!$query) echo "SQL错误：".->my_error();
+			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'INSUREPRODUCTNAME1')">
 		<td align="center"><?php echo $row['it_InsureProductName'];?></td>

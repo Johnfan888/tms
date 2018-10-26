@@ -38,7 +38,7 @@
 				and cb_BusNumber like '{$BusID}%' and cb_BillingStation='$userStationName'".$strDate;
  		}
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 		//echo $rows['number'];
 	//}
 ?>
@@ -246,8 +246,8 @@ document.getElementById("BusNumberselect").onclick = function (event){
   		}
   		//echo $sql;
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".mysql_error();
-		while ($row = mysql_fetch_array($query)){
+		//if (!$query) echo "SQL错误：".->my_error();
+		while ($row = mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ChartereID1')">
         <td nowrap="nowrap" align="center"><?php echo $row['cb_ChartereID'].'-'.$row['cb_State'];?></td>

@@ -9,7 +9,7 @@
 	$clnumber2=$_GET['clnumber2'];
 	$selects="SELECT ci_CheckItem, ci_CheckContent,ci_Remark FROM tms_sf_CheckItem WHERE ci_CheckItem='{$clnumber1}' AND ci_CheckContent='{$clnumber2}'";
 	$querys=$class_mysql_default->my_query($selects);
-	$rows=mysql_fetch_array($querys);
+	$rows=mysqli_fetch_array($querys);
 ?>
 <script type="text/javascript">
 function adddo(){
@@ -63,12 +63,12 @@ function search(){
 		$CurTime=date('Y-m-d H:i:s');
 		$select="SELECT ci_CheckItem,ci_CheckContent FROM tms_sf_CheckItem WHERE ci_CheckItem='{$CheckItem}' AND ci_CheckContent='{$CheckContent}'";
 		$sele=$class_mysql_default->my_query($select);
-		$result=mysql_fetch_array($sele);
+		$result=mysqli_fetch_array($sele);
 		if($result==false || $CheckContent==$CheckContent1){
 			$insert="UPDATE `tms_sf_CheckItem` SET  ci_CheckContent='{$CheckItem}',ci_CheckContent='{$CheckContent}',ci_ModerID='{$userID}',ci_Moder='{$userName}', 
 				ci_Modertime='{$CurTime}',ci_Remark='{$Remark}' WHERE ci_CheckItem='{$CheckItem}' AND ci_CheckContent='{$CheckContent1}'";
 			$query = $class_mysql_default->my_query($insert);
-			if (!$query) echo "SQL错误：".mysql_error();
+			if (!$query) echo "SQL错误：".->my_error();
 			if($query){
 				echo"<script>alert('修改成功！'); window.location.href='tms_v1_safecheck_modcheckitem.php?op=mod&clnumber1=$CheckItem&clnumber2=$CheckContent'</script>";
 			}else{

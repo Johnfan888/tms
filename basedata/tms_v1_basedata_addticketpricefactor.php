@@ -8,7 +8,7 @@
 	$clnumbe=$_GET['clnumbe'];
 	$sql="SELECT * FROM tms_bd_BusModel where bm_ModelID='{$clnumbe}'";
 	$query=$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">

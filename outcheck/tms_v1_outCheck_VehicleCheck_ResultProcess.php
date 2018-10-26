@@ -35,7 +35,7 @@ if (isset($_POST['checksubmit'])) {
 
 	$queryString = "SELECT * FROM tms_sf_OutCheck WHERE oc_BusID='{$oc_BusID}' AND oc_CheckDate='{$oc_CheckDate}'";
 	$result = $class_mysql_default->my_query("$queryString");
-	if(!mysql_fetch_array($result)){
+	if(!mysqli_fetch_array($result)){
 		$queryString = "INSERT INTO tms_sf_OutCheck (oc_PcUserID, oc_PcUser, oc_Result, oc_BusID, oc_BusCard, 
 			oc_OutCheck_StationID, oc_OutCheck_Station, oc_OutCheck_User, oc_CheckDate, oc_NoOfRunsID, oc_RenNo, 
 			oc_FreeSeats, oc_Item1, oc_Item2, oc_Item3,	oc_Item4, oc_Item5, oc_Item6, oc_Item7, oc_Item8, 

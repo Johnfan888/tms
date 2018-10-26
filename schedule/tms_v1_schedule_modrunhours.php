@@ -12,27 +12,27 @@ $Departuretime= $_GET['dtime'];
 $selectline="SELECT li_LineName FROM tms_bd_LineInfo WHERE li_LineID=(SELECT tml_LineID FROM tms_bd_TicketMode WHERE 
 	tml_NoOfRunsID = '{$NoOfRunsID}' AND tml_NoOfRunsdate = '{$NoOfRunsdate}')";
 $queryline= $class_mysql_default->my_query($selectline);
-$rowline= mysql_fetch_array($queryline);
+$rowline= mysqli_fetch_array($queryline);
 $selectID="SELECT ndst_ID FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsID='{$NoOfRunsID}' AND ndst_NoOfRunsdate='{$NoOfRunsdate}'
 	AND ndst_SiteID='{$userStationID}'";
 $queryID=$class_mysql_default->my_query($selectID);
-if(!$queryID) echo mysql_error();
-$rowID=mysql_fetch_array($queryID);
+if(!$queryID) echo ->my_error();
+$rowID=mysqli_fetch_array($queryID);
 //$del="DELETE FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsdate<'{$NoOfRunsdate}'";
 //$querydel=$class_mysql_default->my_query($del);
 /*$selectdocktemp="SELECT ndst_NoOfRunsID FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsID='{$NoOfRunsID}' AND ndst_NoOfRunsdate='{$NoOfRunsdate}'";
 $querydocktemp=$class_mysql_default->my_query($selectdocktemp);
-if(mysql_num_rows($querydocktemp)==0){
+if(mysqli_num_rows($querydocktemp)==0){
 	$insertdocktemp="INSERT INTO tms_bd_NoRunsDockSiteTemp (ndst_NoOfRunsID,ndst_NoOfRunsdate,ndst_ID,ndst_SiteName,ndst_SiteID,ndst_IsDock,ndst_GetOnSite,ndst_CheckInSite,
 		ndst_DepartureTime,ndst_RunHours,ndst_StintSell,ndst_StintTime) SELECT nds_NoOfRunsID,'{$NoOfRunsdate}',nds_ID,nds_SiteName,nds_SiteID,nds_IsDock,nds_GetOnSite,
 		nds_CheckInSite,nds_DepartureTime,nds_RunHours,nds_StintSell,nds_StintTime FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$NoOfRunsID}'";
 	$queryinsert=$class_mysql_default->my_query($insertdocktemp);
-	if(!$queryinsert) echo mysql_error();
+	if(!$queryinsert) echo ->my_error();
 }*/
 //$selectticketmode="SELECT li_LineName,tml_NoOfRunstime,tml_BeginstationID FROM tms_bd_TicketMode  LEFT OUTER JOIN tms_bd_LineInfo 
 //	ON tml_LineID = li_LineID WHERE tml_NoOfRunsID = '$NoOfRunsID' AND tml_NoOfRunsdate = '$NoOfRunsdate'";
 //$queryticketmode = $class_mysql_default->my_query($selectticketmode);
-//$rowticketmode = mysql_fetch_array($queryticketmode);
+//$rowticketmode = mysqli_fetch_array($queryticketmode);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -234,7 +234,7 @@ if(mysql_num_rows($querydocktemp)==0){
 		$selectdocktemp1="SELECT ndst_ID,ndst_SiteName,ndst_SiteID,ndst_DepartureTime,ndst_RunHours FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsID='{$NoOfRunsID}' AND
 			ndst_NoOfRunsdate='{$NoOfRunsdate}' AND ndst_ID>='{$rowID['ndst_ID']}'";
 		$querydocktemp1=$class_mysql_default->my_query($selectdocktemp1);
-		while($rowdocktemp1=mysql_fetch_array($querydocktemp1)){
+		while($rowdocktemp1=mysqli_fetch_array($querydocktemp1)){
 			$i++;
 	?>
 	<tr  bgcolor="#FFFFFF">
@@ -281,7 +281,7 @@ if(mysql_num_rows($querydocktemp)==0){
     				$selectfrom="SELECT DISTINCT pd_FromStationID,pd_FromStation,pd_BeginStationTime FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoOfRunsID}' AND
     					pd_NoOfRunsdate='{$NoOfRunsdate}'";
     				$queryfrom=$class_mysql_default->my_query($selectfrom);
-    				while($rowfrom=mysql_fetch_array($queryfrom)){
+    				while($rowfrom=mysqli_fetch_array($queryfrom)){
     			?>
     			<option value="<?php echo $rowfrom['pd_FromStationID'].','.$rowfrom['pd_BeginStationTime'];?>"><?php echo $rowfrom['pd_FromStation'];?></option>
     			<?php
@@ -404,7 +404,7 @@ if(mysql_num_rows($querydocktemp)==0){
 						}
 					}
 					$querydocktemp=$class_mysql_default->my_query($updatedocktemp);
-					if(!$querydocktemp) echo mysql_error();
+					if(!$querydocktemp) echo ->my_error();
 					if(!$querydocktemp){
 						$class_mysql_default->my_query("ROLLBACK");
 						echo "<script>alert('更新临时停靠点数据失败！');window.location.href='tms_v1_schedule_modrunhours.php?nrID=$NoOfRunsID&nrDate=$NoOfRunsdate&dtime=$Departuretime'</script>";
@@ -430,7 +430,7 @@ if(mysql_num_rows($querydocktemp)==0){
 			echo "<script>alert('查询临时停靠点1数据失败！');window.location.href='tms_v1_schedule_modrunhours.php?nrID=$NoOfRunsID&nrDate=$NoOfRunsdate&dtime=$Departuretime'</script>";
 			exit();
 		}
-		while($rowdocksitetemp=mysql_fetch_array($querydocksitetemp)){
+		while($rowdocksitetemp=mysqli_fetch_array($querydocksitetemp)){
 			$IDtemp=$rowdocksitetemp['ndst_ID'];
 			$FromStationID=$rowdocksitetemp['ndst_SiteID'];
 			$BeginStationTime=$rowdocksitetemp['ndst_DepartureTime'];
@@ -443,7 +443,7 @@ if(mysql_num_rows($querydocktemp)==0){
 				echo "<script>alert('查询临时停靠点2数据失败！');window.location.href='tms_v1_schedule_modrunhours.php?nrID=$NoOfRunsID&nrDate=$NoOfRunsdate&dtime=$Departuretime'</script>";
 				exit();
 			}
-			while($rowdocksitetemp1=mysql_fetch_array($querydocksitetemp1)){
+			while($rowdocksitetemp1=mysqli_fetch_array($querydocksitetemp1)){
 				$ReachStationID=$rowdocksitetemp1['ndst_SiteID'];
 				$StopStationTime=$rowdocksitetemp1['ndst_DepartureTime'];
 				$ndsRunHours2=$rowdocksitetemp1['ndst_RunHours'];

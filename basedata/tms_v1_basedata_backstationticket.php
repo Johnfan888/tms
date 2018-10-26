@@ -10,7 +10,7 @@
 	$CurTime=date('H:i');
 	$select="SELECT ta_EndTicket, ta_CurrentTicket,ta_LostNum,ta_Type FROM tms_bd_TicketAdd WHERE ta_ID='{$clnumber}'";
 	$queryselect=$class_mysql_default->my_query($select);
-	$row = mysql_fetch_array($queryselect);
+	$row = mysqli_fetch_array($queryselect);
 	if($row['ta_LostNum']==0){
 		echo "<script>alert('该票据已退');location.assign('tms_v1_basedata_searticketadd.php');</script>";
 		return;

@@ -73,7 +73,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc']) || isset($_POST['se
 						WHERE (st_IsBalance = 0) AND (st_Station LIKE '{$StationName}') AND (st_SellID LIKE '{$sellerID}') $strDate 
 						GROUP BY st_SellID, st_SellDate ORDER BY st_SellDate ASC, st_SellID ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -252,7 +252,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc']) || isset($_POST['se
 						GROUP BY st_SellID, st_SellDate ORDER BY st_SellDate ASC, st_SellID ASC";
 					//echo $strDate;
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				

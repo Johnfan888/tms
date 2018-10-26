@@ -94,9 +94,9 @@
 	}
 	
 	$select="select * from tms_bd_BusInfo where bi_BusID='{$BusID}'";
-	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $BusID==$BusI){
-		mysql_query("START TRANSACTION");
+	$sele= $class_mysql_default$class_mysql_default->my_query($select);
+	if(!mysqli_fetch_array($sele) || $BusID==$BusI){
+		$class_mysql_default->my_query("START TRANSACTION");
 		$update1="UPDATE tms_bd_BusInfo SET bi_BusID='{$BusID}', bi_BusNumber='{$BusNumber}',bi_BusUnit='{$BusUnit}',bi_SeatS='{$SeatS}',
 			bi_AddSeatS='{$AddSeatS}',bi_AllowHalfSeats='{$AllowHalfSeats}',bi_DriverID='{$DriverID}',bi_Driver='{$Driver}',bi_Driver1ID='{$Driver1ID}',bi_Driver1='{$Driver1}',
 			bi_Driver2ID='{$Driver2ID}',bi_Driver2='{$Driver2}',bi_RegDate='{$RegDate}',bi_Tonnage='{$Tonnage}',bi_OwnerName='{$OwnerName}',
@@ -111,18 +111,18 @@
 			bi_RankEndDate='{$RankEndDate}',bi_TravelEndDate='{$TravelEndDatete}',bi_MonthEndDate='{$MonthEndDate}',bi_CNGEndDate='{$CNGEndDate}',
 			bi_Sign='{$Sign}',bi_InStationID='{$InStationID}',bi_InStation='{$InStation}',bi_ModerID='{$userID}',bi_Moder='{$userName}',bi_ModTime='{$CurTime}',
 			bi_fileName='{$fileName}',bi_ScanPath='{$saveFilePath}' WHERE bi_BusID='{$BusI}'";	
-		$query1 =$class_mysql_default->my_query($update1);
-		if (!$query1) echo "SQL错误：".mysql_error();
+		$query1 =$class_mysql_default$class_mysql_default->my_query($update1);
+		if (!$query1) echo "SQL错误：".->my_error();
 		$update2="UPDATE tms_bd_BusCard SET bc_BusID='{$BusID}', bc_BusNumber='{$BusNumber}',bc_StationID='{$InStationID}',bc_Station='{$InStation}' WHERE bc_BusID='{$BusI}'";
-		$query2 =$class_mysql_default->my_query($update2);
+		$query2 =$class_mysql_default$class_mysql_default->my_query($update2);
 		if($query1 && $query2){
-			mysql_query("COMMIT");
+			$class_mysql_default->my_query("COMMIT");
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searbus.php'</script>";
 		}else{
-			mysql_query("ROLLBACK");
+			$class_mysql_default->my_query("ROLLBACK");
 			echo"<script>alert('修改失败');window.location.href='tms_v1_basedata_searbus.php'</script>";
 		}
-		mysql_query("END TRANSACTION");
+		$class_mysql_default->my_query("END TRANSACTION");
 	}else{
 			echo"<script>alert('车辆编号已存在，请重新输入！');window.location.href='tms_v1_basedata_modbus.php?clnumber=$BusI'</script>";
 		}

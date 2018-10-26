@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sqll="select * FROM tms_bd_DriverInfo WHERE di_DriverID='{$clnumber}'";
 	$queryl =$class_mysql_default->my_query($sqll);
-	$results=mysql_fetch_array($queryl); 
+	$results=mysqli_fetch_array($queryl); 
 ?>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
@@ -198,7 +198,7 @@ $(document).ready(function(){
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($result=mysql_fetch_array($sel)){ 
+					while($result=mysqli_fetch_array($sel)){ 
 						if($result['bu_UnitName']==$results['di_BusNumber']){
 				?>
 							<option selected="selected" value="<?php echo $result['bu_UnitName'];?>"><?php echo $result['bu_UnitName'];?></option>	

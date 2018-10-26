@@ -13,11 +13,11 @@
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_RegionSet where rs_RegionCode='{$RegionCode}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 		$insert="INSERT INTO `tms_bd_RegionSet` (`rs_RegionCode`,`rs_RegionName`,`rs_RegionFullName`,`rs_HelpCode`,`rs_AdderID`,`rs_Adder`,`rs_AddTime`,
 			`rs_Remark` ) VALUES ('{$RegionCode}', '{$RegionName}', '{$RegionFullName}','{$HelpCode}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert);
-		if (!$query) echo "SQL错误：".mysql_error();
+		if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addregion.php'</script>";
 		}else{

@@ -10,7 +10,7 @@ $LineName=$_GET['line'];
 $select="SELECT tml_NoOfRunstime,tml_TotalSeats,tml_LeaveSeats,tml_StopRun,tml_AllowSell,tml_HalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoOfRunsID}' 
 	AND tml_NoOfRunsdate='{$NoOfRunsdate}'";
 $query=$class_mysql_default ->my_query($select);
-$row=mysql_fetch_array($query);
+$row=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -126,7 +126,7 @@ $row=mysql_fetch_array($query);
 				WHERE nri_LineName='{$LineName}' AND tml_AllowSell='1' AND tml_StopRun!='3' AND nri_NoOfRunsID!='{$NoOfRunsID}'";
 			$queryadd=$class_mysql_default ->my_query($selectadd);
 			$i=0;
-			while($rowadd=mysql_fetch_array($queryadd)){
+			while($rowadd=mysqli_fetch_array($queryadd)){
 				$i++;
 			//	echo $rowadd['rt_Register'];
 				if($rowadd['rt_Register']!='已发车'){

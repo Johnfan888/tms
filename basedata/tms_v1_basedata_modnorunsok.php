@@ -58,7 +58,7 @@
 	}
 	$select="select nri_NoOfRunsID from tms_bd_NoRunsInfo where nri_NoOfRunsID='{$NoOfRunsID}'";
 	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)||$NoOfRunsI==$NoOfRunsID){
+	if(!mysqli_fetch_array($sele)||$NoOfRunsI==$NoOfRunsID){
 		$class_mysql_default->my_query("BEGIN"); //事物操作的开始
 		$update="update tms_bd_NoRunsInfo set nri_NoOfRunsID='{$NoOfRunsID}',nri_LineID='{$LineID}',nri_LineName='{$LineName}',
 			nri_BeginSiteID='{$BeginSiteID}',nri_BeginSite='{$BeginSite}',nri_EndSiteID='{$EndSiteID}',nri_EndSite='{$EndSite}',
@@ -101,8 +101,8 @@
 				$class_mysql_default->my_query("ROLLBACK");
 				exit();
 			}
-			if(mysql_num_rows($result) != 0){
-				while($row=mysql_fetch_array($result)){
+			if(mysqli_num_rows($result) != 0){
+				while($row=mysqli_fetch_array($result)){
 				$SectionID=$row['si_SectionID'];
 				//echo $SectionID; 	
 				$update1="UPDATE tms_bd_NoRunsDockSite SET nds_ID=nds_ID+1 WHERE nds_NoOfRunsID='{$NoOfRunsID}'and nds_ID >='{$SectionID}' ORDER BY nds_ID DESC";

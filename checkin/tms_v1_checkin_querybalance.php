@@ -7,8 +7,8 @@ $i=0;
 require_once("../ui/inc/init.inc.php");
 $selectTicketProvide="SELECT tp_CurrentTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$userID}' AND tp_InceptTicketNum>0 AND tp_Type='结算单' ORDER BY tp_ProvideData ASC";
 $queryTicketProvide=$class_mysql_default->my_query("$selectTicketProvide");
-if(!$queryTicketProvide) echo mysql_error();
-$rowTicketProvide=mysql_fetch_array($queryTicketProvide);
+if(!$queryTicketProvide) echo ->my_error();
+$rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 if($userStationName != "全部车站"){
 	$Station=$userStationName;
 }else{
@@ -420,8 +420,8 @@ if(isset($_POST['LineName']))
 		AND bht_BusNumber LIKE '{$Busnumber}%' AND li_LineName LIKE '{$LineName}%' AND IFNULL(bht_Station, '') like '{$Station}%'".$checkinerIDstring.$BalanceNOstring;
 //	echo $strsqlselet;
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo mysql_error();
-	while($rows = @mysql_fetch_array($resultselet))	{
+	if(!$resultselet) echo ->my_error();
+	while($rows = @mysqli_fetch_array($resultselet))	{
 		$number=$number+1;
 		if($rows['bht_State']=='正常'){
 			$allServiceFee=$allServiceFee+$rows['bht_ServiceFee'];
@@ -434,7 +434,7 @@ if(isset($_POST['LineName']))
 	/*	else{
 			$select="SELECT ct_BalanceNO FROM tms_chk_CheckTicket WHERE ct_BalanceNO='{$rows['bht_BalanceNO']}'";
 			$query = $class_mysql_default->my_query("$select");
-			if(mysql_num_rows($query) == 0){
+			if(mysqli_num_rows($query) == 0){
 				$finded=0;
 			}else{
 				$finded=1;

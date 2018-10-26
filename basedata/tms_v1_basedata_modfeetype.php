@@ -9,7 +9,7 @@
 	$clnumber1 = $_GET['clnumber1'];
 	$sql = "select * FROM `tms_bd_FeeType` WHERE ft_ID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -202,7 +202,7 @@ if(isset($_POST['FeeTypeName'])){
 		}
 	$select="select ft_FeeTypeName from tms_bd_FeeType where ft_FeeTypeName='{$FeeTypeName}'";
 	$sele= $class_mysql_default->my_query($select);
-	$result=mysql_fetch_array($sele);
+	$result=mysqli_fetch_array($sele);
 	if($result==false ||$FeeTypeName==$FeeTypeName1){
 		$update="update tms_bd_FeeType set ft_FeeTypeName='{$FeeTypeName}', ft_FeeTypeComputer='{$FeeTypeComputer}',ft_FeePercent='{$Feepercent}',ft_FeeFix='{$Feefix}',
 			ft_HelpCode='{$HelpCode}', ft_ModerID='{$userID}', ft_Moder='{$userName}', ft_ModTime='{$CurTime}', ft_Remark='{$Remark}' where ft_ID='{$ID}'";

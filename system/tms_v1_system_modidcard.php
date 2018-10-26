@@ -9,7 +9,7 @@
 	$sql="SELECT * FROM tms_bd_BusCard where bc_CardID='{$clnumber}'";
 	//echo $sql;
 	$query=$class_mysql_default->my_query($sql);
-	$row=mysql_fetch_array($query);
+	$row=mysqli_fetch_array($query);
 ?>
 <link href="../ui/images/style_main.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/jquery.js"></script>
@@ -106,8 +106,8 @@ function mod1(){
     	<?php 
 					$sql = "select sset_SiteID,sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1";
 					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){
 							if($result['sset_SiteName']==$row['bc_Station']){
 				?>	

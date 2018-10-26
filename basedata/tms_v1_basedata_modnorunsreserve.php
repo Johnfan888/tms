@@ -9,7 +9,7 @@
 	$noid=$_GET['noid'];
 	$selectrun="SELECT * FROM tms_bd_ScheduleReserve WHERE sr_NoOfRunsID='{$NoOfRunsID}' and sr_ModelID='{$noid}'";
 	$query=$class_mysql_default->my_query($selectrun);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript">
 function add(){
@@ -65,7 +65,7 @@ function getnumbers(){
       			<?php
       				$sqls="SELECT * FROM tms_bd_BusModel"; 
       				$querys=$class_mysql_default->my_query($sqls);
-					while($results=mysql_fetch_array($querys)){
+					while($results=mysqli_fetch_array($querys)){
       			?>
       			<option value="<?php echo $results['bm_ModelID'].','.$results['bm_ModelName'];?>"><?php echo $results['bm_ModelName'];?></option>
       			<?php 

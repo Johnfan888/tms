@@ -66,8 +66,8 @@
 	$query=$class_mysql_default->my_query($select);
 	$all=0;
 	$checknum=0;
-	//if(!$query) echo mysql_error();
-	while($rows = mysql_fetch_array($query)){
+	//if(!$query) echo ->my_error();
+	while($rows = mysqli_fetch_array($query)){
 		$all=$all+1;
 		if($rows['ctt_CheckDate'] || $rows['ct_CheckDate']){
 			$checknum=$checknum+1;
@@ -128,7 +128,7 @@
 			AND st_TicketID NOT IN(SELECT rtk_TicketID FROM tms_sell_ReturnTicket) 
 			AND st_TicketID NOT IN(SELECT et_TicketID FROM tms_sell_ErrTicket)";
 		$queryand=$class_mysql_default->my_query($selectand);
-		while($rowsand = mysql_fetch_array($queryand)){
+		while($rowsand = mysqli_fetch_array($queryand)){
 		$all=$all+1;
 		if($rowsand['ctt_CheckDate'] || $rowsand['ct_CheckDate']){
 			$checknum=$checknum+1;

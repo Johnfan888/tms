@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$select="SELECT * FROM tms_bd_CharteredBus WHERE cb_ChartereID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($select);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 	$string=explode('-',$result['cb_FromReach']);
 	
 ?>

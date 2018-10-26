@@ -108,7 +108,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 			echo $LineID;
 		//echo $queryString1;
 		$result1 = $class_mysql_default->my_query("$queryString1");
-		while ($row1 = mysql_fetch_array($result1)) {
+		while ($row1 = mysqli_fetch_array($result1)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -133,14 +133,14 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 							WHERE 
 							at_TicketID = '{$row1['ct_TicketID']}'";
 			$result2 = $class_mysql_default->my_query("$queryString2");
-			$row2 = mysql_fetch_array($result2);
+			$row2 = mysqli_fetch_array($result2);
 			$sql3="select 
 					li_LineName 
 					from tms_bd_LineInfo 
 					where li_LineID = '{$row1['ct_LineID']}'";
 				//	echo $sql;
 					$result3 = $class_mysql_default->my_query("$sql3");
-					$row3 = mysql_fetch_array($result3);
+					$row3 = mysqli_fetch_array($result3);
 			/*$outputRow = array($row1['ct_TicketID'], $row1['ct_NoOfRunsID'], $row3['li_LineName'], $row1['ct_NoOfRunsdate'], $row1['ct_BeginStationTime'], 
 				$row1['ct_CheckTicketWindow'], $row1['ct_CheckDate'], $row1['ct_CheckTime'], $row1['ct_Station'], $row1['ct_CheckerID'], 
 				$row1['ct_Checker'], $row1['ct_BalanceNO'],	$row1['ct_BeginStation'], $row1['ct_FromStation'], $row1['ct_ReachStation'], 
@@ -310,7 +310,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -451,7 +451,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									ORDER BY ct_TicketID ASC";
 					//echo $queryString1;
 					$result1 = $class_mysql_default->my_query("$queryString1");
-					while ($row1 = mysql_fetch_array($result1)) {
+					while ($row1 = mysqli_fetch_array($result1)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['ct_TicketID'];?></td>
@@ -460,7 +460,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					$sql="select li_LineName from tms_bd_LineInfo where li_LineID = '{$row1['ct_LineID']}'";
 				//	echo $sql;
 					$result = $class_mysql_default->my_query("$sql");
-					$row = mysql_fetch_array($result);
+					$row = mysqli_fetch_array($result);
 				?>
 				<td nowrap="nowrap"><?php echo $row['li_LineName'];?></td>
 				<td nowrap="nowrap"><?php echo $row1['ct_NoOfRunsdate'];?></td>
@@ -508,7 +508,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									WHERE at_TicketID = '{$row1['ct_TicketID']}'";
 						//echo $queryString2;
 						$result2 = $class_mysql_default->my_query("$queryString2");
-						$row2 = mysql_fetch_array($result2);						
+						$row2 = mysqli_fetch_array($result2);						
 			?>	
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsID'];?></td>
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsdate'];?></td>

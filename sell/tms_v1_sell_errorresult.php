@@ -100,8 +100,8 @@ require_once("../ui/inc/init.inc.php");
       	  // if(!isset($_REQUEST['submit2'])){
       	   $name=$_REQUEST['Name'];
       	   $str="SELECT * FROM tms_ticket_ErrDelResult WHERE er_mncode like '%$name%'";
-      	   $result=mysql_query($str);
-      	   while($row=mysql_fetch_array($result)){
+      	   $result=$class_mysql_default->my_query($str);
+      	   while($row=mysqli_fetch_array($result)){
       	   ?>
       	   <tr  bgcolor="#CCCCCC" onMouseOver="rowOver(this)" onMouseOut="rowOut(this)" onClick="selectRow(this,'RegionCode1')" onDblClick="doubleclick(this,'RegionCode1')">
       	  	 <td  align="center" id="select"><span style="font-size:14px"><?=$row['er_Desp']?></span></td>

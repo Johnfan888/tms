@@ -8,7 +8,7 @@
 	$clnumber = $_GET['clnumber'];
 	$sql = "select* FROM tms_bd_BusUnit WHERE bu_ID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -119,7 +119,7 @@ function search(){
 		$Remark=$_POST['Remark'];
 		$select="select bu_ID, bu_UnitName from tms_bd_BusUnit where bu_UnitName='{$UnitName}'";
 		$sele=$class_mysql_default->my_query($select);
-		$results=mysql_fetch_array($sele);
+		$results=mysqli_fetch_array($sele);
 	//	echo $ID;
 	//	echo $results['bu_ID'];
 		if(!$results || $ID==$results['bu_ID']){

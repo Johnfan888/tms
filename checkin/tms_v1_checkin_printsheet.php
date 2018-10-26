@@ -30,7 +30,7 @@ if($op == 'reprint'){
 	$query=$class_mysql_default->my_query("$select");
 	if(!$query)
 		echo "<script>alert('读取客凭数据失败！');history.back();</script>";
-	$rows = mysql_fetch_array($query);
+	$rows = mysqli_fetch_array($query);
 	$NoOfRunsID=$rows['bht_NoOfRunsID'];
 	$NoOfRunsdate=$rows['bht_NoOfRunsdate'];
 	$EndStation=$rows['bht_EndStation'];
@@ -62,7 +62,7 @@ if($op == 'reprint'){
 //	echo $NoOfRunsID.','.$NoOfRunsdate.','.$BusID.$EndStation.$curBalanceNo.','.$_GET['BNO'];
 	$queryString = "SELECT `bi_BusNumber`, `bi_BusTypeID`, `bi_BusType`, `bi_BusUnit` FROM tms_bd_BusInfo WHERE bi_BusID = '$BusID'";
 	$result = $class_mysql_default->my_query("$queryString");
-	$rowsbus = mysql_fetch_array($result);
+	$rowsbus = mysqli_fetch_array($result);
 	$BusUnit = $rowsbus['bi_BusUnit'];
 	$BusNumber = $rowsbus['bi_BusNumber'];
 	$BusModelID=$rowsbus['bi_BusTypeID'];
@@ -79,7 +79,7 @@ if($op == 'reprint'){
 		$selectLuggageCons="SELECT IFNULL(SUM(lc_ConsignMoney),0) AS ConsignMoney FROM tms_lug_LuggageCons WHERE lc_NoOfRunsID='{$NoOfRunsID}' AND lc_DeliveryDate='{$NoOfRunsdate}' AND lc_BusID='{$BusID}'
 			AND lc_Status='已收货' AND lc_StationID='{$userStationID}' GROUP BY lc_NoOfRunsID,lc_DeliveryDate,lc_BusID,lc_Status,lc_StationID";
 		$resultLuggageCons = $class_mysql_default->my_query("$selectLuggageCons");
-		$rowLuggageCons = mysql_fetch_array($resultLuggageCons);
+		$rowLuggageCons = mysqli_fetch_array($resultLuggageCons);
 		$ConsignMoney=$rowLuggageCons['ConsignMoney'];
 		$queryString1 = "SELECT IFNULL(SUM(ct_TotalMan),0) AS ct_sumPerson, IFNULL(SUM(ct_SellPrice),0) AS ct_sumMoney, 
 			IFNULL(SUM(ct_BalancePrice),0) AS ct_sumBalancePrice, IFNULL(SUM(ct_ServiceFee),0) AS ct_sumServiceFee, 
@@ -93,7 +93,7 @@ if($op == 'reprint'){
 		$BalanceNo=$_GET['BNO'];
 		$slectBalanceInHandTemp="SELECT bht_ConsignMoney FROM tms_acct_BalanceInHandTemp WHERE bht_BalanceNO='{$BalanceNo}'";
 		$resultBalanceInHandTemp = $class_mysql_default->my_query("$slectBalanceInHandTemp");
-		$rowBalanceInHandTemp = mysql_fetch_array($resultBalanceInHandTemp);
+		$rowBalanceInHandTemp = mysqli_fetch_array($resultBalanceInHandTemp);
 		if($rowBalanceInHandTemp['bht_ConsignMoney']){
 			$ConsignMoney=$rowBalanceInHandTemp['bht_ConsignMoney'];
 		}else{
@@ -106,8 +106,8 @@ if($op == 'reprint'){
 			IFNULL(SUM(ct_otherFee6),0) AS ct_sumOtherFee6 FROM tms_chk_CheckTicket WHERE ct_BalanceNO='{$BalanceNo}' GROUP BY ct_BalanceNO";
 	}
 	$result = $class_mysql_default->my_query("$queryString");
-	if(!$result) echo mysql_error();
-	$rows = mysql_fetch_array($result);
+	if(!$result) echo ->my_error();
+	$rows = mysqli_fetch_array($result);
 	$passengerNum = $rows['ct_sumPerson'];
 	$sumServiceFee=$rows['ct_sumServiceFee'];
 	$sumOtherFee1=$rows['ct_sumOtherFee1'];
@@ -132,14 +132,14 @@ if($op == 'reprint'){
 		$selectLuggageCons="SELECT IFNULL(SUM(lc_ConsignMoney),0) AS ConsignMoney FROM tms_lug_LuggageCons WHERE lc_NoOfRunsID='{$NoOfRunsID}' AND lc_DeliveryDate='{$NoOfRunsdate}' AND lc_BusID='{$BusID}'
 			AND lc_Status='已收货' AND lc_StationID='{$userStationID}' GROUP BY lc_NoOfRunsID,lc_DeliveryDate,lc_BusID,lc_Status,lc_StationID";
 		$resultLuggageCons = $class_mysql_default->my_query("$selectLuggageCons");
-		$rowLuggageCons = mysql_fetch_array($resultLuggageCons);
+		$rowLuggageCons = mysqli_fetch_array($resultLuggageCons);
 		$ConsignMoney=$rowLuggageCons['ConsignMoney']; 
 	}else{
 		//若是注销后再打，行包费在注销的客凭中取(有可能在通票班次中没法处理)
 		$BalanceNo1=$_GET['BNO'];
 		$slectBalanceInHandTemp="SELECT bht_ConsignMoney FROM tms_acct_BalanceInHandTemp WHERE bht_BalanceNO='{$BalanceNo1}'";
 		$resultBalanceInHandTemp = $class_mysql_default->my_query("$slectBalanceInHandTemp");
-		$rowBalanceInHandTemp = mysql_fetch_array($resultBalanceInHandTemp);
+		$rowBalanceInHandTemp = mysqli_fetch_array($resultBalanceInHandTemp);
 	//	echo $rowBalanceInHandTemp['bht_ConsignMoney'].'ee'; 
 		if($rowBalanceInHandTemp['bht_ConsignMoney']){
 			$ConsignMoney=$rowBalanceInHandTemp['bht_ConsignMoney'];

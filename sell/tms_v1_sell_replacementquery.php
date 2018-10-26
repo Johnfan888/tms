@@ -300,7 +300,7 @@ require_once("../ui/inc/init.inc.php");
   			AND tml_NoOfRunsdate = '$selldate' AND  tml_AllowSell = '1' AND tml_LeaveSeats > 0 AND pd_IsPass='2' ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') DESC";
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
 		$lineNum = 0;
-		while($rows = @mysql_fetch_array($resultselet)) {
+		while($rows = @mysqli_fetch_array($resultselet)) {
 			$lineNum++;
 	?>
 	<tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">

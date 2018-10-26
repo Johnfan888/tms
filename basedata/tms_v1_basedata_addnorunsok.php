@@ -54,7 +54,7 @@
 	}
 	$select="SELECT nri_NoOfRunsID FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$NoOfRunsID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 		$class_mysql_default->my_query("BEGIN");
 		$insert="insert into tms_bd_NoRunsInfo (nri_NoOfRunsID,nri_LineID,nri_LineName,nri_BeginSiteID,
 			nri_BeginSite,nri_EndSiteID,nri_EndSite,nri_DepartureTime,nri_DealCategory,nri_DealStyle,

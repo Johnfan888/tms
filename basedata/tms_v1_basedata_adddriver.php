@@ -182,7 +182,7 @@ $(document).ready(function(){
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($result=mysql_fetch_array($sel)){ 
+					while($result=mysqli_fetch_array($sel)){ 
     			?>
     			<option value="<?php echo $result['bu_UnitName'];?>"><?php echo $result['bu_UnitName'];?></option>
     			<?php 

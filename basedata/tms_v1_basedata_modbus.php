@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$select="select * from tms_bd_BusInfo where bi_BusID='{$clnumber}'";
 	$sele=$class_mysql_default->my_query($select);
-	$row=mysql_fetch_array($sele);
+	$row=mysqli_fetch_array($sele);
 ?>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
@@ -451,7 +451,7 @@ $(document).ready(function(){ //匹配驾照信息
       			<?php
       				$sql="SELECT bm_ModelID,bm_ModelName,bm_Seating,bm_AddSeating FROM tms_db_BusModel"; 
       				$query =$class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
       			?>
       			<option value="<?php echo $result['bm_ModelID'].','.$result['bm_ModelName'].','.$result['bm_Seating'].','.$result['bm_AddSeating'];?>"><?php echo $result['bm_ModelName'];?></option>
       			<?php 
@@ -483,7 +483,7 @@ $(document).ready(function(){ //匹配驾照信息
     			<?php
     				$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     				$sel =$class_mysql_default->my_query($select);
-					while($results=mysql_fetch_array($sel)){ 
+					while($results=mysqli_fetch_array($sel)){ 
 						if($results['bu_UnitName']==$row['bi_BusUnit']){
     			?>
     						<option selected="selected" value="<?php echo $row['bi_BusUnit'];?>"><?php echo $row['bi_BusUnit'];?></option>
@@ -522,7 +522,7 @@ $(document).ready(function(){ //匹配驾照信息
 				?><option></option><?php 
 					$sql = "select sset_SiteID,sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1";
 					$query = $class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){
 							if($result['sset_SiteName']==$row['bi_InStation']){
 				?>				<option selected="selected" value="<?php echo $row['bi_InStation'].','.$row['bi_InStationID'];?>"><?php echo $row['bi_InStation'];?></option>

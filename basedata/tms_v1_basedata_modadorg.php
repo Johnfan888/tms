@@ -8,7 +8,7 @@
 	$clnumber = $_GET['clnumber'];
 	$sql = "select * FROM `tms_bd_AdOrg` WHERE ao_ID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript">
 function adddo(){
@@ -73,7 +73,7 @@ if(isset($_POST['submit1'])){
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_AdOrg where ao_OrgCode='{$OrgCode}'";
 	$sele= $class_mysql_default->my_query($select);
-	$results=mysql_fetch_array($sele);
+	$results=mysqli_fetch_array($sele);
 	if($results==false|| $ID==$results['ao_ID']){
 		$update="update tms_bd_AdOrg set ao_OrgCode='{$OrgCode}', ao_OrgName='{$OrgName}', ao_HelpCode='{$HelpCode}', 
 			ao_ModerID='{$userID}', ao_Moder='{$userName}', ao_ModTime='{$CurTime}', ao_Remark='{$Remark}' where ao_ID='{$ID}'";

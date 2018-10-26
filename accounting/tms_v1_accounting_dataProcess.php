@@ -49,12 +49,12 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($resultBalanceInHandTemp) == 0){
+		if(mysqli_num_rows($resultBalanceInHandTemp) == 0){
 			$retData = array('retVal' => 'FAIL', 'retString' => '该结算单不存在或已经结算！', 'sql' => $queryBalanceInHandTemp);
 			echo json_encode($retData);
 			exit();
 		}
-		$rowresultBalanceInHandTemp=mysql_fetch_array($resultBalanceInHandTemp);
+		$rowresultBalanceInHandTemp=mysqli_fetch_array($resultBalanceInHandTemp);
 		if($rowresultBalanceInHandTemp['bht_FromStationID']!=$userStationID && $userStationID!='all'){
 			$retData = array('retVal' => 'FAIL', 'retString' => '该结算单不是本站结算单！');
 			echo json_encode($retData);
@@ -157,7 +157,7 @@ switch ($op)
 			$slectBusAccountd="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 				WHERE bh_BusID='{$BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 			$queryBusAccountd=$class_mysql_default->my_query("$slectBusAccountd");
-			while($rowBusAccountd=mysql_fetch_array($queryBusAccountd)){
+			while($rowBusAccountd=mysqli_fetch_array($queryBusAccountd)){
 				$stated=1;
 				$dd1=strtotime($rowBusAccountd['bht_Date']);
 				$mm1[$iii+1]=date('Y-m',$dd1);
@@ -169,7 +169,7 @@ switch ($op)
 			$slectBusAccound="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 				WHERE bh_BusID='{$BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bh_Date desc";
 			$queryBusAccound=$class_mysql_default->my_query("$slectBusAccound");
-			while($rowBusAccound=mysql_fetch_array($queryBusAccound)){
+			while($rowBusAccound=mysqli_fetch_array($queryBusAccound)){
 				$stated=1;
 				$dd2=strtotime($rowBusAccound['bh_Date']);
 				$mm2[$jj+1]=date('Y-m',$dd2);
@@ -201,7 +201,7 @@ switch ($op)
 			if($allmmd==0&&$stated==0){
 				$slectBusAccountnod="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$BusID}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 				$queryBusAccountnod=$class_mysql_default->my_query("$slectBusAccountnod");
-				while($rowBusAccountnod=mysql_fetch_array($queryBusAccountnod)){
+				while($rowBusAccountnod=mysqli_fetch_array($queryBusAccountnod)){
 					$dd=strtotime($rowBusAccountnod['bht_Date']);
 					$mm1[$iii+1]=date('Y-m',$dd);
 					if($mm1[$iii]!=$mm1[$iii+1]){
@@ -217,11 +217,11 @@ switch ($op)
 				$selectBusRated="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 					br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$BusID}'";
 				$queryBusRated=$class_mysql_default->my_query("$selectBusRated");
-				$rowBusRated=mysql_fetch_array($queryBusRated);
+				$rowBusRated=mysqli_fetch_array($queryBusRated);
 				$Ratefeenumd=0;
 				$selectFeeTyped="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 				$queryFeeTyped=$class_mysql_default->my_query("$selectFeeTyped");
-				while($rowFeeTyped=mysql_fetch_array($queryFeeTyped)){
+				while($rowFeeTyped=mysqli_fetch_array($queryFeeTyped)){
 					if($rowFeeTyped['ft_FeeTypeComputer']=='固定金额收费'){
 						$Rate[$Ratefeenumd]=$busratefe[$Ratefeenumd+1]-($rowBusRated[$Ratefeenumd+7]*$returnmm);
 						$busratefe[$Ratefeenumd+1]=$busratefe[$Ratefeenumd+1]-($rowBusRated[$Ratefeenumd+7]*$returnmm);
@@ -299,7 +299,7 @@ switch ($op)
 			$selectBalanceInHandTemp="SELECT bht_BusID,bi_BusNumber FROM tms_acct_BalanceInHandTemp,tms_bd_BusInfo WHERE bht_UserIDTemp='{$userID}' 
 				AND tms_acct_BalanceInHandTemp.bht_BusID=tms_bd_BusInfo.bi_BusID AND bi_BusUnit='{$BusUnit}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' GROUP BY bht_BusID ";
 			$queryBalanceInHandTemp=$class_mysql_default->my_query("$selectBalanceInHandTemp");
-			while($rowBusBalanceInHandTemp=mysql_fetch_array($queryBalanceInHandTemp)){
+			while($rowBusBalanceInHandTemp=mysqli_fetch_array($queryBalanceInHandTemp)){
 				$ii=0;
 				$jj=0;
 				$m1[0]=0;
@@ -313,7 +313,7 @@ switch ($op)
 				$slectBusAccount="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 					WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 				$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-				while($rowBusAccount=mysql_fetch_array($queryBusAccount)){
+				while($rowBusAccount=mysqli_fetch_array($queryBusAccount)){
 					$state=1;
 					$d1=strtotime($rowBusAccount['bht_Date']);
 					$m1[$ii+1]=date('Y-m',$d1);
@@ -325,7 +325,7 @@ switch ($op)
 				$slectBusAccoun="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 					WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bh_Date desc";
 				$queryBusAccoun=$class_mysql_default->my_query("$slectBusAccoun");
-				while($rowBusAccoun=mysql_fetch_array($queryBusAccoun)){
+				while($rowBusAccoun=mysqli_fetch_array($queryBusAccoun)){
 					$state=1;
 					$d2=strtotime($rowBusAccoun['bh_Date']);
 					$m2[$jj+1]=date('Y-m',$d2);
@@ -357,7 +357,7 @@ switch ($op)
 				if($allmm==0&&$state==0){
 					$slectBusAccountno="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 					$queryBusAccountno=$class_mysql_default->my_query("$slectBusAccountno");
-					while($rowBusAccountno=mysql_fetch_array($queryBusAccountno)){
+					while($rowBusAccountno=mysqli_fetch_array($queryBusAccountno)){
 						$d=strtotime($rowBusAccountno['bht_Date']);
 						$m1[$ii+1]=date('Y-m',$d);
 						if($m1[$ii]!=$m1[$ii+1]){
@@ -373,11 +373,11 @@ switch ($op)
 					$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 						br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}'";
 					$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-					$rowBusRate=mysql_fetch_array($queryBusRate);
+					$rowBusRate=mysqli_fetch_array($queryBusRate);
 					$Ratefeenum=0;
 					$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 					$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-					while($rowFeeType=mysql_fetch_array($queryFeeType)){
+					while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 						if($rowFeeType['ft_FeeTypeComputer']=='固定金额收费'){
 							$Rate[$Ratefeenum]=$busratefe[$Ratefeenum+1]-($rowBusRate[$Ratefeenum+7]*$returnmm);
 							$busratefe[$Ratefeenum+1]=$busratefe[$Ratefeenum+1]-($rowBusRate[$Ratefeenum+7]*$returnmm);
@@ -459,7 +459,7 @@ switch ($op)
 			$queryString="SELECT sset_SiteName,sset_SiteID FROM tms_bd_SiteSet WHERE (sset_HelpCode LIKE '{$fromstation}%' OR 
 					sset_SiteName LIKE '{$fromstation}%') AND sset_IsStation='1'";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array(
 					'from' => $row['sset_SiteName'],
 					'fromID' =>$row['sset_SiteID']);
@@ -523,7 +523,7 @@ switch ($op)
 		$queryLuggageCons2= $class_mysql_default->my_query("$updateLuggageCons2");
 		if(!$queryLuggageCons2){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '更新行包数据2失败！'.mysql_error(), 'sql' => $updateLuggageCons1);
+			$retData = array('retVal' => 'FAIL', 'retString' => '更新行包数据2失败！'.->my_error(), 'sql' => $updateLuggageCons1);
 			echo json_encode($retData);
 			exit();
 		}
@@ -552,7 +552,7 @@ function getSellersData($stationName,$class_mysql_default)
 		$stationName = "%";
 	$queryString = "SELECT * FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$stationName}' AND ui_UserGroup like '%售票组%'";
 	$result = $class_mysql_default->my_query("$queryString");
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'sellerID' => $row['ui_UserID']);
 	}
@@ -566,7 +566,7 @@ function getCheckersData($stationName,$class_mysql_default)
 		$stationName = "%";
 	$queryString = "SELECT * FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$stationName}' AND ui_UserGroup like '%检票组%'";
 	$result = $class_mysql_default->my_query("$queryString");
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'checkerID' => $row['ui_UserID']);
 	}

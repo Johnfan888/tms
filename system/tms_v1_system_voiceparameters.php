@@ -3,8 +3,8 @@
 require_once("../ui/inc/init.inc.php");
 	if(isset($_POST['submit1'])){
 		$str="SELECT * FROM tms_sch_PreviousTime WHERE pt_Code='2'";
-		$result=mysql_query($str);
-		$row=mysql_fetch_array($result);
+		$result=$class_mysql_default->my_query($str);
+		$row=mysqli_fetch_array($result);
 	}
 ?>
 <html>

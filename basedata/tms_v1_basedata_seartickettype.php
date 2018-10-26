@@ -11,7 +11,7 @@
 		$sql1 = "SELECT COUNT(tt_TypeName) AS number FROM `tms_bd_TicketType` WHERE 
 				tt_TypeName LIKE '$TypeName%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	 if($RegionCode2 == 'excel'){
 		  $file_name = "seartickettype.csv";
@@ -30,7 +30,7 @@
 		  $queryString = "SELECT tt_ID,tt_TypeName,tt_AdderID,tt_Adder,tt_AddTime,tt_ModerID, tt_Moder,tt_ModTime,tt_Remark FROM `tms_bd_TicketType` WHERE tt_TypeName like'$TypeName%'";
 		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -171,7 +171,7 @@ function delregion(){
 			$i=0;
 			$sql = "SELECT * FROM `tms_bd_TicketType` WHERE tt_TypeName like'$TypeName%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 				$i++;
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

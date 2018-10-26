@@ -166,9 +166,9 @@ require_once("../ui/inc/init.inc.php");
 		</tr>
 		<?php 
 		$query="SELECT * FROM tms_sch_NoticeInfo";
-		$result1=mysql_query($query);
+		$result1=$class_mysql_default->my_query($query);
 			$i=0;
-		while($rows=mysql_fetch_array($result1)){
+		while($rows=mysqli_fetch_array($result1)){
 			$i++;
 		?>
 		<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'RegionCode1','info')">
@@ -192,8 +192,8 @@ require_once("../ui/inc/init.inc.php");
 			}
 			else{
 				$query1="SELECT MAX(ni_id) AS ni_id FROM tms_sch_NoticeInfo";
-				$result1=mysql_query($query1);
-				$row=mysql_fetch_array($result1);
+				$result1=$class_mysql_default->my_query($query1);
+				$row=mysqli_fetch_array($result1);
 				if($row['ni_id'] ==null){
 					$id=1;
 				}
@@ -201,7 +201,7 @@ require_once("../ui/inc/init.inc.php");
 					$id=$row['ni_id']+1;
 				}
 				$query="INSERT INTO tms_sch_NoticeInfo(ni_id,ni_info) VALUES('$id','$info')";
-				$result=mysql_query($query);
+				$result=$class_mysql_default->my_query($query);
 				if($result){
     				echo "<script> alert('添加成功');window.location.href('tms_v1_servicecenter_noticemange.php');</script>";
 				}
@@ -218,7 +218,7 @@ require_once("../ui/inc/init.inc.php");
 			}
 			else{
 				$query="UPDATE tms_sch_NoticeInfo SET ni_info='$info' WHERE ni_id='$RegionCode1'";
-				$result=mysql_query($query);
+				$result=$class_mysql_default->my_query($query);
 				if($result){
     				echo "<script> alert('修改成功');window.location.href('tms_v1_servicecenter_noticemange.php');</script>";
 				}

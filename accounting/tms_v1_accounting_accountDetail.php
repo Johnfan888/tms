@@ -39,7 +39,7 @@ $selectType="SELECT ba_FeeTypeName1,ba_FeeTypeName2,ba_FeeTypeName3,ba_FeeTypeNa
 			ba_FeeTypeName8,ba_FeeTypeName9,ba_FeeTypeName10,ba_FeeTypeName11,ba_FeeTypeName12,ba_FeeTypeName13,ba_FeeTypeName14,
 			ba_FeeTypeName15 FROM tms_acct_BusAccount where ba_AccountID='{$ba_AccountID}'";
 $queryType=$class_mysql_default->my_query("$selectType");
-$rowType=mysql_fetch_array($queryType);
+$rowType=mysqli_fetch_array($queryType);
 for($z=1;$z<=15;$z++){
 	if($rowType['ba_FeeTypeName'.$z]=='')
 	break;
@@ -134,7 +134,7 @@ for($z=1;$z<=15;$z++){
 							ba_FeeTypeName6,ba_FeeTypeName7,ba_FeeTypeName8,ba_FeeTypeName9,ba_FeeTypeName10,ba_FeeTypeName11,ba_FeeTypeName12,
 							ba_FeeTypeName13,ba_FeeTypeName14,ba_FeeTypeName15 FROM tms_acct_BusAccount where ba_AccountID='{$ba_AccountID}'";
 					$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-					$rowFeeType=mysql_fetch_array($queryFeeType);
+					$rowFeeType=mysqli_fetch_array($queryFeeType);
 					while($i+1<$z){
 						$n=$i+1;
 						if($i%4==0){
@@ -207,7 +207,7 @@ for($z=1;$z<=15;$z++){
 							bh_NoOfRunsdate,bh_BeginStation,bh_EndStation,bh_CheckTotal,bh_TicketTotal,bh_PriceTotal,bh_ServiceFee,bh_otherFee3,bh_AccountID,nri_LineName,bh_ConsignMoney
 							FROM tms_acct_BalanceInHand LEFT OUTER JOIN tms_bd_NoRunsInfo ON bh_NoOfRunsID=nri_NoOfRunsID WHERE (bh_IsAccount = 1) AND (bh_AccountID = '{$ba_AccountID}')";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 		?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['bh_BalanceNO'];?></td>

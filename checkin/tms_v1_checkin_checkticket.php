@@ -11,8 +11,8 @@ if($userGroupID == "3")	require_once("../ui/user/topnoleft.inc.php");
 
 $selectTicketProvide="SELECT tp_CurrentTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$userID}' AND tp_InceptTicketNum>0 AND tp_Type='结算单' ORDER BY tp_ProvideData ASC";
 $queryTicketProvide=$class_mysql_default->my_query("$selectTicketProvide");
-if(!$queryTicketProvide) echo mysql_error();
-$rowTicketProvide=mysql_fetch_array($queryTicketProvide);
+if(!$queryTicketProvide) echo ->my_error();
+$rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 $willcheck="style='display:'";
 $checking="style='display:none'";
 $checked="style='display:none'";
@@ -37,10 +37,10 @@ if (isset($_GET['op']))
 
 		$queryString = "SELECT ct_CheckTicketWindow FROM tms_chk_CheckTemp WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_Flag = '1' AND ct_NoOfRunsdate='$NoOfRunsdate'";
 		$result1 = $class_mysql_default->my_query("$queryString"); 
-		//$row4=mysql_fetch_array($result1);
+		//$row4=mysqli_fetch_array($result1);
 		//$row4['ct_CheckTicketWindow']=$CheckTicketWindow;
 		//echo h.$row4['ct_CheckTicketWindow'];
-		if(mysql_num_rows($result1) == 0) {
+		if(mysqli_num_rows($result1) == 0) {
 		$class_mysql_default->my_query("BEGIN");
 		if($isAllTicket == '0')	{
 			$selectprice="SELECT pd_IsPass FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoOfRunsID}' AND pd_NoOfRunsdate='{$NoOfRunsdate}' AND pd_FromStationID='{$userStationID}' FOR UPDATE";
@@ -77,14 +77,14 @@ if (isset($_GET['op']))
 		$class_mysql_default->my_query("COMMIT");
 		}
 		else {
-			$row4=mysql_fetch_array($result1);
+			$row4=mysqli_fetch_array($result1);
 			$CheckTicketWindow = $row4['ct_CheckTicketWindow'] ;
 			echo "<script>alert('本班次已在['+$CheckTicketWindow+']号检票口进行检票，取消或发班后才能检票！');</script>";
 		}
 		/* 一个检票口只能有一个在检班次 
 		$queryString = "SELECT ct_NoOfRunsID FROM tms_chk_CheckTemp WHERE ct_CheckTicketWindow = $CheckWindow AND ct_Flag = '1'";
 		$result = $class_mysql_default->my_query("$queryString"); 
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			if($isAllTicket == '1')	$strsql = "UPDATE tms_chk_CheckTemp SET ct_Flag = '1' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate' AND ct_BusID = '$BusID'";
 			else					$strsql = "UPDATE tms_chk_CheckTemp SET ct_Flag = '1' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate'";
 			$result = $class_mysql_default->my_query("$strsql");
@@ -133,7 +133,7 @@ if (isset($_GET['op']))
 		else					$queryString = "SELECT ctt_TicketID FROM tms_chk_CheckTicketTemp WHERE ctt_NoOfRunsID = '$NoOfRunsID' AND ctt_NoOfRunsdate = '$NoOfRunsdate' AND ctt_BusID = '$BusID' 
 									AND ctt_FromStationID='{$userStationID}'"; */
 		$result = $class_mysql_default->my_query("$queryString"); 
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$class_mysql_default->my_query("BEGIN");
 			if($isAllTicket == '0')	{
 				$selectprice="SELECT pd_IsPass FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoOfRunsID}' AND pd_NoOfRunsdate='{$NoOfRunsdate}' AND pd_FromStationID='{$userStationID}' FOR UPDATE";
@@ -198,7 +198,7 @@ if (isset($_GET['op']))
 		$queryString = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 					AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '结算单' ORDER BY tp_ProvideData ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		if (empty($rows[0])) {
 			echo "<script>alert('没有可用的结算单！');location.assign('tms_v1_checkin_checkticket.php?op=refresh');</script>";
 		}
@@ -341,7 +341,7 @@ if (isset($_GET['op']))
 		$BusID = $_GET['busID'];
 		$selectchecktickettemp="SELECT ctt_TicketState FROM tms_chk_CheckTicketTemp WHERE ctt_TicketID='$TicketID'";
 		$querychecktickettemp=$class_mysql_default->my_query("$selectchecktickettemp");
-		$rowchecktickettemp = mysql_fetch_array($querychecktickettemp);
+		$rowchecktickettemp = mysqli_fetch_array($querychecktickettemp);
 		$class_mysql_default->my_query("BEGIN");
 		if($isAllTicket == '1') $queryString = "UPDATE tms_chk_CheckTemp SET ct_CheckedTicketNum = (ct_CheckedTicketNum - 1) WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate' AND ct_BusID = '$BusID' AND ct_Flag=1";
 		else					$queryString = "UPDATE tms_chk_CheckTemp SET ct_CheckedTicketNum = (ct_CheckedTicketNum - 1) WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate' AND ct_BusID = '$BusID' AND ct_Flag=1";
@@ -371,7 +371,7 @@ if (isset($_GET['op']))
 						echo "<script>alert('锁定票版数据表失败！');</script>";
 					}
 					else {
-						$rows = mysql_fetch_array($result);
+						$rows = mysqli_fetch_array($result);
 						$seatStatus = $rows['tml_SeatStatus'];
 						if($rowchecktickettemp['ctt_TicketState']=='9'){
 							$seatStatus = substr_replace($seatStatus, '7', $SeatID - 1, 1);
@@ -720,7 +720,7 @@ if(isset($_POST['resultquery']))
 				WHERE ct_Flag = '0' AND ct_CheckTicketWindow = '$checkWindow' AND ct_NoOfRunsdate = '$nowdate' AND rt_AttemperStationID='{$userStationID}' AND tml_StopRun!='3'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result))
+	    while($rows = @mysqli_fetch_array($result))
 	    {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -786,10 +786,10 @@ if(isset($_POST['resultquery']))
 				WHERE ct_Flag = '1' AND ct_CheckTicketWindow = '$checkWindow' AND ct_NoOfRunsdate = '$nowdate' AND rt_AttemperStationID='{$userStationID}' 
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while($rows = mysql_fetch_array($result)) {
+		while($rows = mysqli_fetch_array($result)) {
 			$str="SELECT  SUM(ct_CheckedTicketNum) AS ct_CheckedTicketNum FROM tms_chk_CheckTemp WHERE  ct_NoOfRunsdate = '$nowdate' AND ct_NoOfRunsID='{$rows['ct_NoOfRunsID']}'";
 			$result2=$class_mysql_default->my_query("$str");
-			$rows1=mysql_fetch_array($result2);
+			$rows1=mysqli_fetch_array($result2);
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td nowrap="nowrap"><?=$rows['ct_NoOfRunsID']?></td>
@@ -864,11 +864,11 @@ if(isset($_POST['resultquery']))
 					WHERE tms_chk_CheckTicketTemp.ctt_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND tms_chk_CheckTicketTemp.ctt_CheckTicketWindow = '$checkWindow' AND ctt_CheckDate = '$nowdate' AND ctt_FromStationID='{$userStationID}'"; 
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-		while($rows2 = mysql_fetch_array($resultselet)) {
+		while($rows2 = mysqli_fetch_array($resultselet)) {
 			$strsqlselet3 = "SELECT tml_Allticket from tms_bd_TicketMode WHERE (tml_NoOfRunsID = '{$rows2['ctt_NoOfRunsID']}') 
 						AND (tml_NoOfRunsdate = '{$rows2['ctt_NoOfRunsdate']}')";
 			$resultselet3 = $class_mysql_default ->my_query("$strsqlselet3");
-			$rows3 = mysql_fetch_array($resultselet3);			
+			$rows3 = mysqli_fetch_array($resultselet3);			
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td nowrap="nowrap"><?=$rows2['ctt_NoOfRunsID']?></td>
@@ -925,7 +925,7 @@ if(isset($_POST['resultquery']))
 				WHERE (ct_Flag = '2' || ct_Flag = '3') AND ct_CheckTicketWindow = '$checkWindow' AND ct_NoOfRunsdate = '$nowdate' AND  rt_AttemperStationID='{$userStationID}'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result)) {
+	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td nowrap="nowrap"><?=$rows['ct_NoOfRunsID']?></td>
@@ -990,7 +990,7 @@ if(isset($_POST['resultquery']))
 				WHERE ct_Flag = '3' AND ct_CheckTicketWindow = '$checkWindow' AND rt_AttemperStationID='{$userStationID}'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result)) {
+	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td nowrap="nowrap"><?=$rows['ct_NoOfRunsID']?></td>

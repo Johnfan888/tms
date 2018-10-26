@@ -11,7 +11,7 @@
 		if($CheckItem=='请选择安检项目') $CheckItem='';
 		$sql1 = "SELECT COUNT(ci_CheckItem) AS number FROM `tms_sf_CheckItem` WHERE ci_CheckItem LIKE '$CheckItem%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 	//		echo $CheckItem;
 //	}
 	if(isset($_POST['exceldoc'])) { //添加导出报表
@@ -40,7 +40,7 @@
 		$queryString = "SELECT ci_CheckItem,ci_CheckContent,ci_AdderID,ci_Adder,ci_Addertime,ci_ModerID,ci_Moder,ci_Modertime,
 				ci_Remark FROM `tms_sf_CheckItem` WHERE ci_CheckItem LIKE '$CheckItem%'";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -168,7 +168,7 @@ $(document).ready(function(){
     			//	$Checkitem="";
 					$selected="SELECT ci_CheckItem FROM tms_sf_CheckItem GROUP BY ci_CheckItem";
 					$queryed=$class_mysql_default->my_query($selected);
-					while($rowed=mysql_fetch_array($queryed)){
+					while($rowed=mysqli_fetch_array($queryed)){
 						if($Checkitem!=$rowed['ci_CheckItem']){
 				?>
 				<option value="<?php echo $rowed['ci_CheckItem'];?>"><?php echo $rowed['ci_CheckItem'];?></option><!--
@@ -222,7 +222,7 @@ $(document).ready(function(){
 			$sql = "SELECT ci_CheckItem,ci_CheckContent,ci_AdderID,ci_Adder,ci_Addertime,ci_ModerID,ci_Moder,ci_Modertime,
 				ci_Remark FROM `tms_sf_CheckItem` WHERE ci_CheckItem LIKE '$CheckItem%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC">
 		<td align="center" nowrap="nowrap"><?php echo $row['ci_CheckItem'];?></td>

@@ -10,7 +10,7 @@ $select="SELECT wst_WebSellID,wst_UserName,wst_CertificateType,wst_CertificateNu
 	wst_SellPrice,wst_SeatID,wst_NoOfRunsdate,wst_NoOfRunsID,wst_FromStation,wst_ReachStation,wst_SellPrice,wst_BeginStationTime,
 	wst_StopStationTime FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 $result=$class_mysql_default ->my_query("$select");
-$rows=@mysql_fetch_array($result);
+$rows=@mysqli_fetch_array($result);
 
 
 //获取查询初始化界面参数

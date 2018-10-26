@@ -13,7 +13,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_TicketPriceFactor where tpf_ModelID='{$ModelID}' and tpf_PriceProject='{$PriceProject}'";
 	$sele=$query = $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 			$insert="insert into tms_bd_TicketPriceFactor (tpf_ModelID,tpf_ModelName,tpf_PriceProject,tpf_BeginDate,tpf_EndDate,
 				tpf_MoneyRenKil,tpf_Remark) values('{$ModelID}','{$ModelName}','{$PriceProject}','{$BeginDate}','{$EndDate}',
 				'{$MoneyRenKil}','{$Remark}')";

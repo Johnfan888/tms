@@ -51,7 +51,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND (cb_BillingStation LIKE '{$StationName}') AND (cb_BillingerID LIKE '{$sellerID}') GROUP BY cb_BillingerID, cb_BillingDate 
 						ORDER BY cb_BillingDate ASC, cb_BillingerID ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -155,7 +155,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -192,7 +192,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						<?php 
 						$query="SELECT ui_UserID FROM tms_sys_UsInfor  WHERE  ui_UserGroup LIKE '%包车组%' AND ui_UserSation like '$userStationName%'";
 						$result = $class_mysql_default->my_query("$query");
-						while ($row = mysql_fetch_array($result)) {
+						while ($row = mysqli_fetch_array($result)) {
 							if($sellerID != $row['ui_UserID']){
 						?>
 							<option value="<?php echo $row['ui_UserID']?>"><?=$row['ui_UserID']?></option>
@@ -243,7 +243,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						ORDER BY cb_BillingDate ASC, cb_BillingerID ASC"; 
 						//GROUP BY　cb_BillingerID, cb_BillingDate ORDER BY cb_BillingerID ASC, cb_BillingDate ASC";
 					$results = $class_mysql_default->my_query("$select");
-					while ($rows = mysql_fetch_array($results)) {
+					while ($rows = mysqli_fetch_array($results)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $rows['cb_BillingDate'];?></td>

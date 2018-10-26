@@ -11,10 +11,10 @@
 		$class_mysql_default->my_query("START TRANSACTION");
 		$sql1= "DELETE FROM tms_bd_BusInfo WHERE bi_BusID='{$BusID}'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		if (!$query1) echo "SQL错误：".mysql_error();
+		if (!$query1) echo "SQL错误：".->my_error();
 		$sql2="DELETE FROM tms_bd_BusCard WHERE bc_BusID='{$BusID}'";
 		$query2 = $class_mysql_default->my_query($sql2);
-		if (!$query2) echo "SQL错误：".mysql_error();
+		if (!$query2) echo "SQL错误：".->my_error();
 		if ($query1 && $query2) {
 			$class_mysql_default->my_query("COMMIT");
 			$retData = array(

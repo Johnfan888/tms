@@ -22,37 +22,37 @@
 	$Remark=$_POST['Remark'];
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_LineInfo where li_LineID='{$LineID}'";
-	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
-		mysql_query("START TRANSACTION");
+	$sele=$class_mysql_default$class_mysql_default->my_query($select);
+	if(!mysqli_fetch_array($sele)){
+		$class_mysql_default->my_query("START TRANSACTION");
 		$insert="INSERT INTO `tms_bd_LineInfo` (`li_LineID`,`li_LineName`,`li_LineKind`,`li_LineDegree`,
 			li_LineType,li_Direction,li_Kilometer, li_BeginSite,li_BeginSiteID,li_EndSite,
 			li_EndSiteID,li_StationID,li_Station,li_Linestate,li_InRegion,li_AdderID,li_Adder,li_AddTime,li_Remark) VALUES ('{$LineID}', 
 			'{$LineName}', '{$LineKind}','{$LineDegree}','{$LineType}','{$Direction}','{$Kilometer}',
 			'{$BeginSite}','{$BeginSiteID}','{$EndSite}','{$EndSiteID}','{$StationID}','{$Station}', 
 			'{$Linestate}','{$InRegion}', '{$userID}','{$userName}','{$CurTime}' ,'{$Remark}');";
-		$query = $class_mysql_default->my_query($insert);
+		$query = $class_mysql_default$class_mysql_default->my_query($insert);
 		$insert1="INSERT INTO tms_bd_SectionInfo (si_LineID,si_LineName,si_SectionID,si_SiteNameID,si_SiteName,si_Kilometer,
 				si_IsDock,si_IsGetOnSite,si_IsCheckInSite,si_IsTollInSite,si_IsServiceFee,si_ServiceFee,si_otherFee1,
 				si_otherFee2,si_otherFee3,si_otherFee4,si_otherFee5,si_otherFee6,si_Remark) values('{$LineID}',
 				'{$LineName}','1','{$BeginSiteID}','{$BeginSite}','0','0','1','1',NULL,NULL,NULL,NULL,NULL,NULL,
 				NULL,NULL,NULL,'起点站')";
-		$query1= $class_mysql_default->my_query($insert1);
+		$query1= $class_mysql_default$class_mysql_default->my_query($insert1);
 		$insert2="INSERT INTO tms_bd_SectionInfo (si_LineID,si_LineName,si_SectionID,si_SiteNameID,si_SiteName,si_Kilometer,
 				si_IsDock,si_IsGetOnSite,si_IsCheckInSite,si_IsTollInSite,si_IsServiceFee,si_ServiceFee,si_otherFee1,
 				si_otherFee2,si_otherFee3,si_otherFee4,si_otherFee5,si_otherFee6,si_Remark) values('{$LineID}',
 				'{$LineName}','2','{$EndSiteID}','{$EndSite}','{$Kilometer}','1','0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,
 				NULL,NULL,NULL,'终点站')";
-		$query2= $class_mysql_default->my_query($insert2);
-		//if (!$query) echo "SQL错误：".mysql_error();
+		$query2= $class_mysql_default$class_mysql_default->my_query($insert2);
+		//if (!$query) echo "SQL错误：".->my_error();
 		if($query && $query1 && $query2 ){
-			mysql_query("COMMIT");
+			$class_mysql_default->my_query("COMMIT");
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addline.php'</script>";
 		}else{
-			mysql_query("ROLLBACK");
+			$class_mysql_default->my_query("ROLLBACK");
 			echo"<script>alert('添加失败');window.location.href='tms_v1_basedata_addline.php'</script>";
 		}
-		mysql_query("END TRANSACTION");
+		$class_mysql_default->my_query("END TRANSACTION");
 	}else{
 		echo"<script>alert('线路编号已存在，请重新输入！');window.location.href='tms_v1_basedata_addline.php'</script>";
 	} 

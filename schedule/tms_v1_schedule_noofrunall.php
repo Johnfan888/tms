@@ -208,7 +208,7 @@ if(isset($_POST['resultquery']))
 			<?php 
 					$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 					$result = $class_mysql_default->my_query("$queryString");
-			        while($res = mysql_fetch_array($result)) {
+			        while($res = mysqli_fetch_array($result)) {
 	            		if($res['sset_SiteName'] != $schStation) {
 			?>
             		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -288,7 +288,7 @@ if(isset($_POST['resultquery']))
 		AND tml_NoOfRunsdate = '$schDate' AND tml_NoOfRunsID LIKE '{$noofrunsID}%' AND tml_BusID LIKE '{$busID}%' AND 
 		tml_Endstation LIKE '{$endStation}%' AND tml_StopRun LIKE '$StopRun' AND tml_Allticket = '1'";
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	while($rows = @mysql_fetch_array($resultselet))	{
+	while($rows = @mysqli_fetch_array($resultselet))	{
 		$i++;
 		$LineName = $rows['tml_Beginstation'].'--'.$rows['tml_Endstation'];
 		if($rows['rt_BusID'] != NULL || $rows['rt_BusID'] != "")  $qryBusID = $rows['rt_BusID'];

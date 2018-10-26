@@ -153,8 +153,8 @@ $(document).ready(function(){
   		else{
 			$sql1="select count(*) from tms_bd_BusCard WHERE bc_CardID like '%$card%' AND bc_BusNumber like '%$busnumber%' AND bc_Station ='$userStationName'";
   		}
-  			$result1=mysql_query($sql1);
-			$num=mysql_fetch_row($result1);
+  			$result1=$class_mysql_default->my_query($sql1);
+			$num=mysqli_fetch_row($result1);
 	?>
     		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" />总数：<?php  echo $num['0'] ?></span></td>
   </tr>
@@ -191,7 +191,7 @@ $(document).ready(function(){
 			$sql = "SELECT * FROM tms_bd_BusCard WHERE bc_CardID like '%$card%' AND bc_BusNumber like '%$busnumber%' AND bc_Station ='$userStationName'";
   		}
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 		
 ?>
 	<tr  id="tr" bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'idcard')">

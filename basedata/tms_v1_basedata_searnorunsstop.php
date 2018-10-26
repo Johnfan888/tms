@@ -90,7 +90,7 @@ function modnorunsstop(){
   	<?php 
 		$sql = "select* FROM tms_bd_ScheduleLong WHERE sl_NoOfRunsID='{$clnumber}'";
 		$query =$class_mysql_default->my_query($sql);
-		while($result=mysql_fetch_array($query)){
+		while($result=mysqli_fetch_array($query)){
 	?>
 	 </thead> 
 <tbody class="scrollContent">

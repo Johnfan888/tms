@@ -36,7 +36,7 @@
 			$querydelete=$class_mysql_default->my_query($delete);
 			if(!$querydelete){
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '删除票价数据失败！'.mysql_error(), 'sql' => $selects);
+				$retData = array('retVal' => 'FAIL', 'retString' => '删除票价数据失败！'.->my_error(), 'sql' => $selects);
 				echo json_encode($retData);
 				exit();
 			}
@@ -49,7 +49,7 @@
 			$queryinsert1=$class_mysql_default->my_query($insert1);
 			if(!$queryinsert1){
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '插入票价数据失败1！'.mysql_error(), 'sql' => $insert1);
+				$retData = array('retVal' => 'FAIL', 'retString' => '插入票价数据失败1！'.->my_error(), 'sql' => $insert1);
 				echo json_encode($retData);
 				exit();
 			} 
@@ -62,11 +62,11 @@
 				AND nrap_DepartureSiteID='{$DepartureSiteID}' AND nrap_GetToSiteID='{$GetToSiteID}' AND nrap_ModelID='{$ModelID}'";
 			$query=$class_mysql_default->my_query($selects);
 			if(!$query){
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败1！'.mysql_error(), 'sql' => $selects);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败1！'.->my_error(), 'sql' => $selects);
 				echo json_encode($retData);
 				exit();
 			}
-			while($row=mysql_fetch_array($query)){
+			while($row=mysqli_fetch_array($query)){
 				if($BeginDate==$row['nrap_BeginDate'] && $EndDate==$row['nrap_EndDate']){
 					$retData = array('retVal' => 'FAIL1', 'retString' => '该记录已存在！', 'sql' => $selects);
 					echo json_encode($retData);
@@ -120,14 +120,14 @@
 		nrap_DepartureSiteID='{$DepartureSiteID}' and nrap_GetToSiteID='{$GetToSiteID}' and nrap_ModelID='{$ModelID}' and nrap_BeginDate='{$BeginDate}' 
 		and nrap_EndDate='{$EndDate}'";
 	$seles=$class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)){
+	if(!mysqli_fetch_array($seles)){
 		$insert="insert into tms_bd_NoRunsAdjustPrice (nrap_ISUnitAdjust,nrap_Unit,nrap_ISLineAdjust,nrap_LineAdjust,nrap_ISNoRunsAdjust,nrap_NoRunsAdjust,nrap_DepartureSiteID,
 			nrap_DepartureSite,nrap_GetToSiteID,nrap_GetToSite,nrap_ModelID,nrap_ModelName,nrap_BeginDate,nrap_EndDate,nrap_BeginTime,nrap_EndTime,
 			nrap_ReferPrice,nrap_PriceUpPercent,nrap_RunPrice,nrap_HalfPrice,nrap_BalancePrice,nrap_Remark) values('{$ISUnitAdjust}','{$Unit}','0','{$LineAdjust}','{$ISNoRunsAdjust}',
 			'{$NoRunsAdjust}','{$DepartureSiteID}','{$DepartureSite}','{$GetToSiteID}','{$GetToSite}','{$ModelID}','{$ModelName}','{$BeginDate}',
 			'{$EndDate}','{$BeginTime}','{$EndTime}','{$ReferPrice}','{$PriceUpPercent}','{$RunPrice}','{$HalfPrice}','{$BalancePrice}','{$Remark}')";
 		$query =$class_mysql_default->my_query($insert); 
-		//if (!$query) echo "SQL错误：".mysql_error();
+		//if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addnorunsadjustprice.php?clnumber1=$NoRunsAdjust&clnumber2=$LineAdjust'</script>";
 		}else{

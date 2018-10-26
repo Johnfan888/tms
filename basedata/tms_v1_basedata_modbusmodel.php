@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sql = "select* FROM tms_bd_BusModel WHERE bm_ModelID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">

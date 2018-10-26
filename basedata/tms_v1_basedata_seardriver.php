@@ -12,7 +12,7 @@
 		$DriverCard=$_POST['DriverCard'];
 		$sql1="SELECT COUNT(di_DriverID) AS number FROM tms_bd_DriverInfo where  di_DriverID like '{$DriverID}%' and IFNULL(di_Name, '') like '{$Name}%' AND di_DriverCard like '$DriverCard%'";
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	   if($RegionCode2 == 'excel'){
 		  $file_name = "seardriver.csv";
@@ -31,7 +31,7 @@
 			 			  di_DriverCheckDate,di_CYZGZCheckDate,di_WorkEndDate,di_FileID,di_Address,di_AdderID,di_Adder,di_AddTime,di_ModerID,di_Moder,di_ModTime,di_Remark
 			 			  FROM tms_bd_DriverInfo where  di_DriverID like '{$DriverID}%' and IFNULL(di_Name, '') like '{$Name}%' AND di_DriverCard like '$DriverCard%'";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -216,8 +216,8 @@ $(document).ready(function(){
  	if($RegionCode2 == ''){
 		$sql="SELECT * FROM tms_bd_DriverInfo where  di_DriverID like '{$DriverID}%' and IFNULL(di_Name, '') like '{$Name}%' AND di_DriverCard like '$DriverCard%'";
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".mysql_error();
-		while ($row = mysql_fetch_array($query)){
+		//if (!$query) echo "SQL错误：".->my_error();
+		while ($row = mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'DriverID1')">
         <td nowrap="nowrap" align="center"><?php echo $row['di_DriverID'];?></td>

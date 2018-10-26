@@ -101,7 +101,7 @@ function search(){
 		$Remark=$_POST['Remark'];
 		$select="select bu_UnitName from tms_bd_BusUnit where bu_UnitName='{$UnitName}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_bd_BusUnit` (`bu_UnitName`,`bu_UnitProperty`,`bu_UnitContacts`,`bu_UnitPhone`,`bu_UnitAdress`,
 				`bu_Remark` ) VALUES ('{$UnitName}', '{$UnitProperty}', '{$UnitContacts}','{$UnitPhone}','{$UnitAdress}','{$Remark}');";
 			$query = $class_mysql_default->my_query($insert);

@@ -79,7 +79,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND tml_BusID LIKE '{$tml_BusID}%' $strDate 
 						ORDER BY tml_NoOfRunsID ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -89,7 +89,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 			$sql2="select li_LineName from tms_bd_LineInfo where li_LineID = '{$row['tml_LineID']}'";
 				//	echo $sql;
 					$result2 = $class_mysql_default->my_query("$sql2");
-					$row2 = mysql_fetch_array($result2);
+					$row2 = mysqli_fetch_array($result2);
 			$outputRow = array($row['tml_NoOfRunsID'], $row2['li_LineName'], $row['tml_NoOfRunsdate'], $row['tml_NoOfRunstime'], 
 							 $row['tml_Beginstation'], $row['tml_Endstation'],$row['tml_BusModel']); 
 			fputcsv($fp, $outputRow); 
@@ -179,7 +179,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -242,7 +242,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									ORDER BY tml_NoOfRunsID ASC";
 					//echo $queryString;
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap" align="center"><?php echo $row['tml_NoOfRunsID'];?></td>
@@ -250,7 +250,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					$sql1="select li_LineName from tms_bd_LineInfo where li_LineID = '{$row['tml_LineID']}'";
 				//	echo $sql;
 					$result1 = $class_mysql_default->my_query("$sql1");
-					$row1 = mysql_fetch_array($result1);
+					$row1 = mysqli_fetch_array($result1);
 				?>
 				<td nowrap="nowrap" align="center"><?php echo $row1['li_LineName'];?></td>
 				<td nowrap="nowrap" align="center"><?php echo $row['tml_NoOfRunsdate'];?></td>

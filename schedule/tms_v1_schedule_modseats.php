@@ -11,10 +11,10 @@ $reportBusCard = $_REQUEST['busn'];
 $selectticketmode="SELECT li_LineName,tml_NoOfRunstime,tml_TotalSeats, tml_LeaveSeats,tml_HalfSeats,tml_ReserveSeats,tml_LeaveHalfSeats,tml_SeatStatus FROM tms_bd_TicketMode  LEFT OUTER JOIN tms_bd_LineInfo 
 	ON tml_LineID = li_LineID WHERE tml_NoOfRunsID = '$NoOfRunsID' AND tml_NoOfRunsdate = '$NoOfRunsdate'";
 $queryticketmode = $class_mysql_default->my_query($selectticketmode);
-$rowticketmode = mysql_fetch_array($queryticketmode);
+$rowticketmode = mysqli_fetch_array($queryticketmode);
 $selectbus="SELECT bi_SeatS,bi_AllowHalfSeats FROM tms_bd_BusInfo WHERE bi_BusNumber='{$reportBusCard}'";
 $querybus = $class_mysql_default->my_query($selectbus);
-$rowbus = mysql_fetch_array($querybus);
+$rowbus = mysqli_fetch_array($querybus);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -222,7 +222,7 @@ $(document).ready(function(){
 		$queryString = "SELECT tml_Allticket, tml_TotalSeats, tml_LeaveSeats,tml_HalfSeats,tml_ReserveSeats,tml_LeaveHalfSeats,tml_SeatStatus, tml_LineID, tml_EndstationID, tml_Endstation, 
 	  		tml_BusModelID, tml_BusModel, tml_BeginstationID, tml_Beginstation FROM tms_bd_TicketMode WHERE (tml_NoOfRunsID = '$NoOfRunsID') AND (tml_NoOfRunsdate = '$NoOfRunsdate') FOR UPDATE";
 	  	$result = $class_mysql_default->my_query("$queryString");
-		if(!$result) echo mysql_error()."锁定票版失败"; 
+		if(!$result) echo ->my_error()."锁定票版失败"; 
 		else{
 			$queryupdate="UPDATE tms_bd_TicketMode SET tml_TotalSeats='{$Seatnum1}',tml_LeaveSeats='{$LeaveSeats}',tml_LeaveHalfSeats='{$LeaveHalfSeats}',tml_SeatStatus='{$SeatStatus}',tml_HalfSeats='$HalfSeatnum1',
 				tml_Updated='{$reportDatatime}', tml_Updatedby='{$userName}' WHERE tml_NoOfRunsID='{$NoOfRunsID}' AND tml_NoOfRunsdate='{$NoOfRunsdate}'";

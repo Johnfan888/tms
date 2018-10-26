@@ -40,7 +40,7 @@ if(isset($_GET['tid']))
 			    echo "<script>alert('查询售票失败！');history.back();</script>";	
 			    exit();
 			 }
-		     $rows = @mysql_fetch_array($resultselet);
+		     $rows = @mysqli_fetch_array($resultselet);
 		     if(!empty($rows[0]))
 		     {
 		         $strsqlselet = "INSERT INTO `tms_sell_ErrTicket` (`et_TicketID`, `et_NoOfRunsID`, `et_NoOfRunsdate`, `et_BeginStationTime`, 
@@ -54,7 +54,7 @@ if(isset($_GET['tid']))
 		         $resultselet = $class_mysql_default ->my_query("$strsqlselet");
 		     	 if(!$resultselet){
 			    	$class_mysql_default->my_query("ROLLBACK");
-			    	echo mysql_error();
+			    	echo ->my_error();
 			    	echo "<script>alert('插入废票失败！');history.back();</script>";	
 			     }
 		     }else{
@@ -81,7 +81,7 @@ if(isset($_GET['tid']))
 			    echo "<script>alert('查询保险票失败！');history.back();</script>";	
 			    exit();
 			 }
-		     $rows = @mysql_fetch_array($resultselet);
+		     $rows = @mysqli_fetch_array($resultselet);
 		     if(!empty($rows[0]))
 		     {
 		         $strsqlselet = "INSERT INTO `tms_sell_ErrInsureTicket` (`eitt_SyncCode`, `eitt_InsureTicketNo`, `eitt_TicketNo`, `eitt_CreatedType`, 
@@ -92,7 +92,7 @@ if(isset($_GET['tid']))
 		         		'{$rows['itt_CinsuranceValue']}','{$rows['itt_DinsuranceValue']}','$errcause', '$nowtime', '$nowdate', '$errID', '$errer','$userStationName');";
 		         $resultselet = $class_mysql_default ->my_query("$strsqlselet");
 		     	 if(!$resultselet){
-		     	 	echo mysql_error();
+		     	 	echo ->my_error();
 			    	$class_mysql_default->my_query("ROLLBACK");
 			    	echo "<script>alert('插入废保险票失败！');history.back();</script>";	
 			     }
@@ -435,7 +435,7 @@ if(isset($_GET['tid']))
 						`st_SafetyTicketID`, `st_SafetyTicketNumber`, `st_SafetyTicketMoney`, `st_SafetyTicketPassengerID`, `st_TicketState`, `st_IsBalance`, 
 						`st_BalanceDateTime`, `st_AlterTicket` FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
 					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-					$rows = @mysql_fetch_array($resultselet);
+					$rows = @mysqli_fetch_array($resultselet);
 	?>
 			<tr>
 				<td nowrap="nowrap" align="center"><?php echo $rows['st_TicketID'];?></td>
@@ -484,7 +484,7 @@ if(isset($_GET['tid']))
 						`itt_HandlerCode`, `st_NoOfRunsID`, `st_NoOfRunsdate`, `st_BeginStationTime` FROM `tms_sell_InsureTicket` LEFT OUTER JOIN 
 						tms_sell_SellTicket ON st_TicketID=itt_TicketNo WHERE `itt_InsureTicketNo`='$safeticketID'";
 					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-					$rows1 = @mysql_fetch_array($resultselet);
+					$rows1 = @mysqli_fetch_array($resultselet);
 	?>
 	<tr>
 		<td nowrap="nowrap" align="center"><?php echo $rows1['itt_InsureTicketNo'];?></td>

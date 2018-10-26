@@ -9,7 +9,7 @@ $NoOfRunsID=$_GET['NoOfRunsID'];
 $noid=$_GET['noid'];
 $sql = "select* FROM tms_bd_ScheduleLong WHERE sl_NoOfRunsID='{$NoOfRunsID}'and sl_ID='{$noid}'";
 $query =$class_mysql_default->my_query($sql);
-$result=mysql_fetch_array($query);
+$result=mysqli_fetch_array($query);
 ?>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">

@@ -13,7 +13,7 @@
 		$sql1 = "SELECT COUNT(bu_UnitName) AS number FROM tms_bd_BusUnit where 
 				bu_UnitName like'$UnitName%' and bu_UnitProperty like '$UnitProperty%' and bu_UnitContacts like '$UnitContacts%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	  if($RegionCode2 == 'excel'){
 		  $file_name = "searbusunit.csv";
@@ -33,7 +33,7 @@
 				bu_UnitName like'$UnitName%' and bu_UnitProperty like '$UnitProperty%' and bu_UnitContacts like '$UnitContacts%'";
 		  $result = $class_mysql_default->my_query("$queryString");
 		  	$i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -180,7 +180,7 @@ function delregion(){
 			$sql = "SELECT bu_ID,bu_UnitName,bu_UnitProperty,bu_UnitContacts,bu_UnitPhone,bu_UnitAdress,bu_Remark FROM tms_bd_BusUnit where 
 				bu_UnitName like'$UnitName%' and bu_UnitProperty like '$UnitProperty%' and bu_UnitContacts like '$UnitContacts%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 			   $i++;
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

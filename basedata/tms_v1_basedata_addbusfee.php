@@ -167,7 +167,7 @@ $(document).click(function(){
 		$i=0;
 		$selected="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent,ft_FeeFix FROM tms_bd_FeeType";
 		$queryed=$class_mysql_default->my_query($selected);
-		while($row=mysql_fetch_array($queryed)){
+		while($row=mysqli_fetch_array($queryed)){
 	?> 
 	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /><?php echo $row['ft_FeeTypeName'];?>：</span></td>
@@ -217,7 +217,7 @@ $(document).click(function(){
 		}
 		$select="select br_BusID from tms_acct_BusRate where br_BusID='{$BusID}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_acct_BusRate` (br_BusID,br_BusNumber, br_BusType, br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,
 				br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15,
 				br_BeginDate,br_EndDate,br_AdderID,br_Adder,br_AddTime) 
@@ -228,7 +228,7 @@ $(document).click(function(){
 			if($query){
 				echo"<script>alert('添加成功！')</script>";
 			}else{
-				echo mysql_error();
+				echo ->my_error();
 				echo"<script>alert('添加失败！')</script>";
 			}
 		}else{

@@ -8,10 +8,10 @@
 	$clnumber = $_GET['clnumber'];
 	$sqls = "select li_LineID,li_LineName,li_BeginSite,li_EndSite FROM `tms_bd_LineInfo` WHERE li_LineID='{$clnumber}'";
 	$querys =$class_mysql_default->my_query($sqls);
-	$results=mysql_fetch_array($querys);
+	$results=mysqli_fetch_array($querys);
 	$sql1 = "select COUNT(si_SectionID) AS number FROM tms_bd_SectionInfo WHERE si_LineID='{$clnumber}'";
 	$query1 =$class_mysql_default->my_query($sql1);
-	$rows=mysql_fetch_array($query1);
+	$rows=mysqli_fetch_array($query1);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -145,7 +145,7 @@ function modlinesite(){
 		$i=0;
   		$sql = "select* FROM tms_bd_SectionInfo WHERE si_LineID='{$clnumber}'";
 		$query =$class_mysql_default->my_query($sql);
-		while($result=mysql_fetch_array($query)){
+		while($result=mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'SectionID1')">
     <td nowrap="nowrap" align="center"><?php echo $result['si_SectionID'];?></td>

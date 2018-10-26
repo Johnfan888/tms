@@ -4,7 +4,7 @@ scrollpic.js   ----- Í¼Æ¬¹ö¶¯JS´úÂë
     <div id="center1">
      <!--¹ö¶¯-->
     <?
-    while($rowimg1 = mysql_fetch_array($result))
+    while($rowimg1 = mysqli_fetch_array($result))
 	{
 	?>
     <div id="centerimg"><a href="example.php" target="_blank"><img src="<?=BYART_URL.$rowimg1["img_url"]?>" width="250" height="164" alt="<?=$rowimg1["img_title"]?>" border="0" /></a></div>

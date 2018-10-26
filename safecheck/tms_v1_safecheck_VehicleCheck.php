@@ -333,7 +333,7 @@ require_once("../ui/inc/init.inc.php");
 				$index=0;
 			 	$select="SELECT ci_CheckItem, GROUP_CONCAT( ci_CheckContent ) AS CheckContent FROM tms_sf_CheckItem GROUP BY ci_CheckItem";
 			 	$query=$class_mysql_default->my_query("$select");
-			 	while($rows = mysql_fetch_array($query)) {
+			 	while($rows = mysqli_fetch_array($query)) {
 			?>
 			<tr>
 			 	<td align="center" bgcolor="#CCCCCC"><?php echo $rows['ci_CheckItem'];?><input type="hidden" name="itemname<?php echo $index?>" id="itemname<?php echo $index?>" value="<?php echo $rows['ci_CheckItem'];?>"/></td>
@@ -389,7 +389,7 @@ require_once("../ui/inc/init.inc.php");
 		            <?php 
 		            		$queryString = "SELECT sset_SiteID,sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName']) {
 					?>
 						<option value="<?php echo $res['sset_SiteID'];?>"><?php echo $res['sset_SiteName'];?></option>

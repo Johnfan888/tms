@@ -9,7 +9,7 @@ $andnoofrunsID=$_GET['q'];
 //echo $andnoofrunsID;
 $strsqlselet = "SELECT `tml_NoOfRunsdate`,`tml_NoOfRunsID`,`tml_NoOfRunstime`,`tml_Endstation`,`tml_BusModel`,`tml_TotalSeats`,`tml_SeatStatus`  FROM `tms_bd_TicketMode` WHERE `tml_NoOfRunsID`='$andnoofrunsID';";
 $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-$obj = @mysql_fetch_object($resultselet);
+$obj = @mysqli_fetch_object($resultselet);
 $rows[0]=$obj->tml_NoOfRunsdate;
 $rows[1]=$obj->tml_NoOfRunsID;
 $rows[2]=$obj->tml_NoOfRunstime;

@@ -17,15 +17,15 @@ switch ($op)
 		$bi_BusIC = $_REQUEST['busIC'];
 		$queryString = "SELECT bc_BusID,bc_BusNumber FROM tms_bd_BusCard WHERE bc_CardID LIKE '{$bi_BusIC}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$retData = array('bi_BusIC' => "", 'bi_BusID' => "", 'bi_BusNumber' => "", 'bi_BusType' => "");
 			echo json_encode($retData);
 			exit();
 		}
-		$rowIC = mysql_fetch_array($result);
+		$rowIC = mysqli_fetch_array($result);
 		$queryString = "SELECT bi_BusID,bi_BusNumber,bi_BusType FROM tms_bd_BusInfo WHERE bi_BusID = '{$rowIC['bc_BusID']}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$retData = array('bi_BusIC' => $bi_BusIC, 'bi_BusID' => $row['bi_BusID'], 'bi_BusNumber' => $row['bi_BusNumber'], 'bi_BusType' => $row['bi_BusType']);
 		echo json_encode($retData);
 		exit();
@@ -33,20 +33,20 @@ switch ($op)
 		$bi_BusNumber = $_REQUEST['bi_BusNumber'];
 		$queryString = "SELECT bi_BusID,bi_BusNumber,bi_BusType FROM tms_bd_BusInfo WHERE bi_BusNumber = '{$bi_BusNumber}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$retData = array('bi_BusIC' => "", 'bi_BusID' => "", 'bi_BusNumber' => "", 'bi_BusType' => "");
 			echo json_encode($retData);
 			exit();
 		}
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$queryString = "SELECT bc_CardID FROM tms_bd_BusCard WHERE bc_BusNumber LIKE '{$bi_BusNumber}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$retData = array('bi_BusIC' => "", 'bi_BusID' => $row['bi_BusID'], 'bi_BusNumber' => $row['bi_BusNumber'], 'bi_BusType' => $row['bi_BusType']);
 			echo json_encode($retData);
 			exit();
 		}
-		$rowIC = mysql_fetch_array($result);
+		$rowIC = mysqli_fetch_array($result);
 		$retData = array('bi_BusIC' => $rowIC['bc_CardID'], 'bi_BusID' => $row['bi_BusID'], 'bi_BusNumber' => $row['bi_BusNumber'], 'bi_BusType' => $row['bi_BusType']);
 		echo json_encode($retData);
 		exit();
@@ -56,16 +56,16 @@ switch ($op)
 $BusID = $_POST['busID'];
 $queryString = "SELECT * FROM tms_bd_BusInfo WHERE bi_BusID = '{$BusID}'";
 $result = $class_mysql_default->my_query("$queryString");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result);
 $selectdriver="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='{$row['bi_DriverID']}'";
 $resultdriver=$class_mysql_default->my_query("$selectdriver");
-$rowdriver = mysql_fetch_array($resultdriver);
+$rowdriver = mysqli_fetch_array($resultdriver);
 $selectdriver1="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='{$row['bi_Driver1ID']}'";
 $resultdriver1=$class_mysql_default->my_query("$selectdriver1");
-$rowdriver1 = mysql_fetch_array($resultdriver1);
+$rowdriver1 = mysqli_fetch_array($resultdriver1);
 $selectdriver2="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='{$row['bi_Driver2ID']}'";
 $resultdriver2=$class_mysql_default->my_query("$selectdriver2");
-$rowdriver2 = mysql_fetch_array($resultdriver2);
+$rowdriver2 = mysqli_fetch_array($resultdriver2);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

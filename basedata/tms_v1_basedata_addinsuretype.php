@@ -138,7 +138,7 @@ function search(){
 		$BINSURANCEVALUE=$_POST['BINSURANCEVALUE'];
 		$select="select it_InsureProductName from tms_bd_InsureType  where it_InsureProductName='{$INSUREPRODUCTNAME}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_bd_InsureType` (`it_InsureProductName`,`it_EffectiveDate`,`it_Price` ,`it_RiskCode`,`it_MakeCode`,
 				`it_RationType`,`it_AgentCode`,`it_VisaCode`,`it_Perfix`,`it_AInsuranceValue`,`it_BInsuranceValue`) 
 				VALUES ('{$INSUREPRODUCTNAME}', '{$EFFECTIVEDATE}','{$PRICE}','{$RISKCODE}','{$MAKECODE}','{$RATIONTYP}','{$AGENTCODE}',

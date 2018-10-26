@@ -239,7 +239,7 @@ font-family: arial, sans-serif;
 				<?php 
 					$sqls = "select si_SectionID, si_SiteName FROM tms_bd_SectionInfo WHERE si_LineID='$LineID' and si_SectionID<(SELECT MAX(si_SectionID) FROM tms_bd_SectionInfo WHERE si_LineID='$LineID')";
 					$querys = $class_mysql_default->my_query($sqls);
-					while($results=mysql_fetch_array($querys)){
+					while($results=mysqli_fetch_array($querys)){
 						if($results['si_SiteName']){	
 				?>
 				<option value="<?php echo $results['si_SiteName'].','.$results['si_SectionID'];?>"><?php echo $results['si_SiteName'];?></option>

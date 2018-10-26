@@ -65,7 +65,7 @@ if(isset($_POST['sureAdd'])) {
 		echo "<script>alert('用户添加成功!');</script>";
 	}
 	else {
-		// die('Error: ' . mysql_error());
+		// die('Error: ' . ->my_error());
 		echo "<script>alert('用户添加失败!');location.assign('tms_v1_system_userquery.php?ADDDONE=1');</script>";
 	}
 }
@@ -143,7 +143,7 @@ else {
 					<?php 
 							$queryString = "SELECT sset_SiteID,sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 					?>
 		            	<option value="<?php echo $res['sset_SiteID'];?>"><?php echo $res['sset_SiteName'];?></option>
 					<?php 

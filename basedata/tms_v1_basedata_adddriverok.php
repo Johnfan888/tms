@@ -121,7 +121,7 @@
 	
 	$select="select di_DriverID from tms_bd_DriverInfo where di_DriverID='{$DriverID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)&&$ok){
+	if(!mysqli_fetch_array($sele)&&$ok){
 		$insert="insert into tms_bd_DriverInfo (di_DriverID,di_Name,di_Sex,di_Tel,di_IdCard,di_Address,di_CYZGZNumber,di_BusNumber,
 				di_DriverCard,di_AllowBusType,di_DriverCheckDate,di_CYZGZCheckDate,di_Remark,di_WorkEndDate,di_FileID,di_AdderID,di_Adder,
 				di_AddTime,di_fileName,di_ScanPath,di_Photo) values('{$DriverID}','{$Name}','{$Sex}','{$Tel}','{$IdCard}','{$Address}','{$CYZGZNumber}',

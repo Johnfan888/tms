@@ -68,7 +68,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									FROM tms_acct_BusAccount WHERE (ba_DateTime >= '{$CheckBeginDatetime}') AND (ba_DateTime <= '{$CheckEndDatetime}') 
 									AND (ba_InStation LIKE '{$StationName}') AND (ba_BusUnit like '$ba_BusUnit%')".$busnum. "GROUP BY ba_BusID, ba_InStation,ba_BusUnit ORDER BY ba_BusID ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -172,7 +172,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -205,7 +205,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 		      					}
     							$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     							$sel =$class_mysql_default->my_query($select);
-								while($results=mysql_fetch_array($sel)){ 
+								while($results=mysqli_fetch_array($sel)){ 
 									if($ba_BusUnit!=$results['bu_UnitName']){
     						?>
     					<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
@@ -281,7 +281,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									FROM tms_acct_BusAccount WHERE (ba_DateTime >= '{$CheckBeginDatetime}') AND (ba_DateTime <= '{$CheckEndDatetime}') 
 									AND (ba_InStation LIKE '{$StationName}') AND (ba_BusUnit like '$ba_BusUnit%')".$busnum. "GROUP BY ba_BusID, ba_InStation,ba_BusUnit ORDER BY ba_BusID ASC";
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 						$totalIncome += $row['ba_Income'];
 						$totalPaid += $row['ba_Paid'];
 						$totalServiceFee += $row['ba_ServiceFee'];

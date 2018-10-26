@@ -54,14 +54,14 @@ if($action == "login")
 	
 	$strsql = "select * from tms_sys_UsInfor where ui_UserID = '$userid' and ui_UserPassword = '$userpass'";
 	$result = $class_mysql_default ->my_query($strsql);
-	if(mysql_num_rows($result) < 1)
+	if(mysqli_num_rows($result) < 1)
 	{	    
 		funmessage("login2.php?action=login", $templang['namepasserror'], $backtime);
 		exit();
 	}
 	else
 	{   
-	    $rows = mysql_fetch_array($result);
+	    $rows = mysqli_fetch_array($result);
 		$userName = $rows['ui_UserName'];
 		$groupID = $rows['ui_UserGroupID'];
 		$groupName = $rows['ui_UserGroup'];
@@ -84,9 +84,9 @@ if($action == "login")
 		
 		$strsql = "select * from tms_sys_OnlineUser where ui_UserIP = '$localIP'";
 		$query = $class_mysql_default ->my_query($strsql);
-		$num = mysql_num_rows($query);				
-        if(mysql_num_rows($query)!=0){
-                $rows = mysql_fetch_array($query);
+		$num = mysqli_num_rows($query);				
+        if(mysqli_num_rows($query)!=0){
+                $rows = mysqli_fetch_array($query);
                 $oldID =  $rows['ui_UserID'];
                 echo "<script> alert('$userid.$oldID');</script>";
                 if($userid != $oldID)
@@ -112,9 +112,9 @@ if($action == "login")
 	    $uiState = "在线";	  
         $strsql = "select * from tms_sys_OnlineUser where ui_UserID = '$userid' and ui_UserState = '$uiState'";
         $query = $class_mysql_default ->my_query($strsql);
-        if(mysql_num_rows($query)==1)
+        if(mysqli_num_rows($query)==1)
         {      //用户已登录
-               $rows = mysql_fetch_array($query);
+               $rows = mysqli_fetch_array($query);
                $ip = $rows['ui_UserIP'];
                $groupid = $rows['ui_UserGroupID'];
                
@@ -134,7 +134,7 @@ if($action == "login")
                 $uiState = "下线";                
                 $strsql = "select * from tms_sys_OnlineUser where ui_UserID = '$userid' and ui_UserState = '$uiState'";
                 $query = $class_mysql_default ->my_query($strsql);
-                if(mysql_num_rows($query)==1)
+                if(mysqli_num_rows($query)==1)
                 {//数据库中有记录，但是下线状态
                         $uiState = "在线";
                         $loginTime = date("Y-m-d   H:i:s");

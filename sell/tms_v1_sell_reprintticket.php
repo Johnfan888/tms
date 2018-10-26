@@ -30,7 +30,7 @@ if(isset($_POST['ticketnum'])){
 	$strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 				AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '客票' ORDER BY tp_ProvideData ASC";
 	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	$rows = @mysql_fetch_array($resultselet);
+	$rows = @mysqli_fetch_array($resultselet);
 	if (empty($rows[0])) {
 		echo "<script>if (!confirm('没有可用的客票票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 		$curTicketID = "";
@@ -46,7 +46,7 @@ if(isset($_POST['ticketnum'])){
 	$strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 				AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '保险票' ORDER BY tp_ProvideData ASC";
 	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	$rows = @mysql_fetch_array($resultselet);
+	$rows = @mysqli_fetch_array($resultselet);
 	if (empty($rows[0])) {
 		echo "<script>if (!confirm('没有可用的保险票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 		$curSafeTicketID = "";
@@ -638,7 +638,7 @@ if(isset($_POST['ticketnum'])){
 						`st_SafetyTicketID`, `st_SafetyTicketNumber`, `st_SafetyTicketMoney`, `st_SafetyTicketPassengerID`, `st_TicketState`, `st_IsBalance`, 
 						`st_BalanceDateTime`, `st_AlterTicket` FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
 					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-					$rows = @mysql_fetch_array($resultselet);
+					$rows = @mysqli_fetch_array($resultselet);
 	?>
 			<tr>
 				<td nowrap="nowrap" align="center"><?php echo $rows['st_TicketID'];?></td>
@@ -687,7 +687,7 @@ if(isset($_POST['ticketnum'])){
 						`itt_HandlerCode`, `st_NoOfRunsID`, `st_NoOfRunsdate`, `st_BeginStationTime` FROM `tms_sell_InsureTicket` LEFT OUTER JOIN 
 						tms_sell_SellTicket ON st_TicketID=itt_TicketNo WHERE `itt_InsureTicketNo`='$safeticketID'";
 					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-					$rows1 = @mysql_fetch_array($resultselet);
+					$rows1 = @mysqli_fetch_array($resultselet);
 	?>
 	<tr>
 		<td nowrap="nowrap" align="center"><?php echo $rows1['itt_InsureTicketNo'];?></td>

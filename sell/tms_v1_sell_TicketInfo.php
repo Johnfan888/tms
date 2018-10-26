@@ -21,7 +21,7 @@ $ticketID = $_POST['ticketnum'];
 		`st_SafetyTicketID`, `st_SafetyTicketNumber`, `st_SafetyTicketMoney`, `st_SafetyTicketPassengerID`, `st_TicketState`, `st_IsBalance`, 
 		`st_BalanceDateTime`, `st_AlterTicket` FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketID'";
 $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-$rows = @mysql_fetch_array($resultselet); */
+$rows = @mysqli_fetch_array($resultselet); */
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +57,7 @@ $rows = @mysql_fetch_array($resultselet); */
 					`st_SafetyTicketID`, `st_SafetyTicketNumber`, `st_SafetyTicketMoney`, `st_SafetyTicketPassengerID`, `st_TicketState`, `st_IsBalance`, 
 					`st_BalanceDateTime`, `st_AlterTicket` FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
 				$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-				$rows = @mysql_fetch_array($resultselet);
+				$rows = @mysqli_fetch_array($resultselet);
 			}
 	?>
 	<tr>

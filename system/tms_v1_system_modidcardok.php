@@ -20,7 +20,7 @@ if(isset($CardID)){
 		//echo $select;
 		$sele= $class_mysql_default->my_query($select);
 		//echo $result;
-		if(!mysql_fetch_array($sele)|| $CardID!==$CardID1 ){
+		if(!mysqli_fetch_array($sele)|| $CardID!==$CardID1 ){
 			if($CardID1==""){
 			$update="update tms_bd_BusCard set 
 			bc_CardID='{$CardID}', 

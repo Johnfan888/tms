@@ -24,7 +24,7 @@ switch ($op)
 			$queryString="SELECT sset_SiteName FROM tms_bd_SiteSet WHERE sset_SiteType = '车站' and (sset_HelpCode LIKE '{$fromstation}%' OR 
 					sset_SiteName LIKE '{$fromstation}%') ";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array(
 					'from' => $row['sset_SiteName']);
 			}

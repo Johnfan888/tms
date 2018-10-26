@@ -26,7 +26,7 @@ if(isset($_POST['BalanceNo'])){
 		echo "<script>alert( '查询结算数据失败！');history.back();</script>";
 		exit();
 	}
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 	if($result['bht_UserIDTemp']!=$userID){
 		$update="UPDATE tms_acct_BalanceInHandTemp SET bht_UserIDTemp='{$userID}',bht_UserTemp='{$userName}' WHERE bht_BalanceNO='{$BalanceNo}'";
 		$queryupdate=$class_mysql_default->my_query("$update");
@@ -42,8 +42,8 @@ if(isset($_POST['BalanceNo'])){
 			exit();
 		}  
 	}
-/*	if(mysql_num_rows($query) == 1){
-	//	$result=mysql_fetch_array($query);
+/*	if(mysqli_num_rows($query) == 1){
+	//	$result=mysqli_fetch_array($query);
 		echo $select;
 		echo $result['bht_UserIDTemp'];
 		echo $BalanceNo;
@@ -266,7 +266,7 @@ if(isset($_POST['BalanceNo'])){
 		      					}
     							$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     							$sel =$class_mysql_default->my_query($select);
-								while($results=mysql_fetch_array($sel)){ 
+								while($results=mysqli_fetch_array($sel)){ 
 									if($BusUnit!=$results['bu_UnitName']){
     						?>
     					<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
@@ -381,12 +381,12 @@ if(isset($_POST['BalanceNo'])){
 						WHERE bht_Date>='{$CheckBeginDate}' AND  bht_Date<='{$CheckEndDate}' AND bht_BusUnit='{$BusUnit}' AND bht_State='正常' AND bht_StationID='{$userStationID}' ";
 				}
 					$query=$class_mysql_default->my_query("$select");
-					while($row=mysql_fetch_array($query)){
+					while($row=mysqli_fetch_array($query)){
 						$i=$i+1;
 					/*	$selectLuggageCons="SELECT IFNULL(SUM(lc_ConsignMoney),0) AS sumConsignMoney FROM tms_lug_LuggageCons WHERE lc_NoOfRunsID='{$row['bht_NoOfRunsID']}' AND 
 							lc_BusNumber='{$row['bht_BusNumber']}' AND lc_DeliveryDate='{$row['bht_NoOfRunsdate']}' GROUP BY lc_NoOfRunsID,lc_BusNumber,lc_DeliveryDate";
 						$queryLuggageCons=$class_mysql_default->my_query("$selectLuggageCons");
-						$rowLuggageCons=mysql_fetch_array($queryLuggageCons);
+						$rowLuggageCons=mysqli_fetch_array($queryLuggageCons);
 						if($rowLuggageCons['sumConsignMoney']=='') $rowLuggageCons['sumConsignMoney']=0;
 						$allConsignMoney=$allConsignMoney+$rowLuggageCons['sumConsignMoney'];  */
 						if($row['bht_ConsignMoney']=='') $row['bht_ConsignMoney']=0;

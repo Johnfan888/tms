@@ -47,14 +47,14 @@ if($action == "login")
 	$strsql = "select wur_UserRegisterName,wur_Password,wur_UserName,wur_CertificateType,wur_CertificateNumber from tms_bd_WebUserRegister 
 		where wur_UserRegisterName = '$UserRegisterName'";
 	$result = $class_mysql_default ->my_query($strsql);
-	if(mysql_num_rows($result) < 1)
+	if(mysqli_num_rows($result) < 1)
 	{
 		funmessage("tms_v1_websell_login.php?action=login", $templang['namepasserror'], $backtime);
 		exit();
 	}
 	else
 	{
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$UserRegisterName= $rows['wur_UserRegisterName'];
 		$Password=$rows['wur_Password'];
 		$UserName = $rows['wur_UserName'];

@@ -7,12 +7,12 @@
 	$clnumber=$_GET['clnumber'];
 	$select="SELECT * FROM tms_bd_CharteredBus WHERE cb_ChartereID='{$clnumber}'";
 	$query =$class_mysql_default->my_query($select);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 	$string=explode('-',$result['cb_FromReach']);
 	$selects="SELECT min(tp_ID),tp_CurrentTicket FROM tms_bd_TicketProvide WHERE tp_Type='包车单' AND tp_InceptUserID='{$userID}' 
 		AND tp_InceptTicketNum>0 AND  tp_UseState='当前' GROUP BY tp_Type"; //需要修改用户ID
 	$querys=$class_mysql_default->my_query($selects);
-	$results=mysql_fetch_array($querys);
+	$results=mysqli_fetch_array($querys);
 	if (empty($results[0])) echo "<script>if (!confirm('没有可用的包车单票据！是否继续？')) location.assign('tms_v1_basedata_searcharterebus.php');</script>";
 	
 ?>

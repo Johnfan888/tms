@@ -9,7 +9,7 @@
 	$noid=$_GET['noid'];
 	$sql = "select* FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$NoOfRunsID}'and nds_ID='{$noid}'";
 	$query = $class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 
 <script type="text/javascript" >

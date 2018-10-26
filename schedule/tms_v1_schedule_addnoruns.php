@@ -25,7 +25,7 @@ else if(isset($_GET['op'])) {
 	$selectmode="SELECT tml_BusModelID,tml_BusModel,tml_BusUnit,tml_LineID FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoOfRunsID}' AND 
 		tml_NoOfRunsdate='{$NoOfRunsdate}'";
 	$querymode=$class_mysql_default ->my_query($selectmode);
-	$rowmode=mysql_fetch_array($querymode);
+	$rowmode=mysqli_fetch_array($querymode);
 	$BusUnit=$rowmode['tml_BusUnit'];
 	$BusModel=$rowmode['tml_BusModel'];
 	$BusModelID=$rowmode['tml_BusModelID'];
@@ -379,7 +379,7 @@ else {
 					}
 					$selectbusunit="SELECT DISTINCT bi_BusUnit FROM tms_bd_BusInfo";
     				$querybusunit=$class_mysql_default->my_query($selectbusunit);
-    				while($rowbusunit=mysql_fetch_array($querybusunit)){
+    				while($rowbusunit=mysqli_fetch_array($querybusunit)){
 						if($BusUnit!=$rowbusunit['bi_BusUnit']){
 				?>
 					<option value="<?php echo $rowbusunit['bi_BusUnit'];?>"><?php echo $rowbusunit['bi_BusUnit'];?></option>
@@ -414,7 +414,7 @@ else {
 					$select1="SELECT DISTINCT nrap_ModelID,nrap_ModelName FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_Unit='{$BusUnit}' AND 
 						nrap_NoRunsAdjust='{$NoOfRunsID}' AND nrap_ModelID IN (SELECT DISTINCT bi_BusTypeID FROM tms_bd_BusInfo WHERE bi_BusUnit='{$BusUnit}')";
 					$query1=$class_mysql_default->my_query("$select1");
-					while($row1=mysql_fetch_array($query1)){
+					while($row1=mysqli_fetch_array($query1)){
 						if($BusModelID!=$row1['nrap_ModelID']){
 				?>
 						<option value="<?php echo $row1['nrap_ModelName'].','.$row1['nrap_ModelID'];?>"><?php echo $row1['nrap_ModelName'];?></option>
@@ -426,7 +426,7 @@ else {
 						nrap_ModelID NOT IN (SELECT DISTINCT nrap_ModelID FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_Unit='{$BusUnit}' AND 
 						nrap_NoRunsAdjust='{$NoOfRunsID}')";
 					$query2=$class_mysql_default->my_query("$select2");
-					while($row2=mysql_fetch_array($query2)){
+					while($row2=mysqli_fetch_array($query2)){
 						if($BusModelID!=$row2['nrap_ModelID']){
 				?>
 							<option value="<?php echo $row2['nrap_ModelName'].','.$row2['nrap_ModelID'];?>"><?php echo $row2['nrap_ModelName'];?></option>
@@ -496,7 +496,7 @@ else {
 				AND nrl_LoopID='1' LEFT OUTER JOIN tms_bd_NoRunsDockSite ON nri_NoOfRunsID=nds_NoOfRunsID AND nds_ID=1 
 				WHERE nri_NoOfRunsID LIKE '{$NoOfRunsID1}%' ORDER BY STR_TO_DATE(nri_LoopDate,'%Y-%m-%d') DESC";
 			$queryadd=$class_mysql_default ->my_query($selectadd);
-			while($rowadd=mysql_fetch_array($queryadd)){
+			while($rowadd=mysqli_fetch_array($queryadd)){
 				$selectmode1="SELECT tml_NoOfRunsID FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowadd['nri_NoOfRunsID']}' AND tml_NoOfRunsdate='{$Curdate}'";
 				$querymode1=$class_mysql_default ->my_query($selectmode1);
 	?>
@@ -512,7 +512,7 @@ else {
 		<td nowrap="nowrap"><?php echo $rowadd['nrl_Seating'];?></td>
 		<td nowrap="nowrap"><?php echo $rowadd['nrl_AllowHalfSeats'];?></td>
 		<td nowrap="nowrap"><?php echo ($rowadd['nds_otherFee3']*100).'%';?></td>
-		<td nowrap="nowrap"><?php if(mysql_num_rows($querymode1) == 0)echo '否'; else echo '是';?></td>
+		<td nowrap="nowrap"><?php if(mysqli_num_rows($querymode1) == 0)echo '否'; else echo '是';?></td>
 	</tr>
 	<?php
 			}

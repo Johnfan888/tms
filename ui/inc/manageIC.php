@@ -21,7 +21,7 @@ switch ($op)
 		$bc_CardID = $_REQUEST['busIC'];
 		$queryString = "SELECT bc_BusID,bc_BusNumber FROM tms_bd_BusCard WHERE bc_CardID LIKE '{$bc_CardID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$retData = array('bc_BusID' => $row['bc_BusID'], 'bc_BusNumber' => $row['bc_BusNumber']);
 		echo json_encode($retData);
 		break;
@@ -29,7 +29,7 @@ switch ($op)
 		$bc_CardID = $_REQUEST['cardid'];
 		$queryString = "SELECT bc_BusID FROM tms_bd_BusCard WHERE bc_CardID LIKE '{$bc_CardID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$retData = array('bc_BusID' => $row['bc_BusID']);
 		echo json_encode($retData);
 		break;
@@ -37,7 +37,7 @@ switch ($op)
 		$bc_CardID = $_REQUEST['cardid'];
 		$queryString = "SELECT bc_BusID FROM tms_bd_BusCard WHERE bc_CardID LIKE '{$bc_CardID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$retData = array('bc_BusID' => $row['bc_BusID']);
 		echo json_encode($retData);
 		break;

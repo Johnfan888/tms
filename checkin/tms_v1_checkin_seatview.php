@@ -12,12 +12,12 @@ $seat=$seatNo+1;
 $selectSellTicket="SELECT st_SellID,st_Station,st_FromStation FROM tms_sell_SellTicket WHERE st_NoOfRunsID='{$NoOfRunsID}' AND 
 	st_NoOfRunsdate='{$NoOfRunsdate}' AND st_SeatID='{$seat}'";
 $querySellTicket=$class_mysql_default ->my_query("$selectSellTicket");
-$rowSellTicket = @mysql_fetch_array($querySellTicket);
+$rowSellTicket = @mysqli_fetch_array($querySellTicket);
 if(!empty($NoOfRunsID)) {
 	$strsqlselet = "SELECT `tml_TotalSeats`, `tml_SeatStatus` FROM `tms_bd_TicketMode` WHERE 
 			`tml_NoOfRunsID` = '$NoOfRunsID' AND `tml_NoOfRunsdate`='$NoOfRunsdate'";
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if ($rows = @mysql_fetch_array($resultselet)){
+	if ($rows = @mysqli_fetch_array($resultselet)){
 		$seatNum = $rows['tml_TotalSeats'];
 		$seatStatus = substr($rows['tml_SeatStatus'], 0, 1);
 		$seatNo = 0;
@@ -56,7 +56,7 @@ p{margin:0;text-align: center;}
 						$ReserveTicket="SELECT wst_Station,wst_FromStation FROM tms_websell_WebSellTicket WHERE wst_NoOfRunsID='$NoOfRunsID' AND 
 							wst_NoOfRunsdate='$NoOfRunsdate'";
 						$queryReserveTicket=$class_mysql_default ->my_query("$ReserveTicket");
-						$rowReserveTicket = @mysql_fetch_array($queryReserveTicket);
+						$rowReserveTicket = @mysqli_fetch_array($queryReserveTicket);
 						
 ?>
 				<p style="font-size:15"><?echo $showSeatNo;?></p><p style="font-size:13"><?php echo $rowReserveTicket['wst_FromStation']; ?></p></li>
@@ -70,7 +70,7 @@ p{margin:0;text-align: center;}
 					$selectSellTicket="SELECT st_SellID,st_Station,st_FromStation FROM tms_sell_SellTicket WHERE st_NoOfRunsID='{$NoOfRunsID}' AND 
 						st_NoOfRunsdate='{$NoOfRunsdate}' AND st_SeatID='{$seat}'";
 					$querySellTicket=$class_mysql_default ->my_query("$selectSellTicket");
-					$rowSellTicket = @mysql_fetch_array($querySellTicket);
+					$rowSellTicket = @mysqli_fetch_array($querySellTicket);
 ?>
 				<p style="font-size:15"><? echo $showSeatNo ?></p><p style="font-size:13"><?php echo $rowSellTicket['st_FromStation'];?></p></li>
 
@@ -84,7 +84,7 @@ p{margin:0;text-align: center;}
 						$selectSellTicket="SELECT st_SellID,st_Station,st_FromStation FROM tms_sell_SellTicket WHERE st_NoOfRunsID='{$NoOfRunsID}' AND 
 							st_NoOfRunsdate='{$NoOfRunsdate}' AND st_SeatID='{$seat}'";
 						$querySellTicket=$class_mysql_default ->my_query("$selectSellTicket");
-						$rowSellTicket = @mysql_fetch_array($querySellTicket);
+						$rowSellTicket = @mysqli_fetch_array($querySellTicket);
 					?>
 					<p style="font-size:15"><?php echo $showSeatNo ?></p><p style="font-size:13"><?php echo $rowSellTicket['st_FromStation']?></p> </li>
 <?php

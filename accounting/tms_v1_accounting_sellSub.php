@@ -39,7 +39,7 @@ if (isset($_POST['subPay'])) {
 	
 	$queryString = "SELECT * FROM tms_acct_SellPay WHERE sp_SellUserID='{$sp_SellUserID}' AND sp_SellDate='{$sp_SellDate}'";
 	$result = $class_mysql_default->my_query("$queryString");
-	if(!mysql_fetch_array($result)){
+	if(!mysqli_fetch_array($result)){
 		$queryString1 = "INSERT INTO tms_acct_SellPay (sp_SellUserID, sp_SellUser, sp_SellDate, sp_BeginTicket, sp_EndTicket, sp_SellMoney, 
 				sp_SellCount, sp_ErrMoney, sp_ErrCount, sp_ReturnMoney, sp_ReturnCount, sp_ReturnRate, sp_SafetyMoney, sp_SafetyCount, 
 				sp_UpCount, sp_UpMoney, sp_Station, sp_UserID, sp_User, sp_Date, sp_PayMoney, sp_RemainMoney, sp_Remark, sp_Pc) VALUES ('{$sp_SellUserID}', 
@@ -94,7 +94,7 @@ else {
 	
 	$queryString = "SELECT SUM(sp_RemainMoney) FROM tms_acct_SellPay WHERE sp_SellUserID='{$sp_SellUserID}'";
 	$result = $class_mysql_default->my_query("$queryString"); 
-	$res=mysql_fetch_array($result);
+	$res=mysqli_fetch_array($result);
 	$sp_allRemainMoney = $res[0];
 }
 ?>

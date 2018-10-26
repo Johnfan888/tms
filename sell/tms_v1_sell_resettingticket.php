@@ -7,13 +7,13 @@ require_once("../ui/inc/init.inc.php");
 $strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum`,tp_EndTicket FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 	AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '客票' ORDER BY tp_ProvideData ASC";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
-$rowsticket = @mysql_fetch_array($resultselet);
+$rowsticket = @mysqli_fetch_array($resultselet);
 
 //取得保险票号
 $strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum`,tp_EndTicket FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 	AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '保险票' ORDER BY tp_ProvideData ASC";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
-$rowssafe = @mysql_fetch_array($resultselet);
+$rowssafe = @mysqli_fetch_array($resultselet);
 	if (empty($rowsticket[0])&&!empty($rowssafe[0])) {
 		echo "<script>if (!confirm('没有可用的客票票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 	}

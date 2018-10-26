@@ -4,12 +4,12 @@ $WebSellID=$_GET['WebSellID'];
 $TicketID=$_GET['TicketID'];
 $SafetyTicketNumber=$_GET['SafetyTicketNumber'];
 $selectweb="SELECT * FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
-$queryweb =$class_mysql_default->my_query($selectweb); 
-$rowweb=mysql_fetch_array($queryweb);
+$queryweb =$class_mysql_default$class_mysql_default->my_query($selectweb); 
+$rowweb=mysqli_fetch_array($queryweb);
 
 $selectmode="SELECT tml_SeatStatus FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowweb['wst_NoOfRunsID']}' AND tml_NoOfRunsdate='{$rowweb['wst_NoOfRunsdate']}'";
-$querymode =$class_mysql_default->my_query($selectmode);
-$rowmode=@mysql_fetch_array($querymode);
+$querymode =$class_mysql_default$class_mysql_default->my_query($selectmode);
+$rowmode=@mysqli_fetch_array($querymode);
 
 $i=0;
 $TicketI=$TicketID;
@@ -32,8 +32,8 @@ foreach (explode(",",$rowweb['wst_SeatID']) as $key =>$SeatID){
 			'全价票','{$rowweb['wst_FullPrice']}','{$rowweb['wst_HalfPrice']}','{$rowweb['wst_StandardPrice']}','{$rowweb['wst_BalancePrice']}','{$rowweb['wst_ServiceFee']}',
 			'{$rowweb['wst_otherFee1']}','{$rowweb['wst_otherFee2']}','{$rowweb['wst_otherFee3']}','{$rowweb['wst_otherFee4']}','{$rowweb['wst_otherFee5']}',
 			'{$rowweb['wst_otherFee6']}','{$userStationID}','{$userStationName}','{$rowweb['wst_BusModelID']}','{$rowweb['wst_BusModel']}',NULL,NULL,'{$userID}','{$userName}')";
-		$queryinsert=$class_mysql_default->my_query($insertselltemp);
-		if (!$queryinsert) echo "SQL错误：".mysql_error();
+		$queryinsert=$class_mysql_default$class_mysql_default->my_query($insertselltemp);
+		if (!$queryinsert) echo "SQL错误：".->my_error();
 		$queryinserts=$queryinserts && $queryinsert;
 	}else{
 		$insertselltemp="INSERT INTO tms_sell_SellTicketTemp (stt_TicketID,stt_SeatID,stt_NoOfRunsID,stt_LineID,stt_NoOfRunsdate,stt_BeginStationTime,
@@ -47,8 +47,8 @@ foreach (explode(",",$rowweb['wst_SeatID']) as $key =>$SeatID){
 			'半价票','{$rowweb['wst_FullPrice']}','{$rowweb['wst_HalfPrice']}','{$rowweb['wst_StandardPrice']}','{$rowweb['wst_BalancePrice']}','{$rowweb['wst_ServiceFee']}',
 			'{$rowweb['wst_otherFee1']}','{$rowweb['wst_otherFee2']}','{$rowweb['wst_otherFee3']}','{$rowweb['wst_otherFee4']}','{$rowweb['wst_otherFee5']}',
 			'{$rowweb['wst_otherFee6']}','{$userStationID}','{$userStationName}','{$rowweb['wst_BusModelID']}','{$rowweb['wst_BusModel']}',NULL,NULL,'{$userID}','{$userName}')";
-		$queryinsert=$class_mysql_default->my_query($insertselltemp);
-		if (!$queryinsert) echo "SQL错误：".mysql_error();
+		$queryinsert=$class_mysql_default$class_mysql_default->my_query($insertselltemp);
+		if (!$queryinsert) echo "SQL错误：".->my_error();
 		$queryinserts=$queryinserts && $queryinsert;
 	}
 	$TicketI=$TicketI+1;  
@@ -56,20 +56,20 @@ foreach (explode(",",$rowweb['wst_SeatID']) as $key =>$SeatID){
 
 
 $updatemode="UPDATE tms_bd_TicketMode SET tml_SeatStatus='{$rowmode['tml_SeatStatus']}' WHERE  tml_NoOfRunsID='{$rowweb['wst_NoOfRunsID']}' AND tml_NoOfRunsdate='{$rowweb['wst_NoOfRunsdate']}'";
-$querymode =$class_mysql_default->my_query($updatemode);
-if (!$querymode) echo "SQL错误：".mysql_error();
+$querymode =$class_mysql_default$class_mysql_default->my_query($updatemode);
+if (!$querymode) echo "SQL错误：".->my_error();
 $updateweb="UPDATE tms_websell_WebSellTicket SET wst_TicketState='1' WHERE wst_WebSellID='{$WebSellID}'";
-$queryweb =$class_mysql_default->my_query($updateweb);
-if (!$queryweb) echo "SQL错误：".mysql_error();
+$queryweb =$class_mysql_default$class_mysql_default->my_query($updateweb);
+if (!$queryweb) echo "SQL错误：".->my_error();
 if($queryinserts && $querymode && $queryweb){
-	mysql_query("COMMIT");
+	$class_mysql_default->my_query("COMMIT");
 	echo"<script>alert('取票成功!')</script>";
 }else{
-	mysql_query("ROLLBACK");
+	$class_mysql_default->my_query("ROLLBACK");
 	echo"<script>alert('取票失败')</script>";
 }
 
-mysql_query("END TRANSACTION"); 
+$class_mysql_default->my_query("END TRANSACTION"); 
 
 /*
 $insertsell="INSERT INTO tms_sell_SellTicket (st_TicketID,st_NoOfRunsID,st_LineID,st_NoOfRunsdate,st_BeginStationTime,st_StopStationTime,st_Distance,

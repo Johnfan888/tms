@@ -34,7 +34,7 @@ $sc_IsNoOfRunsID = 1;//$_POST['NoOfRunsID'];
 
 $queryString = "SELECT * FROM tms_sf_SafetyCheck WHERE sc_BusID='{$sc_BusID}' AND sc_CheckDate='{$sc_CheckDate}'";
 $result = $class_mysql_default->my_query("$queryString");
-if(!mysql_fetch_array($result)){
+if(!mysqli_fetch_array($result)){
 	$queryString1 = "INSERT INTO tms_sf_SafetyCheck (sc_UserID, sc_UserName, sc_Result, sc_BusID, sc_BusCard, sc_BusType, 
 		sc_StationID, sc_StationName, sc_InspectorName, sc_CheckDate, sc_CheckExpiredDate, sc_Item1, sc_Item2, sc_Item3, 
 		sc_Item4, sc_Item5, sc_Item6, sc_Item7, sc_Item8, sc_Item9, sc_Item10, sc_IsNoOfRunsID) VALUES ('{$sc_UserID}', 

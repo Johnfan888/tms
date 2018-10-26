@@ -105,7 +105,7 @@ else{
 					AND rtk_ReturnUserID LIKE '{$sellerID}' 
 					AND rtk_TicketID LIKE '{$rtk_TicketID}%'".$strDate;
 		$result1 = $class_mysql_default->my_query("$queryString1");
-		while ($row1 = mysql_fetch_array($result1)) {
+		while ($row1 = mysqli_fetch_array($result1)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -117,7 +117,7 @@ else{
 							at_AlterStation, at_AlterSellID, at_AlterSellName, at_Remark FROM tms_sell_AlterTicket 
 							WHERE at_TicketID like '{$row1['rtk_TicketID']}%'";
 			$result2 = $class_mysql_default->my_query("$queryString2");
-			$row2 = mysql_fetch_array($result2);						
+			$row2 = mysqli_fetch_array($result2);						
 			$outputRow = array($row1['rtk_TicketID'], $row1['rtk_ReturnPrice'], $row1['rtk_ReturnType'], $row1['rtk_ReturnRate'], 
 				$row1['rtk_SXPrice'], $row1['rtk_ReturnDate'], $row1['rtk_ReturnTime'], $row1['rtk_ReturnUserID'], 
 				$row1['rtk_ReturnUser'], $row1['rtk_Station'], $row1['rtk_NoOfRunsID'], $row1['rtk_NoOfRunsdate'], $row1['rtk_BeginStationTime'], 
@@ -204,7 +204,7 @@ else{
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -322,7 +322,7 @@ else{
 				}
 				}
 					$result1 = $class_mysql_default->my_query("$queryString1");
-					while ($row1 = mysql_fetch_array($result1)) {
+					while ($row1 = mysqli_fetch_array($result1)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['rtk_TicketID'];?></td>
@@ -354,7 +354,7 @@ else{
 							at_AlterStation, at_AlterSellID, at_AlterSellName, at_Remark FROM tms_sell_AlterTicket 
 							WHERE at_TicketID like '{$row1['rtk_TicketID']}%'";
 				$result2 = $class_mysql_default->my_query("$queryString2");
-				$row2 = mysql_fetch_array($result2);						
+				$row2 = mysqli_fetch_array($result2);						
 			?>	
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsID'];?></td>
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsdate'];?></td>

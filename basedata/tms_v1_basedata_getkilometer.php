@@ -22,11 +22,11 @@ switch ($op)
 				exit();
 			}
 			else{
-				$row=mysql_fetch_array($query);
+				$row=mysqli_fetch_array($query);
 				$kilometer1=$row['si_Kilometer'];
 				$sql1="select si_Kilometer from tms_bd_SectionInfo where si_SectionID='$SectionID1' and si_LineID='$LineID'";
 				$query1= $class_mysql_default->my_query($sql1);
-				$row1=mysql_fetch_array($query1);
+				$row1=mysqli_fetch_array($query1);
 				$maxkilometer=$row1['si_Kilometer'];
 			//	$retData = array('retVal' => 'FAIL', 'retString' => '查询里程数据失败！'.$Kilometer.','.$kilometer1.','.$maxkilometer.','.$sql);
 			//	echo json_encode($retData);
@@ -57,7 +57,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-		$rows=mysql_fetch_array($zxc);
+		$rows=mysqli_fetch_array($zxc);
 		$minkilometer=$rows['si_Kilometer'];
 		$sql2="select si_Kilometer from tms_bd_SectionInfo where si_SectionID='$nextID' and si_LineID='$Line'";
 		$query2= $class_mysql_default->my_query($sql2);
@@ -66,7 +66,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-		$row2=mysql_fetch_array($query2);
+		$row2=mysqli_fetch_array($query2);
 		$maxkilometer=$row2['si_Kilometer'];
 		if($Kilometer >= $maxkilometer || $Kilometer <= $minkilometer ){
 		   $retData = array('retVal' => 'FAIL', 'retString' => '所填里程数据有误，所填数据须介于'.$minkilometer.'公里与'.$maxkilometer.'公里之间');

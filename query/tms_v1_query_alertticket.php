@@ -79,7 +79,7 @@ $ticketID=$_POST['ticketID'];
 					WHERE 
 					at_TicketID like '$ticketID%'".$strDate;
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -88,7 +88,7 @@ $ticketID=$_POST['ticketID'];
 			}
 			$queryString1 = "SELECT st_NoOfRunsID,st_NoOfRunsdate,st_BeginStationTime,st_SeatID FROM tms_sell_SellTicket WHERE st_TicketID = '{$row['at_TicketID']}'";
 				$result1 = $class_mysql_default->my_query("$queryString1");
-				$row1 = mysql_fetch_array($result1);
+				$row1 = mysqli_fetch_array($result1);
 			//	if($ticketID==""){
 			$row['at_TicketID']=$row['at_TicketID']."\t";
 			$outputRow = array($row['at_TicketID'], $row['at_NoOfRunsID'], $row['at_NoOfRunsdate'], $row['at_BeginStationTime'],
@@ -190,7 +190,7 @@ $ticketID=$_POST['ticketID'];
 					//echo $strDate;
 					//echo $queryString;
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row1 = mysql_fetch_array($result)) {
+					while ($row1 = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['at_TicketID'];?></td>
@@ -212,7 +212,7 @@ $ticketID=$_POST['ticketID'];
 				<?php 
 				$queryString1 = "SELECT st_NoOfRunsID,st_NoOfRunsdate,st_BeginStationTime,st_SeatID FROM tms_sell_SellTicket WHERE st_TicketID = '{$row1['at_TicketID']}'";
 				$result1 = $class_mysql_default->my_query("$queryString1");
-				$row = mysql_fetch_array($result1);
+				$row = mysqli_fetch_array($result1);
 				?>
 				<td nowrap="nowrap"><?php echo $row['st_NoOfRunsID'];?></td>
 				<td nowrap="nowrap"><?php echo $row['st_NoOfRunsdate'];?></td>

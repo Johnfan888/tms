@@ -30,7 +30,7 @@ else{
 				   WHERE tml_NoOfRunsID = '$NoOfRunsI' AND tml_NoOfRunsdate = '$NoOfRunsdat'";
 }
 	$queryticketmode = $class_mysql_default->my_query($selectticketmode);
-	$rowticketmode = mysql_fetch_array($queryticketmode);
+	$rowticketmode = mysqli_fetch_array($queryticketmode);
 //echo $rowticketmode['tml_TotalSeats']; 原总座位数
 //echo $rowticketmode['tml_HalfSeats']; 原半票座位数
 
@@ -517,8 +517,8 @@ else{
 						   LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID = rt_NoOfRunsID AND tml_NoOfRunsdate = rt_NoOfRunsdate
 						   WHERE rt_NoOfRunsID='{$NoOfRunsID}' AND rt_NoOfRunsdate='{$NoOfRunsdate}' AND rt_AttemperStationID='{$userStationID}'";
 			$queryreport=$class_mysql_default ->my_query($selectreport);
-			if(!$queryreport) echo mysql_error();
-			while($rows=mysql_fetch_array($queryreport)){
+			if(!$queryreport) echo ->my_error();
+			while($rows=mysqli_fetch_array($queryreport)){
 			if($rows['bht_BalanceNO']!='' || $rows['bh_BalanceNO']!=''){
 			$allbalancenum=$allbalancenum+1;
 			}

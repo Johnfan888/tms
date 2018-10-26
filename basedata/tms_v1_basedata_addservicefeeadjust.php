@@ -276,8 +276,8 @@ function append(){
 			<?php 
       			$sqlss = "SELECT DISTINCT sfa_Unit FROM tms_bd_ServiceFeeAdjust WHERE sfa_ISUnitAdjust='1' AND sfa_LineAdjust='{$clnumber2}' AND (sfa_NoRunsAdjust is NULL)";
 				$queryss = $class_mysql_default->my_query($sqlss);
-				//$result=mysql_fetch_array($query);
-				while($resultss=mysql_fetch_array($queryss)){
+				//$result=mysqli_fetch_array($query);
+				while($resultss=mysqli_fetch_array($queryss)){
 			?>	
 				<option value="<?php echo $resultss['sfa_Unit']?>"><?php echo $resultss['sfa_Unit']?></option>
 			<?php 
@@ -295,8 +295,8 @@ function append(){
       			<?php 
 					$sql = "SELECT DISTINCT sfa_ModelID,sfa_ModelName FROM tms_bd_ServiceFeeAdjust WHERE sfa_ISUnitAdjust='1' AND sfa_LineAdjust='{$clnumber2}' AND (!sfa_NoRunsAdjust)";
 					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 				?>	
 				<option value="<?php echo $result['sfa_ModelName'].','.$result['sfa_ModelID'];?>"><?php echo $result['sfa_ModelName'];?></option>
 				<?php 
@@ -327,8 +327,8 @@ function append(){
 	      			<?php 
 	      				$sqls = "SELECT nds_SiteName,nds_SiteID,nds_ID FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber1}' and nds_GetOnSite='1'";
 						$querys = $class_mysql_default->my_query($sqls);
-						//$result=mysql_fetch_array($query);
-						while($results=mysql_fetch_array($querys)){
+						//$result=mysqli_fetch_array($query);
+						while($results=mysqli_fetch_array($querys)){
 					?>	
 					<option value="<?php echo $results['nds_SiteName'].','.$results['nds_SiteID'].','.$results['nds_ID'];?>"><?php echo $results['nds_SiteName'];?></option>
 					<?php 
@@ -354,8 +354,8 @@ function append(){
 	      			<?php 
 	      				$sqlss = "SELECT nds_SiteName,nds_SiteID,nds_ID FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$clnumber1}' and nds_IsDock='1'";
 						$queryss =$class_mysql_default->my_query($sqlss);
-						//$result=mysql_fetch_array($query);
-						while($resultss=mysql_fetch_array($queryss)){
+						//$result=mysqli_fetch_array($query);
+						while($resultss=mysqli_fetch_array($queryss)){
 					?>	
 					<option value="<?php echo $resultss['nds_SiteName'].','.$resultss['nds_SiteID'].','.$resultss['nds_ID'];?>"><?php echo $resultss['nds_SiteName'];?></option>
 					<?php 

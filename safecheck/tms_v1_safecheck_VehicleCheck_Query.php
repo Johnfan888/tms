@@ -26,7 +26,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
     $CheckItem0="";
 	$selected0="SELECT ci_CheckItem FROM tms_sf_CheckItem GROUP BY ci_CheckItem";
 	$queryed0=$class_mysql_default->my_query($selected0);
-	while($rowed0=mysql_fetch_array($queryed0)){
+	while($rowed0=mysqli_fetch_array($queryed0)){
 		if($CheckItem0!=$rowed0['ci_CheckItem']){
 				$checkitem[]=$rowed0['ci_CheckItem'];
 		}
@@ -58,7 +58,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 			AND sc_BusCard IN (SELECT bi_BusNumber FROM tms_bd_BusInfo WHERE bi_BusUnit LIKE '{$BusUnit}%' AND bi_ManagementLine LIKE '{$LineName}%')
 			ORDER BY sc_CheckDate ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -170,7 +170,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -208,7 +208,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 							}
 							$selectbusunit="SELECT bu_UnitName FROM tms_bd_BusUnit";
 							$resultbusunit = $class_mysql_default->my_query("$selectbusunit");
-							while($rowbusunit = mysql_fetch_array($resultbusunit)) { 
+							while($rowbusunit = mysqli_fetch_array($resultbusunit)) { 
 								if($rowbusunit['bu_UnitName'] != $BusUnit) {
 						?>
 								<option value="<?php echo $rowbusunit['bu_UnitName'];?>"><?php echo $rowbusunit['bu_UnitName'];?></option>
@@ -295,7 +295,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
     				$CheckItem="";
 					$selected="SELECT ci_CheckItem FROM tms_sf_CheckItem GROUP BY ci_CheckItem";
 					$queryed=$class_mysql_default->my_query($selected);
-					while($rowed=mysql_fetch_array($queryed)){
+					while($rowed=mysqli_fetch_array($queryed)){
 						if($CheckItem!=$rowed['ci_CheckItem']){
 				?>
    				 <th nowrap="nowrap" align="center" bgcolor="#006699"><?php echo $rowed['ci_CheckItem'];?></th>
@@ -325,7 +325,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND sc_BusCard IN (SELECT bi_BusNumber FROM tms_bd_BusInfo WHERE bi_BusUnit LIKE '{$BusUnit}%' AND bi_ManagementLine LIKE '{$LineName}%')
 						ORDER BY sc_CheckDate ASC";
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['sc_CheckDate'];?></td>

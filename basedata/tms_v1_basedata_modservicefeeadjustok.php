@@ -30,11 +30,11 @@
 			AND sfa_DepartureSiteID='{$DepartureSiteID}' AND sfa_GetToSiteID='{$GetToSiteID}' AND sfa_ModelID='{$ModelID}' AND sfa_ID!='{$ID}'";
 		$query=$class_mysql_default->my_query($select);
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败！'.mysql_error(), 'sql' => $selects);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败！'.->my_error(), 'sql' => $selects);
 			echo json_encode($retData);
 			exit();
 		}
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 			if($BeginDate==$row['sfa_BeginDate'] && $EndDate==$row['sfa_EndDate']){
 				$retData = array('retVal' => 'FAIL1', 'retString' => '该记录已存在！', 'sql' => $selects);
 				echo json_encode($retData);
@@ -83,14 +83,14 @@
 		sfa_DepartureSiteID='{$DepartureSiteID}' and sfa_GetToSiteID='{$GetToSiteID}' and sfa_ModelID='{$ModelID}' and sfa_BeginDate='{$BeginDate}' 
 		and sfa_EndDate='{$EndDate}' and sfa_ID!='{$ID}'";
 	$seles=$class_mysql_default->my_query($selects);
-	$result=mysql_fetch_array($seles);
+	$result=mysqli_fetch_array($seles);
 	if(!$result || $result['sfa_ID']==$ID){
 		$update="UPDATE tms_bd_ServiceFeeAdjust SET sfa_ISUnitAdjust='{$ISUnitAdjust}',sfa_Unit='{$Unit}',sfa_ISLineAdjust='{$ISLineAdjust}',sfa_LineAdjust='{$LineAdjust}',sfa_ISNoRunsAdjust='{$ISNoRunsAdjust}',
 			sfa_NoRunsAdjust='{$NoRunsAdjust}',sfa_DepartureSiteID='{$DepartureSiteID}',sfa_DepartureSite='{$DepartureSite}',sfa_GetToSiteID='{$GetToSiteID}',
 			sfa_GetToSite='{$GetToSite}',sfa_ModelID='{$ModelID}',sfa_ModelName='{$ModelName}',sfa_BeginDate='{$BeginDate}',sfa_EndDate='{$EndDate}',
 			sfa_BeginTime='{$BeginTime}',sfa_EndTime='{$EndTime}',sfa_RunPrice='{$RunPrice}',sfa_Remark='{$Remark}' WHERE sfa_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($update); 
-		//if (!$query) echo "SQL错误：".mysql_error();
+		//if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searservicefeeadjust.php?clnumber=$NoRunsAdjust'</script>";
 		}else{

@@ -189,7 +189,7 @@ $(document).ready(function(){
     			<?php 
     				$select="SELECT ao_OrgName FROM tms_bd_AdOrg";
     				$query =$class_mysql_default->my_query($select);
-					while ($row=mysql_fetch_array($query)){
+					while ($row=mysqli_fetch_array($query)){
     			?>
       				<option value="<?php echo $row['ao_OrgName'];?>"><?php echo $row['ao_OrgName'];?></option>
       			<?php 

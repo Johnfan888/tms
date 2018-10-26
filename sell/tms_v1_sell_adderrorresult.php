@@ -52,8 +52,8 @@ require_once("../ui/inc/init.inc.php");
 			$Name=$_REQUEST['Name'];
 			$mncode=$_REQUEST['mncode'];
 			$query="SELECT * FROM tms_ticket_ErrDelResult WHERE er_Desp='$Name'";
-			$result=mysql_query($query);
-			$rows=mysql_fetch_array($result);
+			$result=$class_mysql_default->my_query($query);
+			$rows=mysqli_fetch_array($result);
 			if($rows['er_Desp'] != null){
 				echo "<script>";
     			echo "alert('已经存在此原因！！')";
@@ -61,7 +61,7 @@ require_once("../ui/inc/init.inc.php");
 			}
 			else{
 			$str="INSERT INTO tms_ticket_ErrDelResult(er_Desp,er_mncode) values('$Name','$mncode')";
-			$result=mysql_query($str);
+			$result=$class_mysql_default->my_query($str);
 				if($result){
     			 	echo "<script>";
     			 	echo "alert('操作成功')";

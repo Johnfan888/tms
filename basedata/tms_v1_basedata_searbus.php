@@ -20,7 +20,7 @@
 		$sql1="SELECT COUNT(bi_BusID) AS number FROM tms_bd_BusInfo where IFNULL(bi_InStation, '') like '{$Station}%' and bi_BusID like '{$BusID}%' and IFNULL(bi_BusNumber, '') like '%{$BusNumber}%'
 			and IFNULL(bi_BusTypeID, '') like '{$BusTypeID}%' and IFNULL(bi_ManagementLine, '') like'{$ManagementLine}%'";
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	  if($RegionCode2 == 'excel'){
 		  $file_name = "searbus.csv";
@@ -49,7 +49,7 @@
 			   			 bi_Adder,bi_AddTime,bi_ModerID,bi_Moder,bi_ModTime,bi_Remark FROM tms_bd_BusInfo where IFNULL(bi_InStation, '') like '{$Station}%' and bi_BusID like '{$BusID}%' and IFNULL(bi_BusNumber, '') like '%{$BusNumber}%'
 			   			 and IFNULL(bi_BusTypeID, '') like '{$BusTypeID}%' and IFNULL(bi_ManagementLine, '') like'{$ManagementLine}%'";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -59,7 +59,7 @@
 			$row['bi_BusTypeID']=$row['bi_BusTypeID']."\t";
 			$queryString2 = "select bc_CardID from tms_bd_BusCard where bc_BusID='{$row['bi_BusID']}'";
 			$result2 = $class_mysql_default->my_query("$queryString2");
-			$row2 = mysql_fetch_array($result2);
+			$row2 = mysqli_fetch_array($result2);
 			$outputRow = array($row['bi_BusID'], $row['bi_RegDate'], $row['bi_BusNumber'], $row['bi_BusTypeID'], $row['bi_BusType'], 
         					   $row['bi_SeatS'], $row['bi_AddSeatS'], $row['bi_AllowHalfSeats'], $row['bi_Tonnage'], $row['bi_BusUnit'], $row['bi_Sign'],$row2['bc_CardID'],
         					   $row['bi_EngineType'], $row['bi_EngineNumber'], $row['bi_BusIdentify'], $row['bi_BusChangeType'], $row['bi_InStation'], 
@@ -299,8 +299,8 @@ function delbus(){
 		$sql="SELECT * FROM tms_bd_BusInfo where  IFNULL(bi_InStation, '') like '{$Station}%' and bi_BusID like '{$BusID}%' and IFNULL(bi_BusNumber, '') like '%{$BusNumber}%'
 			and IFNULL(bi_BusTypeID, '') like '{$BusTypeID}%' and IFNULL(bi_ManagementLine, '') like'{$ManagementLine}%'";
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".mysql_error();
-		while ($row = mysql_fetch_array($query)){
+		//if (!$query) echo "SQL错误：".->my_error();
+		while ($row = mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'BusID1')">
         <td nowrap="nowrap" align="center"><?php echo $row['bi_BusID'];?></td>
@@ -317,7 +317,7 @@ function delbus(){
         <?php 
         	$sql2="select bc_CardID from tms_bd_BusCard where bc_BusID='{$row['bi_BusID']}'";
         	$query2 =$class_mysql_default->my_query($sql2);
-        	$row2 = mysql_fetch_array($query2);	
+        	$row2 = mysqli_fetch_array($query2);	
         ?>
          <td nowrap="nowrap" align="center"><?php echo $row2['bc_CardID'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['bi_EngineType'];?></td>

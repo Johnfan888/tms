@@ -8,10 +8,10 @@ require_once("../ui/inc/init.inc.php");
 $NoOfRunsID=$_GET['NoOfRunsID'];
 $select="SELECT COUNT(nrl_LoopID) FROM tms_bd_NoRunsLoop WHERE nrl_NoOfRunsID='{$NoOfRunsID}' GROUP BY nrl_NoOfRunsID";
 $querys =$class_mysql_default->my_query($select);
-$results=mysql_fetch_array($querys);
+$results=mysqli_fetch_array($querys);
 $select1="SELECT nri_LineID FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$NoOfRunsID}'";
 $querys1 =$class_mysql_default->my_query($select1);
-$results1=mysql_fetch_array($querys1);
+$results1=mysqli_fetch_array($querys1);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -188,12 +188,12 @@ function append(){
     	/*			$selectunit="SELECT DISTINCT nrap_Unit FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_LineAdjust='{$results1['nri_LineID']}' 
     					AND (!nrap_NoRunsAdjust)";
     				$selunit =$class_mysql_default->my_query($selectunit);
-    				if(!$selunit) echo mysql_error();
-					while($resultunit=mysql_fetch_array($selunit)){
+    				if(!$selunit) echo ->my_error();
+					while($resultunit=mysqli_fetch_array($selunit)){
 						if($resultunit['nrap_Unit']) { */
     				$selectbusunit="SELECT DISTINCT bi_BusUnit FROM tms_bd_BusInfo";
     				$querybusunit=$class_mysql_default->my_query($selectbusunit);
-    				while($rowbusunit=mysql_fetch_array($querybusunit)){
+    				while($rowbusunit=mysqli_fetch_array($querybusunit)){
     			?>
     			<option value="<?php echo $rowbusunit['bi_BusUnit'];?>"><?php echo  $rowbusunit['bi_BusUnit'];?></option>
     			<?php

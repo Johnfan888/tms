@@ -42,7 +42,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$BusModelID = $rows[0];
 		$BusModel = $rows[1];
 		$BeginstationID = $rows[2];
@@ -61,7 +61,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$BeginStationTime = $rows[0];
 		$StopStationTime = $rows[1];
 		$Distance = $rows[2];
@@ -95,7 +95,7 @@ switch ($op)
 		}
 		
 	  	//插入售票表
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$checkTicketWindow = $rows['tml_CheckTicketWindow'];
 		$isAllTicket = $rows['tml_Allticket'];
 		$seatStatus = $rows['tml_SeatStatus'];
@@ -230,7 +230,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$BusModelID = $rows[0];
 		$BusModel = $rows[1];
 		$BeginstationID = $rows[2];
@@ -249,7 +249,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			$rowsSafety = mysql_fetch_array($resultSafety);
+			$rowsSafety = mysqli_fetch_array($resultSafety);
 		}
 								
 		$queryString = "SELECT pd_BeginStationTime,pd_StopStationTime,pd_Distance,pd_FromStationID,pd_ReachStationID,pd_FullPrice,
@@ -262,7 +262,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$BeginStationTime = $rows[0];
 		$StopStationTime = $rows[1];
 		$Distance = $rows[2];
@@ -296,7 +296,7 @@ switch ($op)
 		}
 		
 	  	//插入售票表
-		$rows = mysql_fetch_array($result);
+		$rows = mysqli_fetch_array($result);
 		$checkTicketWindow = $rows['tml_CheckTicketWindow'];
 		$isAllTicket = $rows['tml_Allticket'];
 		$seatStatus = $rows['tml_SeatStatus'];
@@ -552,7 +552,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$rowsSafety = @mysql_fetch_array($resultSafety);
+		$rowsSafety = @mysqli_fetch_array($resultSafety);
 		$class_mysql_default->my_query("BEGIN");
 		foreach (explode("\n",$st_TicketID) as $key =>$ticketIDs){
 			if($ticketIDs!=''){
@@ -572,7 +572,7 @@ switch ($op)
 					echo json_encode($retData);
 					exit();
 				}
-				$rows = @mysql_fetch_array($queryselect);
+				$rows = @mysqli_fetch_array($queryselect);
 				$SyncCode=$rowsSafety['it_ComCode'].$rowsSafety['it_Perfix'].$safetyTicketID;
 				$insertInsureTicket="INSERT tms_sell_InsureTicket (itt_SyncCode, itt_InsureTicketNo, itt_TicketNo, itt_CreatedType, itt_Status, itt_IdCard,
 						itt_Name, itt_Beneficiary, itt_TbInsureProductID, itt_InsureProductName, itt_Price, itt_AinsuranceValue, itt_BinsuranceValue, itt_CinsuranceValue,
@@ -590,7 +590,7 @@ switch ($op)
 				$queryInsureTicket=$class_mysql_default->my_query("$insertInsureTicket");
 				if(!$queryInsureTicket) {
 					$class_mysql_default->my_query("ROLLBACK");
-					$retData = array('retVal' => 'FAIL', 'retString' => '插入保险票表失败！'.mysql_error(), 'sql' => $queryString);
+					$retData = array('retVal' => 'FAIL', 'retString' => '插入保险票表失败！'.->my_error(), 'sql' => $queryString);
 					echo json_encode($retData);
 					exit();
 				}
@@ -663,7 +663,7 @@ switch ($op)
 						echo json_encode($retData);
 						exit();
 					}
-					$rows = @mysql_fetch_array($queryselect);
+					$rows = @mysqli_fetch_array($queryselect);
 					$printData[] = array('TicketID' => $ticketIDs, 'FromStation' => $rows['st_FromStation'], 'ReachStation' => $rows['st_ReachStation'], 
 							'SellPrice' => $rows['st_SellPrice'], 'SeatID' => ($rows['st_SeatID'] + 1), 'NoOfRunsID' => $rows['st_NoOfRunsID'], 'BeginStationTime' => $rows['st_BeginStationTime'], 
 							'NoOfRunsdate' => $rows['st_NoOfRunsdate'], 'safetyTicketID' =>'', 'SafetyTicketMoney' => '0', 
@@ -687,7 +687,7 @@ switch ($op)
 						echo json_encode($retData);
 						exit();
 					}
-					$rows = @mysql_fetch_array($queryselect);
+					$rows = @mysqli_fetch_array($queryselect);
 					$insertSellTicket="INSERT `tms_sell_SellTicket` (`st_TicketID`, `st_NoOfRunsID`, `st_LineID`, `st_NoOfRunsdate`, 
 						`st_BeginStationTime`, `st_StopStationTime`, `st_Distance`, `st_BeginStationID`, `st_BeginStation`, `st_FromStationID`, 
 						`st_FromStation`, `st_ReachStationID`, `st_ReachStation`, `st_EndStationID`, `st_EndStation`, `st_SellPrice`, `st_SellPriceType`, 
@@ -766,7 +766,7 @@ switch ($op)
 						echo json_encode($retData);
 						exit();
 					}
-					$rows = @mysql_fetch_array($queryInsure);
+					$rows = @mysqli_fetch_array($queryInsure);
 					$printData[] = array('TicketID' => '', 'FromStation' => '', 'ReachStation' => '', 
 							'SellPrice' => '0', 'SeatID' => '', 'NoOfRunsID' =>$rows['st_NoOfRunsID'], 'BeginStationTime' =>$rows['st_BeginStationTime'], 
 							'NoOfRunsdate' => $rows['st_NoOfRunsdate'], 'safetyTicketID' => $safeticketIDs, 'SafetyTicketMoney' => $rows['itt_Price'], 
@@ -791,7 +791,7 @@ switch ($op)
 						echo json_encode($retData);
 						exit();
 					}
-					$rows = @mysql_fetch_array($queryInsure);
+					$rows = @mysqli_fetch_array($queryInsure);
 					$SyncCode=substr($rows['itt_SyncCode'],0,strlen($rows['itt_SyncCode'])-strlen($rows['itt_InsureTicketNo'])).$curSafetyTicketID;
 					$insertInsureTicket="INSERT tms_sell_InsureTicket (itt_SyncCode, itt_InsureTicketNo, itt_TicketNo, itt_CreatedType, itt_Status, itt_IdCard,
 							itt_Name, itt_Beneficiary, itt_TbInsureProductID, itt_InsureProductName, itt_Price, itt_AinsuranceValue, itt_BinsuranceValue, itt_CinsuranceValue,
@@ -877,7 +877,7 @@ switch ($op)
 	  				AND (tml_NoOfRunsdate = '$norunsdate') FOR UPDATE";
 	  	$class_mysql_default->my_query("BEGIN");
 	  	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	  	$rows = @mysql_fetch_array($resultselet);
+	  	$rows = @mysqli_fetch_array($resultselet);
 	  	foreach(explode(",", trim($seatnos)) as $seatno) {
 	  		$rows[0] = substr_replace($rows[0], '0', $seatno, 1);
 	  	} 
@@ -902,27 +902,27 @@ switch ($op)
 		$st_TicketID = $_REQUEST['st_TicketID'];
 		$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
+		if(mysqli_num_rows($result) == 1) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票已签！');
 			echo json_encode($retData);
 			exit();
 		}
 		$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
+		if(mysqli_num_rows($result) == 1) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票已检！');
 			echo json_encode($retData);
 			exit();
 		}
 		$queryString = "SELECT st_TicketID,st_SellPrice FROM tms_sell_SellTicket WHERE st_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票未售出！');
 			echo json_encode($retData);
 			exit();
 		}
 		else {
-			$row = mysql_fetch_array($result);
+			$row = mysqli_fetch_array($result);
 			$retData = array('retVal' => 'SUCC', 'st_TicketID' => $row['st_TicketID'], 'st_SellPrice' => $row['st_SellPrice']);
 			echo json_encode($retData);
 			exit();
@@ -944,7 +944,7 @@ switch ($op)
 		foreach (explode("\n",$ticketnum) as $key =>$ticketIDs){
 			$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(mysql_num_rows($result) == 1) {
+			if(mysqli_num_rows($result) == 1) {
 				if($signed==''){
 					$signed=$signed.$ticketIDs;
 				}else{
@@ -953,7 +953,7 @@ switch ($op)
 			}else{
 				$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 				$result = $class_mysql_default->my_query("$queryString");
-				if(mysql_num_rows($result) == 1) {
+				if(mysqli_num_rows($result) == 1) {
 					if($checked==''){
 						$checked=$checked.$ticketIDs;
 					}else{
@@ -962,7 +962,7 @@ switch ($op)
 				}else{
 					$queryString="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1){
+					if(mysqli_num_rows($result) == 1){
 						if($errored==''){
 							$errored=$errored.$ticketIDs;
 						}else{
@@ -971,14 +971,14 @@ switch ($op)
 					}else{
 						$queryString = "SELECT st_TicketID,st_SellPrice FROM tms_sell_SellTicket WHERE st_TicketID = '{$ticketIDs}'";
 						$result = $class_mysql_default->my_query("$queryString");
-						if(mysql_num_rows($result) == 0){
+						if(mysqli_num_rows($result) == 0){
 							if($unsell==''){
 								$unsell=$unsell.$ticketIDs;
 							}else{
 								$unsell=$unsell.",".$ticketIDs;
 							}
 						}else{
-							$row = mysql_fetch_array($result);
+							$row = mysqli_fetch_array($result);
 							if($selled==''){
 								$i=$i+1;
 								$selled=$selled.$ticketIDs;
@@ -1001,27 +1001,27 @@ switch ($op)
 		exit();
 /*		$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
+		if(mysqli_num_rows($result) == 1) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票已签！');
 			echo json_encode($retData);
 			exit();
 		}
 		$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 1) {
+		if(mysqli_num_rows($result) == 1) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票已检！');
 			echo json_encode($retData);
 			exit();
 		}
 		$queryString = "SELECT st_TicketID,st_SellPrice FROM tms_sell_SellTicket WHERE st_TicketID = '{$st_TicketID}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '此票未售出！');
 			echo json_encode($retData);
 			exit();
 		}
 		else {
-			$row = mysql_fetch_array($result);
+			$row = mysqli_fetch_array($result);
 			$retData = array('retVal' => 'SUCC', 'st_TicketID' => $row['st_TicketID'], 'st_SellPrice' => $row['st_SellPrice']);
 			echo json_encode($retData);
 			exit();
@@ -1032,7 +1032,7 @@ switch ($op)
 			$queryString="SELECT sset_SiteName FROM tms_bd_SiteSet WHERE sset_HelpCode LIKE '{$fromstation}%' OR 
 					sset_SiteName LIKE '{$fromstation}%'";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array(
 					'from' => $row['sset_SiteName']);
 			}
@@ -1060,7 +1060,7 @@ switch ($op)
 			/*	$queryTicketProvide="SELECT tp_ID FROM tms_bd_TicketProvide WHERE tp_BeginTicket+0<='{$ticketIDs}'+0 AND tp_CurrentTicket+0>'{$ticketIDs}'+0 AND tp_Type='客票'
 					AND tp_UserSation='$userStationName'";
 				$resultTicketProvide = $class_mysql_default->my_query("$queryTicketProvide");
-				if(mysql_num_rows($resultTicketProvide) == 0){
+				if(mysqli_num_rows($resultTicketProvide) == 0){
 					if($unexist==''){
 						$unexist=$unexist.$ticketIDs;
 					}else{
@@ -1068,7 +1068,7 @@ switch ($op)
 					} */
 			$queryString = "SELECT st_TicketID,st_SellPrice FROM tms_sell_SellTicket WHERE st_TicketID = '{$ticketIDs}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(mysql_num_rows($result) == 0){
+			if(mysqli_num_rows($result) == 0){
 				if($unsell==''){
 					$unexist=$unexist.$ticketIDs;
 				}else{
@@ -1077,7 +1077,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1) {
+					if(mysqli_num_rows($result) == 1) {
 						if($signed==''){
 							$signed=$signed.$ticketIDs;
 						}else{
@@ -1086,7 +1086,7 @@ switch ($op)
 					}else{
 						$queryString="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 						$result = $class_mysql_default->my_query("$queryString");
-						if(mysql_num_rows($result) == 1){
+						if(mysqli_num_rows($result) == 1){
 							if($errored==''){
 								$errored=$errored.$ticketIDs;
 							}else{
@@ -1095,7 +1095,7 @@ switch ($op)
 						}else{
 							$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 							$result = $class_mysql_default->my_query("$queryString");
-							if(mysql_num_rows($result) == 1) {
+							if(mysqli_num_rows($result) == 1) {
 								if($checked==''){
 									$checked=$checked.$ticketIDs;
 								}else{
@@ -1117,7 +1117,7 @@ switch ($op)
 			foreach (explode("\n",$safeticketnum) as $key =>$safeticketIDs){
 				$queryString="SELECT eitt_InsureTicketNo FROM tms_sell_ErrInsureTicket WHERE eitt_InsureTicketNo='{$safeticketIDs}'";
 				$result = $class_mysql_default->my_query("$queryString");
-				if(mysql_num_rows($result) == 1){
+				if(mysqli_num_rows($result) == 1){
 					if($erroredsafe == ''){
 							$erroredsafe=$erroredsafe.$safeticketIDs;
 						}else{
@@ -1126,7 +1126,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT itt_InsureTicketNo,itt_Status FROM tms_sell_InsureTicket WHERE itt_InsureTicketNo = '{$safeticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1){
+					if(mysqli_num_rows($result) == 1){
 						if($selledsafe == ''){
 							$selledsafe=$selledsafe.$safeticketIDs;
 						}else{
@@ -1161,7 +1161,7 @@ switch ($op)
 				$queryTicketProvide="SELECT tp_ID FROM tms_bd_TicketProvide WHERE tp_CurrentTicket+0<='{$ticketIDs}'+0 AND tp_EndTicket+0>='{$ticketIDs}'+0 AND tp_Type='客票'
 					AND tp_UserSation='$userStationName'";
 				$resultTicketProvide = $class_mysql_default->my_query("$queryTicketProvide");
-				if(mysql_num_rows($resultTicketProvide) == 0){
+				if(mysqli_num_rows($resultTicketProvide) == 0){
 					if($unexist==''){
 						$unexist=$unexist.$ticketIDs;
 					}else{
@@ -1170,7 +1170,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1) {
+					if(mysqli_num_rows($result) == 1) {
 						if($signed==''){
 							$signed=$signed.$ticketIDs;
 						}else{
@@ -1179,7 +1179,7 @@ switch ($op)
 					}else{
 						$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 						$result = $class_mysql_default->my_query("$queryString");
-						if(mysql_num_rows($result) == 1) {
+						if(mysqli_num_rows($result) == 1) {
 							if($checked==''){
 								$checked=$checked.$ticketIDs;
 							}else{
@@ -1201,7 +1201,7 @@ switch ($op)
 				$queryTicketProvide="SELECT tp_ID FROM tms_bd_TicketProvide WHERE tp_CurrentTicket+0<='{$ticketIDs}'+0 AND tp_EndTicket+0>='{$ticketIDs}'+0 AND tp_Type='客票'
 					AND tp_UserSation='$userStationName'";
 				$resultTicketProvide = $class_mysql_default->my_query("$queryTicketProvide");
-				if(mysql_num_rows($resultTicketProvide) == 0){
+				if(mysqli_num_rows($resultTicketProvide) == 0){
 					if($unexist==''){
 						$unexist=$unexist.$ticketIDs;
 					}else{
@@ -1210,7 +1210,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1) {
+					if(mysqli_num_rows($result) == 1) {
 						if($signed==''){
 							$signed=$signed.$ticketIDs;
 						}else{
@@ -1219,7 +1219,7 @@ switch ($op)
 					}else{
 						$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 						$result = $class_mysql_default->my_query("$queryString");
-						if(mysql_num_rows($result) == 1) {
+						if(mysqli_num_rows($result) == 1) {
 							if($checked==''){
 								$checked=$checked.$ticketIDs;
 							}else{
@@ -1269,7 +1269,7 @@ switch ($op)
 		foreach (explode("\n",$ticketnum) as $key => $ticketIDs){
 			$queryString = "SELECT st_TicketID,st_SellPrice FROM tms_sell_SellTicket WHERE st_TicketID = '{$ticketIDs}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(mysql_num_rows($result) == 0){
+			if(mysqli_num_rows($result) == 0){
 				if($unsell==''){
 					$unsell=$unsell.$ticketIDs;
 				}else{
@@ -1278,7 +1278,7 @@ switch ($op)
 			}else{
 				$queryString="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 				$result = $class_mysql_default->my_query("$queryString");
-				if(mysql_num_rows($result) == 1){
+				if(mysqli_num_rows($result) == 1){
 					if($errored==''){
 						$errored=$errored.$ticketIDs;
 					}else{
@@ -1287,7 +1287,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1) {
+					if(mysqli_num_rows($result) == 1) {
 						if($checked==''){
 							$checked=$checked.$ticketIDs;
 						}else{
@@ -1302,14 +1302,14 @@ switch ($op)
 							echo json_encode($retData);
 							exit();
 						}
-						if(mysql_num_rows($resultreturnticket) == 0) {
+						if(mysqli_num_rows($resultreturnticket) == 0) {
 							if($unsign==''){
 								$unsign=$unsign.$ticketIDs;
 							}else{
 								$unsign=$unsign.",".$ticketIDs;
 							}
 						}else{
-							$rowreturnticket = mysql_fetch_array($resultreturnticket);
+							$rowreturnticket = mysqli_fetch_array($resultreturnticket);
 							if($rowreturnticket['rtk_IsBalance']=='2' || $rowreturnticket['rtk_IsBalance']=='1'){
 								if($returned==''){
 									$returned=$returned.$ticketIDs;
@@ -1381,7 +1381,7 @@ switch ($op)
 	  	$strsqlselet = "SELECT tml_SeatStatus,tml_TotalSeats FROM tms_bd_TicketMode WHERE (tml_NoOfRunsID = '$noofrunsID')	AND (tml_NoOfRunsdate = '$norunsdate') FOR UPDATE";
 	  	$class_mysql_default->my_query("BEGIN");
 	  	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	  	$rows = mysql_fetch_array($resultselet);
+	  	$rows = mysqli_fetch_array($resultselet);
 	  	if(intval($newSeatno,10) > intval($rows[1],10)) {
 				$class_mysql_default->my_query("ROLLBACK");
 				$retData = array('retVal' => 'FAIL', 'newSeatno' => $newSeatno, '$rows' => $rows[1], 'retString' => '座位号超出范围！');
@@ -1436,7 +1436,7 @@ switch ($op)
 		/*	if($IsSameTN=='1'){
 				$selecterror="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 				$queryerror=$class_mysql_default->my_query("$selecterror");
-				if(mysql_num_rows($queryerror) == 1){
+				if(mysqli_num_rows($queryerror) == 1){
 					if($samereprintt==''){
 						$samereprintt=$samereprintt.$ticketIDs;
 					}else{
@@ -1446,7 +1446,7 @@ switch ($op)
 			} */
 			$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(mysql_num_rows($result) == 1) {
+			if(mysqli_num_rows($result) == 1) {
 				if($signed==''){
 					$signed=$signed.$ticketIDs;
 				}else{
@@ -1455,7 +1455,7 @@ switch ($op)
 			}else{
 				$queryString = "SELECT ct_TicketID FROM tms_chk_CheckTicket WHERE ct_TicketID = '{$ticketIDs}'";
 				$result = $class_mysql_default->my_query("$queryString");
-				if(mysql_num_rows($result) == 1) {
+				if(mysqli_num_rows($result) == 1) {
 					if($checked==''){
 						$checked=$checked.$ticketIDs;
 					}else{
@@ -1464,14 +1464,14 @@ switch ($op)
 				}else{
 					$queryString = "SELECT st_TicketID,st_SellPrice,st_TicketState FROM tms_sell_SellTicket WHERE st_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 0){
+					if(mysqli_num_rows($result) == 0){
 						if($unsell==''){
 							$unsell=$unsell.$ticketIDs;
 						}else{
 							$unsell=$unsell.",".$ticketIDs;
 						}
 					}else{
-						$row = mysql_fetch_array($result);
+						$row = mysqli_fetch_array($result);
 						if($row['st_TicketState']=='8'){
 							if($reprinted==''){
 									$reprinted=$reprinted.$ticketIDs;
@@ -1482,7 +1482,7 @@ switch ($op)
 							if($IsSameTN=='1'){
 								$selecterror="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 								$queryerror=$class_mysql_default->my_query("$selecterror");
-								if(mysql_num_rows($queryerror) == 1){
+								if(mysqli_num_rows($queryerror) == 1){
 									if($samereprintt==''){
 										$samereprintt=$samereprintt.$ticketIDs;
 									}else{
@@ -1522,7 +1522,7 @@ switch ($op)
 	/*		if($IsSameIN=='1'){
 				$selecterrori="SELECT eitt_InsureTicketNo FROM tms_sell_ErrInsureTicket WHERE eitt_InsureTicketNo='{$safeticketIDs}'";
 				$queryerrori=$class_mysql_default->my_query("$selecterrori");
-				if(mysql_num_rows($queryerrori) == 1){
+				if(mysqli_num_rows($queryerrori) == 1){
 					if($samereprinti==''){
 						$samereprinti=$samereprinti.$safeticketIDs;
 					}else{
@@ -1532,8 +1532,8 @@ switch ($op)
 			} */
 			$queryString = "SELECT itt_InsureTicketNo,itt_Status FROM tms_sell_InsureTicket WHERE itt_InsureTicketNo = '{$safeticketIDs}'";
 			$result = $class_mysql_default->my_query("$queryString");
-			if(mysql_num_rows($result) == 1){
-				$row = mysql_fetch_array($result);
+			if(mysqli_num_rows($result) == 1){
+				$row = mysqli_fetch_array($result);
 				if($row['itt_Status']=='8'){
 					if($reprintedsafe == ''){
 						$reprintedsafe=$reprintedsafe.$safeticketIDs;
@@ -1544,7 +1544,7 @@ switch ($op)
 					if($IsSameIN=='1'){
 						$selecterrori="SELECT eitt_InsureTicketNo FROM tms_sell_ErrInsureTicket WHERE eitt_InsureTicketNo='{$safeticketIDs}'";
 						$queryerrori=$class_mysql_default->my_query("$selecterrori");
-						if(mysql_num_rows($queryerrori) == 1){
+						if(mysqli_num_rows($queryerrori) == 1){
 							if($samereprinti==''){
 								$samereprinti=$samereprinti.$safeticketIDs;
 							}else{
@@ -1597,7 +1597,7 @@ switch ($op)
 			$queryTicketProvide="SELECT tp_ID FROM tms_bd_TicketProvide WHERE tp_BeginTicket+0<='{$ticketIDs}'+0 AND tp_CurrentTicket+0>'{$ticketIDs}'+0 AND tp_Type='客票'
 				AND tp_UserSation='$userStationName'";
 			$resultTicketProvide = $class_mysql_default->my_query("$queryTicketProvide");
-			if(mysql_num_rows($resultTicketProvide) == 0){
+			if(mysqli_num_rows($resultTicketProvide) == 0){
 				if($unexist==''){
 					$unexist=$unexist.$ticketIDs;
 				}else{
@@ -1606,7 +1606,7 @@ switch ($op)
 			}else{
 				$queryString = "SELECT st_TicketID,st_SellPrice,st_TicketState FROM tms_sell_SellTicket WHERE st_TicketID = '{$ticketIDs}'";
 				$result = $class_mysql_default->my_query("$queryString");
-				if(mysql_num_rows($result) == 0){
+				if(mysqli_num_rows($result) == 0){
 					if($unexist==''){
 						$unexist=$unexist.$ticketIDs;
 					}else{
@@ -1615,7 +1615,7 @@ switch ($op)
 				}else{
 					$queryString = "SELECT rtk_TicketID FROM tms_sell_ReturnTicket WHERE rtk_TicketID = '{$ticketIDs}'";
 					$result = $class_mysql_default->my_query("$queryString");
-					if(mysql_num_rows($result) == 1) {
+					if(mysqli_num_rows($result) == 1) {
 						if($signed==''){
 							$signed=$signed.$ticketIDs;
 						}else{
@@ -1624,7 +1624,7 @@ switch ($op)
 					}else{
 						$queryString="SELECT et_TicketID FROM tms_sell_ErrTicket WHERE et_TicketID='{$ticketIDs}'";
 						$result = $class_mysql_default->my_query("$queryString");
-						if(mysql_num_rows($result) == 1){
+						if(mysqli_num_rows($result) == 1){
 							if($errored==''){
 								$errored=$errored.$ticketIDs;
 							}else{

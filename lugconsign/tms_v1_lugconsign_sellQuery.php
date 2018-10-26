@@ -62,7 +62,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND (lc_PayStyle='发货人付款') AND (IFNULL(lc_IsBalance,0)!=1) AND lc_DeliveryUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}')".$strDate.
 						" GROUP BY lc_DeliveryUserID, lc_DeliveryDate ORDER BY lc_DeliveryUserID ASC, lc_DeliveryDate ASC";
 		$result1 = $class_mysql_default->my_query("$queryString1");
-		while ($row1 = mysql_fetch_array($result1)) {
+		while ($row1 = mysqli_fetch_array($result1)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -73,7 +73,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 							(DATE_FORMAT(lc_ExtractionTime,'%y-%m-%d')= DATE_FORMAT('{$row1['lc_AcceptDateTime']}','%y-%m-%d'))  AND (lc_PayStyle='收货人付款') AND (IFNULL(lc_IsBalance,0)!=1) 
 							AND lc_ExtractionUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}') GROUP BY lc_ExtractionUserID";
 			$result2 = $class_mysql_default->my_query("$queryString2");
-			$row2 = mysql_fetch_array($result2);
+			$row2 = mysqli_fetch_array($result2);
 			$sendmoney=$row1['Allmoney'];
 			$takemoney=$row2['Allmoneys'];
 			$allmoney=$row1['Allmoney']+$row2['Allmoneys'];
@@ -98,7 +98,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND (IFNULL(lc_IsBalance,0)!=1) AND lc_ExtractionUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}')".$strDate1.
 						" GROUP BY lc_ExtractionUserID,ExtractionTime ORDER BY lc_ExtractionUserID ASC, ExtractionTime ASC";
 		$result3 = $class_mysql_default->my_query("$queryString3");
-		while ($row3 = mysql_fetch_array($result3)) {
+		while ($row3 = mysqli_fetch_array($result3)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -108,8 +108,8 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 			$queryString4="SELECT lc_DeliveryUserID FROM tms_lug_LuggageCons WHERE (lc_DeliveryUserID='{$row3['lc_ExtractionUserID']}') AND 
 							(DATE_FORMAT(lc_AcceptDateTime,'%y-%m-%d')=DATE_FORMAT('{$row3['ExtractionTime']}','%y-%m-%d')) AND (lc_PayStyle='发货人付款') AND (IFNULL(lc_IsBalance,0)!=1)";
 			$result4 = $class_mysql_default->my_query("$queryString4");
-			$row4 = mysql_fetch_array($result4);
-			if(mysql_num_rows($result4)==0){
+			$row4 = mysqli_fetch_array($result4);
+			if(mysqli_num_rows($result4)==0){
 				$nonumber="";
 				$takemoney=$row3['Allmoneyt'];
 				$outputRow = array($row3['ExtractionTime'],  $row3['lc_ExtractionUserID'], $row3['lc_ExtractionUser'], $nonumber, $nonumber, 
@@ -123,7 +123,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 	//					AND (cb_BillingStation LIKE '{$StationName}') AND (cb_BillingerID LIKE '{$sellerID}') GROUP BY cb_BillingerID, cb_BillingDate 
 	//					ORDER BY cb_BillingDate ASC, cb_BillingerID ASC";
 	//	$result = $class_mysql_default->my_query("$queryString");
-	//	while ($row = mysql_fetch_array($result)) {
+	//	while ($row = mysqli_fetch_array($result)) {
 	//		$cnt++; 
 	//		if ($limit == $cnt) { //刷新输出buffer
 	//			ob_flush(); 
@@ -228,7 +228,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -265,7 +265,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						<?php 
 						$query="SELECT ui_UserID FROM tms_sys_UsInfor  WHERE  ui_UserGroup LIKE '%行包组%' AND ui_UserSation like '$userStationName%'";
 						$result = $class_mysql_default->my_query("$query");
-						while ($row = mysql_fetch_array($result)) {
+						while ($row = mysqli_fetch_array($result)) {
 							if($sellerID != $row['ui_UserID']){
 						?>
 							<option value="<?php echo $row['ui_UserID']?>"><?=$row['ui_UserID']?></option>
@@ -335,12 +335,12 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND (lc_PayStyle='发货人付款') AND (IFNULL(lc_IsBalance,0)!=1) AND lc_DeliveryUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}')".$strDate.
 						" GROUP BY lc_DeliveryUserID, lc_DeliveryDate ORDER BY lc_DeliveryUserID ASC, lc_DeliveryDate ASC";
 					$result1 = $class_mysql_default->my_query("$select1");
-					while ($row1 = mysql_fetch_array($result1)) {					        
+					while ($row1 = mysqli_fetch_array($result1)) {					        
 						$select2="SELECT IFNULL(SUM(lc_Allmoney),0) AS Allmoneys, COUNT(lc_TicketNumber) AS Numbers FROM tms_lug_LuggageCons WHERE (lc_ExtractionUserID='{$row1['lc_DeliveryUserID']}') AND 
 							(DATE_FORMAT(lc_ExtractionTime,'%y-%m-%d')= DATE_FORMAT('{$row1['lc_AcceptDateTime']}','%y-%m-%d'))  AND (lc_PayStyle='收货人付款') AND (IFNULL(lc_IsBalance,0)!=1) 
 							AND lc_ExtractionUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}') GROUP BY lc_ExtractionUserID";
 					$result2 = $class_mysql_default->my_query("$select2");
-					$row2 = mysql_fetch_array($result2);
+					$row2 = mysqli_fetch_array($result2);
 					
 			?>
 			<tr bgcolor="#CCCCCC">
@@ -378,13 +378,13 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND (IFNULL(lc_IsBalance,0)!=1) AND lc_ExtractionUserID IN (SELECT ui_UserID FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$StationName}')".$strDate1.
 						" GROUP BY lc_ExtractionUserID,ExtractionTime ORDER BY lc_ExtractionUserID ASC, ExtractionTime ASC";
 					$result3 = $class_mysql_default->my_query("$select3");
-					while ($row3 = mysql_fetch_array($result3)) {
+					while ($row3 = mysqli_fetch_array($result3)) {
 						$select4="SELECT lc_DeliveryUserID FROM tms_lug_LuggageCons WHERE (lc_DeliveryUserID='{$row3['lc_ExtractionUserID']}') AND 
 							(DATE_FORMAT(lc_AcceptDateTime,'%y-%m-%d')=DATE_FORMAT('{$row3['ExtractionTime']}','%y-%m-%d')) AND (lc_PayStyle='发货人付款') AND (IFNULL(lc_IsBalance,0)!=1)";
 						$result4 = $class_mysql_default->my_query("$select4");
-					//	$row4 = mysql_fetch_array($result4);
+					//	$row4 = mysqli_fetch_array($result4);
 					//	if(!$row4){
-					if(mysql_num_rows($result4)==0){
+					if(mysqli_num_rows($result4)==0){
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap" align="center"><?php echo $row3['ExtractionTime'];?></td>

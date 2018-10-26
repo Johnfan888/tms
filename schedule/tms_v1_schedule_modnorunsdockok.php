@@ -40,7 +40,7 @@
 	}
 	$selects="select nds_ID from tms_bd_NoRunsDockSite where nds_NoOfRunsID='{$NoOfRunsID}' and nds_SiteName='{$SiteName}'";
 	$seles= $class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)||$SiteID==$SiteIDD){
+	if(!mysqli_fetch_array($seles)||$SiteID==$SiteIDD){
 		$updata="update tms_bd_NoRunsDockSite set nds_NoOfRunsID='{$NoOfRunsID}',nds_ID='{$ID}',nds_SiteName='{$SiteName}',
 			nds_SiteID='{$SiteID}',nds_IsDock='{$IsDock}',nds_GetOnSite='{$GetOnSite}',nds_CheckInSite='{$CheckInSite}',
 			nds_DepartureTime='{$DepartureTime}',nds_RunHours='{$Runtimes}',nds_CheckTicketWindow='{$CheckTicketWindow}',nds_IsServiceFee='{$IsServiceFee}',
@@ -48,7 +48,7 @@
 			nds_otherFee4='{$otherFee4}',nds_otherFee5='{$otherFee5}',nds_otherFee6='{$otherFee6}',nds_StintSell='{$StintSell}',
 			nds_StintTime='{$StintTime}',nds_Remark='{$Remark}'where nds_NoOfRunsID='{$NoOfRunsID}' and nds_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($updata); 
-		//	if (!$query) echo "SQL错误：".mysql_error();
+		//	if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_schedule_moddock.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{

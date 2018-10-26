@@ -224,7 +224,7 @@
 				}	 
 				$sql = "select li_LineID,li_LineName FROM tms_bd_LineInfo WHERE li_Linestate='正常'".$andlinestring;
 				$query = $class_mysql_default->my_query($sql);
-				while($result=mysql_fetch_array($query)){
+				while($result=mysqli_fetch_array($query)){
 					$LineID=$result['li_LineID'];	
 			?>
 					<div>
@@ -241,7 +241,7 @@
 						}	
 						$sqls = "select nri_NoOfRunsID,nri_DepartureTime FROM tms_bd_NoRunsInfo WHERE nri_LineID='$LineID' AND nri_IsStopOrCreat='1' AND nri_AddNoRuns='0'".$andrunstring;
 						$querys =$class_mysql_default->my_query($sqls);
-						while($results=mysql_fetch_array($querys)){	
+						while($results=mysqli_fetch_array($querys)){	
 				?>
 						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 						<input type="checkbox" name="NoRunsID<?php echo $result['li_LineID'];?>" id="NoRunsID<?php echo $result['li_LineID'];?>" value="<?php echo $results['nri_NoOfRunsID'];?>" onclick="checkk('LineName<?php echo $result['li_LineID'];?>',this.id)" /> <?php echo $results['nri_NoOfRunsID'].' 发车时间：'.$results['nri_DepartureTime']."\n<br>"; ?>
@@ -265,7 +265,7 @@
 				}	
 			  	$selectline="SELECT li_LineID,li_LineName FROM tms_bd_LineInfo WHERE li_Linestate='正常'".$andlinestring;
 			  	$queryline= $class_mysql_default->my_query($selectline);
-			  	While($resultline=mysql_fetch_array($queryline)){
+			  	While($resultline=mysqli_fetch_array($queryline)){
 			?>
 				<input type="checkbox" name="LineID" id="LineID<?php echo $resultline['li_LineID'];?>" value="<?php echo $resultline['li_LineID'];?>" onclick="checkline(this.id,this.value)"/> <?php echo $resultline['li_LineID'].' ：'.$resultline['li_LineName']."\n<br>"; ?>
 			<?php 
@@ -326,7 +326,7 @@
 								echo "<script>alert('查询班次数据失败！');</script>";
 								break;
 							}
-							while($resultnoofrunsinfor=mysql_fetch_array($querynoofrunsinfor)){
+							while($resultnoofrunsinfor=mysqli_fetch_array($querynoofrunsinfor)){
 								$RunID=$resultnoofrunsinfor['nri_NoOfRunsID'];
 							//	Creatordelticketmodel($RunID,$RunDate,$User,$Operation,$strs,$strf,$class_mysql_default);
 								if($RunID!=''){
@@ -356,7 +356,7 @@
 						echo "<script>alert('查询班次数据失败！');window.location.href='tms_v1_basedata_ticketmodel.php'</script>";
 						exit();
 					}
-					while($resultnoofrunsinfor=mysql_fetch_array($querynoofrunsinfor)){
+					while($resultnoofrunsinfor=mysqli_fetch_array($querynoofrunsinfor)){
 						$RunID=$resultnoofrunsinfor['nri_NoOfRunsID'];
 					//	Creatordelticketmodel($RunID,$RunDate,$User,$Operation,$strs,$strf,$class_mysql_default);
 						if($RunID!=''){
@@ -388,7 +388,7 @@
 	<?php
 			$selectmodle="SELECT MAX(tml_NoOfRunsdate) FROM tms_bd_TicketMode";
 			$querymodle = $class_mysql_default->my_query($selectmodle);
-			$resultmodel=mysql_fetch_array($querymodle);
+			$resultmodel=mysqli_fetch_array($querymodle);
 	?>
 	<tr>
 		<td nowrap="nowrap"  bgcolor="#FFFFFF"><span class="form_title" style="color:red"><img src="../ui/images/sj.gif" width="6" height="7" />已制作票版的日期：</span></td>
@@ -409,11 +409,11 @@
 			$queryline=$class_mysql_default->my_query($selectline);
 			if(!$queryline){
 				$stringf=$stringf.'查询线路数据失败！';
-				$string=$string.$RunID.$stringf.mysql_error();
+				$string=$string.$RunID.$stringf.->my_error();
 				writelog($string);
 				return $stringf;
 			}
-			$rowline=mysql_fetch_array($queryline);
+			$rowline=mysqli_fetch_array($queryline);
 			$StationID=$rowline['li_StationID'];
 			$Station=$rowline['li_Station'];
 			//查班次表
@@ -423,11 +423,11 @@
 			$querynoofruns=$class_mysql_default->my_query($selectnoofruns);
 			if(!$querynoofruns){
 				$stringf=$stringf.'查询班次数据失败！';
-				$string=$string.$RunID.$stringf.mysql_error();
+				$string=$string.$RunID.$stringf.->my_error();
 				writelog($string);
 				return $stringf;
 			}
-			$rownoofruns=mysql_fetch_array($querynoofruns);
+			$rownoofruns=mysqli_fetch_array($querynoofruns);
 			$BeginSiteID=$rownoofruns['nri_BeginSiteID'];
 			$BeginSite=$rownoofruns['nri_BeginSite'];
 			$EndSiteID=$rownoofruns['nri_EndSiteID'];
@@ -452,11 +452,11 @@
 			$querylongcount=$class_mysql_default->my_query($selectlongcount);
 			if(!$querylongcount){
 				$stringf=$stringf.'查询班次长停数据失败！';
-				$string=$string.$RunID.$stringf.mysql_error();
+				$string=$string.$RunID.$stringf.->my_error();
 				writelog($string);
 				return $stringf;
 			}
-			$rowlongcount=mysql_fetch_array($querylongcount);
+			$rowlongcount=mysqli_fetch_array($querylongcount);
 			if($rowlongcount['longcount']>0){ 
 				$IsStopOrCreat=0;
 				$stringf=$stringf.'班次长停！';
@@ -470,11 +470,11 @@
 			$queryrotatecount=$class_mysql_default->my_query($selectrotatecount);
 			if(!$queryrotatecount){
 				$stringf=$stringf.'查询班次循环数失败！';
-				$string=$string.$RunID.$stringf.mysql_error();
+				$string=$string.$RunID.$stringf.->my_error();
 				writelog($string);
 				return $stringf;
 			}
-			$rowrotatecount=mysql_fetch_array($queryrotatecount);
+			$rowrotatecount=mysqli_fetch_array($queryrotatecount);
 			if($rowrotatecount[rotatecount]=='0'){
 				$stringf=$stringf.'没有输入循环车辆！';
 				$string=$string.$RunID.$stringf;
@@ -506,12 +506,12 @@
 			$querynorunsloop=$class_mysql_default->my_query($selectnorunsloop);
 			if(!$querynorunsloop){
 				$stringf=$stringf.'查询班次循环失败！';
-				$string=$string.$RunID.$stringf.mysql_error();
+				$string=$string.$RunID.$stringf.->my_error();
 				writelog($string);
 				return $stringf;
 			}
-			if(mysql_num_rows($querynorunsloop) == 1){
-				$rownorunsloop=mysql_fetch_array($querynorunsloop);
+			if(mysqli_num_rows($querynorunsloop) == 1){
+				$rownorunsloop=mysqli_fetch_array($querynorunsloop);
 				$ModelID=$rownorunsloop['nrl_ModelID'];
 				$ModelName=$rownorunsloop['nrl_ModelName'];
 				$Seating=$rownorunsloop['nrl_Seating'];
@@ -538,7 +538,7 @@
 				$queryinsertticketmode=$class_mysql_default->my_query($insertticketmode);
 				if(!$queryinsertticketmode){
 					$stringf=$stringf.'插入票版失败！';
-					$string=$string.$RunID.$stringf.mysql_error();
+					$string=$string.$RunID.$stringf.->my_error();
 					writelog($string);
 					$class_mysql_default->my_query("ROLLBACK");
 					return $stringf;
@@ -549,8 +549,8 @@
 					nds_IsDock,nds_GetOnSite,nds_CheckInSite,nds_DepartureTime,nds_RunHours,nds_StintSell,nds_StintTime FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$RunID}'";
 				$queryinsert=$class_mysql_default->my_query($insertdoktemp);
 				if(!$queryinsert){
-					$stringf=$stringf.'插入临时停靠点失败！'.mysql_error();
-					$string=$string.$RunID.$stringf.mysql_error();
+					$stringf=$stringf.'插入临时停靠点失败！'.->my_error();
+					$string=$string.$RunID.$stringf.->my_error();
 					writelog($string);
 					$class_mysql_default->my_query("ROLLBACK");
 					return $stringf;
@@ -559,9 +559,9 @@
 				$selectnorunsdocksite="SELECT nds_ID,nds_SiteName,nds_SiteID,nds_IsDock,nds_GetOnSite,nds_CheckInSite,nds_DepartureTime,nds_RunHours,nds_CheckTicketWindow,nds_IsServiceFee,nds_ServiceFee,nds_otherFee1,nds_otherFee2,nds_otherFee3,nds_otherFee4,nds_otherFee5,
 					nds_otherFee6,nds_StintSell,nds_StintTime FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$RunID}' AND nds_GetOnSite=1";
 				$querynorunsdocksite=$class_mysql_default->my_query($selectnorunsdocksite);
-				if(!$querynorunsdocksite || mysql_num_rows($querynorunsdocksite)==0){
+				if(!$querynorunsdocksite || mysqli_num_rows($querynorunsdocksite)==0){
 					$stringf=$stringf.'查询班次停靠点失败！';
-					$string=$string.$RunID.$stringf.mysql_error();
+					$string=$string.$RunID.$stringf.->my_error();
 					writelog($string);
 					$class_mysql_default->my_query("ROLLBACK");
 					return $stringf;
@@ -572,7 +572,7 @@
 				$noprice1=false;
 				$noprice2=false;
 				$noprice3=false;
-				while($rownorunsdocksite=mysql_fetch_array($querynorunsdocksite)){
+				while($rownorunsdocksite=mysqli_fetch_array($querynorunsdocksite)){
 					$ID=$rownorunsdocksite['nds_ID'];
 					$BeginStationTime=$rownorunsdocksite['nds_DepartureTime']; 
 					$ndsRunHours1=$rownorunsdocksite['nds_RunHours'];
@@ -595,24 +595,24 @@
 					$querysectioninfor=$class_mysql_default->my_query($Selectsectioninfor);
 					if(!$querysectioninfor){
 						$stringf=$stringf.'查询线路站点失败！';
-						$string=$string.$RunID.$stringf.mysql_error();
+						$string=$string.$RunID.$stringf.->my_error();
 						writelog($string);
 						$class_mysql_default->my_query("ROLLBACK");
 						return $stringf;
 					}
-					$rowsectioninfor=mysql_fetch_array($querysectioninfor);
+					$rowsectioninfor=mysqli_fetch_array($querysectioninfor);
 					$FromStationKilometer=$rowsectioninfor['si_Kilometer'];
 					//查询班次停靠点2
 					$selectnorunsdocksite1="SELECT nds_ID,nds_SiteName,nds_SiteID,nds_DepartureTime,nds_RunHours FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID ='{$RunID}' AND nds_ID >'{$ID}' AND nds_IsDock = 1";
 					$querynorunsdocksite1=$class_mysql_default->my_query($selectnorunsdocksite1);
-					if(!$querynorunsdocksite1 || mysql_num_rows($querynorunsdocksite1)==0){
+					if(!$querynorunsdocksite1 || mysqli_num_rows($querynorunsdocksite1)==0){
 						$stringf=$stringf.'查询班次停靠点1失败！';
-						$string=$string.$RunID.$stringf.mysql_error();
+						$string=$string.$RunID.$stringf.->my_error();
 						writelog($string);
 						$class_mysql_default->my_query("ROLLBACK");
 						return $stringf;
 					}
-					while($rownorunsdocksite1=mysql_fetch_array($querynorunsdocksite1)){
+					while($rownorunsdocksite1=mysqli_fetch_array($querynorunsdocksite1)){
 						$ReachStationID=$rownorunsdocksite1['nds_SiteID'];
 						$ReachStation=$rownorunsdocksite1['nds_SiteName'];
 						$StopStationTime=$rownorunsdocksite1['nds_DepartureTime'];
@@ -641,12 +641,12 @@
 						$querysectioninfor1=$class_mysql_default->my_query($Selectsectioninfor1);
 						if(!$querysectioninfor){
 							$stringf=$stringf.'查询线路站点1失败！';
-							$string=$string.$RunID.$stringf.mysql_error();
+							$string=$string.$RunID.$stringf.->my_error();
 							writelog($string);
 							$class_mysql_default->my_query("ROLLBACK");
 							return $stringf;
 						}
-						$rowsectioninfor1=mysql_fetch_array($querysectioninfor1);
+						$rowsectioninfor1=mysqli_fetch_array($querysectioninfor1);
 						$ToStationKilometer=$rowsectioninfor1['si_Kilometer'];
 						$Distance=$ToStationKilometer-$FromStationKilometer;
 						if($Distance<0) $Distance=0;
@@ -656,13 +656,13 @@
 						$querypricedate1=$class_mysql_default->my_query($selectpricedate1);
 						if(!$querypricedate1){
 							$stringf=$stringf.'查询班次价格日期1失败！';
-							$string=$string.$RunID.$stringf.mysql_error();
+							$string=$string.$RunID.$stringf.->my_error();
 							writelog($string);
 							$class_mysql_default->my_query("ROLLBACK");
 							return $stringf;
 						}
-						if(mysql_num_rows($querypricedate1) > 0){
-							while($rowpricedate1=mysql_fetch_array($querypricedate1)){
+						if(mysqli_num_rows($querypricedate1) > 0){
+							while($rowpricedate1=mysqli_fetch_array($querypricedate1)){
 								if($rowpricedate1['nrap_BeginDate']<=$RunDate && $rowpricedate1['nrap_EndDate']>=$RunDate){
 									$founddate=true;
 								}
@@ -675,13 +675,13 @@
 						$querypricedate2=$class_mysql_default->my_query($selectpricedate2);
 						if(!$querypricedate2){
 							$stringf=$stringf.'查询班次价格日期2失败！';
-							$string=$string.$RunID.$stringf.mysql_error();
+							$string=$string.$RunID.$stringf.->my_error();
 							writelog($string);
 							$class_mysql_default->my_query("ROLLBACK");
 							return $stringf;
 						}
-						if(mysql_num_rows($querypricedate2) > 0){
-							while($rowpricedate2=mysql_fetch_array($querypricedate2)){
+						if(mysqli_num_rows($querypricedate2) > 0){
+							while($rowpricedate2=mysqli_fetch_array($querypricedate2)){
 								if($rowpricedate2['nrap_BeginDate']<=$RunDate && $rowpricedate2['nrap_EndDate']>=$RunDate){
 									$founddate=true;
 								}
@@ -694,13 +694,13 @@
 						$querypricedate3=$class_mysql_default->my_query($selectpricedate3);
 						if(!$querypricedate3){
 							$stringf=$stringf.'查询班次价格日期3失败！';
-							$string=$string.$RunID.$stringf.mysql_error();
+							$string=$string.$RunID.$stringf.->my_error();
 							writelog($string);
 							$class_mysql_default->my_query("ROLLBACK");
 							return $stringf;
 						}
-						if(mysql_num_rows($querypricedate3) > 0){
-							while($rowpricedate3=mysql_fetch_array($querypricedate3)){
+						if(mysqli_num_rows($querypricedate3) > 0){
+							while($rowpricedate3=mysqli_fetch_array($querypricedate3)){
 								if($rowpricedate3['nrap_BeginDate']<=$RunDate && $rowpricedate3['nrap_EndDate']>=$RunDate){
 									$founddate=true;
 								}
@@ -727,13 +727,13 @@
 						$querynorunsadjustPrice1=$class_mysql_default->my_query($selectnorunsadjustPrice1);
 						if(!$querynorunsadjustPrice1){
 							$stringf=$stringf.'查询班次价格数据1失败！';
-							$string=$string.$RunID.$stringf.mysql_error();
+							$string=$string.$RunID.$stringf.->my_error();
 							writelog($string);
 							$class_mysql_default->my_query("ROLLBACK");
 							return $stringf;
 						}
-						if(mysql_num_rows($querynorunsadjustPrice1) == 1){
-							$rownorunsadjustPrice1=mysql_fetch_array($querynorunsadjustPrice1);
+						if(mysqli_num_rows($querynorunsadjustPrice1) == 1){
+							$rownorunsadjustPrice1=mysqli_fetch_array($querynorunsadjustPrice1);
 							$FullPrice=$rownorunsadjustPrice1['nrap_RunPrice'];
 							$HalfPrice=$rownorunsadjustPrice1['nrap_HalfPrice'];
 							$ReferPrice=$rownorunsadjustPrice1['nrap_ReferPrice'];
@@ -750,13 +750,13 @@
 							$querynorunsadjustPrice2=$class_mysql_default->my_query($selectnorunsadjustPrice2);
 							if(!$querynorunsadjustPrice2){
 								$stringf=$stringf.'查询班次价格数据2失败！';
-								$string=$string.$RunID.$stringf.mysql_error();
+								$string=$string.$RunID.$stringf.->my_error();
 								writelog($string);
 								$class_mysql_default->my_query("ROLLBACK");
 								return $stringf;
 							}
-							if(mysql_num_rows($querynorunsadjustPrice2) == 1){
-								$rownorunsadjustPrice2=mysql_fetch_array($querynorunsadjustPrice2);
+							if(mysqli_num_rows($querynorunsadjustPrice2) == 1){
+								$rownorunsadjustPrice2=mysqli_fetch_array($querynorunsadjustPrice2);
 								$FullPrice=$rownorunsadjustPrice2['nrap_RunPrice'];
 								$HalfPrice=$rownorunsadjustPrice2['nrap_HalfPrice'];
 								$ReferPrice=$rownorunsadjustPrice2['nrap_ReferPrice'];
@@ -773,13 +773,13 @@
 								$querynorunsadjustPrice3=$class_mysql_default->my_query($selectnorunsadjustPrice3);
 								if(!$querynorunsadjustPrice3){
 									$stringf=$stringf.'查询班次价格数据3失败！';
-									$string=$string.$RunID.$stringf.mysql_error();
+									$string=$string.$RunID.$stringf.->my_error();
 									writelog($string);
 									$class_mysql_default->my_query("ROLLBACK");
 									return $stringf;
 								}
-								if(mysql_num_rows($querynorunsadjustPrice3) == 1){
-									$rownorunsadjustPrice3=mysql_fetch_array($querynorunsadjustPrice3);
+								if(mysqli_num_rows($querynorunsadjustPrice3) == 1){
+									$rownorunsadjustPrice3=mysqli_fetch_array($querynorunsadjustPrice3);
 									$FullPrice=$rownorunsadjustPrice3['nrap_RunPrice'];
 									$HalfPrice=$rownorunsadjustPrice3['nrap_HalfPrice'];
 									$ReferPrice=$rownorunsadjustPrice3['nrap_ReferPrice'];
@@ -809,7 +809,7 @@
 							$querypricedetail=$class_mysql_default->my_query($insertpricedetail);
 							if(!$querypricedetail){
 								$stringf=$stringf.'插入票价数据失败！';
-								$string=$string.$RunID.$stringf.mysql_error();
+								$string=$string.$RunID.$stringf.->my_error();
 								writelog($string);
 								$class_mysql_default->my_query("ROLLBACK");
 								return $stringf;
@@ -851,12 +851,12 @@
 		if($Operation=='Delmodel'){
 			$select="SELECT tml_SeatStatus FROM tms_bd_TicketMode WHERE tml_NoOfRunsdate='{$RunDate}' AND tml_NoOfRunsID='{$RunID}'";
 			$query3=$class_mysql_default->my_query($select);
-			$row=mysql_fetch_array($query3);
+			$row=mysqli_fetch_array($query3);
 			if(!strstr($row[0],'1') && !strstr($row[0],'2') && !strstr($row[0],'3') && !strstr($row[0],'4') && !strstr($row[0],'5') && !strstr($row[0],'6')){
 				$class_mysql_default->my_query("START TRANSACTION");
 				$del1="DELETE FROM tms_bd_TicketMode WHERE tml_NoOfRunsdate='{$RunDate}' AND tml_NoOfRunsID='{$RunID}' ";
 				$query1=$class_mysql_default->my_query($del1);
-		//		if (!$query1) echo "SQL错误：".mysql_error();
+		//		if (!$query1) echo "SQL错误：".->my_error();
 				$del2="DELETE FROM tms_bd_PriceDetail WHERE pd_NoOfRunsdate='{$RunDate}' AND pd_NoOfRunsID='{$RunID}' ";
 				$query2=$class_mysql_default->my_query($del2);
 				$del4="DELETE FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsID='{$RunID}' AND ndst_NoOfRunsdate='{$RunDate}'";

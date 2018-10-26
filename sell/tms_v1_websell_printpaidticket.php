@@ -25,7 +25,7 @@ $WebSellID=$_GET['WebSellID'];
 $selectweb="SELECT wst_BeginStationTime,wst_NoOfRunsdate,wst_FromStation,wst_ReachStation,wst_TotalMan,wst_SellPrice,wst_FullNumber,wst_HalfNumber,
 	wst_NoOfRunsID,wst_SeatID,wst_CertificateNumber FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 $queryweb =$class_mysql_default->my_query($selectweb);
-$rowweb = mysql_fetch_array($queryweb);
+$rowweb = mysqli_fetch_array($queryweb);
 $tnum = $rowweb['wst_FullNumber'];
 $htnum = $rowweb['wst_HalfNumber'];
 $seatno = $rowweb['wst_SeatID'];
@@ -39,7 +39,7 @@ $sellprice=$rowweb['wst_SellPrice'];
 //取得车型
 $strsqlselet = "SELECT tml_BusModel, tml_Allticket FROM tms_bd_TicketMode WHERE (tml_NoOfRunsID = '$noofrunsID') AND (tml_NoOfRunsdate = '$norunsdate')";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
-$rows = mysql_fetch_array($resultselet);
+$rows = mysqli_fetch_array($resultselet);
 $busModel = $rows[0];
 $isAllTicket = $rows[1];
 	
@@ -47,7 +47,7 @@ $isAllTicket = $rows[1];
 $strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$sellerID'
 			AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '客票' ORDER BY tp_ProvideData ASC";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
-$rows = mysql_fetch_array($resultselet);
+$rows = mysqli_fetch_array($resultselet);
 if (empty($rows[0])) {
 	echo "<script>if (!confirm('没有可用的客票票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 	$curTicketID = "";

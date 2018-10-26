@@ -43,7 +43,7 @@
   		$sql1="SELECT COUNT(tp_ID) AS number FROM tms_bd_TicketProvide WHERE tp_InceptUserID LIKE '{$InceptUserID}%'  
   			   AND tp_Type LIKE '{$Type}%'".$strsta.$str.$str1;
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
@@ -163,7 +163,7 @@ function backp(){
     <?php 
     	$sql="SELECT * FROM tms_bd_TicketProvide where tp_InceptUserID like '{$InceptUserID}%' AND tp_Type LIKE '{$Type}%'".$strsta.$str.$str1;
 		$query =$class_mysql_default->my_query($sql);
-    	while ($row = mysql_fetch_array($query)){
+    	while ($row = mysqli_fetch_array($query)){
 			if($row['tp_UseState']!='退领'){
 				$allInceptTicketNum=$allInceptTicketNum+$row['tp_InceptTicketNum'];
 			}
@@ -231,9 +231,9 @@ function backp(){
 		$sql="SELECT * FROM tms_bd_TicketProvide where tp_InceptUserID like '{$InceptUserID}%' AND tp_Type LIKE '{$Type}%'".$strsta.$str.$str1;
 //			AND tp_ProvideData>='{$DataBeginDate}' AND tp_ProvideData<='{$DataEndDate}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".mysql_error();
+	//	if (!$query) echo "SQL错误：".->my_error();
 	    $i=0;
-		while ($row = mysql_fetch_array($query)){
+		while ($row = mysqli_fetch_array($query)){
 			$i++;
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

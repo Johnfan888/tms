@@ -63,7 +63,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$slectBusAccountd="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 //			WHERE bh_BusID='{$ba_BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bht_Date desc FOR UPDATE";
 //		$queryBusAccountd=$class_mysql_default->my_query("$slectBusAccountd");
-//		while($rowBusAccountd=mysql_fetch_array($queryBusAccountd)){
+//		while($rowBusAccountd=mysqli_fetch_array($queryBusAccountd)){
 //			$stated=1;
 //			$dd1=strtotime($rowBusAccountd['bht_Date']);
 //			$mm1[$iii+1]=date('Y-m',$dd1);
@@ -75,7 +75,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$slectBusAccound="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 //			WHERE bh_BusID='{$ba_BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bh_Date desc";
 //		$queryBusAccound=$class_mysql_default->my_query("$slectBusAccound");
-//		while($rowBusAccound=mysql_fetch_array($queryBusAccound)){
+//		while($rowBusAccound=mysqli_fetch_array($queryBusAccound)){
 //			$stated=1;
 //			$dd2=strtotime($rowBusAccound['bh_Date']);
 //			$mm2[$jj+1]=date('Y-m',$dd2);
@@ -107,7 +107,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		if($allmmd==0&&$stated==0){
 //			$slectBusAccountnod="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$ba_BusID}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bht_Date desc";
 //			$queryBusAccountnod=$class_mysql_default->my_query("$slectBusAccountnod");
-//			while($rowBusAccountnod=mysql_fetch_array($queryBusAccountnod)){
+//			while($rowBusAccountnod=mysqli_fetch_array($queryBusAccountnod)){
 //				$dd=strtotime($rowBusAccountnod['bht_Date']);
 //				$mm1[$iii+1]=date('Y-m',$dd);
 //				if($mm1[$iii]!=$mm1[$iii+1]){
@@ -139,11 +139,11 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //			$selectBusRated="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 //				br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$ba_BusID}'";
 //			$queryBusRated=$class_mysql_default->my_query("$selectBusRated");
-//			$rowBusRated=mysql_fetch_array($queryBusRated);
+//			$rowBusRated=mysqli_fetch_array($queryBusRated);
 //			$Ratefeenumd=0;
 //			$selectFeeTyped="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 //			$queryFeeTyped=$class_mysql_default->my_query("$selectFeeTyped");
-//			while($rowFeeTyped=mysql_fetch_array($queryFeeTyped)){
+//			while($rowFeeTyped=mysqli_fetch_array($queryFeeTyped)){
 //				if($rowFeeTyped['ft_FeeTypeComputer']=='固定金额收费'){
 //					$Rate[$Ratefeenumd]=$rowBusRated[$Ratefeenumd+7]*$allmmd;
 //					$ba_Paid=$ba_Paid+($rowBusRated[$Ratefeenumd+7]*$returnmm);
@@ -257,7 +257,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //				IFNULL(SUM(bht_PriceTotal),0),bht_BusID FROM tms_acct_BalanceInHandTemp,tms_bd_BusInfo WHERE bht_UserIDTemp='{$userID}' 
 //				AND tms_acct_BalanceInHandTemp.bht_BusID=tms_bd_BusInfo.bi_BusID AND bi_BusUnit='{$ba_BusUnit}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' GROUP BY bht_BusID ";
 //		$queryBalanceInHandTemp=$class_mysql_default->my_query("$selectBalanceInHandTemp");
-//		while($rowBusBalanceInHandTemp=mysql_fetch_array($queryBalanceInHandTemp)){
+//		while($rowBusBalanceInHandTemp=mysqli_fetch_array($queryBalanceInHandTemp)){
 //			$ii=0;
 //			$jj=0;
 //			$m1[0]=0;
@@ -271,7 +271,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$slectBusAccount="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 //			WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bht_Date desc";
 //		$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-//		while($rowBusAccount=mysql_fetch_array($queryBusAccount)){
+//		while($rowBusAccount=mysqli_fetch_array($queryBusAccount)){
 //			$state=1;
 //			$d1=strtotime($rowBusAccount['bht_Date']);
 //			$m1[$ii+1]=date('Y-m',$d1);
@@ -283,7 +283,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$slectBusAccoun="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 //			WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bh_Date desc";
 //		$queryBusAccoun=$class_mysql_default->my_query("$slectBusAccoun");
-//		while($rowBusAccoun=mysql_fetch_array($queryBusAccoun)){
+//		while($rowBusAccoun=mysqli_fetch_array($queryBusAccoun)){
 //			$state=1;
 //			$d2=strtotime($rowBusAccoun['bh_Date']);
 //			$m2[$jj+1]=date('Y-m',$d2);
@@ -315,7 +315,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		if($allmm==0&&$state==0){
 //			$slectBusAccountno="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$ba_begindate}' AND  bht_Date<='{$ba_enddate}' order by bht_Date desc";
 //			$queryBusAccountno=$class_mysql_default->my_query("$slectBusAccountno");
-//			while($rowBusAccountno=mysql_fetch_array($queryBusAccountno)){
+//			while($rowBusAccountno=mysqli_fetch_array($queryBusAccountno)){
 //				$d=strtotime($rowBusAccountno['bht_Date']);
 //				$m1[$ii+1]=date('Y-m',$d);
 //				if($m1[$ii]!=$m1[$ii+1]){
@@ -333,11 +333,11 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 //			br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}'";
 //		$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-//		$rowBusRate=mysql_fetch_array($queryBusRate);
+//		$rowBusRate=mysqli_fetch_array($queryBusRate);
 //		$Ratefeenum=0;
 //		$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 //		$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-//		while($rowFeeType=mysql_fetch_array($queryFeeType)){
+//		while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 //				if($rowFeeTyped['ft_FeeTypeComputer']=='固定金额收费'){
 //					$Rate[$Ratefeenumd]=$Rate[$Ratefeenumd]-($rowBusRated[$Ratefeenumd+7]*$returnmm);
 //					$ba_Paid=$ba_Paid+($rowBusRated[$Ratefeenumd+7]*$returnmm);
@@ -391,14 +391,14 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 			br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$BusID}'";
 		$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-		$rowBusRate=mysql_fetch_array($queryBusRate);
+		$rowBusRate=mysqli_fetch_array($queryBusRate);
 	//	$selectbusaccount="SELECT MAX(ba_DateTime) AS DateTime FORM tms_acct_BusAccount WHERE ba_BusID='{$BusID}'";
 	//	$querybusaccount=$class_mysql_default->my_query("$selectbusaccount");
-	//	$rowbusaccount=mysql_fetch_array($querybusaccount);
+	//	$rowbusaccount=mysqli_fetch_array($querybusaccount);
 		$slectBusAccount="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 			WHERE bh_BusID='{$BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 		$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-		while($rowBusAccount=mysql_fetch_array($queryBusAccount)){
+		while($rowBusAccount=mysqli_fetch_array($queryBusAccount)){
 			$state=1;
 			$d1=strtotime($rowBusAccount['bht_Date']);
 			$m1[$ii+1]=date('Y-m',$d1);
@@ -410,7 +410,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$slectBusAccoun="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 			WHERE bh_BusID='{$BusID}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bh_Date desc";
 		$queryBusAccoun=$class_mysql_default->my_query("$slectBusAccoun");
-		while($rowBusAccoun=mysql_fetch_array($queryBusAccoun)){
+		while($rowBusAccoun=mysqli_fetch_array($queryBusAccoun)){
 			$state=1;
 			$d2=strtotime($rowBusAccoun['bh_Date']);
 			$m2[$jj+1]=date('Y-m',$d2);
@@ -444,7 +444,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		if($allmm==0&&$state==0){
 			$slectBusAccountno="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$BusID}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 			$queryBusAccountno=$class_mysql_default->my_query("$slectBusAccountno");
-			while($rowBusAccountno=mysql_fetch_array($queryBusAccountno)){
+			while($rowBusAccountno=mysqli_fetch_array($queryBusAccountno)){
 				$d=strtotime($rowBusAccountno['bht_Date']);
 				$m1[$ii+1]=date('Y-m',$d);
 				if($m1[$ii]!=$m1[$ii+1]){
@@ -458,7 +458,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$Ratefeenum=0;
 		$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 		$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-		while($rowFeeType=mysql_fetch_array($queryFeeType)){
+		while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 			if($rowFeeType['ft_FeeTypeComputer']=='按百分比收费'){
 //				if($allm==0&&$allmm!=0){
 //					$Ratefee[$Ratefeenum]=0;
@@ -487,7 +487,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		}else{
 //			$slectBusAccount1="SELECT MIX(bht_DateTime) AS DateTime1 FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$BusID}' AND bht_UserIDTemp='{$userID}' ";
 //			$queryBusAccount1=$class_mysql_default->my_query("$slectBusAccount1");
-//			$rowBusAccount1=mysql_fetch_array($queryBusAccount1);
+//			$rowBusAccount1=mysqli_fetch_array($queryBusAccount1);
 //			if($rowBusAccount['DateTime']){
 //				$d=strtotime($rowBusAccount['DateTime']);
 //				$yy=date('Y')-date('Y',$d);
@@ -503,7 +503,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //修改版本1
 //		$slectBusAccount="SELECT MAX(ba_DateTime) AS DateTime FROM tms_acct_BusAccount WHERE ba_BusID='{$BusID}'";
 //		$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-//		$rowBusAccount=mysql_fetch_array($queryBusAccount);
+//		$rowBusAccount=mysqli_fetch_array($queryBusAccount);
 //		if($rowBusAccount['DateTime']){
 //			$d=strtotime($rowBusAccount['DateTime']);
 //			$yy=date('Y')-date('Y',$d);
@@ -515,7 +515,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //		$Ratefeenum=0;
 //		$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 //		$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-//		while($rowFeeType=mysql_fetch_array($queryFeeType)){
+//		while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 //			if($rowFeeType['ft_FeeTypeComputer']=='按百分比收费'){
 //				$Ratefee[$Ratefeenum]=$rowBusRate[$Ratefeenum+8]*$balanceBalanceMoney/100;
 //			}else{
@@ -531,11 +531,11 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$selectBalanceInHandTemp="SELECT bht_BusID,bht_BalanceMoney FROM tms_acct_BalanceInHandTemp,tms_bd_BusInfo WHERE bht_UserIDTemp='{$userID}' 
 				AND tms_acct_BalanceInHandTemp.bht_BusID=tms_bd_BusInfo.bi_BusID AND bi_BusUnit='{$BusUnit}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' GROUP BY bht_BusID ";
 		$queryBalanceInHandTemp=$class_mysql_default->my_query("$selectBalanceInHandTemp");
-//		if(mysql_num_rows($queryBalanceInHandTemp) == 0){
+//		if(mysqli_num_rows($queryBalanceInHandTemp) == 0){
 //			$balance=0;
 //		}else{
 		$busallmm="";
-		while($rowBusBalanceInHandTemp=mysql_fetch_array($queryBalanceInHandTemp)){
+		while($rowBusBalanceInHandTemp=mysqli_fetch_array($queryBalanceInHandTemp)){
 			$ii=0;
 			$jj=0;
 			$m1[0]=0;
@@ -550,12 +550,12 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 			br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}'";
 		$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-		$rowBusRate=mysql_fetch_array($queryBusRate);
+		$rowBusRate=mysqli_fetch_array($queryBusRate);
 	
 		$slectBusAccount="SELECT bht_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 			WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 		$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-		while($rowBusAccount=mysql_fetch_array($queryBusAccount)){
+		while($rowBusAccount=mysqli_fetch_array($queryBusAccount)){
 			$state=1;
 			$d1=strtotime($rowBusAccount['bht_Date']);
 			$m1[$ii+1]=date('Y-m',$d1);
@@ -567,7 +567,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$slectBusAccoun="SELECT bh_Date FROM tms_acct_BalanceInHand,tms_acct_BalanceInHandTemp
 			WHERE bh_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BalanceInHandTemp.bht_BusID AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bh_Date desc";
 		$queryBusAccoun=$class_mysql_default->my_query("$slectBusAccoun");
-		while($rowBusAccoun=mysql_fetch_array($queryBusAccoun)){
+		while($rowBusAccoun=mysqli_fetch_array($queryBusAccoun)){
 			$state=1;
 			$d2=strtotime($rowBusAccoun['bh_Date']);
 			$m2[$jj+1]=date('Y-m',$d2);
@@ -601,7 +601,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		if($allmm==0&&$state==0){
 			$slectBusAccountno="SELECT bht_Date FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$rowBusBalanceInHandTemp['bht_BusID']}' AND bht_UserIDTemp='{$userID}' AND bht_Date>='{$begindate}' AND  bht_Date<='{$enddate}' order by bht_Date desc";
 			$queryBusAccountno=$class_mysql_default->my_query("$slectBusAccountno");
-			while($rowBusAccountno=mysql_fetch_array($queryBusAccountno)){
+			while($rowBusAccountno=mysqli_fetch_array($queryBusAccountno)){
 				$d=strtotime($rowBusAccountno['bht_Date']);
 				$m1[$ii+1]=date('Y-m',$d);
 				if($m1[$ii]!=$m1[$ii+1]){
@@ -615,7 +615,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 		$Ratefeenum=0;
 		$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 		$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-		while($rowFeeType=mysql_fetch_array($queryFeeType)){
+		while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 			if($rowFeeType['ft_FeeTypeComputer']=='按百分比收费'){
 			//		echo 'sss';
 				$Ratefee[$Ratefeenum]=$Ratefee[$Ratefeenum]+$rowBusRate[$Ratefeenum+7]*$balance/100;
@@ -632,21 +632,21 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //原版本
 //		$slectBusAccount="SELECT MAX(ba_DateTime) AS DateTime FROM tms_acct_BusAccount WHERE ba_BusUnit='{$BusUnit}'";
 //		$queryBusAccount=$class_mysql_default->my_query("$slectBusAccount");
-//		$rowBusAccount=mysql_fetch_array($queryBusAccount);
+//		$rowBusAccount=mysqli_fetch_array($queryBusAccount);
 //		$d=strtotime($rowBusAccount['DateTime']);
 //		$yy=date('Y')-date('Y',$d);
 //		$mm=date('m')-date('m',$d);
 //		$allmm=$yy*12+$mm;
 //		$selectbus="SELECT bi_BusID FROM tms_bd_BusInfo WHERE bi_BusUnit='{$BusUnit}'";
 //		$querybus=$class_mysql_default->my_query("$selectbus");
-//		while($rowbus=mysql_fetch_array($querybus)){
+//		while($rowbus=mysqli_fetch_array($querybus)){
 //			$selectBalanceInHandTemp="SELECT IFNULL(SUM(bht_ServiceFee),0),IFNULL(SUM(bht_otherFee1),0),IFNULL(SUM(bht_otherFee2),0),bht_otherFee3,IFNULL(SUM(bht_otherFee4),0),IFNULL(SUM(bht_otherFee5),0),IFNULL(SUM(bht_otherFee6),0),
 //				IFNULL(SUM(bht_PriceTotal),0) FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$rowbus['bi_BusID']}' AND bht_UserIDTemp='{$userID}' GROUP BY bht_BusID";
 //			$queryBalanceInHandTemp=$class_mysql_default->my_query("$selectBalanceInHandTemp");
-//			if(mysql_num_rows($queryBalanceInHandTemp) == 0){
+//			if(mysqli_num_rows($queryBalanceInHandTemp) == 0){
 //				$balance=0;
 //			}else{
-//				$rowBusBalanceInHandTemp=mysql_fetch_array($queryBalanceInHandTemp);
+//				$rowBusBalanceInHandTemp=mysqli_fetch_array($queryBalanceInHandTemp);
 //				$balance=$rowBusBalanceInHandTemp[7]-$rowBusBalanceInHandTemp[0]-($rowBusBalanceInHandTemp[7]-$rowBusBalanceInHandTemp[0])*$rowBusBalanceInHandTemp[3]-$rowBusBalanceInHandTemp[1]
 //					-$rowBusBalanceInHandTemp[2]-$rowBusBalanceInHandTemp[4]-$rowBusBalanceInHandTemp[5]-$rowBusBalanceInHandTemp[6];
 //			}
@@ -654,12 +654,12 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //			$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 //				br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$rowbus['bi_BusID']}'";
 //			$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-//			$rowBusRate=mysql_fetch_array($queryBusRate);
+//			$rowBusRate=mysqli_fetch_array($queryBusRate);
 //			$selectBusRatehave="SELECT bh_BusID,ba_DateTime FROM tms_acct_BalanceInHand,tms_acct_BusAccountTemp,tms_acct_BusAccount
 //					WHERE bh_BusID='{$rowbus['bi_BusID']}' AND tms_acct_BalanceInHand.bh_BusID=tms_acct_BusAccountTemp.bht_BusID AND bht_UserIDTemp='{$userID}' 
 //					AND tms_acct_BalanceInHand.bh_AccountID=tms_acct_BusAccount.ba_AccountID ";
 //			$queryBusRatehave=$class_mysql_default->my_query("$selectBusRatehave");
-//			$rowBusRatehave=mysql_fetch_array($queryBusRatehave);
+//			$rowBusRatehave=mysqli_fetch_array($queryBusRatehave);
 //			if($rowBusRatehave['ba_DateTime']){
 //				$d=strtotime($rowBusRatehave['ba_DateTime']);
 //				$yy=date('Y')-date('Y',$d);
@@ -676,7 +676,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 //			$Ratefeenum=0;
 //			$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 //			$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-//			while($rowFeeType=mysql_fetch_array($queryFeeType)){
+//			while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 //				if($rowFeeType['ft_FeeTypeComputer']=='按百分比收费'){
 //			//		echo 'sss';
 //					$Ratefee[$Ratefeenum]=$Ratefee[$Ratefeenum]+$rowBusRate[$Ratefeenum+8]*$balance/100;
@@ -691,17 +691,17 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 			$selectBalanceInHandTemp="SELECT IFNULL(SUM(bht_ServiceFee),0),IFNULL(SUM(bht_otherFee1),0),IFNULL(SUM(bht_otherFee2),0),bht_otherFee3,IFNULL(SUM(bht_otherFee4),0),IFNULL(SUM(bht_otherFee5),0),IFNULL(SUM(bht_otherFee6),0),
 				IFNULL(SUM(bht_PriceTotal),0) FROM tms_acct_BalanceInHandTemp WHERE bht_BusID='{$eBusID}' AND bht_UserIDTemp='{$userID}' GROUP BY bht_BusID";
 			$queryBalanceInHandTemp=$class_mysql_default->my_query("$selectBalanceInHandTemp");
-			$rowBusBalanceInHandTemp=mysql_fetch_array($queryBalanceInHandTemp);
+			$rowBusBalanceInHandTemp=mysqli_fetch_array($queryBalanceInHandTemp);
 			$balance=$rowBusBalanceInHandTemp[7]-$rowBusBalanceInHandTemp[0]-($rowBusBalanceInHandTemp[7]-$rowBusBalanceInHandTemp[0])*$rowBusBalanceInHandTemp[3]-$rowBusBalanceInHandTemp[1]
 				-$rowBusBalanceInHandTemp[2]-$rowBusBalanceInHandTemp[4]-$rowBusBalanceInHandTemp[5]-$rowBusBalanceInHandTemp[6];
 			$selectBusRate="SELECT br_BusID,br_BusNumber,br_BusType,br_BusUnit,br_InStationID,br_InStation,br_LineName,br_Rate1,br_Rate2,br_Rate3,br_Rate4,br_Rate5,br_Rate6,br_Rate7,br_Rate8,
 				br_Rate9,br_Rate10,br_Rate11,br_Rate12,br_Rate13,br_Rate14,br_Rate15 FROM tms_acct_BusRate WHERE br_BusID='{$eBusID}'";
 			$queryBusRate=$class_mysql_default->my_query("$selectBusRate");
-			$rowBusRate=mysql_fetch_array($queryBusRate);
+			$rowBusRate=mysqli_fetch_array($queryBusRate);
 			$Ratefeenum=0;
 			$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 			$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-			while($rowFeeType=mysql_fetch_array($queryFeeType)){
+			while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 				if($rowFeeType['ft_FeeTypeComputer']=='按百分比收费'){
 					$Ratefee[$Ratefeenum]=$Ratefee[$Ratefeenum]+$rowBusRate[$Ratefeenum+7]*$balance/100;
 				}else{
@@ -928,7 +928,7 @@ if(isset($_POST['finalbalanceBalanceMoney'])){//去掉submit不用这里了；
 					$i=0;
 					$selectFeeType="SELECT ft_FeeTypeName,ft_FeeTypeComputer,ft_FeePercent FROM tms_bd_FeeType";
 					$queryFeeType=$class_mysql_default->my_query("$selectFeeType");
-					while($rowFeeType=mysql_fetch_array($queryFeeType)){
+					while($rowFeeType=mysqli_fetch_array($queryFeeType)){
 						if($i%4==0){
 							$j=$i+1;
 				?>

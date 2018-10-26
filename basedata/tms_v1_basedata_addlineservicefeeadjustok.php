@@ -32,7 +32,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 			if($BeginDate==$row['sfa_BeginDate'] && $EndDate==$row['sfa_EndDate']){
 				$retData = array('retVal' => 'FAIL1', 'retString' => '该记录已存在！', 'sql' => $selects);
 				echo json_encode($retData);
@@ -81,14 +81,14 @@
 		and sfa_LineAdjust='{$LineAdjust}' and sfa_ISNoRunsAdjust='0' and  sfa_DepartureSiteID='{$DepartureSiteID}' and sfa_GetToSiteID='{$GetToSiteID}' 
 		and sfa_ModelID='{$ModelID}' and sfa_BeginDate='{$BeginDate}' and sfa_EndDate='{$EndDate}'";
 	$seles=$class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)){
+	if(!mysqli_fetch_array($seles)){
 		$insert="insert into tms_bd_ServiceFeeAdjust (sfa_ISUnitAdjust,sfa_Unit,sfa_ISLineAdjust,sfa_LineAdjust,sfa_ISNoRunsAdjust,sfa_NoRunsAdjust,
 			sfa_DepartureSiteID,sfa_DepartureSite,sfa_GetToSiteID,sfa_GetToSite,sfa_ModelID,sfa_ModelName,sfa_BeginDate,sfa_EndDate,sfa_BeginTime,
 			sfa_EndTime,sfa_RunPrice,sfa_Remark) values('{$ISUnitAdjust}','{$Unit}','{$ISLineAdjust}','{$LineAdjust}','0',
 			'NULL','{$DepartureSiteID}','{$DepartureSite}','{$GetToSiteID}','{$GetToSite}','{$ModelID}','{$ModelName}','{$BeginDate}',
 			'{$EndDate}','{$BeginTime}','{$EndTime}','{$RunPrice}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert); 
-		//if (!$query) echo "SQL错误：".mysql_error();
+		//if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addlineservicefeeadjust.php?clnumber=$LineAdjust'</script>";
 		}else{

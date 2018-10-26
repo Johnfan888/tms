@@ -39,7 +39,7 @@
  		
 		$sql1="SELECT COUNT(ta_ID) AS number FROM tms_bd_TicketAdd WHERE ta_Type LIKE '{$Type}%' AND ta_UserID LIKE '{$UserID1}%'".$strsta.$str;
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	if($RegionCode2 == 'excel'){
 		  $file_name = "searticketadd.csv";
@@ -59,7 +59,7 @@
 		  				  ta_AddNum,ta_LostNum,ta_Type,ta_UserID,ta_User,ta_UserSation,ta_Remark FROM tms_bd_TicketAdd WHERE  ta_Type LIKE '{$Type}%' AND ta_UserID LIKE '{$UserID1}%'".$strsta.$str;
 		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -241,7 +241,7 @@ function stationtake(){
  <?php 
  $sql="SELECT * FROM tms_bd_TicketAdd WHERE  ta_Type LIKE '{$Type}%' AND ta_UserID LIKE '{$UserID1}%'".$strsta.$str;
 		$query =$class_mysql_default->my_query($sql);
-		while ($row = mysql_fetch_array($query)){
+		while ($row = mysqli_fetch_array($query)){
 				$alladdmun=$alladdmun+$row['ta_AddNum'];
 				$alllostnum=$alllostnum+$row['ta_LostNum'];
 			}
@@ -297,8 +297,8 @@ function stationtake(){
   		$i=0;
 		$sql="SELECT * FROM tms_bd_TicketAdd WHERE  ta_Type LIKE '{$Type}%' AND ta_UserID LIKE '{$UserID1}%'".$strsta.$str;
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".mysql_error();
-		while ($row = mysql_fetch_array($query)){
+		//if (!$query) echo "SQL错误：".->my_error();
+		while ($row = mysqli_fetch_array($query)){
 				$i++;
 			if($row['ta_Remark']!='注销'){
 			}

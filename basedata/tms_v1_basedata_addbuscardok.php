@@ -14,7 +14,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_BusCard where bc_CardID='{$CardID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $CardID==$CardI ){
+	if(!mysqli_fetch_array($sele) || $CardID==$CardI ){
 		if(!$CardI){
 			$insert="INSERT INTO `tms_bd_BusCard` (`bc_CardID`,`bc_BusID`,`bc_BusNumber`,`bc_RegDate`,`bc_StationID`,`bc_Station`,`bc_Remark`) 
 				VALUES ('{$CardID}', '{$BusID}', '{$BusNumber}','{$RegDate}','{$StationID}','{$Station}','{$Remark}');";

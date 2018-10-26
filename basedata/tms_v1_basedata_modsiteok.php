@@ -23,7 +23,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_SiteSet where sset_SiteID='{$SiteId}'";
 	$sele= $class_mysql_default->my_query($select);
-	$result=mysql_fetch_array($sele);
+	$result=mysqli_fetch_array($sele);
 	if(!$result||$SiteI==$SiteId){
 		$update="UPDATE tms_bd_SiteSet set sset_SiteID='{$SiteId}', sset_SiteName='{$SiteName}', sset_SiteType='{$SiteType}', sset_SiteRank='{$SiteRank}',
 			sset_OperateCode='{$OperateCode}',sset_HelpCode='{$HelpCode}', sset_Region='{$Region}', sset_IsStation='{$IsStation}', sset_IsTollSite='{$IsTollSite}',

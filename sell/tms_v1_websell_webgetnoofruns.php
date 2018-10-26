@@ -15,7 +15,7 @@ switch ($op){
 		$selectwebsell="SELECT wst_WebSellID, wst_CertificateNumber,wst_NoOfRunsID,wst_NoOfRunsdate,wst_BeginStationTime,wst_FromStation,
 			wst_ReachStation,wst_TotalMan FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}' OR wst_CertificateNumber='{$CertificateNumber}'";
 		$querywebsell = $class_mysql_default->my_query("$selectwebsell");
-		$rowwebsell=mysql_fetch_array($querywebsell);
+		$rowwebsell=mysqli_fetch_array($querywebsell);
 		$result[]= array(
 			'WebSellID'=>$rowwebsell[0],
 			'CertificateNumber' =>$rowwebsell[1],

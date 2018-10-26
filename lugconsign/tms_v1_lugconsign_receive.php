@@ -782,7 +782,7 @@ if(isset($_POST['sureReceive'])) {
 					$queryString = "SELECT tp_ID, tp_BeginTicket,tp_CurrentTicket,tp_EndTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$userID}' 
 								AND tp_Type='托运单' AND tp_InceptTicketNum>0 ORDER BY tp_ProvideData ASC";
 					$result = $class_mysql_default->my_query("$queryString");
-					if ($row = mysql_fetch_array($result)) {
+					if ($row = mysqli_fetch_array($result)) {
 						$lc_TicketNumber = $row['tp_CurrentTicket'];
 						$EndTicketNumber = $row['tp_EndTicket'];
 					}else {

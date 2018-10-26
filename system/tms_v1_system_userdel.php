@@ -23,7 +23,7 @@ else {
 	$ui_UserID = $_POST['ui_delUserID'];
 	$queryString = "SELECT ui_UserName, ui_UserGroup, ui_UserSation, ui_Remark FROM tms_sys_UsInfor WHERE ui_UserID = '{$ui_UserID}'";
 	$result = $class_mysql_default->my_query("$queryString");
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	$ui_UserName = $row['ui_UserName'];
 	$ui_UserGroup = $row['ui_UserGroup'];
 	$ui_UserSation = $row['ui_UserSation'];

@@ -39,7 +39,7 @@ switch ($op)
 			$queryString="SELECT sset_SiteName FROM tms_bd_SiteSet WHERE sset_HelpCode LIKE '{$fromstation}%' OR 
 					sset_SiteName LIKE '{$fromstation}%'";
 			$result = $class_mysql_default->my_query("$queryString");
-			while ($row = mysql_fetch_array($result)) {
+			while ($row = mysqli_fetch_array($result)) {
 				$retData[] = array(
 					'from' => $row['sset_SiteName']);
 			}
@@ -74,11 +74,11 @@ switch ($op)
 			$selectbusmodel="SELECT DISTINCT bi_BusTypeID,bi_BusType FROM tms_bd_BusInfo WHERE bi_BusUnit='{$Unit}' AND bi_BusTypeID LIKE '{$ModelID}%' ";
 			$querybusmodel=$class_mysql_default->my_query("$selectbusmodel");
 			if(!$querybusmodel){
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询车型数据失败！'.$selectbusmodel.mysql_error(), 'sql' => $selectbusmodel);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询车型数据失败！'.$selectbusmodel.->my_error(), 'sql' => $selectbusmodel);
 				echo json_encode($retData);
 				exit();
 			}else{
-				while($rowbusmodel=mysql_fetch_array($querybusmodel)){
+				while($rowbusmodel=mysqli_fetch_array($querybusmodel)){
 					$retData[] = array('retVal' => 'SUCC','ModelID' => $rowbusmodel['bi_BusTypeID'], 'ModelName' => $rowbusmodel['bi_BusType']);
 				}
 				echo json_encode($retData);
@@ -91,7 +91,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}else{
-				while($rowbusmodel=mysql_fetch_array($querybusmodel)){
+				while($rowbusmodel=mysqli_fetch_array($querybusmodel)){
 					$retData[] = array('retVal' => 'SUCC','ModelID' => $rowbusmodel['bi_BusTypeID'], 'ModelName' => $rowbusmodel['bi_BusType']);
 				}
 				echo json_encode($retData);
@@ -114,7 +114,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}else{
-			while($row=mysql_fetch_array($query)){
+			while($row=mysqli_fetch_array($query)){
 				$retData[] = array('retVal' => 'SUCC','ModelID' => $row['bi_BusTypeID'], 'ModelName' => $row['bi_BusType']);
 			}
 			echo json_encode($retData);
@@ -136,12 +136,12 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}else{
-			if(mysql_num_rows($query) == 0){
+			if(mysqli_num_rows($query) == 0){
 				$retData = array('retVal' => 'none', 'retString' => '请输入线路票价！', 'sql' => $select);
 				echo json_encode($retData);
 				exit();
 			}else{
-				while($row=mysql_fetch_array($query)){
+				while($row=mysqli_fetch_array($query)){
 					$retData[] = array('retVal' => 'SUCC','ModelID' => $row['nrap_ModelID'], 'ModelName' => $row['nrap_ModelName']);
 				}
 				echo json_encode($retData);
@@ -160,11 +160,11 @@ switch ($op)
 			sfa_ISLineAdjust='{$ISLineAdjust}' AND sfa_LineAdjust='{$LineAdjust}' AND sfa_Unit='{$Unit}' AND (sfa_NoRunsAdjust IS NULL)";
 		$query=$class_mysql_default->my_query("$select");
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次站务费车型数据失败！'.mysql_error(), 'sql' => $select);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次站务费车型数据失败！'.->my_error(), 'sql' => $select);
 			echo json_encode($retData);
 			exit();
 		}else{
-			while($row=mysql_fetch_array($query)){
+			while($row=mysqli_fetch_array($query)){
 				$retData[] = array('retVal' => 'SUCC','ModelID' => $row['sfa_ModelID'], 'ModelName' => $row['sfa_ModelName']);
 			}
 			echo json_encode($retData);
@@ -176,7 +176,7 @@ switch ($op)
 		//获取最大四位自增变量
 		$str="select max(substring(sset_SiteID,-4)) as MaxCode from tms_bd_SiteSet WHERE sset_Region='$Region1'";
 		$query1 = $class_mysql_default->my_query("$str");
-		$rows=mysql_fetch_array($query1);
+		$rows=mysqli_fetch_array($query1);
 		if($rows['MaxCode'] == null){
 		   $rows['MaxCode'] = "0000";
 		}
@@ -193,7 +193,7 @@ switch ($op)
 		exit();
 		}
 		else{
-			$row=mysql_fetch_array($result1);
+			$row=mysqli_fetch_array($result1);
 			$retData = array('retVal' => 'SUCC', 'RedionCode' => $row['rs_RegionCode'], 'MaxCode' => $rows['MaxCode']);
 			echo json_encode($retData);
 		}
@@ -208,13 +208,13 @@ switch ($op)
 		$result1=$class_mysql_default->my_query("$query2");
 		$query3="SELECT sset_HelpCode FROM tms_bd_SiteSet WHERE sset_SiteID='{$EndSiteI}'";
 		$result2=$class_mysql_default->my_query("$query3");
-			$row=mysql_fetch_array($result1);
-			$row1=mysql_fetch_array($result2);
+			$row=mysqli_fetch_array($result1);
+			$row1=mysqli_fetch_array($result2);
 			//获取最大四位自增变量
 			$str2=$row['sset_HelpCode'].$row1['sset_HelpCode'];
 			$str="select max(substring(nri_NoOfRunsID,-4)) as MaxCode from tms_bd_NoRunsInfo where nri_NoOfRunsID not like '%加%' AND nri_NoOfRunsID like '$str2%'";
 			$query1 = $class_mysql_default->my_query("$str");
-			$rows=mysql_fetch_array($query1);
+			$rows=mysqli_fetch_array($query1);
 			if($rows['MaxCode'] == null){
 		   		$rows['MaxCode'] = "0000";
 			}
@@ -230,7 +230,7 @@ switch ($op)
 			$CodePart = trim($_GET['CodePart']);	
 			$query="select max(substring(li_LineID,-4)) as MaxCode from tms_bd_LineInfo where  li_LineID like '$CodePart%'";
 			$result=$class_mysql_default->my_query("$query");
-			$row=mysql_fetch_array($result);
+			$row=mysqli_fetch_array($result);
 			if($row['MaxCode'] == null){
 		   		$row['MaxCode'] = "0000";
 			}
@@ -246,7 +246,7 @@ switch ($op)
 			$LineName=$_REQUEST['LineName'];
 			$selectlinename="SELECT li_LineName FROM tms_bd_LineInfo  WHERE li_LineID LIKE '$LineName%'";
 			$resultlinename = $class_mysql_default->my_query("$selectlinename");
-			while($rowlinename=mysql_fetch_array($resultlinename)){
+			while($rowlinename=mysqli_fetch_array($resultlinename)){
 			$retData[] = array(
 				'LineName' => $rowlinename['li_LineName']);
 		}
@@ -257,7 +257,7 @@ switch ($op)
 			$DriverCard=trim($_GET['DriverCard']);
 			$sql4="select di_DriverCard FROM tms_bd_DriverInfo WHERE di_DriverCard='{$DriverCard}'";
 			$query4 =$class_mysql_default->my_query($sql4);
-			$results=mysql_fetch_array($query4); 
+			$results=mysqli_fetch_array($query4); 
 			$driverCard=$results['di_DriverCard'];
 			if ($driverCard) {
 				$retData = array(
@@ -272,8 +272,8 @@ switch ($op)
 		case "addbus": //判断车辆编码唯一
 		$Code=trim($_GET['code']);
 		$str = "SELECT bi_BusNumber FROM tms_bd_BusInfo where bi_BusID='$Code'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['bi_BusNumber'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -287,8 +287,8 @@ switch ($op)
 		case "addbusnum": //判断车牌号唯一
 		$carnum=trim($_GET['carnum']);
 		$str = "SELECT bi_BusID FROM tms_bd_BusInfo where bi_BusNumber='$carnum'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['bi_BusID'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -303,8 +303,8 @@ switch ($op)
 		case "addbusmodel": //判断车型编号唯一
 		$ModelID=trim($_GET['ModelID']);
 		$str = "SELECT bm_ModelName FROM tms_bd_BusModel where bm_ModelID='$ModelID'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['bm_ModelName'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -318,8 +318,8 @@ switch ($op)
 		case "adddriver": //判断驾驶员编号唯一
 		$DriverID=trim($_GET['DriverID']);
 		$str = "SELECT di_Name FROM tms_bd_DriverInfo where di_DriverID='$DriverID'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['di_Name'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -333,8 +333,8 @@ switch ($op)
 		case "addbusunit": //车属单位
 		$UnitName=trim($_GET['UnitName']);
 		$str = "SELECT bu_UnitName FROM tms_bd_BusUnit where bu_UnitName='$UnitName'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['bu_UnitName'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -348,8 +348,8 @@ switch ($op)
 		case "addfeetype": //车辆收费类型
 		$FeeTypeName=trim($_GET['FeeTypeName']);
 		$str = "select ft_FeeTypeName from tms_bd_FeeType where ft_FeeTypeName='{$FeeTypeName}'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['ft_FeeTypeName'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -363,8 +363,8 @@ switch ($op)
 		case "addbusfee": //车辆收费项目
 		$BusNumber=trim($_GET['BusNumber']);
 		$str = "select br_BusNumber from tms_acct_BusRate where br_BusNumber='{$BusNumber}'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['br_BusNumber'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -379,8 +379,8 @@ switch ($op)
 		case "addtickettype": //票据类型
 		$TypeName=trim($_GET['TypeName']);
 		$str = "select tt_ID from tms_bd_TicketType where tt_TypeName='{$TypeName}'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['tt_ID'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -395,8 +395,8 @@ switch ($op)
 		case "addreturntickettype": 
 		$ReturnType=trim($_GET['ReturnType']);
 		$str = "select rte_ReturnType from tms_sell_ReturnType  where rte_ReturnType='{$ReturnType}'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['rte_ReturnType'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -411,8 +411,8 @@ switch ($op)
 		case "addinsuretype": 
 		$INSUREPRODUCTNAME=trim($_GET['INSUREPRODUCTNAME']);
 		$str = "select it_InsureProductName from tms_bd_InsureType  where it_InsureProductName='{$INSUREPRODUCTNAME}'";
-		$select = mysql_query($str);
-		$rows = mysql_fetch_array($select);
+		$select = ->my_query($str);
+		$rows = mysqli_fetch_array($select);
 		if ($rows['it_InsureProductName'] != null) {
 			$retData = array(
 				'sucess' => '1');
@@ -428,7 +428,7 @@ switch ($op)
 		$SiteNam=trim($_GET['SiteNam']);
 		$sql1 = "select sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1 and sset_SiteName='{$SiteNam}'";
 		$query1 =$class_mysql_default->my_query($sql1);
-		$results=mysql_fetch_array($query1); 
+		$results=mysqli_fetch_array($query1); 
 		$sset_SiteName=$results['sset_SiteName'];
 		if ($sset_SiteName) {
 		$retData = array(
@@ -469,7 +469,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row1=mysql_fetch_array($query1)){
+			while($row1=mysqli_fetch_array($query1)){
 				if($row1['nds_RunHours']){
 					$Hours='';
 		        	$Minutes='';
@@ -493,7 +493,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row2=mysql_fetch_array($query2)){
+			while($row2=mysqli_fetch_array($query2)){
 				if($row2['nds_RunHours']){
 					$Hours='';
 		        	$Minutes='';
@@ -517,7 +517,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			$row3=mysql_fetch_array($query3);
+			$row3=mysqli_fetch_array($query3);
 			if($row3['nds_DepartureTime']){
 				$DepartureTime=date('H:i', strtotime ('+'.$allRunminutes.' minute', strtotime($row3['nds_DepartureTime'])));
 			}
@@ -538,7 +538,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row1=mysql_fetch_array($query1)){
+			while($row1=mysqli_fetch_array($query1)){
 				if($row1['si_SectionID']>$SectionID){
 					$retData = array('retVal' => 'FAIL', 'retString' => '前面站点'.$row1['nds_SiteName'].'的序号'.$row1['si_SectionID'].'大于站点'.$SiteName.'的序号'.$SectionID);
 					echo json_encode($retData);
@@ -558,7 +558,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row2=mysql_fetch_array($query2)){
+			while($row2=mysqli_fetch_array($query2)){
 				if($row2['si_SectionID']<$SectionID){
 					$retData = array('retVal' => 'FAIL', 'retString' => '后面站点'.$row2['nds_SiteName'].'的序号'.$row2['si_SectionID'].'小于站点'.$SiteName.'的序号'.$SectionID);
 					echo json_encode($retData);
@@ -584,7 +584,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row1=mysql_fetch_array($query1)){
+			while($row1=mysqli_fetch_array($query1)){
 				$modle[]=array('ModelName'=>$row1['nrap_ModelName'],'ModelID'=>$row1['nrap_ModelID']);
 			}
 		//	echo json_encode($modle);
@@ -597,7 +597,7 @@ switch ($op)
 				echo json_encode($retData);
 				exit();
 			}
-			while($row2=mysql_fetch_array($query2)){
+			while($row2=mysqli_fetch_array($query2)){
 				$modle[]=array('ModelName'=>$row2['nrap_ModelName'],'ModelID'=>$row2['nrap_ModelID']);
 			} 
 			$length=count($modle);
@@ -623,7 +623,7 @@ function getBusData($busid,$class_mysql_default)
 		echo json_encode($retData);
 		exit();
 	}
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	$retData = array(
 		'BusNumber' => $row['bi_BusNumber'],
 		'BusTypeID' => $row['bi_BusTypeID'],
@@ -646,7 +646,7 @@ function getBusModelData($ModelID,$class_mysql_default)
 		echo json_encode($retData);
 		exit();
 	}
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	$retData = array(
 	//	'BusNumber' => $row['bi_BusNumber'],
 	//	'BusTypeID' => $row['bi_BusTypeID'],
@@ -667,7 +667,7 @@ function getInceptUse($InceptUserID,$class_mysql_default)
 		echo json_encode($retData);
 		exit();
 	}
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	$retData = array(
 		'InceptUser' => $row['ui_UserName'],
 		'InceptUserSation' => $row['ui_UserSation']);
@@ -683,12 +683,12 @@ function getRegion($SiteId,$class_mysql_default)
 		echo json_encode($retData);
 		exit();
 	}
-	if(!mysql_num_rows($result)){
+	if(!mysqli_num_rows($result)){
 		$retData = array('retVal' => 'FAIL1');
 		echo json_encode($retData);
 		exit();
 	}
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'RegionName' => $row['rs_RegionName'],'RegionCode' => $row['rs_RegionCode']);
 		
@@ -703,7 +703,7 @@ function getSite($Site,$class_mysql_default){
 		echo json_encode($retData);
 		exit();
 	}
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'SiteID'=>$row['sset_SiteID'],
 		    'HelpCode'=>$row['sset_HelpCode'],
@@ -720,7 +720,7 @@ function getStation($Site,$class_mysql_default){
 		echo json_encode($retData);
 		exit();
 	}
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'SiteName' => $row['sset_SiteName']);
 	}
@@ -732,7 +732,7 @@ function backProvide($ID, $userName,$userID,$userStationName, $class_mysql_defau
 	$select="SELECT tp_BeginTicket,tp_CurrentTicket,tp_EndTicket,tp_InceptTicketNum,tp_Type FROM tms_bd_TicketProvide WHERE
 		tp_ID='{$ID}'";
 	$query1=$class_mysql_default->my_query("$select");
-	$rows=mysql_fetch_array($query1);
+	$rows=mysqli_fetch_array($query1);
 	$EndTicket=$rows['tp_CurrentTicket']-1;
 	$class_mysql_default->my_query("START TRANSACTION");
 	$insert="INSERT INTO tms_bd_TicketAdd (ta_Data,ta_Time,ta_BeginTicket,ta_EndTicket,ta_CurrentTicket,ta_AddNum,ta_LostNum,

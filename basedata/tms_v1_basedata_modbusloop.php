@@ -11,7 +11,7 @@
 		nrl_Remark,nri_LineID FROM tms_bd_NoRunsLoop,tms_bd_NoRunsInfo WHERE nrl_NoOfRunsID='{$NoOfRunsID}'AND nrl_LoopID='{$noid}' 
 		AND nri_NoOfRunsID='{$NoOfRunsID}'";
 	$query =$class_mysql_default->my_query($sql);
-	$result=mysql_fetch_array($query);
+	$result=mysqli_fetch_array($query);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -208,13 +208,13 @@ function append(){
     		/*		$selectunit="SELECT DISTINCT nrap_Unit FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_LineAdjust='{$result['nri_LineID']}' 
     					AND (!nrap_NoRunsAdjust)";
     				$selunit =$class_mysql_default->my_query($selectunit);
-    				if(!$selunit) echo mysql_error();
-					while($resultunit=mysql_fetch_array($selunit)){
+    				if(!$selunit) echo ->my_error();
+					while($resultunit=mysqli_fetch_array($selunit)){
 						if($resultunit['nrap_Unit']) {
 							if($result['nrl_Unit']!=$resultunit['nrap_Unit']){ */
 					$selectbusunit="SELECT DISTINCT bi_BusUnit FROM tms_bd_BusInfo";
     				$querybusunit=$class_mysql_default->my_query($selectbusunit);
-    				while($rowbusunit=mysql_fetch_array($querybusunit)){
+    				while($rowbusunit=mysqli_fetch_array($querybusunit)){
     					if($result['nrl_Unit']!=$rowbusunit['bi_BusUnit']){
     			?>
     			<option value="<?php echo $rowbusunit['bi_BusUnit'];?>"><?php echo  $rowbusunit['bi_BusUnit'];?></option>
@@ -248,7 +248,7 @@ function append(){
 		    		$select1="SELECT DISTINCT nrap_ModelID,nrap_ModelName FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_Unit='{$rowbusunit['bi_BusUnit']}' AND 
 						nrap_NoRunsAdjust='{$NoOfRunsID}' AND nrap_ModelID IN (SELECT DISTINCT bi_BusTypeID FROM tms_bd_BusInfo WHERE bi_BusUnit='{$rowbusunit['bi_BusUnit']}')";
 					$query1=$class_mysql_default->my_query("$select1");
-					while($row1=mysql_fetch_array($query1)){
+					while($row1=mysqli_fetch_array($query1)){
 						if($result['nrl_ModelID']!=$row1['nrap_ModelID']){
 				?>
 						<option value="<?php echo $row1['nrap_ModelName'].','.$row1['nrap_ModelID'];?>"><?php echo $row1['nrap_ModelName'];?></option>
@@ -260,7 +260,7 @@ function append(){
 						nrap_ModelID NOT IN (SELECT DISTINCT nrap_ModelID FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_Unit='{$rowbusunit['bi_BusUnit']}' AND 
 						nrap_NoRunsAdjust='{$NoOfRunsID}')";
 					$query2=$class_mysql_default->my_query("$select2");
-					while($row2=mysql_fetch_array($query2)){
+					while($row2=mysqli_fetch_array($query2)){
 						if($result['nrl_ModelID']!=$row2['nrap_ModelID']){
 				?>
 							<option value="<?php echo $row2['nrap_ModelName'].','.$row2['nrap_ModelID'];?>"><?php echo $row2['nrap_ModelName'];?></option>

@@ -11,7 +11,7 @@ require_once("../ui/inc/init.inc.php");
 $ui_UserID = $_POST['ui_modUserID'];
 $queryString3 = "SELECT ui_UserGroupID FROM tms_sys_UsInfor WHERE ui_UserID = '{$ui_UserID}'";
 $result3 = $class_mysql_default->my_query("$queryString3");
-$row3 = mysql_fetch_array($result3);
+$row3 = mysqli_fetch_array($result3);
 if(isset($_POST['sureMod'])) {
 	function creatNewConfigFile($ugid) {
 		$menuType = '$menu_type = array(';
@@ -65,7 +65,7 @@ if(isset($_POST['sureMod'])) {
 	
 	$queryString2 = "SELECT ui_UserGroup,ui_UserGroupID FROM tms_sys_UsInfor WHERE ui_UserID = '{$ui_UserID}'";
 	$result2 = $class_mysql_default->my_query("$queryString2");
-	$row2 = mysql_fetch_array($result2);
+	$row2 = mysqli_fetch_array($result2);
 	
 	
 	$queryString = "UPDATE tms_sys_UsInfor SET ui_UserID = '{$ui_UserID}', ui_UserName = '{$ui_UserName}', 
@@ -88,7 +88,7 @@ else {
 	$stationName = $_POST['ui_opUserSation'];
 	$queryString = "SELECT ui_UserPassword,ui_UserName,ui_Remark,ui_UserSation FROM tms_sys_UsInfor WHERE ui_UserID = '{$ui_UserID}'";
 	$result = $class_mysql_default->my_query("$queryString");
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 	$ui_UserPassword = $row['ui_UserPassword'];
 	$ui_UserName = $row['ui_UserName'];
 	$ui_Remark = $row['ui_Remark'];
@@ -186,7 +186,7 @@ else {
 					<?php 
 							$queryString = "SELECT sset_SiteID,sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 							if($ui_UserSation==$res['sset_SiteName']){
 					      ?>
 		            	<option value="<?php echo $res['sset_SiteID'];?>" selected="selected" ><?php echo $res['sset_SiteName'];?></option>

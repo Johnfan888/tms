@@ -104,7 +104,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 							AND et_ErrUserID LIKE '{$sellerID}' 
 							AND et_TicketID LIKE '{$et_TicketID}%'".$strDate;
 		$result1 = $class_mysql_default->my_query("$queryString1");
-		while ($row1 = mysql_fetch_array($result1)) {
+		while ($row1 = mysqli_fetch_array($result1)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -116,7 +116,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									at_AlterStation, at_AlterSellID, at_AlterSellName, at_Remark FROM tms_sell_AlterTicket 
 									WHERE at_TicketID like '{$row1['et_TicketID']}%'";
 			$result2 = $class_mysql_default->my_query("$queryString2");
-			$row2 = mysql_fetch_array($result2);						
+			$row2 = mysqli_fetch_array($result2);						
 			$outputRow = array($row1['et_TicketID'], $row1['et_ErrDate'], $row1['et_ErrTime'], $row1['et_ErrUserID'],
 				$row1['et_ErrUser'], $row1['et_Station'], $row1['et_Cause'], $row1['et_NoOfRunsID'], $row1['et_NoOfRunsdate'], 
 				$row1['et_BeginStationTime'], $row1['et_BeginStation'], $row1['et_FromStation'], $row1['et_ReachStation'], 
@@ -203,7 +203,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -320,7 +320,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 				}
 				}
 					$result1 = $class_mysql_default->my_query("$queryString1");
-					while ($row1 = mysql_fetch_array($result1)) {
+					while ($row1 = mysqli_fetch_array($result1)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['et_TicketID'];?></td>
@@ -349,7 +349,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									at_AlterStation, at_AlterSellID, at_AlterSellName, at_Remark FROM tms_sell_AlterTicket 
 									WHERE at_TicketID like '{$row1['et_TicketID']}%'";
 						$result2 = $class_mysql_default->my_query("$queryString2");
-						$row2 = mysql_fetch_array($result2);						
+						$row2 = mysqli_fetch_array($result2);						
 			?>	
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsID'];?></td>
 				<td nowrap="nowrap"><?php echo $row2['at_NoOfRunsdate'];?></td>

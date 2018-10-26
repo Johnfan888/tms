@@ -65,7 +65,7 @@ function search(){
 		$CurTime=date('Y-m-d H:i:s');
 		$select="select ao_OrgName from tms_bd_AdOrg where ao_OrgName='{$OrgName}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_bd_AdOrg` (`ao_OrgCode`,`ao_OrgName`,`ao_AdderID`,`ao_Adder`,`ao_AddTime`,`ao_HelpCode`,`ao_Remark`) VALUES 
 				('{$OrgCode}', '{$OrgName}','{$userID}','{$userName}','{$CurTime}','{$HelpCode}','{$Remark}');";
 			$query = $class_mysql_default->my_query($insert);

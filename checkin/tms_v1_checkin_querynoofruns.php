@@ -111,7 +111,7 @@ if(isset($_POST['stationselect']))
 			<?php 
 					$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 					$result = $class_mysql_default->my_query("$queryString");
-			        while($res = mysql_fetch_array($result)) {
+			        while($res = mysqli_fetch_array($result)) {
 	            		if($res['sset_SiteName'] != $schStation) {
 			?>
             		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -149,7 +149,7 @@ if(isset($_POST['stationselect']))
 					}
 					$selectbusunit="SELECT bu_UnitName FROM tms_bd_BusUnit";
 					$resultbusunit = $class_mysql_default->my_query("$selectbusunit");
-					 while($rowbusunit = mysql_fetch_array($resultbusunit)) { 
+					 while($rowbusunit = mysqli_fetch_array($resultbusunit)) { 
 					 	if($rowbusunit['bu_UnitName'] != $BusUnit) {
 				?>
 					<option value="<?php echo $rowbusunit['bu_UnitName'];?>"><?php echo $rowbusunit['bu_UnitName'];?></option>
@@ -292,8 +292,8 @@ if(isset($_POST['stationselect']))
 		AND tml_BusUnit LIKE '{$BusUnit}%' AND nri_LineName LIKE '{$LineName}%' AND nds_SiteID=pd_ReachStationID AND (IFNULL(rt_CheckTicketWindow,tml_CheckTicketWindow)='{$checkWindow}')".$strdate.$strStatus." GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate 
 		ORDER BY STR_TO_DATE(tml_NoOfRunstime,'%H:%i') ASC ";
 	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	if(!$resultselet) echo mysql_error();
-	while($rows = @mysql_fetch_array($resultselet))	{
+	if(!$resultselet) echo ->my_error();
+	while($rows = @mysqli_fetch_array($resultselet))	{
 		//查询停靠点
 		$str="SELECT GROUP_CONCAT(DISTINCT ndst_SiteName ORDER BY ndst_ID ASC) AS SiteName from tms_bd_NoRunsDockSiteTemp 
 			  WHERE ndst_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND ndst_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}' AND 
@@ -305,8 +305,8 @@ if(isset($_POST['stationselect']))
 			  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 			  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";   
 		$result1 = $class_mysql_default ->my_query("$str"); 
-		if(!$result1) echo mysql_error();
-		$rows1=mysql_fetch_array($result1);
+		if(!$result1) echo ->my_error();
+		$rows1=mysqli_fetch_array($result1);
 		if (!$rows['bi_BusUnit']) $RealBusUnit = $rows['tml_BusUnit']; 
 		else $RealBusUnit = $rows['bi_BusUnit'];
 		if($rows['ct_Flag'] == '0'){

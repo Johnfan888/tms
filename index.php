@@ -15,7 +15,7 @@ $str = "select * from tms_sys_OnlineUser where ui_UserID = '$userID' and ui_User
 //echo "'$str'";
 //exit();
 $query = $class_mysql_default ->my_query($str);
-if(mysql_num_rows($query)==1)
+if(mysqli_num_rows($query)==1)
 {
        $str1 = "Location:ui/main.php?groupid=".$userGroupID;
        header($str1);      

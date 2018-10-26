@@ -15,7 +15,7 @@ if($op=="getstation"){
 	if($fromstation!=""){
 		$queryString="SELECT sset_SiteName FROM tms_bd_SiteSet WHERE sset_HelpCode LIKE '{$fromstation}%' or sset_SiteName  LIKE '{$fromstation}%'";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$retData[] = array(
 				'from' => $row['sset_SiteName']);
 		}
@@ -50,7 +50,7 @@ function getSellersData($stationName,$class_mysql_default)
 		$stationName = "%";
 	$queryString = "SELECT * FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$stationName}' AND ui_UserGroup='ÊÛÆ±×é'";
 	$result = $class_mysql_default->my_query("$queryString");
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'sellerID' => $row['ui_UserID']);
 	}
@@ -64,7 +64,7 @@ function getCheckersData($stationName,$class_mysql_default)
 		$stationName = "%";
 	$queryString = "SELECT * FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$stationName}' AND ui_UserGroup='¼ìÆ±×é'";
 	$result = $class_mysql_default->my_query("$queryString");
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($result)) {
 		$retData[] = array(
 			'checkerID' => $row['ui_UserID']);
 	}

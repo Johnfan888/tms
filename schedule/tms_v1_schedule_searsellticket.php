@@ -51,8 +51,8 @@
 	$select="SELECT st_ReachStation, SUM( st_TotalMan ) AS Numbers FROM tms_sell_SellTicket WHERE st_NoOfRunsID='{$NoOfRunsID}' AND st_NoOfRunsdate='{$NoOfRunsdate}' GROUP BY st_ReachStationID";
 	$query=$class_mysql_default->my_query($select);
 	$all=0;
-	//if(!$query) echo mysql_error();
-	while($rows = mysql_fetch_array($query)){
+	//if(!$query) echo ->my_error();
+	while($rows = mysqli_fetch_array($query)){
 		$all=$all+$rows['Numbers'];
 ?>
 	<tr align="center" bgcolor="#CCCCCC">

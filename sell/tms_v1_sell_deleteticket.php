@@ -23,7 +23,7 @@ if(isset($_GET['tid']))
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
 		    exit();
 		 }
-	     $rows = @mysql_fetch_array($resultselet);
+	     $rows = @mysqli_fetch_array($resultselet);
 	     if(!empty($rows[0]))
 	     {
 //	         $strsqlselet = "INSERT INTO `tms_sell_ErrTicket` (`et_TicketID`, `et_NoOfRunsID`, `et_NoOfRunsdate`, `et_BeginStationTime`, 
@@ -262,7 +262,7 @@ if(isset($_GET['tid']))
 				$strsqlselet="SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
 					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
 			}
- 				    while($rows = @mysql_fetch_array($resultselet))
+ 				    while($rows = @mysqli_fetch_array($resultselet))
   {
 ?>
   <tr align="center" bgcolor="#CCCCCC" id="table1">

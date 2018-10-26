@@ -7,12 +7,12 @@ require_once("../ui/inc/init.inc.php");
 $WebSellID=$_GET['WebSellID'];
 $selectweb="SELECT wst_SeatID,wst_NoOfRunsID,wst_NoOfRunsdate FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 $queryweb =$class_mysql_default->my_query($selectweb);
-$rowweb=@mysql_fetch_array($queryweb); 
+$rowweb=@mysqli_fetch_array($queryweb); 
 //这里需要锁表或锁记录
 $class_mysql_default->my_query("BEGIN");
 $selectmode="SELECT tml_SeatStatus,tml_LeaveSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowweb[1]}' AND tml_NoOfRunsdate='{$rowweb[2]}'FOR UPDATE";
 $querymode =$class_mysql_default->my_query($selectmode);
-$rowmode=@mysql_fetch_array($querymode);
+$rowmode=@mysqli_fetch_array($querymode);
 
 foreach (explode(",",$rowweb[0]) as $key =>$SeatID){
 	$rowmode[1]=$rowmode[1]+1;
@@ -25,7 +25,7 @@ $update="UPDATE tms_bd_TicketMode SET tml_SeatStatus='{$rowmode[0]}',tml_LeaveSe
 $queryupdate =$class_mysql_default->my_query($update);
 //echo $rowmode[0];
 //echo $rowmode[1];
-//if (!$queryupdate) echo "SQL错误：".mysql_error();
+//if (!$queryupdate) echo "SQL错误：".->my_error();
 $del="DELETE FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 $querydel =$class_mysql_default->my_query($del);
 if ($querymode && $querydel && $queryupdate) {

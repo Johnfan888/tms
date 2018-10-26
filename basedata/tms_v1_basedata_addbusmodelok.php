@@ -17,13 +17,13 @@
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_BusModel where bm_ModelID='{$ModelID}'";
 	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 			$insert="insert into tms_bd_BusModel (bm_ModelID,bm_ModelName,bm_Rank,bm_Category,bm_Seating,bm_AddSeating,
 				bm_AllowHalfSeats,bm_Weight,bm_AdderID,bm_Adder,bm_AddTime,bm_Closing,bm_Remark) values('{$ModelID}',
 				'{$ModelName}','{$Rank}','{$Category}','{$Seating}','{$AddSeating}','{$AllowHalfSeats}','{$Weight}',
 				'{$userID}','{$userName}','{$CurTime}','{$Closing}','{$Remark}')";
 			$query = $class_mysql_default->my_query($insert);
-		//	if (!$query) echo "SQL错误：".mysql_error();
+		//	if (!$query) echo "SQL错误：".->my_error();
 			if($query){
 				echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addbusmodel.php'</script>";
 			}else{

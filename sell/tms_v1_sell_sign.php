@@ -38,7 +38,7 @@ if(isset($_GET['tid']))
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
 		    exit();
 		}
-		$rows = @mysql_fetch_array($resultselet);
+		$rows = @mysqli_fetch_array($resultselet);
 //		$returnSXprice=$rows['st_SellPrice']-$rows['st_SellPrice']*$returnrate;
 //		$returnmoney=$rows['st_SellPrice']*$returnrate;
 		$returnmoney=$rows['st_SellPrice']-$rows['st_SellPrice']*$returnrate;
@@ -54,7 +54,7 @@ if(isset($_GET['tid']))
 //				echo "<script>alert('锁定票版1数据失败！');history.back();</script>";
 //				exit();
 //			}
-//	     	$rowsmodel1 = @mysql_fetch_array($resultmodel1);
+//	     	$rowsmodel1 = @mysqli_fetch_array($resultmodel1);
 //	     	$seatStatus1 = $rowsmodel1['tml_SeatStatus'];
 //	     	$seatStatus1 = substr_replace($seatStatus1, '0', $rows['st_SeatID']-1, 1);
 //	     	if ($rows['st_SellPriceType']=='半票'){
@@ -91,7 +91,7 @@ if(isset($_GET['tid']))
 	echo "<script>window.location.href ='tms_v1_sell_sign.php';</script>";
 /*	$strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketID'";
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	$rows = @mysql_fetch_array($resultselet);
+	$rows = @mysqli_fetch_array($resultselet);
 	if(!empty($rows[0]))
 	{
 		$strsqlselet = "INSERT INTO `tms_sell_ReturnTicket` (`rtk_TicketID` ,`rtk_ReturnTicketID` ,`rtk_ReturnType` ,`rtk_ReturnPrice` ,
@@ -386,7 +386,7 @@ if(isset($_GET['tid']))
 		$now=date('Y-m-d');
         $strsqlselet = "SELECT `rte_ReturnType`,`rte_ReturnRate` FROM `tms_sell_ReturnType` WHERE rte_ReturnTimeBegin<='{$now}' AND rte_ReturnTimeEnd>='{$now}'";
         $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-        while($rows = @mysql_fetch_array($resultselet)){
+        while($rows = @mysqli_fetch_array($resultselet)){
         	if( $rows['rte_ReturnRate'].','.$rows['rte_ReturnType']!=$returntickettype1){
    // 	$statArray = array(0 => array(	"rte_ReturnType" => "发车前48-2小时","rte_ReturnRate" => 0.5), 
    // 					1 => array(	"rte_ReturnType" => "发车前2-0小时","rte_ReturnRate" => 0.25),
@@ -470,7 +470,7 @@ if(isset($_GET['tid']))
 <?
  // $strsqlselet = "SELECT * FROM `tms_sell_ReturnTicket` WHERE rtk_SignUserID LIKE '{$signuserID}' AND rtk_IsBalance='0'";
  // $resultselet = $class_mysql_default ->my_query("$strsqlselet");
- // while($rows = @mysql_fetch_array($resultselet))
+ // while($rows = @mysqli_fetch_array($resultselet))
  // {
 ?>
 	  <tr bgcolor="#CCCCCC">
@@ -533,7 +533,7 @@ if(isset($_GET['tid']))
 				//echo $strsqlselet;
 				$resultselet = $class_mysql_default ->my_query("$strsqlselet");
 			}
- 			while($rows = @mysql_fetch_array($resultselet)){
+ 			while($rows = @mysqli_fetch_array($resultselet)){
 ?>
   <tr align="center" bgcolor="#CCCCCC" id="table1">
     <td><?=$rows['st_TicketID']?></td>

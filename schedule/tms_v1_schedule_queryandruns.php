@@ -11,7 +11,7 @@ $thisStation=$_GET['tSt'];
 $select="SELECT tml_NoOfRunstime,tml_TotalSeats,tml_LeaveSeats,tml_StopRun,tml_AllowSell,tml_HalfSeats,tml_Beginstation FROM tms_bd_TicketMode 
 	WHERE tml_NoOfRunsID='{$NoOfRunsID}' AND tml_NoOfRunsdate='{$NoOfRunsdate}'";
 $query=$class_mysql_default ->my_query($select);
-$row=mysql_fetch_array($query);
+$row=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
 <html> 
@@ -128,14 +128,14 @@ $row=mysql_fetch_array($query);
 				tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_sch_AndNoOfRuns LEFT OUTER JOIN tms_bd_NoRunsInfo ON nri_NoOfRunsID=anr_AndNoOfRunsID LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID=anr_AndNoOfRunsID 
 				AND tml_NoOfRunsdate=anr_AndNoOfRunsdate WHERE anr_NoOfRunsID='{$NoOfRunsID}' AND anr_NoOfRunsdate='{$NoOfRunsdate}'";
 			$queryand=$class_mysql_default ->my_query($selectand);
-			if (!$queryand) echo mysql_error();
-			while($rowadd=mysql_fetch_array($queryand)){
+			if (!$queryand) echo ->my_error();
+			while($rowadd=mysqli_fetch_array($queryand)){
 				$i++;
 		/*	$selectadd="SELECT nri_NoOfRunsID, nri_OperateCode, nri_State,nri_DepartureTime, nri_RunRegion,nri_AddNoRuns,nri_CheckTicketWindow,tml_AllowSell,tml_BusModel,tml_BusUnit, 
 				tml_LeaveSeats,tml_LeaveHalfSeats FROM tms_bd_NoRunsInfo LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID=nri_NoOfRunsID AND tml_NoOfRunsdate='{$NoOfRunsdate}' 
 				WHERE nri_LineName='{$LineName}' AND tml_AllowSell='1' AND tml_StopRun='0' AND nri_NoOfRunsID!='{$NoOfRunsID}'";
 			$queryadd=$class_mysql_default ->my_query($selectadd);
-			while($rowadd=mysql_fetch_array($queryadd)){ */
+			while($rowadd=mysqli_fetch_array($queryadd)){ */
 	?>
 	<tbody class="scrollContent"> 
 	<tr align="center" bgcolor="#CCCCCC">

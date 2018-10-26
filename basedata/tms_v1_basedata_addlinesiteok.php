@@ -26,7 +26,7 @@
 	$Remark=$_POST['Remark'];
 	$selects="select si_LineID from tms_bd_SectionInfo where si_LineID='{$LineID}' and si_SiteNameID='{$SiteID}'";
 	$seles=$class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)){
+	if(!mysqli_fetch_array($seles)){
 		$class_mysql_default->my_query("START TRANSACTION");
 			$update="UPDATE tms_bd_SectionInfo SET si_SectionID=si_SectionID+1 WHERE si_LineID='{$LineID}' AND si_SectionID>='{$SectionID}' ORDER BY si_SectionID DESC";
 			$query11=$class_mysql_default->my_query($update);
@@ -35,7 +35,7 @@
 				echo"<script>alert('更新序号失败');window.location.href='tms_v1_basedata_addlinesite.php?op=see&LineID=$LineID&LineName=$LineName'</script>";
 				exit();
 			}
-		//	if (!$query1) echo "SQL错误：".mysql_error();
+		//	if (!$query1) echo "SQL错误：".->my_error();
 		$insert="insert into tms_bd_SectionInfo (si_LineID,si_LineName,si_SectionID,si_SiteNameID,si_SiteName,si_Kilometer,
 			si_IsDock,si_IsGetOnSite,si_IsCheckInSite,si_IsTollInSite,si_IsServiceFee,si_ServiceFee,si_otherFee1,
 			si_otherFee2,si_otherFee3,si_otherFee4,si_otherFee5,si_otherFee6,si_Remark) values('{$LineID}',

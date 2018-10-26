@@ -59,13 +59,13 @@ if (isset($_POST['fromstation'])) {
 	  			AND (pd_ReachStation = '$reachplace') AND (pd_NoOfRunsID = '$noofrunsID') AND (pd_NoOfRunsdate = '$norunsdate')";
 	  	//echo $strsqlselet;
 	  	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	  	$rows = @mysql_fetch_array($resultselet);
+	  	$rows = @mysqli_fetch_array($resultselet);
 	  	$fullPrice = $rows[0];
 	  	
 	  	//取得车型
 	  	$strsqlselet = "SELECT tml_BusModel, tml_Allticket FROM tms_bd_TicketMode WHERE (tml_NoOfRunsID = '$noofrunsID') AND (tml_NoOfRunsdate = '$norunsdate')";
 	  	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	  	$rows = @mysql_fetch_array($resultselet);
+	  	$rows = @mysqli_fetch_array($resultselet);
 		$busModel = $rows[0];
 		$isAllTicket = $rows[1];
 		
@@ -76,7 +76,7 @@ if (isset($_POST['fromstation'])) {
 	  				AND (tml_NoOfRunsdate = '$norunsdate') FOR UPDATE";
 	  	$class_mysql_default->my_query("BEGIN");
 	  	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	  	$rows = @mysql_fetch_array($resultselet);
+	  	$rows = @mysqli_fetch_array($resultselet);
 	  	for($i = 0; $i < $tnum + $htnum; $i++) {
 	  		$array[$i] = strpos($rows[0], '0');
 	  		$rows[0] = substr_replace($rows[0], '1', $array[$i], 1);
@@ -118,7 +118,7 @@ else {
 	$strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$sellerID'
 				AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '客票' ORDER BY tp_ProvideData ASC";
 	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	$rows = @mysql_fetch_array($resultselet);
+	$rows = @mysqli_fetch_array($resultselet);
 	if (empty($rows[0])) {
 		echo "<script>if (!confirm('没有可用的客票票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 		$curTicketID = "";
@@ -134,7 +134,7 @@ else {
 	$strsqlselet = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$sellerID'
 				AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '保险票' ORDER BY tp_ProvideData ASC";
 	$resultselet = $class_mysql_default->my_query("$strsqlselet");
-	$rows = @mysql_fetch_array($resultselet);
+	$rows = @mysqli_fetch_array($resultselet);
 	if (empty($rows[0])) {
 		echo "<script>if (!confirm('没有可用的保险票据！是否继续？')) location.assign('tms_v1_sell_query.php');</script>";
 		$curSafeTicketID = "";
@@ -514,7 +514,7 @@ else {
 				<?php
 					$sql="SELECT it_InsureProductName,it_Price FROM tms_bd_InsureType"; 
       				$query =$class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){ 
+					while($result=mysqli_fetch_array($query)){ 
 				?>
 				<option value="<?php echo $result['it_Price'];?>"><?php echo $result['it_InsureProductName'].'('.$result['it_Price'].'元)';?></option>
 				<?php 

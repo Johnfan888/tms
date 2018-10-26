@@ -329,7 +329,7 @@ function getwindowvalue(){
 						si_SiteNameID=nds_SiteID AND si_LineID=(SELECT nri_LineID FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$NoOfRunsID}') AND 
 						nds_ID<(SELECT MAX(nds_ID) FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='$NoOfRunsID')";
 					$querys = $class_mysql_default->my_query($sqls);
-					while($results=mysql_fetch_array($querys)){
+					while($results=mysqli_fetch_array($querys)){
 						if($results['nds_SiteName']){	
 				?>
 				<option value="<?php echo $results['nds_SiteName'].','.$results['nds_ID'].','.$results['si_SectionID'];?>"><?php echo $results['nds_SiteName'];?></option>
@@ -348,7 +348,7 @@ function getwindowvalue(){
 					$sql = "select si_SiteNameID, si_SiteName,si_SectionID FROM tms_bd_SectionInfo WHERE si_LineID='{$LineID}' AND si_SectionID>1 AND 
 						si_SectionID<(SELECT MAX(si_SectionID) FROM tms_bd_SectionInfo WHERE si_LineID='$LineID')";
 					$query = $class_mysql_default->my_query($sql);
-					while($result=mysql_fetch_array($query)){
+					while($result=mysqli_fetch_array($query)){
 						if($result['si_SiteName']){	
 				?>
 				<option value="<?php echo $result['si_SiteName'].','.$result['si_SiteNameID'].','.$result['si_SectionID'];?>"><?php echo $result['si_SiteName'];?></option>

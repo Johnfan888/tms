@@ -23,7 +23,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($query) == 1){
+		if(mysqli_num_rows($query) == 1){
 			$retData = array('retVal' => 'FAIL1', 'retString' => '循环编号已存在，请重新输入！', 'sql' => $select);
 			echo json_encode($retData);
 			exit();
@@ -45,7 +45,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($queryprice) == 0){
+		if(mysqli_num_rows($queryprice) == 0){
 			$retData = array('retVal' => 'SUCC1', 'retString' => '添加成功，但在班次票价表中无该车型票价信息，请添加！', 'sql' => $selectprice);
 			echo json_encode($retData);
 		}else{
@@ -69,7 +69,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_NoRunsLoop where nrl_NoOfRunsID='{$NoOfRunsID}' and nrl_LoopID='{$LoopID}'";
 	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 		$insert="insert into tms_bd_NoRunsLoop (nrl_NoOfRunsID,nrl_LoopID,nrl_ModelID,nrl_ModelName,
 				nrl_Seating,nrl_AddSeating,nrl_AllowHalfSeats,nrl_Loads,nrl_Unit,nrl_Remark) values('{$NoOfRunsID}','{$LoopID}',
 				'{$ModelID}','{$ModelName}','{$Seating}','{$AddSeating}','{$AllowHalfSeats}','{$Loads}','{$Unit}','{$Remark}')";
@@ -77,7 +77,7 @@
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_searbusloop.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{
-			echo mysql_error();
+			echo ->my_error();
 			echo"<script>alert('添加失败');window.location.href='tms_v1_basedata_searbusloop.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}
 	}else{

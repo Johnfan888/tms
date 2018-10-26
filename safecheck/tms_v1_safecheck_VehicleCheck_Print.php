@@ -12,10 +12,10 @@ $sc_CheckDate = trim($_GET['chkDate']);
 $queryString = "SELECT sc_BusCard,sc_StationName,sc_UserID,sc_Result,sc_CheckDate,sc_Item1,sc_Item2,sc_Item3,sc_Item4,sc_Item5,sc_Item6,sc_Item7,sc_Item8,
 	sc_Item9,sc_Item10,bi_ManagementLine FROM tms_sf_SafetyCheck LEFT OUTER JOIN tms_bd_BusInfo ON sc_BusID=bi_BusID WHERE sc_BusID='{$sc_BusID}' AND sc_CheckDate='{$sc_CheckDate}'";
 $result = $class_mysql_default->my_query("$queryString");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result);
 $selectTicketProvide="SELECT tp_CurrentTicket,tp_Type FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$row['sc_UserID']}' AND tp_Type='安检单' AND tp_InceptTicketNum>'0'";
 $resultTicketProvide = $class_mysql_default->my_query("$selectTicketProvide");
-$rowTicketProvide= mysql_fetch_array($resultTicketProvide);
+$rowTicketProvide= mysqli_fetch_array($resultTicketProvide);
 if (empty($rowTicketProvide[0])) {
 	echo "<script>if (!confirm('没有可用的安检单票据！是否继续？')) location.assign('tms_v1_safecheck_VehicleCheck.php');</script>";
 }

@@ -26,12 +26,12 @@ $seatno='';
 $selectprice="SELECT * FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoofrunsID}' AND pd_NoOfRunsdate='{$NoOfRunsdate}' AND 
 	pd_FromStation='{$Fromstation}' AND pd_ReachStation='{$Reachstation}'";
 $resultprice=$class_mysql_default->my_query("$selectprice");
-$rowsprice= @mysql_fetch_array($resultprice);
+$rowsprice= @mysqli_fetch_array($resultprice);
 
 /*$selectmodel="SELECT tml_BusModelID,tml_BusModel FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoofrunsID}' AND 
 	tml_NoOfRunsdate='{$NoOfRunsdate}'";
 $resultmodel=$class_mysql_default ->my_query("$selectmodel");
-$rowsmodle=@mysql_fetch_array($resultmodel); */
+$rowsmodle=@mysqli_fetch_array($resultmodel); */
 
 //还需要锁表或锁记录
 $class_mysql_default->my_query("BEGIN");
@@ -39,8 +39,8 @@ $class_mysql_default->my_query("BEGIN");
 $queryString="SELECT tml_SeatStatus,tml_LeaveSeats,tml_BusModelID,tml_BusModel FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoofrunsID}'
 	AND tml_NoOfRunsdate='{$NoOfRunsdate}' FOR UPDATE";
 $resultquery = $class_mysql_default->my_query("$queryString"); 
-//if (!$resultselect) echo "SQL错误：".mysql_error();
-$rows = @mysql_fetch_array($resultquery);
+//if (!$resultselect) echo "SQL错误：".->my_error();
+$rows = @mysqli_fetch_array($resultquery);
 $rows[1]=$rows[1]-$seats;
 
 //更新座位状态和取得座位号
@@ -71,7 +71,7 @@ $insert="INSERT INTO tms_websell_WebSellTicket (wst_WebSellID,wst_UserName,wst_C
 	'{$rowsprice[21]}','{$rowsprice[22]}','{$rowsprice[23]}','{$rowsprice[24]}',CURDATE(), CURTIME(),'{$rows[2]}','{$rows[3]}',
 	'{$seatno}','0')";
 $queryinsert = $class_mysql_default->my_query("$insert"); 
-//if (!$queryinsert) echo "SQL错误：".mysql_error();
+//if (!$queryinsert) echo "SQL错误：".->my_error();
 if($resultquery && $queryupdate && $queryinsert){
 //if($queryupdate ){
 	$class_mysql_default->my_query("COMMIT");

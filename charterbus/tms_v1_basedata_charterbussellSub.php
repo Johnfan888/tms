@@ -31,7 +31,7 @@ if (isset($_POST['subPay'])) {
 	
 	$queryString = "SELECT cpm_ID FROM tms_bd_CharteredPayMoney WHERE cpm_BillingerID='{$BillingerID}' AND cpm_BillingDate='{$BillingDate}'";
 	$result = $class_mysql_default->my_query("$queryString");
-	if(!mysql_fetch_array($result)){
+	if(!mysqli_fetch_array($result)){
 		$queryString1 = "INSERT INTO tms_bd_CharteredPayMoney (cpm_BillingerID, cpm_BillingerName, cpm_BillingDate, cpm_beginTicketID, 
 				cpm_endTicketID, cpm_Number, cpm_PayMoney, cpm_BillingStation, cpm_UserID,cpm_User,cpm_SubDateTime,cpm_PC,cpm_Remark) 
 				VALUES ('{$BillingerID}', '{$BillingerName}', '{$BillingDate}', '{$beginTicketID}', '{$endTicketID}', '{$Number}', '{$turnMoney}',  
@@ -76,7 +76,7 @@ else {
 	
 //	$queryString = "SELECT SUM(sp_RemainMoney) FROM tms_acct_SellPay WHERE sp_SellUserID='{$sp_SellUserID}'";
 //	$result = $class_mysql_default->my_query("$queryString"); 
-//	$res=mysql_fetch_array($result);
+//	$res=mysqli_fetch_array($result);
 //	$sp_allRemainMoney = $res[0];
 }
 ?>

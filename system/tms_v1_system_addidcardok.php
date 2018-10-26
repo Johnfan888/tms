@@ -13,12 +13,12 @@
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_BusCard where bc_CardID ='{$CardID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO tms_bd_BusCard VALUES('{$CardID}','{$BusI}','{$BusNumber}','{$CurTime}','注册','{$StationID}','{$Station}','{$Remark}','$userName','','','','$userID');";
 		//	echo $insert;
 			$query = $class_mysql_default->my_query($insert);
 			
-	if (!$query) echo "SQL错误：".mysql_error();
+	if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_system_addidcard.php'</script>";
 		}else{

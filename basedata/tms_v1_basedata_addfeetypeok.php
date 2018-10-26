@@ -30,7 +30,7 @@
 		}
 		$select="select ft_FeeTypeName from tms_bd_FeeType where ft_FeeTypeName='{$FeeTypeName}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_bd_FeeType` (`ft_FeeTypeName`,`ft_FeeTypeComputer`,`ft_FeePercent`,`ft_FeeFix`,`ft_HelpCode`,`ft_AdderID`,`ft_Adder`,`ft_AddTime`,`ft_Remark`) VALUES 
 				('{$FeeTypeName}', '{$FeeTypeComputer}','{$Feepercent}','{$Feefix}','{$HelpCode}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 			$query = $class_mysql_default->my_query($insert);
@@ -51,9 +51,9 @@
 					$class_mysql_default->my_query("COMMIT");
 					echo"<script>alert('添加成功！');window.location.href='tms_v1_basedata_addfeetype.php?num=$num'</script>";
 				}else{
-//					if (!$query) echo "SQL错误1：".mysql_error();
-//					if (!$query1) echo "SQL错误2：".mysql_error();
-					echo mysql_error();
+//					if (!$query) echo "SQL错误1：".->my_error();
+//					if (!$query1) echo "SQL错误2：".->my_error();
+					echo ->my_error();
 					$class_mysql_default->my_query("ROLLBACK");
 					echo"<script>alert('添加失败！');window.location.href='tms_v1_basedata_addfeetype.php?num=$num'</script>";
 				}

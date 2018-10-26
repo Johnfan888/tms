@@ -6,8 +6,8 @@ require_once("../ui/inc/init.inc.php");
 	   $userStationName == '';
 	}
 	$str="SELECT * FROM tms_sch_PreviousTime WHERE pt_Code='2'";
-	$query=mysql_query($str);
-	$rowsp=mysql_fetch_array($query);
+	$query=$class_mysql_default->my_query($str);
+	$rowsp=mysqli_fetch_array($query);
 	$Stop=$rowsp['pt_Stop'];
 	$Current=$rowsp['pt_Current'];
 	$Hasten=$rowsp['pt_Hasten'];
@@ -18,37 +18,37 @@ require_once("../ui/inc/init.inc.php");
 	$op = $_REQUEST['op'];
 	if($op="GETPASSENGERINFO"){
 		$query="SELECT * FROM tms_sch_ReportInfo where ri_FromStation='$userStationName' limit 1";
-		$result = $class_mysql_default->my_query("$query");
-	  	if(mysql_num_rows($result) == 0) {
+		$result = $class_mysql_default$class_mysql_default->my_query("$query");
+	  	if(mysqli_num_rows($result) == 0) {
 	  		$query1="SELECT sn_StopStationTime,sn_Beginstation,sn_Endstation,sn_NoOfRunsID,sn_Check,sn_PreviousTime,sn_CheckState,sn_FromStation,sn_FromStationID FROM tms_sch_SpeechNoOfRunsID where sn_FromStation='$userStationName' order by sn_PreviousTime limit 1 FOR UPDATE";
-			$result1 = mysql_query($query1);
+			$result1 = $class_mysql_default->my_query($query1);
 	 /* 	if(!$result1) {
-			$class_mysql_default->my_query("ROLLBACK");
+			$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
 			$retData = array('retVal' => 'FAIL', 'retString' => 'Ëø¶¨Æ±°æÊý¾ÝÊ§°Ü£¡', 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}*/
 			if(!$result1){
-				$class_mysql_default->my_query("ROLLBACK");
+				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
 				$retData = array('retVal' =>'FAIL1','retString' => 'Ëø¶¨Êý¾ÝÊ§°Ü£¡', 'sql' => $query);
 				echo json_encode($retData);
 				exit();
 			}
-	  		if(mysql_num_rows($result1) == 0) {
+	  		if(mysqli_num_rows($result1) == 0) {
 	  			//ÁÙÊ±±íÖÐ²éÑ¯
 	  			$query3="SELECT * FROM tms_sch_SpeechNoOfRunsAttemp where sa_FromStation='$userStationName' order by sa_PreviousTime limit 1";
-				$result3 = mysql_query($query3);
+				$result3 = $class_mysql_default->my_query($query3);
 				if(!$result3){
 					$retData = array('retVal' =>'FAIL1','retString' => '²éÑ¯Ê§°Ü£¡', 'sql' => $query);
 					echo json_encode($retData);
 					exit();
 				}
-				if(mysql_num_rows($result3) == 0) {
+				if(mysqli_num_rows($result3) == 0) {
 					$retData = array('retVal' => 'FAIL',  'sql' => $query); 
 					echo json_encode($retData);
 					exit();	
 				}
-				while($rows1 = mysql_fetch_array($result3)){
+				while($rows1 = mysqli_fetch_array($result3)){
 					$repeat="";
 		  			$FromStation=$rows1['sa_FromStation'];//Í¾¾­Õ¾
 		  			$FromStationID=$rows1['sa_FromStationID'];//Í¾¾­Õ¾ID
@@ -60,7 +60,7 @@ require_once("../ui/inc/init.inc.php");
 		  			$CheckState=$rows1['sa_CheckState'];//¼ìÆ±×´Ì¬
 		  			$date=date('Y-m-d');
 		  			$str="DELETE FROM tms_sch_SpeechNoOfRunsAttemp WHERE sa_StopStationTime='$StopStationTime' AND sa_Endstation='$Endstation' AND sa_NoOfRunsID='$NoOfRunsID' AND sa_Check='$Check' AND sa_PreviousTime='$PreviousTime' AND sa_CheckState='$CheckState' AND sa_FromStation='$FromStation' AND sa_FromStationID='$FromStationID'";
-	  				$result2 = mysql_query($str);
+	  				$result2 = $class_mysql_default->my_query($str);
 		  			if($PreviousTime >= ($Stop-2) && $PreviousTime <= $Stop){
 		  				$repeat=$StopRepeat;  //Í£Ö¹¼ìÆ±ÖØ¸´´ÎÊý
 		  			}
@@ -74,12 +74,12 @@ require_once("../ui/inc/init.inc.php");
 		  			$retData[] = array('retVal' => 'SUCC1', 'CheckState' => $CheckState, 'StopStationTime' => $StopStationTime, 'Endstation' => $Endstation, 'NoOfRunsID' => $NoOfRunsID, 'Check' => $Check, 'PreviousTime' => $PreviousTime, 'repeat' => $repeat);
 		  			}
 						echo json_encode($retData);
-						$class_mysql_default->my_query("COMMIT");
+						$class_mysql_default$class_mysql_default->my_query("COMMIT");
 						exit();
 	  		
 	  	}
 	  		else{
-	  		while($rows1 = mysql_fetch_array($result1)) {
+	  		while($rows1 = mysqli_fetch_array($result1)) {
 	  			$repeat="";
 	  			$FromStation=$rows1['sn_FromStation'];//Í¾¾­Õ¾
 	  			$FromStationID=$rows1['sn_FromStationID'];//Í¾¾­Õ¾ID
@@ -91,17 +91,17 @@ require_once("../ui/inc/init.inc.php");
 	  			$CheckState=$rows1['sn_CheckState'];//¼ìÆ±×´Ì¬
 	  			$date=date('Y-m-d');
 	  			$str="DELETE FROM tms_sch_SpeechNoOfRunsID WHERE sn_StopStationTime='$StopStationTime' AND sn_Endstation='$Endstation' AND sn_NoOfRunsID='$NoOfRunsID' AND sn_Check='$Check' AND sn_PreviousTime='$PreviousTime' AND sn_CheckState='$CheckState' AND sn_FromStation='$FromStation' AND sn_FromStationID='$FromStationID'";
-	  			$result2 = mysql_query($str);
+	  			$result2 = $class_mysql_default->my_query($str);
 	  			if(!$result2){
-	  				$class_mysql_default->my_query("ROLLBACK");
+	  				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
 	  				$retData = array('retVal' => 'FAIL','retString' => 'Ð´ÈëÊý¾ÝÊ§°Ü£¡', 'sql' => $str);
 	  				echo json_encode($retData);
 	  				exit();
 	  			}
 	  			$str="INSERT INTO tms_sch_SpeechNoOfRunsAttemp(sa_StopStationTime,sa_Endstation,sa_NoOfRunsID,sa_Check,sa_PreviousTime,sa_CheckState,sa_NoOfRunsdate,sa_FromStation,sa_FromStationID) values('$StopStationTime','$Endstation','$NoOfRunsID','$Check','$PreviousTime','$CheckState','$date','$FromStation','$FromStationID')";
-	  			$result2 = mysql_query($str);
+	  			$result2 = $class_mysql_default->my_query($str);
 	  			if(!$result2){
-	  				$class_mysql_default->my_query("ROLLBACK");
+	  				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
 	  				$retData = array('retVal' => 'FAIL','retString' => 'Ð´ÈëÊý¾ÝÊ§°Ü£¡', 'sql' => $str);
 	  				echo json_encode($retData);
 	  				exit();
@@ -120,17 +120,17 @@ require_once("../ui/inc/init.inc.php");
 	  			$retData[] = array('retVal' => 'SUCC1', 'CheckState' => $CheckState, 'StopStationTime' => $StopStationTime, 'Endstation' => $Endstation, 'NoOfRunsID' => $NoOfRunsID, 'Check' => $Check, 'PreviousTime' => $PreviousTime, 'repeat' => $repeat);
 	  			}
 					echo json_encode($retData);
-					$class_mysql_default->my_query("COMMIT");
+					$class_mysql_default$class_mysql_default->my_query("COMMIT");
 					exit();
 		  }
 	  	}
 		else{
-			while($rows = mysql_fetch_array($result)) {
+			while($rows = mysqli_fetch_array($result)) {
 				$ri_info=$rows['ri_info'];
 				$queryu="UPDATE tms_sch_ReportInfo SET ri_state='2' where ri_info='$ri_info' AND ri_FromStation='$userStationName'";
-				$resultu=mysql_query($queryu);
+				$resultu=$class_mysql_default->my_query($queryu);
 				$query2="DELETE FROM tms_sch_ReportInfo WHERE ri_state='2' AND ri_info='$ri_info' AND ri_FromStation='$userStationName'";
-				$result2=mysql_query($query2);
+				$result2=$class_mysql_default->my_query($query2);
 				$retData[] = array('retVal' => 'SUCC', 'ri_info' => $ri_info, 'HastenRepeat' => $HastenRepeat);
 			}
 			echo json_encode($retData);
@@ -139,7 +139,7 @@ require_once("../ui/inc/init.inc.php");
 
 	/*if($op="DELETEPASSENGERINFO"){
 		$query="DELETE FROM tms_sch_ReportInfo WHERE ri_state='2' AND ri_FromStation='$userStationName'";
-		$result=mysql_query($query);
+		$result=$class_mysql_default->my_query($query);
 	}*/
 	
 ?>

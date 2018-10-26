@@ -86,6 +86,16 @@ class Class_Mysql_conn
 		}
 	}
 
+	function my_error()
+	{
+		if($this->mysql_conn_type == "mysqli")
+		{
+			mysqli_error($this->myconn);
+		} else {
+			mysql_error();
+		}
+	}
+
 	function my_close()
 	{
 		if($this->mysql_conn_type == "mysqli")

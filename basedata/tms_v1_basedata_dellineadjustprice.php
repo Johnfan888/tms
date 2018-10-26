@@ -9,7 +9,7 @@
 	if ($_GET['op']=="del" ){
 		$sql = "DELETE FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ID='{$clnumber}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".mysql_error();
+	//	if (!$query) echo "SQL错误：".->my_error();
 	//	if ($query) {
 	//		exit("<div style=\"padding:100px;\"><h2 align=\"center\">
 	//		删除成功,!请<a href=\"./tms_v1_basedata_searnorunsadjustprice.php?clnumber=$clnumber1\"> 返回</a>

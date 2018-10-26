@@ -24,7 +24,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($query) == 1 && $LoopI!=$LoopID){
+		if(mysqli_num_rows($query) == 1 && $LoopI!=$LoopID){
 			$retData = array('retVal' => 'FAIL1', 'retString' => '循环编号已存在，请重新输入！', 'sql' => $select);
 			echo json_encode($retData);
 			exit();
@@ -46,7 +46,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($queryprice) == 0){
+		if(mysqli_num_rows($queryprice) == 0){
 			$retData = array('retVal' => 'SUCC1', 'retString' => '更新成功，但在班次票价表中无该车型票价信息，请添加！', 'sql' => $selectprice);
 			echo json_encode($retData);
 		}else{
@@ -71,7 +71,7 @@
 	$Remark=$_POST['Remark'];
 	$select="select * from tms_bd_NoRunsLoop where nrl_NoOfRunsID='{$NoOfRunsID}' and nrl_LoopID='{$LoopID}'";
 	$sele= $class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $LoopI==$LoopID){
+	if(!mysqli_fetch_array($sele) || $LoopI==$LoopID){
 		$updata="update tms_bd_NoRunsLoop set nrl_NoOfRunsID='{$NoOfRunsID}',nrl_LoopID='{$LoopID}',nrl_ModelID='{$ModelID}',
 			nrl_ModelName='{$ModelName}',nrl_Seating='{$Seating}',
 			nrl_AddSeating='{$AddSeating}',nrl_AllowHalfSeats='{$AllowHalfSeats}',nrl_Loads='{$Loads}',nrl_Unit='{$Unit}',

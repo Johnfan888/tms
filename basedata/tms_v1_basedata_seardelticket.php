@@ -33,7 +33,7 @@
   		$sql1="SELECT COUNT(dt_ID) AS number FROM tms_bd_DelTicket WHERE dt_DeletorID LIKE '{$DeletorID}%'  
   			   AND dt_Type LIKE '{$Type}%'".$strsta.$str;
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
@@ -107,7 +107,7 @@ $(document).ready(function(){
      <?php 
 		$sql="SELECT * FROM tms_bd_DelTicket where dt_DeletorID like '{$DeletorID}%' AND dt_Type LIKE '{$Type}%'".$strsta.$str;
 		$query =$class_mysql_default->my_query($sql);
-    	while ($row = mysql_fetch_array($query)){
+    	while ($row = mysqli_fetch_array($query)){
 			$allInceptTicketNum=$allInceptTicketNum+$row['dt_DelTicketNum'];
     	}
     ?>
@@ -164,7 +164,7 @@ $(document).ready(function(){
 		$sql="SELECT * FROM tms_bd_DelTicket where dt_DeletorID like '{$DeletorID}%' AND dt_Type LIKE '{$Type}%'".$strsta.$str."ORDER BY dt_DeleteTime desc";
 		$query =$class_mysql_default->my_query($sql);
 	    $i=0;
-		while ($row = mysql_fetch_array($query)){
+		while ($row = mysqli_fetch_array($query)){
 			$i++;
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

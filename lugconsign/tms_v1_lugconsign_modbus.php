@@ -11,7 +11,7 @@ require_once("../ui/inc/init.inc.php");
 $lc_TicketNumber1=$_POST['lc_TicketNumber1'];
 $query="SELECT lc_NoOfRunsID,lc_BusID,lc_BusNumber,lc_Destination,lc_Station,bi_BusUnit FROM tms_lug_LuggageCons LEFT OUTER JOIN tms_bd_BusInfo ON lc_BusNumber=bi_BusNumber WHERE lc_TicketNumber='{$lc_TicketNumber1}'";
 $result = $class_mysql_default->my_query("$query");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -138,8 +138,8 @@ $row = mysql_fetch_array($result);
 						WHERE rt_NoOfRunsdate='{$CurDate}' AND rt_Register='未发车' AND pd_FromStation='{$row['lc_Station']}'AND pd_ReachStation='{$row['lc_Destination']}' 
 						AND rt_AttemperStationID='{$userStationID}' AND rt_BusID!='{$row['lc_BusID']}'";
 					$querybus=$class_mysql_default ->my_query($selectbus);
-					if(!$querybus) echo mysql_error();
-					while($rowbus=mysql_fetch_array($querybus)){
+					if(!$querybus) echo ->my_error();
+					while($rowbus=mysqli_fetch_array($querybus)){
 				?>
 				<tr align="center" bgcolor="#CCCCCC">
 					<td><?=$rowbus['rt_BusID']?></td>

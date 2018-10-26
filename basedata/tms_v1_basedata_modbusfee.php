@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$selects="SELECT * FROM tms_acct_BusRate WHERE br_BusID='{$clnumber}'";
 	$querys=$class_mysql_default->my_query($selects);
-	$rows=mysql_fetch_array($querys);
+	$rows=mysqli_fetch_array($querys);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
@@ -79,7 +79,7 @@ function search(){
 		$i=0;
 		$selected="SELECT ft_FeeTypeName,ft_FeeTypeComputer FROM tms_bd_FeeType";
 		$queryed=$class_mysql_default->my_query($selected);
-		while($row=mysql_fetch_array($queryed)){
+		while($row=mysqli_fetch_array($queryed)){
 	?> 
 	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /><?php echo $row['ft_FeeTypeName'];?>：</span></td>
@@ -132,7 +132,7 @@ function search(){
 		if($query){
 				echo"<script>alert('修改成功！');window.location.href='tms_v1_basedata_modbusfee.php?op=mod&clnumber=$clnumber'</script>";
 			}else{
-				echo mysql_error();
+				echo ->my_error();
 				echo"<script>alert('修改失败！');window.location.href='tms_v1_basedata_modbusfee.php?op=mod&clnumber=$clnumber'</script>";
 			}
 	}

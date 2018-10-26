@@ -5,7 +5,7 @@
 	if($op='delnotice'){
 	$RegionCode=trim($_GET['RegionCode']);
 	$query="DELETE FROM tms_sch_NoticeInfo WHERE ni_id='$RegionCode'";
-	$result=mysql_query($query);
+	$result=$class_mysql_default->my_query($query);
 	if ($result) {
 			$retData = array(
 				'sucess' => '1');

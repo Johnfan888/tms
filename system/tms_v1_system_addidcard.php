@@ -138,8 +138,8 @@ $(document).ready(function(){
 				<?php 
 					$sql = "select sset_SiteID, sset_SiteName FROM tms_bd_SiteSet where sset_IsStation=1";
 					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){
 			?>
 			<option value="<?php echo $result['sset_SiteID'].','.$result['sset_SiteName'];?>"><?php echo $result['sset_SiteName'];?></option>

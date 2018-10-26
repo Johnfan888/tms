@@ -11,30 +11,30 @@ require_once("../ui/inc/init.inc.php");
 $reportBusID = $_POST['reportBusID']; //获取车辆编号
 $strsqlselet="SELECT * FROM tms_bd_BusInfo WHERE bi_BusID = '{$reportBusID}'";
 $result = $class_mysql_default->my_query("$strsqlselet");
-$row = mysql_fetch_array($result);
+$row = mysqli_fetch_array($result);
 $selectdriver="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate,di_DriverID FROM tms_bd_DriverInfo WHERE di_DriverCard='{$row['bi_DriverID']}'";
 $resultdriver=$class_mysql_default->my_query("$selectdriver");;
-$rowdriver = mysql_fetch_array($resultdriver);
+$rowdriver = mysqli_fetch_array($resultdriver);
 $selectdriver1="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate,di_DriverID FROM tms_bd_DriverInfo WHERE di_DriverCard='{$row['bi_Driver1ID']}'";
 $resultdriver1=$class_mysql_default->my_query("$selectdriver1");
-$rowdriver1 = mysql_fetch_array($resultdriver1);
+$rowdriver1 = mysqli_fetch_array($resultdriver1);
 $selectdriver2="SELECT di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate,di_DriverID FROM tms_bd_DriverInfo WHERE di_DriverCard='{$row['bi_Driver2ID']}'";
 $resultdriver2=$class_mysql_default->my_query("$selectdriver2");
-$rowdriver2 = mysql_fetch_array($resultdriver2);
+$rowdriver2 = mysqli_fetch_array($resultdriver2);
 /*
 // 主驾驶员信息
 $driver = $rows['bi_DriverID'];
 $strsqlselet="SELECT di_Name,di_Sex,di_Tel,di_DriverCard,di_DriverCheckDate,di_AllowBusType,di_CYZGZNumber,di_CYZGZCheckDate 
 			FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
 $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-$rowsd = @mysql_fetch_array($resultselet);
+$rowsd = @mysqli_fetch_array($resultselet);
 
 // 副驾驶员信息
 $driver = $rows['bi_Driver1ID'];
 $strsqlselet="SELECT di_Name,di_Sex,di_Tel,di_DriverCard,di_DriverCheckDate,di_AllowBusType,di_CYZGZNumber,di_CYZGZCheckDate 
 			FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
 $resultselet = $class_mysql_default ->my_query("$strsqlselet");
-$rowsd1 = @mysql_fetch_array($resultselet);  */
+$rowsd1 = @mysqli_fetch_array($resultselet);  */
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -22,7 +22,7 @@
 		  $outputRow = "";
 		  $queryString = "SELECT rte_ReturnType,rte_ReturnRate,rte_ReturnTimeBegin,rte_ReturnTimeEnd FROM `tms_sell_ReturnType` where rte_ReturnType like'$ReturnType%'";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -123,8 +123,8 @@ function modreturntickettype(){
 			$ReturnType= $_POST['ReturnType'];
 			$sql = "SELECT rte_ReturnType,rte_ReturnRate,rte_ReturnTimeBegin,rte_ReturnTimeEnd FROM `tms_sell_ReturnType` where rte_ReturnType like'$ReturnType%'";
 			$query =$class_mysql_default->my_query($sql);
-			if (!$query) echo "SQL错误：".mysql_error();
-			while ($row = mysql_fetch_array($query)) {
+			if (!$query) echo "SQL错误：".->my_error();
+			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ReturnType1')">
 		<td align="center"><?php echo $row['rte_ReturnType'];?></td>

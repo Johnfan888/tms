@@ -27,7 +27,7 @@ if (isset($_GET['op']))
 		$checking="style='display:'";
 		$queryString = "SELECT ct_NoOfRunsID FROM tms_chk_CheckTemp WHERE ct_CheckTicketWindow = $CheckWindow AND ct_Flag = '1'";
 		$result = $class_mysql_default->my_query("$queryString"); 
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			if($isAllTicket == '1')	$strsqlselet = "UPDATE tms_chk_CheckTemp SET ct_Flag = '1' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate' AND ct_BusID = '$BusID'";
 			else					$strsqlselet = "UPDATE tms_chk_CheckTemp SET ct_Flag = '1' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate'";
 			$resultselet = $class_mysql_default->my_query("$strsqlselet");
@@ -49,7 +49,7 @@ if (isset($_GET['op']))
 		if($isAllTicket == '1') $queryString = "SELECT ctt_TicketID FROM tms_chk_CheckTicketTemp WHERE ctt_NoOfRunsID = '$NoOfRunsID' AND ctt_NoOfRunsdate = '$NoOfRunsdate' AND ctt_BusID = '$BusID'";
 		else					$queryString = "SELECT ctt_TicketID FROM tms_chk_CheckTicketTemp WHERE ctt_NoOfRunsID = '$NoOfRunsID' AND ctt_NoOfRunsdate = '$NoOfRunsdate'";
 		$result = $class_mysql_default->my_query("$queryString"); 
-		if(mysql_num_rows($result) == 0) {
+		if(mysqli_num_rows($result) == 0) {
 			if($isAllTicket == '1')	$strsqlselet = "UPDATE tms_chk_CheckTemp SET ct_Flag='0' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate' AND ct_BusID = '$BusID'";
 			else					$strsqlselet = "UPDATE tms_chk_CheckTemp SET ct_Flag='0' WHERE ct_NoOfRunsID = '$NoOfRunsID' AND ct_NoOfRunsdate = '$NoOfRunsdate'";
 			$resultselet = $class_mysql_default->my_query("$strsqlselet");
@@ -201,7 +201,7 @@ if (isset($_GET['op']))
 						echo "<script>alert('锁定票版数据表失败！');</script>";
 					}
 					else {
-						$rows = mysql_fetch_array($result);
+						$rows = mysqli_fetch_array($result);
 						$seatStatus = $rows['tml_SeatStatus'];
 						$seatStatus = substr_replace($seatStatus, '3', $SeatID - 1, 1);
 					  	$queryString = "UPDATE tms_bd_TicketMode SET tml_SeatStatus = '$seatStatus' WHERE (tml_NoOfRunsID = '$NoOfRunsID') AND (tml_NoOfRunsdate = '$NoOfRunsdate')";
@@ -582,7 +582,7 @@ if(isset($_POST['resultquery']))
 				`li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '0' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result))
+	    while($rows = @mysqli_fetch_array($result))
 	    {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -640,7 +640,7 @@ if(isset($_POST['resultquery']))
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '1' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    if($rows = mysql_fetch_array($result)) {
+	    if($rows = mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td><?=$rows['ct_NoOfRunsID']?></td>
@@ -721,7 +721,7 @@ if(isset($_POST['resultquery']))
 					tms_sell_SellTicket WHERE tms_chk_CheckTicketTemp.ctt_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND tms_chk_CheckTicketTemp.ctt_CheckTicketWindow = '$checkWindow'";
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-		while($rows2 = mysql_fetch_array($resultselet)) {
+		while($rows2 = mysqli_fetch_array($resultselet)) {
 	?>
 	<tr align="center" bgcolor="#CCCCCC">
 		<td><?=$rows2['ctt_TicketID']?></td>
@@ -770,7 +770,7 @@ if(isset($_POST['resultquery']))
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '2' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result)) {
+	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td><?=$rows['ct_NoOfRunsID']?></td>
@@ -842,7 +842,7 @@ if(isset($_POST['resultquery']))
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '3' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
 		$result = $class_mysql_default ->my_query("$queryString");
-	    while($rows = @mysql_fetch_array($result)) {
+	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td><?=$rows['ct_NoOfRunsID']?></td>

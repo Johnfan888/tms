@@ -23,8 +23,8 @@
 			((ta_BeginTicket+0<='{$BeginTicket}' AND ta_EndTicket+0>='{$BeginTicket}' AND LENGTH(ta_BeginTicket)='{$length}') OR 
 			(ta_BeginTicket+0>='{$BeginTicket}' AND ta_BeginTicket+0<='{$EndTicket}') AND LENGTH(ta_BeginTicket)='{$length}')";
 		$query1=$class_mysql_default->my_query($select);
-		if (!$query1) echo json_encode("SQL错误：".mysql_error());
-		if(mysql_fetch_array($query1)){
+		if (!$query1) echo json_encode("SQL错误：".->my_error());
+		if(mysqli_fetch_array($query1)){
 			$retData = array('sucess' => '2');
 			echo json_encode($retData);
 		} 

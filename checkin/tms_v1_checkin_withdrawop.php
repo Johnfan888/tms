@@ -12,12 +12,12 @@ $curBalanceNo=$_GET['cBN'];
 $ReportDateTime=$_GET['RDT'];
 $Selectbus="SELECT bi_BusID,bi_BusNumber,bi_BusUnit FROM tms_bd_BusInfo WHERE bi_BusID='{$BusID}'";
 $querybus=$class_mysql_default->my_query("$Selectbus");
-$rowbus=mysql_fetch_array($querybus);
+$rowbus=mysqli_fetch_array($querybus);
 $selectbht="SELECT bht_BalanceNO,bht_BusID,bht_BusNumber,bht_BusUnit,bht_BusModelID,bht_BusModel,bht_NoOfRunsID,bht_NoOfRunsdate,bht_CheckTotal,bht_EndStation,li_LineName,
 	tml_TotalSeats,tml_LeaveSeats,tml_NoOfRunstime,tml_Allticket FROM tms_acct_BalanceInHandTemp LEFT OUTER JOIN tms_bd_LineInfo ON bht_LineID=li_LineID 
 	 LEFT OUTER JOIN tms_bd_TicketMode ON bht_NoOfRunsID=tml_NoOfRunsID AND tml_NoOfRunsdate=bht_NoOfRunsdate WHERE bht_BalanceNO='{$BalanceNO}'";
 $querybht=$class_mysql_default->my_query("$selectbht");
-$rowbht=mysql_fetch_array($querybht);
+$rowbht=mysqli_fetch_array($querybht);
 //$selectReport="SELECT "
 ?>
 
@@ -204,7 +204,7 @@ $rowbht=mysql_fetch_array($querybht);
 			<?php 
 				$selectcheck="SELECT COUNT(ct_TicketID) AS number FROM tms_chk_CheckTicket WHERE ct_BalanceNO='{$rowbht['bht_BalanceNO']}'";
 				$querycheck=$class_mysql_default->my_query("$selectcheck");
-				$rowcheck=mysql_fetch_array($querycheck);
+				$rowcheck=mysqli_fetch_array($querycheck);
 			?>
 			<input type="hidden" name="checkednums" id="checkednums" value="<?php echo $rowcheck['number'];?>" />
 			<input type="text" name="checkednum" id="checkednum" disabled="disabled" value="<?php  echo $rowcheck['number'];?>"/>
@@ -291,7 +291,7 @@ $rowbht=mysql_fetch_array($querybht);
 					tms_sell_SellTicket WHERE tms_chk_CheckTicket.ct_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND ct_BalanceNO='{$rowbht['bht_BalanceNO']}'";
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-		while($rows2 = mysql_fetch_array($resultselet)) {		
+		while($rows2 = mysqli_fetch_array($resultselet)) {		
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
 			<td nowrap="nowrap"><?=$rows2['ct_NoOfRunsID']?></td>

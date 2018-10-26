@@ -122,7 +122,7 @@
 	
 	$select="select * from tms_bd_DriverInfo where di_DriverID='{$DriverID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if((!mysql_fetch_array($sele)||$DriverID==$DriverI)&&$ok){
+	if((!mysqli_fetch_array($sele)||$DriverID==$DriverI)&&$ok){
 		$update="UPDATE tms_bd_DriverInfo SET di_DriverID='{$DriverID}',di_Name='{$Name}',di_Sex='{$Sex}',di_Tel='{$Tel}',
 			di_IdCard='{$IdCard}',di_Address='{$Address}',di_CYZGZNumber='{$CYZGZNumber}',di_BusNumber='{$BusNumber}',di_DriverCard='{$DriverCard}',
 			di_AllowBusType='{$AllowBusType}',di_DriverCheckDate='{$DriverCheckDate}',di_CYZGZCheckDate='{$CYZGZCheckDate}',

@@ -15,7 +15,7 @@
 			echo json_encode($retData);
 			exit();	
 		}
-		$rowselect=mysql_fetch_array($queryselect);
+		$rowselect=mysqli_fetch_array($queryselect);
 		$class_mysql_default->my_query("BEGIN");
 		$del = "DELETE FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ID='{$ID}'";
 		$querydel =$class_mysql_default->my_query($del);
@@ -33,7 +33,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		if(mysql_num_rows($querymodel) == 0){
+		if(mysqli_num_rows($querymodel) == 0){
 			$delbusloop="DELETE FROM tms_bd_NoRunsLoop WHERE nrl_NoOfRunsID='{$NoOfRunsID}' AND nrl_ModelID='{$rowselect['nrap_ModelID']}'";
 			$querydelbusloop=$class_mysql_default->my_query($delbusloop);
 			if(!$querydelbusloop){

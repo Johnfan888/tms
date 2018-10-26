@@ -31,11 +31,11 @@
 			nrap_GetToSiteID='{$GetToSiteID}' AND nrap_ModelID='{$ModelID}' AND (nrap_NoRunsAdjust is NULL)";
 		$query=$class_mysql_default->my_query($selects);
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.mysql_error(), 'sql' => $selects);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.->my_error(), 'sql' => $selects);
 			echo json_encode($retData);
 			exit();
 		}
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 			if($BeginDate==$row['nrap_BeginDate'] && $EndDate==$row['nrap_EndDate']){
 				$retData = array('retVal' => 'FAIL1', 'retString' => '该记录已存在！', 'sql' => $selects);
 				echo json_encode($retData);
@@ -87,14 +87,14 @@
 		and nrap_LineAdjust='{$LineAdjust}' and nrap_ISNoRunsAdjust='0' and nrap_DepartureSiteID='{$DepartureSiteID}' and nrap_GetToSiteID='{$GetToSiteID}' 
 		and nrap_ModelID='{$ModelID}' and nrap_BeginDate='{$BeginDate}' and nrap_EndDate='{$EndDate}'";
 	$seles=$class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)){
+	if(!mysqli_fetch_array($seles)){
 		$insert="insert into tms_bd_NoRunsAdjustPrice (nrap_ISUnitAdjust,nrap_Unit,nrap_ISLineAdjust,nrap_LineAdjust,nrap_ISNoRunsAdjust,nrap_NoRunsAdjust,nrap_DepartureSiteID,
 			nrap_DepartureSite,nrap_GetToSiteID,nrap_GetToSite,nrap_ModelID,nrap_ModelName,nrap_BeginDate,nrap_EndDate,nrap_BeginTime,nrap_EndTime,
 			nrap_ReferPrice,nrap_PriceUpPercent,nrap_RunPrice,nrap_HalfPrice,nrap_BalancePrice,nrap_Remark) values('{$ISUnitAdjust}','{$Unit}','{$ISLineAdjust}','{$LineAdjust}','0',
 			'NULL','{$DepartureSiteID}','{$DepartureSite}','{$GetToSiteID}','{$GetToSite}','{$ModelID}','{$ModelName}','{$BeginDate}',
 			'{$EndDate}','{$BeginTime}','{$EndTime}','{$ReferPrice}','{$PriceUpPercent}','{$RunPrice}','{$HalfPrice}','{$BalancePrice}','{$Remark}')";
 		$query =$class_mysql_default->my_query($insert); 
-		//if (!$query) echo "SQL错误：".mysql_error();
+		//if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addlineadjustprice.php?clnumber=$LineAdjust'</script>";
 		}else{

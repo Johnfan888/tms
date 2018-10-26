@@ -98,7 +98,7 @@ if(isset($_POST['Busnumber'])){
 			<?php 
 					$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 					$result = $class_mysql_default->my_query("$queryString");
-			        while($res = mysql_fetch_array($result)) {
+			        while($res = mysqli_fetch_array($result)) {
 	            		if($res['sset_SiteName'] != $schStation) {
 			?>
             		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -282,8 +282,8 @@ if(isset($_POST['Busnumber'])){
 		LEFT OUTER JOIN tms_bd_PriceDetail ON rt_NoOfRunsID=pd_NoOfRunsID AND rt_NoOfRunsdate=pd_NoOfRunsdate 
 		WHERE rt_AttemperStation  like '{$schStation}%'  AND pd_FromStation like '{$schStation}%' AND rt_BusCard LIKE '{$busnumber}%' AND rt_Allticket like '$state%'".$strdate.$strStatus." GROUP BY rt_NoOfRunsID,rt_NoOfRunsdate,rt_ReportDateTime ORDER BY rt_ReportDateTime";
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo mysql_error();
-	while($rows = @mysql_fetch_array($resultselet))	{
+	if(!$resultselet) echo ->my_error();
+	while($rows = @mysqli_fetch_array($resultselet))	{
 		$reportnum=$reportnum+1;
 		if($rows['bht_BalanceNO']!='' || $rows['bh_BalanceNO']!=''){
 			$allbalancenum=$allbalancenum+1;

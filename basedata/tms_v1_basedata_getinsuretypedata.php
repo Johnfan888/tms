@@ -13,7 +13,7 @@
 			echo json_encode($retData);
 			exit();
 		}
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$retData = array(
 			'COMCODE' => $row['it_ComCode'],
 			'HANDLERCODE' => $row['it_HandlerCode'],
@@ -39,7 +39,7 @@
 			it_Handler1Code='{$HANDLER1CODE}',it_OperatorCode='{$OPERATORCODE}',it_ApporverCode='{$APPORVERCODE}'";
 		$result = $class_mysql_default->my_query("$queryString");
 		if(!$result) {
-			// echo "SQL错误：".mysql_error()
+			// echo "SQL错误：".->my_error()
 			$retData = array('retVal' => 'FAIL', 'retString' =>  '更新保险数据失败！', 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();

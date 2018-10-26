@@ -49,7 +49,7 @@ function search(){
     				$Checkitem="";
 					$selected="SELECT ci_CheckItem FROM tms_sf_CheckItem GROUP BY ci_CheckItem";
 					$queryed=$class_mysql_default->my_query($selected);
-					while($rowed=mysql_fetch_array($queryed)){
+					while($rowed=mysqli_fetch_array($queryed)){
 						if($Checkitem!=$rowed['ci_CheckItem']){
 				?>
 				<option value="<?php echo $rowed['ci_CheckItem'];?>"><?php echo $rowed['ci_CheckItem'];?></option>
@@ -97,11 +97,11 @@ function search(){
 		$CurTime=date('Y-m-d H:i:s');
 		$select="SELECT ci_CheckItem FROM tms_sf_CheckItem WHERE ci_CheckItem='{$CheckItem}' AND ci_CheckContent='{$CheckContent}'";
 		$sele=$class_mysql_default->my_query($select);
-		if(!mysql_fetch_array($sele)){
+		if(!mysqli_fetch_array($sele)){
 			$insert="INSERT INTO `tms_sf_CheckItem` (`ci_CheckItem`,`ci_CheckContent`,`ci_AdderID`,`ci_Adder`,`ci_Addertime`,`ci_Remark`) 
 				VALUES ('{$CheckItem}', '{$CheckContent}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 			$query = $class_mysql_default->my_query($insert);
-			if (!$query) echo "SQL错误：".mysql_error();
+			if (!$query) echo "SQL错误：".->my_error();
 			if($query){
 				echo"<script>alert('添加成功!')</script>";
 			}else{

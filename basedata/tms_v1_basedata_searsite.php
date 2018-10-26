@@ -16,7 +16,7 @@
 		 		where IFNULL(sset_SiteName, '') like '%{$siten}%' and IFNULL(sset_SiteType, '') like '{$SiteType}%'and IFNULL(sset_HelpCode, '') like '{$HelpCode}%' 
 		 		AND IFNULL(sset_StationAdOrg, '') like '%{$StationAdOrg}%'";
 		$querys =$class_mysql_default->my_query($sqls);
-		$rows =mysql_fetch_array($querys);
+		$rows =mysqli_fetch_array($querys);
 //	}
 		if($RegionCode2 == 'excel'){
 		  $file_name = "searsite.csv";
@@ -38,7 +38,7 @@
 		 		AND IFNULL(sset_StationAdOrg, '') like '%{$StationAdOrg}%'";
 		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -215,7 +215,7 @@ $(document).ready(function(){
     			
     			$select="SELECT ao_OrgName FROM tms_bd_AdOrg";
     				$query =$class_mysql_default->my_query($select);
-					while ($row=mysql_fetch_array($query)){
+					while ($row=mysqli_fetch_array($query)){
     			?>
     			<option value="<?php echo $row['ao_OrgName'];?>"><?php echo $row['ao_OrgName'];?></option>
     			<?php 
@@ -227,7 +227,7 @@ $(document).ready(function(){
 				<?php 
 				$select="SELECT ao_OrgName FROM tms_bd_AdOrg";
     				$query =$class_mysql_default->my_query($select);
-					while ($row=mysql_fetch_array($query)){
+					while ($row=mysqli_fetch_array($query)){
 						if($StationAdOrg == $row['ao_OrgName']){
 				?>
 				<option value="<?php echo $row['ao_OrgName'];?>" selected="selected"><?php echo $row['ao_OrgName'];?></option>
@@ -291,7 +291,7 @@ $(document).ready(function(){
 		 		where IFNULL(sset_SiteName, '') like '%{$siten}%' and IFNULL(sset_SiteType, '') like '{$SiteType}%'and IFNULL(sset_HelpCode, '') like '{$HelpCode}%' 
 		 		AND IFNULL(sset_StationAdOrg, '') like '%{$StationAdOrg}%'";
 		$query =$class_mysql_default->my_query($sql);
-		while ($row =mysql_fetch_array($query)) {	
+		while ($row =mysqli_fetch_array($query)) {	
 			$i++;
 	?>
 			<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'SiteID1')">

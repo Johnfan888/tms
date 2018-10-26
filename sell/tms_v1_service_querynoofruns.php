@@ -133,7 +133,7 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 			<?php 
 					$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 					$result = $class_mysql_default->my_query("$queryString");
-			        while($res = mysql_fetch_array($result)) {
+			        while($res = mysqli_fetch_array($result)) {
 	            		if($res['sset_SiteName'] != $schStation) {
 			?>
             		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -170,7 +170,7 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 					}
 					$selectbusunit="SELECT bu_UnitName FROM tms_bd_BusUnit";
 					$resultbusunit = $class_mysql_default->my_query("$selectbusunit");
-					 while($rowbusunit = mysql_fetch_array($resultbusunit)) { 
+					 while($rowbusunit = mysqli_fetch_array($resultbusunit)) { 
 					 	if($rowbusunit['bu_UnitName'] != $BusUnit) {
 				?>
 					<option value="<?php echo $rowbusunit['bu_UnitName'];?>"><?php echo $rowbusunit['bu_UnitName'];?></option>
@@ -372,8 +372,8 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 		".$strdate.$strStatus.$strRuned.$strChecked." GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate 
 		ORDER BY STR_TO_DATE(tml_NoOfRunstime,'%H:%i') ASC";
 	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo mysql_error();
-	while($rows = @mysql_fetch_array($resultselet))	{
+	if(!$resultselet) echo ->my_error();
+	while($rows = @mysqli_fetch_array($resultselet))	{
 	/*	$str="select GROUP_CONCAT(DISTINCT pd_ReachStation ORDER BY nds_ID) AS SiteName from tms_bd_PriceDetail LEFT OUTER JOIN 
 			  tms_bd_NoRunsDockSite ON  pd_NoOfRunsID=nds_NoOfRunsID  
 			  WHERE pd_ReachStation=nds_SiteName AND pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'
@@ -401,8 +401,8 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 			  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 			  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";   
 		$result1 = $class_mysql_default ->my_query("$str"); 
-		if(!$result1) echo mysql_error();
-		$rows1=mysql_fetch_array($result1); 
+		if(!$result1) echo ->my_error();
+		$rows1=mysqli_fetch_array($result1); 
 		if (!$rows['bi_BusUnit']) $RealBusUnit = $rows['tml_BusUnit']; 
 		else $RealBusUnit = $rows['bi_BusUnit'];
 		if($rows['tml_AllowSell']==0 && $rows['tml_StopRun']==0) $curStatus = '暂停';  //蓝色
@@ -428,7 +428,7 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 		else $RealCheckTicketWindow = $rows['tml_CheckTicketWindow'];
 		$selectprice="SELECT pd_StopStationTime FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}' AND pd_ReachStationID=pd_EndStationID";
 		$resultprice = $class_mysql_default ->my_query("$selectprice");
-		$rowprice=@mysql_fetch_array($resultprice);
+		$rowprice=@mysqli_fetch_array($resultprice);
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
 		<td nowrap="nowrap"><?=$RealBusUnit?></td>

@@ -9,7 +9,7 @@
 	$section=$_GET['section'];
 	$sqls = "select* FROM `tms_bd_SectionInfo` WHERE si_LineID='{$LineID}' and si_SectionID='{$section}'";
 	$querys =$class_mysql_default->my_query($sqls);
-	$results=mysql_fetch_array($querys);
+	$results=mysqli_fetch_array($querys);
 ?>
 <script type="text/javascript">
 function isnumber(number,id){

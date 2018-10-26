@@ -345,9 +345,9 @@ $(document).ready(function(){
 				if($userStationName == "全部车站"){
 					?><option></option><?php 
 					$sql = "select sset_SiteID, sset_SiteName, sset_Region FROM tms_bd_SiteSet where sset_IsStation=1";
-					$query = $class_mysql_default->my_query($sql);
-					//$result=mysql_fetch_array($query);
-					while($result=mysql_fetch_array($query)){
+					$query = $class_mysql_default$class_mysql_default->my_query($sql);
+					//$result=mysqli_fetch_array($query);
+					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){
 				?>	
 					<option value="<?php echo $result['sset_SiteID'].','.$result['sset_SiteName'].','.$result['sset_Region'];?>"><?php echo $result['sset_SiteName'];?></option>
@@ -357,8 +357,8 @@ $(document).ready(function(){
 				}
 				else{
 					$sql1="SELECT sset_Region FROM tms_bd_SiteSet WHERE sset_SiteID ='$userStationID' AND sset_SiteName ='$userStationName'";
-					$query1=mysql_query($sql1);
-					$result1=mysql_fetch_array($query1);
+					$query1=$class_mysql_default->my_query($sql1);
+					$result1=mysqli_fetch_array($query1);
 				?>	
 					<option value="<?php echo $userStationID.','.$userStationName.','.$result1['sset_Region'];?>" selected="selected"><?php echo $userStationName;?></option>
 				<?php 
@@ -393,8 +393,8 @@ $(document).ready(function(){
     		<?php 
 				if($userStationName != "全部车站"){
 					$query2="SELECT sset_Region FROM tms_bd_SiteSet WHERE  sset_SiteID='$userStationID'";
-					$result=mysql_query("$query2");
-					$row=mysql_fetch_array($result);
+					$result=$class_mysql_default->my_query("$query2");
+					$row=mysqli_fetch_array($result);
 			?>
     		<input name="InRegion" id="InRegion" type="text" value="<?php echo $row['sset_Region']?>"/>
     		<?php 

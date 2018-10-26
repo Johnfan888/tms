@@ -7,7 +7,7 @@
 	$clnumber = $_GET['clnumber'];
 	$sql="SELECT * FROM tms_bd_NoRunsInfo where  nri_NoOfRunsID='{$clnumber}'";
 	$query=$class_mysql_default->my_query($sql);
-	$row=mysql_fetch_array($query);
+	$row=mysqli_fetch_array($query);
 ?>
 <script language="javascript" type="text/javascript" src="../js/My97DatePickerBeta/My97DatePicker/WdatePicker.js">
 </script>

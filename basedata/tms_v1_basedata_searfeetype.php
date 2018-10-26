@@ -11,7 +11,7 @@
 		$HelpCode=$_POST['HelpCode'];
 		$sql1 = "SELECT COUNT(ft_ID) AS number FROM `tms_bd_FeeType` WHERE ft_FeeTypeName like'$FeeTypeName%' and ft_HelpCode like '$HelpCode%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	  if($RegionCode2 == 'excel'){
 		  $file_name = "searfeetype.csv";
@@ -30,7 +30,7 @@
 		  $queryString = "SELECT ft_ID,ft_FeeTypeName,ft_FeeTypeComputer,ft_HelpCode,ft_AdderID,ft_Adder,ft_AddTime,ft_ModerID, ft_Moder,ft_ModTime,ft_Remark FROM `tms_bd_FeeType` WHERE ft_FeeTypeName like'$FeeTypeName%' and ft_HelpCode like '$HelpCode%'";
 		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -180,7 +180,7 @@ function delregion(){
 			$i=0;
 			$sql = "SELECT ft_ID,ft_FeeTypeName,ft_FeeTypeComputer,ft_HelpCode,ft_AdderID,ft_Adder,ft_AddTime,ft_ModerID, ft_Moder,ft_ModTime,ft_Remark FROM `tms_bd_FeeType` WHERE ft_FeeTypeName like'$FeeTypeName%' and ft_HelpCode like '$HelpCode%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 				$i++;
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow2(this,'ID1','ID2')">

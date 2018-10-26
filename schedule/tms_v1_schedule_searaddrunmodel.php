@@ -153,7 +153,7 @@ if(isset($_POST['NoOfRunsID'])){
 						and tml_NoOfRunsdate >= '$startdate'
 					    and tml_NoOfRunsdate <= '$enddate'";
 					$result = $class_mysql_default->my_query("$queryString");*/
-					while ($row1 = mysql_fetch_array($result)) {
+					while ($row1 = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['tml_LineID'];?></td>

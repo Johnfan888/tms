@@ -18,7 +18,7 @@ $queryString = "SELECT `bi_BusNumber`, `bi_BusTypeID`, `bi_BusType`, `bi_BusUnit
 $result = $class_mysql_default->my_query("$queryString");
 if(!$result)
 	echo "<script>alert('读取车辆信息数据失败！');location.assign('tms_v1_checkin_checkticket.php');</script>";
-$rows = mysql_fetch_array($result);
+$rows = mysqli_fetch_array($result);
 $BusUnit = $rows['bi_BusUnit'];
 $BusNumber = $rows['bi_BusNumber'];
 
@@ -32,7 +32,7 @@ $queryString = "SELECT IFNULL(SUM(ct_TotalMan),0) AS ct_sumPerson, IFNULL(SUM(ct
 $result = $class_mysql_default->my_query("$queryString");
 if(!$result)
 	echo "<script>alert('读取检票数据失败！');location.assign('tms_v1_checkin_checkticket.php');</script>";
-$rows = mysql_fetch_array($result);
+$rows = mysqli_fetch_array($result);
 $passengerNum = $rows['ct_sumPerson'];
 if($rows['ct_sumBalancePrice'] == 0) 
 	$BalanceMoney = $rows['ct_sumMoney'] - $rows['ct_sumServiceFee'] - $rows['ct_sumOtherFee1'] - $rows['ct_sumOtherFee2']
@@ -44,7 +44,7 @@ else
 $queryString = "SELECT `tp_CurrentTicket`,`tp_InceptTicketNum` FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 			AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '结算单' ORDER BY tp_ProvideData ASC";
 $result = $class_mysql_default->my_query("$queryString");
-$rows = @mysql_fetch_array($result);
+$rows = @mysqli_fetch_array($result);
 if (empty($rows[0])) 
 	echo "<script>if (!confirm('没有可用的结算单！是否继续？')) location.assign('tms_v1_checkin_checkticket.php');</script>";
 $curBalanceNo = $rows[0];

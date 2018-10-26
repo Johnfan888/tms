@@ -85,7 +85,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						AND bh_BusUnit LIKE '{$bh_BusUnit}' $strDate
 						ORDER BY bh_BalanceNO ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -197,7 +197,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -256,7 +256,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 						$queryString = "SELECT DISTINCT bi_BusUnit FROM tms_bd_BusInfo";
 						$result = $class_mysql_default->my_query("$queryString");
-				        while($res = mysql_fetch_array($result)) {
+				        while($res = mysqli_fetch_array($result)) {
 		            		if($res['bi_BusUnit'] != $bh_BusUnit) {
 					?>
 		            	<option value="<?php echo $res['bi_BusUnit'];?>"><?php echo $res['bi_BusUnit'];?></option>
@@ -319,7 +319,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 									AND bh_BusUnit LIKE '{$bh_BusUnit}' $strDate
 									ORDER BY bh_BalanceNO ASC";
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['bh_BalanceNO'];?></td>

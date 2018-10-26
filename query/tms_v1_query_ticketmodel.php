@@ -118,7 +118,7 @@ if(isset($_REQUEST['resultquery']) || isset($_POST['exceldoc'])){
 					AND tml_NoOfRunsID LIKE '$noofrunsid%' 
 					AND tml_LineID LIKE '$tml_LineID%' ".$strDate;
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -372,7 +372,7 @@ if(isset($_REQUEST['resultquery']) || isset($_POST['exceldoc'])){
 					AND tml_LineID LIKE '$tml_LineID%' ".$strDate;
 					//echo $queryString;
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row1 = mysql_fetch_array($result)) {
+					while ($row1 = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row1['tml_LineID'];?></td>

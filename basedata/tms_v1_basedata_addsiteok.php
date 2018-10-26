@@ -22,13 +22,13 @@
 	$CurTime=date('Y-m-d H:i:s');
 	$select="select * from tms_bd_SiteSet where sset_SiteID='{$SiteId}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele)){
+	if(!mysqli_fetch_array($sele)){
 		$insert="insert into tms_bd_SiteSet (sset_SiteID,sset_SiteName,sset_SiteType,sset_SiteRank,sset_OperateCode,
 			sset_HelpCode,sset_Region,sset_IsStation,sset_IsTollSite, sset_StationAdOrg,sset_AdderID,sset_Adder,sset_AddTime,
 			sset_Remark) values('{$SiteId}','{$SiteName}','{$SiteType}','{$SiteRank}','{$OperateCode}','{$HelpCode}',
 			'{$Region}','{$IsStation}','{$IsTollSite}','{$StationAdOrg}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert);
-		echo mysql_error();
+		echo ->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addsite.php'</script>";
 		}else{

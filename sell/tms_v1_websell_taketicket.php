@@ -218,7 +218,7 @@ require_once("../ui/inc/init.inc.php");
 	 		AND wst_CertificateNumber like '{$CertificateNumber}%' AND (wst_TicketState='0' OR wst_TicketState='3' OR wst_TicketState='2')";
  		$result=$class_mysql_default->my_query($select);
   		$lineNum = 0;
-  		while ($rows =mysql_fetch_array($result)) {
+  		while ($rows =mysqli_fetch_array($result)) {
   			$lineNum++;
   ?>
  	 <tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">
@@ -238,7 +238,7 @@ require_once("../ui/inc/init.inc.php");
   		$selectmode="SELECT tml_Allticket FROM tms_bd_TicketMode WHERE tml_NoOfRunsID ='{$rows['wst_NoOfRunsID']}' AND 
 				tml_NoOfRunsdate ='{$rows['wst_NoOfRunsdate']}'";
 		$querymode =$class_mysql_default->my_query($selectmode);
-		$rowmode=mysql_fetch_array($querymode);
+		$rowmode=mysqli_fetch_array($querymode);
 		if($rowmode['tml_Allticket'] == '1') {	//通票班次
   	?>
   		<td align="center" nowrap="nowrap"><?php echo "XX";?></td>

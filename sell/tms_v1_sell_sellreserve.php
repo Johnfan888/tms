@@ -259,7 +259,7 @@ require_once("../ui/inc/init.inc.php");
 			ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";  
 		$resultsql = $class_mysql_default->my_query($sql); 
   		$lineNum = 0;
-		while($rows = mysql_fetch_array($resultsql)){
+		while($rows = mysqli_fetch_array($resultsql)){
   			$lineNum++;
 ?>
   <tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">

@@ -88,7 +88,7 @@ $queryString = "SELECT itt_SyncCode,itt_TicketNo,itt_SeatNo,itt_ReachName,itt_In
 	st_SellPrice,st_SellPriceType, st_TicketState, st_SellDate FROM tms_sell_InsureTicket,tms_sell_SellTicket 
 	WHERE tms_sell_InsureTicket.itt_TicketNo=tms_sell_SellTicket.st_TicketID ORDER BY st_SellDate DESC";
 $result = $class_mysql_default->my_query("$queryString");
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result)) {
 	$Policy = $doc->createElement('Policy');
 	$PolicyNo = "PEDA201443100301Z00001";
 	create_item($doc,$Policy,"PolicyNo",$PolicyNo);

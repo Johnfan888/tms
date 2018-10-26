@@ -16,7 +16,7 @@ if(isset($RegionCode)){
 	if($RegionCode!=null){
 		$select="select * from tms_bd_RegionSet where rs_RegionCode='{$RegionCode}'";
 		$sele= $class_mysql_default->my_query($select);
-		$result=mysql_fetch_array($sele);
+		$result=mysqli_fetch_array($sele);
 		if($result==false ||$RegionC==$RegionCode){
 			$update="update tms_bd_RegionSet set rs_RegionCode='{$RegionCode}', rs_RegionName='{$RegionName}', rs_RegionFullName='{$RegionFullName}', 
 				rs_ModerID='{$userID}', rs_Moder='{$userName}', rs_ModTime='{$CurTime}', rs_HelpCode='{$HelpCode}', rs_Remark='{$Remark}' where rs_RegionCode='{$RegionC}'";

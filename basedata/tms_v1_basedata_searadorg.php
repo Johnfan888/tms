@@ -12,7 +12,7 @@
 		$helpcode=$_POST['helpcode'];
 		$sql1 = "SELECT COUNT(ao_ID) AS number FROM `tms_bd_AdOrg` WHERE ao_OrgCode like'$OrgCode%' AND ao_OrgName like '$OrgName%' AND ao_HelpCode like '$helpcode%'";
 		$query1 = $class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);
+		$rows = mysqli_fetch_array($query1);
 //	}
 	   if($RegionCode2 == 'excel'){
 		  $file_name = "searadorg.csv";
@@ -32,7 +32,7 @@
 		  				  ao_ModerID,ao_Moder,ao_ModTime,ao_Remark FROM `tms_bd_AdOrg` WHERE ao_OrgCode like'$OrgCode%' AND ao_OrgName like '$OrgName%'";
 		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -182,7 +182,7 @@ function delregion(){
 			$i=0;
 			$sql = "SELECT * FROM `tms_bd_AdOrg` WHERE ao_OrgCode like'$OrgCode%' AND ao_OrgName like '$OrgName%' AND ao_HelpCode like '$helpcode%'";
 			$query =$class_mysql_default->my_query($sql);
-			while ($row = mysql_fetch_array($query)) {
+			while ($row = mysqli_fetch_array($query)) {
 				$i++;
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">

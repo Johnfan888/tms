@@ -80,7 +80,7 @@ require_once("../ui/inc/init.inc.php");
 					<?php 
 							$queryString = "SELECT sset_SiteID,sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName']) {
 					?>
 		            	<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -103,7 +103,7 @@ require_once("../ui/inc/init.inc.php");
 					<?php 
 							$queryString = "SELECT DISTINCT ui_UserGroup FROM tms_sys_UsInfor WHERE ui_UserID != 'admin'";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['ui_UserGroup']) {
 					?>
 		            	<option value="<?php echo $res['ui_UserGroup'];?>"><?php echo $res['ui_UserGroup'];?></option>
@@ -166,7 +166,7 @@ require_once("../ui/inc/init.inc.php");
 				$queryString = "SELECT * FROM tms_sys_UsInfor WHERE ui_UserSation LIKE '{$queryStationName}' AND ui_UserGroup LIKE '%$queryGroup%' AND ui_UserID LIKE '{$queryUserID}'";
 				//echo $queryString;
 				$result = $class_mysql_default->my_query("$queryString");
-				while ($row = mysql_fetch_array($result)) {
+				while ($row = mysqli_fetch_array($result)) {
 					if($row['ui_UserID'] != "admin") {
 		?>
 			<tr bgcolor="#CCCCCC">

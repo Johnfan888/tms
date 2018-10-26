@@ -32,11 +32,11 @@
 			nrap_GetToSiteID='{$GetToSiteID}' AND nrap_ModelID='{$ModelID}' AND nrap_ID!='{$ID}' AND (nrap_NoRunsAdjust is NULL)";
 		$query=$class_mysql_default->my_query($selects);
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.mysql_error(), 'sql' => $selects);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.->my_error(), 'sql' => $selects);
 			echo json_encode($retData);
 			exit();
 		}
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 			if($BeginDate==$row['nrap_BeginDate'] && $EndDate==$row['nrap_EndDate']){
 				$retData = array('retVal' => 'FAIL1', 'retString' => '该记录已存在！', 'sql' => $selects);
 				echo json_encode($retData);
@@ -87,7 +87,7 @@
 		and nrap_LineAdjust='{$LineAdjust}' and nrap_ISNoRunsAdjust='0' and nrap_DepartureSiteID='{$DepartureSiteID}' and nrap_GetToSiteID='{$GetToSiteID}' 
 		and nrap_ModelID='{$ModelID}' and nrap_BeginDate='{$BeginDate}' and nrap_EndDate='{$EndDate}' and nrap_ID!='{$ID}'";
 	$seles=$class_mysql_default->my_query($selects);
-	$result=mysql_fetch_array($seles);
+	$result=mysqli_fetch_array($seles);
 //	echo $result;
 	if(!$result){
 		$update="update tms_bd_NoRunsAdjustPrice set nrap_ISUnitAdjust='{$ISUnitAdjust}',nrap_Unit='{$Unit}',nrap_ISLineAdjust='{$ISLineAdjust}',
@@ -97,7 +97,7 @@
 			nrap_PriceUpPercent='{$PriceUpPercent}',nrap_RunPrice='{$RunPrice}',nrap_HalfPrice='{$HalfPrice}',nrap_BalancePrice='{$BalancePrice}',nrap_Remark='{$Remark}' 
 			where nrap_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($update); 
-	//	if (!$query) echo "SQL错误：".mysql_error();
+	//	if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searlineadjustprice.php?clnumber=$LineAdjust'</script>";
 		}else{

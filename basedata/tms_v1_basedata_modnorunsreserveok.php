@@ -16,12 +16,12 @@
 	
 	$select="select * from tms_bd_ScheduleReserve where sr_NoOfRunsID='{$NoOfRunsID}' and sr_ModelID='{$ModelID}'";
 	$sele=$class_mysql_default->my_query($select);
-	if(!mysql_fetch_array($sele) || $ModelIDD==$ModelID ){
+	if(!mysqli_fetch_array($sele) || $ModelIDD==$ModelID ){
 		$updata="UPDATE tms_bd_ScheduleReserve SET sr_NoOfRunsID='{$NoOfRunsID}',sr_ModelID='{$ModelID}',sr_ModelName='{$ModelName}', 
 			sr_ReserveSeatNO='{$ReserveSeatNO}',sr_ReserveSeatS='{$ReserveSeatS}',sr_SellerID='{$SellerID}',sr_Seller='{$Seller}',
 			sr_Remark='{$Remark}' WHERE  sr_NoOfRunsID='{$NoOfRunsID}' and sr_ModelID='{$ModelIDD}'";
 		$query = $class_mysql_default->my_query($updata);
-		if (!$query) echo "SQL错误：".mysql_error();
+		if (!$query) echo "SQL错误：".->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searnorunsreserve.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{

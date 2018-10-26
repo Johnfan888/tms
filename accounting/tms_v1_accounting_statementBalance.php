@@ -21,7 +21,7 @@ $statArray=json_decode($statData,true);
 $busID = $statArray[0]['ct_BusID'];
 $queryString = "SELECT bi_BusNumber,bi_BusUnit,bi_BusTypeID FROM tms_bd_BusInfo WHERE bi_BusID = '{$busID}'";
 $result = $class_mysql_default->my_query("$queryString");
-if(!($res=mysql_fetch_array($result))) {
+if(!($res=mysqli_fetch_array($result))) {
 	echo "<script>alert('没有此编号车辆的信息!');</script>";
 	exit();
 }

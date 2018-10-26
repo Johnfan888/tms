@@ -12,7 +12,7 @@
 		$Category=$_POST['Category'];
 		$sql1 = "SELECT COUNT(bm_ModelID) AS number FROM tms_bd_BusModel where bm_ModelID like '{$ModelID}%'and IFNULL(bm_Rank, '') like '{$Rank}%' and IFNULL(bm_Category, '') like '{$Category}%' ";
 		$query1 =$class_mysql_default->my_query($sql1);
-		$rows = mysql_fetch_array($query1);	
+		$rows = mysqli_fetch_array($query1);	
 //	}
 	  if($RegionCode2 == 'excel'){
 		  $file_name = "searbusmodel.csv";
@@ -32,7 +32,7 @@
 						  bm_Weight,bm_AdderID,bm_Adder,bm_AddTime,bm_ModerID,bm_Moder,bm_ModTime,bm_Remark
 			 	    	  FROM tms_bd_BusModel where bm_ModelID like '{$ModelID}%'and IFNULL(bm_Rank, '') like '{$Rank}%' and IFNULL(bm_Category, '') like '{$Category}%' ";
 		  $result = $class_mysql_default->my_query("$queryString");
-		  while ($row = mysql_fetch_array($result)) {
+		  while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
 				ob_flush(); 
@@ -268,8 +268,8 @@ function delbusmodel(){
 					bm_Weight,bm_AdderID,bm_Adder,bm_AddTime,bm_ModerID,bm_Moder,bm_ModTime,bm_Remark
 			 	    FROM tms_bd_BusModel where bm_ModelID like '{$ModelID}%'and IFNULL(bm_Rank, '') like '{$Rank}%' and IFNULL(bm_Category, '') like '{$Category}%' ";
 			$query =$class_mysql_default->my_query($sql);
-			//if (!$query) echo "SQL错误：".mysql_error();
-			while ($row = mysql_fetch_array($query)) {
+			//if (!$query) echo "SQL错误：".->my_error();
+			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ModelID1')">
 		<td align="center" nowrap="nowrap" ><?php echo $row['bm_ModelID'];?></td>

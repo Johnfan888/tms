@@ -57,7 +57,7 @@ if(isset($_POST['whichButton'])) {
 //		$head = array('结账单号', '车辆编号', '车牌号', '车型', '车属单位', '结算单数', '人数', '营收金额', '结算金额', '站务费', '劳务费', '行包托运费');
 //		$selected="SELECT ft_FeeTypeName,ft_FeeTypeComputer FROM tms_bd_FeeType";
 //		$queryed=$class_mysql_default->my_query($selected);
-//		while($rowed=mysql_fetch_array($queryed)){
+//		while($rowed=mysqli_fetch_array($queryed)){
 //	 		$FeeTypeName1=$rowed['ft_FeeTypeName'];
 //    		$FeeTypeNum=$FeeTypeNum+1;
 //    		$ii = $ii+1;
@@ -73,7 +73,7 @@ if(isset($_POST['whichButton'])) {
 		$limit = 100000; 
 		$outputRow = "";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$cnt++; 
 //			global $jj;
 //		  	global $rate;
@@ -264,7 +264,7 @@ if(isset($_POST['whichButton'])) {
 		      					}
     							$select="SELECT bu_UnitName FROM tms_bd_BusUnit";
     							$sel =$class_mysql_default->my_query($select);
-								while($results=mysql_fetch_array($sel)){ 
+								while($results=mysqli_fetch_array($sel)){ 
 									if($ba_BusUnit!=$results['bu_UnitName']){
     						?>
     					<option value="<?php echo $results['bu_UnitName'];?>"><?php echo $results['bu_UnitName'];?></option>
@@ -318,7 +318,7 @@ if(isset($_POST['whichButton'])) {
     			$i=0;
 				$selected="SELECT ft_FeeTypeName,ft_FeeTypeComputer FROM tms_bd_FeeType";
 				$queryed=$class_mysql_default->my_query($selected);
-				while($rowed=mysql_fetch_array($queryed)){
+				while($rowed=mysqli_fetch_array($queryed)){
 				?>
     			<th nowrap="nowrap" align="center" bgcolor="#006699"><?php echo $rowed['ft_FeeTypeName'];?></th>
    		 		<?php 
@@ -338,7 +338,7 @@ if(isset($_POST['whichButton'])) {
 			<?php
 				if(isset($_POST['whichButton']) && $_POST['whichButton'] == "resultquery") {
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['ba_AccountID'];?></td>

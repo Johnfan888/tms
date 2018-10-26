@@ -403,7 +403,7 @@ else {
 <?php
 if (isset($_POST['FromStation'])) {
 	$lineNum = 0;
-	while($rows = @mysql_fetch_array($resultselet)) {
+	while($rows = @mysqli_fetch_array($resultselet)) {
 		$lineNum++;
 ?>
 	<tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">

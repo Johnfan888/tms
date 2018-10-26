@@ -48,7 +48,7 @@ if($op=='dellticket'){
 			exit();
 	}
 	
-	while($rowNoOfRuns=mysql_fetch_array($queryNoOfRuns)) { 
+	while($rowNoOfRuns=mysqli_fetch_array($queryNoOfRuns)) { 
 		$SeatI='';
 		$FullNumber=0;
 		$HalfNumber=0;
@@ -61,7 +61,7 @@ if($op=='dellticket'){
 			echo json_encode($retData);
 			exit();
 		}
-		$rowweb=mysql_fetch_array($queryweb);
+		$rowweb=mysqli_fetch_array($queryweb);
 		$SeatI=$rowweb['SeatID'];
 		$FullNumber=$rowweb['FullNumber'];
 		$HalfNumber=$rowweb['HalfNumber'];
@@ -78,7 +78,7 @@ if($op=='dellticket'){
 			exit();
 		}
 		
-		$rowmode=mysql_fetch_array($querymode);
+		$rowmode=mysqli_fetch_array($querymode);
 		foreach (explode(",",$SeatI) as $key =>$SeatID){
 			$rowmode[1]=$rowmode[1]+1;
 			$rowmode[0]=substr_replace($rowmode[0], '0',$SeatID-1,1);
@@ -118,7 +118,7 @@ if($op=='dellticket'){
 			exit();
 	}
 	
-	while($rowNoOfRuns=@mysql_fetch_array($queryNoOfRuns)) { 
+	while($rowNoOfRuns=@mysqli_fetch_array($queryNoOfRuns)) { 
 		$SeatI='';
 		$FullNumber=0;
 		$HalfNumber=0;
@@ -131,7 +131,7 @@ if($op=='dellticket'){
 			echo json_encode($retData);
 			exit();
 		}
-		$rowweb=@mysql_fetch_array($queryweb);
+		$rowweb=@mysqli_fetch_array($queryweb);
 		$SeatI=$rowweb['SeatID'];
 		$FullNumber=$rowweb['FullNumber'];
 		$HalfNumber=$rowweb['HalfNumber'];
@@ -148,7 +148,7 @@ if($op=='dellticket'){
 			exit();
 		}
 		
-		$rowmode=@mysql_fetch_array($querymode);
+		$rowmode=@mysqli_fetch_array($querymode);
 		foreach (explode(",",$SeatI) as $key =>$SeatID){
 			$rowmode[1]=$rowmode[1]+1;
 			$rowmode[0]=substr_replace($rowmode[0], '0',$SeatID-1,1);

@@ -55,7 +55,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						sb_STicketMoney,sb_SLuggageNum,sb_SLuggageMoney,sb_BeginDate,sb_EndDate,sb_Money,sb_BalanceDate,sb_BalanceTime FROM 
 						tms_acct_StationBalance WHERE (sb_FStation LIKE '{$StationName1}') AND (sb_SStation LIKE '{$StationName2}')".$str." ORDER BY sb_BalanceDate ASC";
 		$result = $class_mysql_default->my_query("$queryString");
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$row['sb_FTicketMoney']=$row['sb_FTicketMoney']."\t";
 			$row['sb_FLuggageMoney']=$row['sb_FLuggageMoney']."\t";
 			$row['sb_STicketMoney']=$row['sb_STicketMoney']."\t";
@@ -129,7 +129,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					<?php 
 							$queryString = "SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1";
 							$result = $class_mysql_default->my_query("$queryString");
-					        while($res = mysql_fetch_array($result)) {
+					        while($res = mysqli_fetch_array($result)) {
 			            		if($res['sset_SiteName'] != $StationName1) {
 					?>
 		            		<option value="<?php echo $res['sset_SiteName'];?>"><?php echo $res['sset_SiteName'];?></option>
@@ -160,7 +160,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						 	}  
 							$select="SELECT DISTINCT sset_SiteName FROM tms_bd_SiteSet WHERE sset_IsStation=1 AND sset_SiteID!='$userStationID'";
 							$query=$class_mysql_default->my_query("$select");
-							while($rows = mysql_fetch_array($query)) {
+							while($rows = mysqli_fetch_array($query)) {
 								if($rows['sset_SiteName'] != $StationName2) {
 						?>
 									<option value="<?php echo $rows['sset_SiteName'];?>"><?php echo $rows['sset_SiteName'];?></option>
@@ -212,7 +212,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 						sb_STicketMoney,sb_SLuggageNum,sb_SLuggageMoney,sb_BeginDate,sb_EndDate,sb_Money,sb_BalanceDate,sb_BalanceTime FROM 
 						tms_acct_StationBalance WHERE (sb_FStation LIKE '{$StationName1}') AND (sb_SStation LIKE '{$StationName2}')".$str." ORDER BY sb_BalanceDate ASC";
 					$result = $class_mysql_default->my_query("$queryString");
-					while ($row = mysql_fetch_array($result)) {
+					while ($row = mysqli_fetch_array($result)) {
 			?>
 			<tr bgcolor="#CCCCCC">
 				<td nowrap="nowrap"><?php echo $row['sb_FStation'];?></td>

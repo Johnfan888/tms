@@ -273,7 +273,7 @@ require_once("../ui/user/topnoleft.inc.php");
   			AND tml_NoOfRunsdate = '$selldate' AND tml_AllowSell = '1' AND tml_LeaveSeats > 0 ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";
 		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
 		$lineNum = 0;
-		while($rows = @mysql_fetch_array($resultselet)) {
+		while($rows = @mysqli_fetch_array($resultselet)) {
 			$lineNum++;
 	?>
 	<tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">

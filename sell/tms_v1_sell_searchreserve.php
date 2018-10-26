@@ -12,7 +12,7 @@ require_once("../ui/inc/init.inc.php");
 
 //$selectuser="SELECT wur_CertificateType,wur_CertificateNumber FROM tms_bd_WebUserRegister WHERE wur_UserRegisterName='{$UserRegisterName}'";
 //$resultuser=$class_mysql_default ->my_query("$selectuser");
-//$rowsuser=@mysql_fetch_array($resultuser);
+//$rowsuser=@mysqli_fetch_array($resultuser);
 
 //获取查询界面参数
 if($userStationName=='全部车站'){
@@ -165,8 +165,8 @@ if(isset($_POST['selldate'])){
  	 		AND wst_Station LIKE '%{$userStationName}%'";
  	 	//echo $select;
 		$result=$class_mysql_default ->my_query("$select");
-		if (!$result) echo "SQL错误：".mysql_error();
- 	 	while($rows=mysql_fetch_array($result)){
+		if (!$result) echo "SQL错误：".->my_error();
+ 	 	while($rows=mysqli_fetch_array($result)){
  	 
  	 ?>
  	 <tr onmouseover ="this.style.backgroundColor='#F1E6C2'" onmouseout ="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF">
@@ -188,7 +188,7 @@ if(isset($_POST['selldate'])){
   		$selectmode="SELECT tml_Allticket FROM tms_bd_TicketMode WHERE tml_NoOfRunsID ='{$rows['wst_NoOfRunsID']}' AND 
 				tml_NoOfRunsdate ='{$rows['wst_NoOfRunsdate']}'";
 		$querymode =$class_mysql_default->my_query($selectmode);
-		$rowmode=mysql_fetch_array($querymode);
+		$rowmode=mysqli_fetch_array($querymode);
 		if($rowmode['tml_Allticket'] == '1') {	//通票班次
   	?>
   		<td align="center" nowrap="nowrap" bgcolor="#cccccc"><?php echo "XX";?></td>

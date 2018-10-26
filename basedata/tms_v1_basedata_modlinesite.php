@@ -9,7 +9,7 @@
 	$section=$_GET['section'];
 	$sqls = "select* FROM `tms_bd_SectionInfo` WHERE si_LineID='{$LineID}' and si_SectionID='{$section}'";
 	$querys =$class_mysql_default->my_query($sqls);
-	$results=mysql_fetch_array($querys);
+	$results=mysqli_fetch_array($querys);
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
@@ -238,7 +238,7 @@ function getvalueanddis(){
 	<?php 
 		$sqlss= "select si_SiteName FROM `tms_bd_SectionInfo` WHERE si_LineID='{$LineID}' and si_SectionID=$section-1";
 		$queryss =$class_mysql_default->my_query($sqlss);
-		$resultss=mysql_fetch_array($queryss);
+		$resultss=mysqli_fetch_array($queryss);
 	?>
 	<tr> 
     	<td  nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 前站点名：</span></td>

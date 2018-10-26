@@ -7,7 +7,7 @@ require_once("../ui/inc/init.inc.php");
 $strsqlselet = "SELECT * FROM `tms_bd_TicketProvide` WHERE `tp_InceptUserID` = '$userID'
 	AND	`tp_InceptTicketNum` > 0 AND `tp_Type` = '包车单' ORDER BY tp_ProvideData ASC";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
-$rowsticket = @mysql_fetch_array($resultselet);
+$rowsticket = @mysqli_fetch_array($resultselet);
 	if (empty($rowsticket[0])) {
 		echo "<script>alert('没有可用的包车单！'); location.assign('tms_v1_basedata_searcharterebus.php');</script>";
 	}

@@ -279,8 +279,8 @@ function getid(){
 			<?php 
       				$sqlss = "SELECT distinct bi_BusUnit FROM tms_bd_BusInfo";
 					$queryss = $class_mysql_default->my_query($sqlss);
-					//$result=mysql_fetch_array($query);
-					while($resultss=mysql_fetch_array($queryss)){
+					//$result=mysqli_fetch_array($query);
+					while($resultss=mysqli_fetch_array($queryss)){
 				?>	
 				<option value="<?php echo $resultss['bi_BusUnit']?>"><?php echo $resultss['bi_BusUnit']?></option>
 				<?php 
@@ -313,8 +313,8 @@ function getid(){
       			<?php 
       				$sqls = "SELECT si_SectionID,si_SiteName,si_SiteNameID FROM tms_bd_SectionInfo WHERE si_LineID='{$clnumber}' and si_IsGetOnSite='1'";
 					$querys = $class_mysql_default->my_query($sqls);
-					//$result=mysql_fetch_array($query);
-					while($results=mysql_fetch_array($querys)){
+					//$result=mysqli_fetch_array($query);
+					while($results=mysqli_fetch_array($querys)){
 				?>	
 				<option value="<?php echo $results['si_SiteName'].','.$results['si_SiteNameID'].','.$results['si_SectionID'];?>"><?php echo $results['si_SiteName'];?></option>
 				<?php 
@@ -341,8 +341,8 @@ function getid(){
       			<?php 
       				$sqlss = "SELECT si_SectionID,si_SiteName,si_SiteNameID FROM tms_bd_SectionInfo WHERE si_LineID='{$clnumber}' and si_IsDock='1' and si_SectionID!='1'";
 					$queryss =$class_mysql_default->my_query($sqlss);
-					//$result=mysql_fetch_array($query);
-					while($resultss=mysql_fetch_array($queryss)){
+					//$result=mysqli_fetch_array($query);
+					while($resultss=mysqli_fetch_array($queryss)){
 				?>	
 				<option value="<?php echo $resultss['si_SiteName'].','.$resultss['si_SiteNameID'].','.$resultss['si_SectionID'];?>"><?php echo $resultss['si_SiteName'];?></option>
 				<?php 

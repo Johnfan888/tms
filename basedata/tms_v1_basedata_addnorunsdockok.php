@@ -39,7 +39,7 @@
 	}
 	$selects="select nds_NoOfRunsID from tms_bd_NoRunsDockSite where nds_NoOfRunsID='{$NoOfRunsID}' and nds_SiteID='{$SiteID}'";
 	$seles=$class_mysql_default->my_query($selects);
-	if(!mysql_fetch_array($seles)){
+	if(!mysqli_fetch_array($seles)){
 		$class_mysql_default->my_query("START TRANSACTION");
 		$update="UPDATE tms_bd_NoRunsDockSite SET nds_ID=nds_ID+1 WHERE nds_NoOfRunsID='{$NoOfRunsID}' AND nds_ID>='{$ID}'ORDER BY nds_ID DESC";
 		$query1=$class_mysql_default->my_query($update);
@@ -50,7 +50,7 @@
 			'{$IsServiceFee}','{$ServiceFee}','{$otherFee1}','{$otherFee2}','{$otherFee3}','{$otherFee4}','{$otherFee5}','{$otherFee6}',
 			'{$StintSell}','{$StintTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert); 
-			//if (!$query) echo "SQL错误：".mysql_error();
+			//if (!$query) echo "SQL错误：".->my_error();
 		if($query1 && $query){
 			$class_mysql_default->my_query("COMMIT");
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addnorunsdock.php?NoOfRunsID=$NoOfRunsID&LineID=$LineID'</script>";
