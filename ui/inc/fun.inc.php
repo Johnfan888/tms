@@ -13,7 +13,7 @@ function funmessage($backurl, $messagelang, $waittime)
     	</td>
     </tr>
 </table>
-<?
+<?php
 }
 
 //从生日获取年龄函数
