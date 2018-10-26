@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 function funmessage($backurl, $messagelang, $waittime)
 {
 	header("refresh:$waittime;url=$backurl");

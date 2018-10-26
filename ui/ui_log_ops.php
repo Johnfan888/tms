@@ -21,9 +21,5 @@
 	        $str = "Location:main.php?groupid=".$groupid;
 	        header($str);	
 	}	
-	
 	exit();
-	
-	
-	
 ?>

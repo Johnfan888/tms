@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 /*
  * 登录页面
  */
@@ -59,7 +59,7 @@ require_once("inc/fun.inc.php");
 	});
 	</script>
 </head>
-<?
+<?php
 $action = $_GET["action"];
 if($action == "login")
 {
@@ -107,7 +107,7 @@ if($action == "login")
 </form>
 </body>
 </html>
-<?
+<?php
 }
 else 
 {

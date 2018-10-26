@@ -1,16 +1,11 @@
-﻿<?
+﻿<?php
 require_once('inc/init.inc.php');
 require_once('inc/templates.lang.php');
 require_once('inc/fun.inc.php');
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
-<?
-
-
+<?php
 $action = $_GET["action"];
-
-
-
 //安全退出
 if($action == "exit")
 {
@@ -96,11 +91,10 @@ if($action == "login")
                        $LoginTime = date("Y-m-d   H:i:s");
                        
                       
-                       echo "<script>  alert('您已在本机登录过，新用户名登录后，旧的用户将退出');     			</script>";
+                       echo "<script>  alert('您已在本机登录过，新用户名登录后，旧的用户将退出'); </script>";
                        
                        $sql = "UPDATE tms_sys_OnlineUser SET ui_UserID = '$userid', ui_UserName = '$userName', ui_UserGroupID = '$groupID', ui_UserGroup = '$groupName', ui_UserSationID = '$stationID', ui_UserSation = '$stationName', ui_UserState = '在线', ui_LoginTime = '$LoginTime', ui_LogoutTime = NULL, ui_UserIP = '$localIP' , ui_UserID = '$userid' WHERE ui_UserID = '$oldID'";	
-	                 
-                       
+                   
                        $query=$class_mysql_default->my_query($sql);
                 }
                 $str1 = "Location:main.php?groupid=".$groupID;
@@ -120,14 +114,14 @@ if($action == "login")
                
                $ops = "login";
              
-                        //是从其他主机登录的
+               //是从其他主机登录的
                echo "<script>  if(confirm('您已使用IP:'+'$ip'+'登录!请确认是否重新登录')){               			
                         			window.location.href = 'ui_log_ops.php?userid=$userid&newip=$localIP&groupid=$groupid&ops=$ops';
                         		}else{                        		
                         			window.location.href = 'login.php?action=login';
         							};                        		
                </script>";
-                      exit();
+               exit();
         }
         else {   
                

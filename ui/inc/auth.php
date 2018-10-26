@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 $userID = $_COOKIE["{$config_cookie_head}_UserID"];
 $userName = $_COOKIE["{$config_cookie_head}_UserName"];
 $userPass = $_COOKIE["{$config_cookie_head}_UserPassword"];
