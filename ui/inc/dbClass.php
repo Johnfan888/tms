@@ -33,7 +33,7 @@ class Class_Mysql_conn
 	{
 		if($this->mysql_conn_type == "mysqli")
 		{
-			$this->myconn = mysqli_connect($this->dbhost,$this->$dbuser,$this->$dbpass) or die("连接数据库出错！可能是以下的原因：<p>&nbsp;1、数据库连接参数没有设置正确！<br>2、请注意你的MYSQL数据库版本是否过低，不能支持mysqli的连接与查询方式，请在主配置文件中进行更改！");
+			$this->myconn = mysqli_connect($this->dbhost,$this->dbuser,$this->dbpass) or die("连接数据库出错！可能是以下的原因：<p>&nbsp;1、数据库连接参数没有设置正确！<br>2、请注意你的MYSQL数据库版本是否过低，不能支持mysqli的连接与查询方式，请在主配置文件中进行更改！");
 		} else {
 			$this->myconn = mysql_connect($this->dbhost,$this->dbuser,$this->dbpass) or die("数据库连接失败，请检查！");
 		}
