@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=$DefaultLang" />
 	<link rel="stylesheet" type="text/css" href="../ui/images/style_admin.css"/>
-	<title><?=$config_web_title?></title>
+	<title><?php =$config_web_title ?></title>
 	<script language="javascript">
 	function Clock()
 	{
@@ -50,18 +50,18 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr valign="middle" style="background-image: url(../ui/images/main_06.gif);">
 		<td>
-			&nbsp;&nbsp;&nbsp;<img src="../ui/images/sj.gif" width="6" height="7" /><strong>当前用户：</strong><?=$userID?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="../ui/images/sj.gif" width="6" height="7" /><strong>用户属组：</strong><?=$userGroupName?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<img src="../ui/images/sj.gif" width="6" height="7" /><strong>所属车站：</strong><?=$userStationName?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;<img src="../ui/images/sj.gif" width="6" height="7" /><strong>当前用户：</strong><?php =$userID ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="../ui/images/sj.gif" width="6" height="7" /><strong>用户属组：</strong><?php =$userGroupName ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="../ui/images/sj.gif" width="6" height="7" /><strong>所属车站：</strong><?php =$userStationName ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
-		<td><strong>单位：</strong><?=$config_company_name?>	</td>
+		<td><strong>单位：</strong><?php =$config_company_name ?></td>
 		<td align="right">
 			<div id="clock" align="right"></div>
 			<script type="text/javascript">
 				var clock = new Clock();
 				clock.display(document.getElementById("clock"));
 			</script>
-			<?//=date("Y-m-d H:i:s",time())?>
+			<?php //=date("Y-m-d H:i:s",time()) ?>
 		</td>
 		<td width="5">&nbsp;&nbsp;&nbsp;</td>
 	</tr>
