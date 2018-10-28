@@ -371,8 +371,8 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 		rt_NoOfRunsID=tml_NoOfRunsID AND rt_NoOfRunsdate=tml_NoOfRunsdate AND bi_BusUnit NOT LIKE '{$BusUnit}%')) OR bi_BusUnit LIKE '{$BusUnit}%') AND nri_LineName LIKE '{$LineName}%'  
 		".$strdate.$strStatus.$strRuned.$strChecked." GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate 
 		ORDER BY STR_TO_DATE(tml_NoOfRunstime,'%H:%i') ASC";
-	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo ->my_error();
+	$resultselet = $class_mysql_default->my_query("$strsqlselet");
+	if(!$resultselet) echo $class_mysql_default->my_error();
 	while($rows = @mysqli_fetch_array($resultselet))	{
 	/*	$str="select GROUP_CONCAT(DISTINCT pd_ReachStation ORDER BY nds_ID) AS SiteName from tms_bd_PriceDetail LEFT OUTER JOIN 
 			  tms_bd_NoRunsDockSite ON  pd_NoOfRunsID=nds_NoOfRunsID  
@@ -400,8 +400,8 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 			  pd_ReachStationID FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND
 			  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 			  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";   
-		$result1 = $class_mysql_default ->my_query("$str"); 
-		if(!$result1) echo ->my_error();
+		$result1 = $class_mysql_default->my_query("$str"); 
+		if(!$result1) echo $class_mysql_default->my_error();
 		$rows1=mysqli_fetch_array($result1); 
 		if (!$rows['bi_BusUnit']) $RealBusUnit = $rows['tml_BusUnit']; 
 		else $RealBusUnit = $rows['bi_BusUnit'];
@@ -427,7 +427,7 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 		if($rows['rt_CheckTicketWindow']) $RealCheckTicketWindow = $rows['rt_CheckTicketWindow']; 
 		else $RealCheckTicketWindow = $rows['tml_CheckTicketWindow'];
 		$selectprice="SELECT pd_StopStationTime FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}' AND pd_ReachStationID=pd_EndStationID";
-		$resultprice = $class_mysql_default ->my_query("$selectprice");
+		$resultprice = $class_mysql_default->my_query("$selectprice");
 		$rowprice=@mysqli_fetch_array($resultprice);
 ?>
 	<tr align="center" bgcolor="#CCCCCC">

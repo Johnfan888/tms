@@ -8,7 +8,7 @@
 	$clnumber=$_GET['clnumber'];
 	$sqls = "select* FROM tms_bd_NoRunsAdjustPrice where nrap_ID='{$clnumber}'";
 	$querys =$class_mysql_default->my_query($sqls);
-	//if (!$query) echo "SQL错误：".->my_error();
+	//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 	$results=mysqli_fetch_array($querys);	
 ?>
 <title>班次调价信息</title>

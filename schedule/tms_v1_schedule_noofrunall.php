@@ -67,7 +67,7 @@ if (isset($_GET['op']))
 		else
 		{
 			$strsqlselet = "UPDATE tms_bd_TicketMode SET tml_StopRun='0',tml_AllowSell='0' WHERE tml_NoOfRunsID='$NoOfRunsID' AND tml_NoOfRunsdate='$NoOfRunsdate'";
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		}	
 	}
 	if($oper=="run")
@@ -75,7 +75,7 @@ if (isset($_GET['op']))
 		$NoOfRunsID = $_GET['nrID'];
 		$NoOfRunsdate = $_GET['nrDate'];
 		$strsqlselet = " UPDATE tms_bd_TicketMode SET tml_StopRun='1',tml_AllowSell='1' WHERE tml_NoOfRunsID='$NoOfRunsID' AND tml_NoOfRunsdate='$NoOfRunsdate'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 	}
 }
 
@@ -287,7 +287,7 @@ if(isset($_POST['resultquery']))
 		tml_NoOfRunsID = rt_NoOfRunsID AND tml_NoOfRunsdate = rt_NoOfRunsdate WHERE tml_Beginstation LIKE '{$schStation}%' 
 		AND tml_NoOfRunsdate = '$schDate' AND tml_NoOfRunsID LIKE '{$noofrunsID}%' AND tml_BusID LIKE '{$busID}%' AND 
 		tml_Endstation LIKE '{$endStation}%' AND tml_StopRun LIKE '$StopRun' AND tml_Allticket = '1'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 	while($rows = @mysqli_fetch_array($resultselet))	{
 		$i++;
 		$LineName = $rows['tml_Beginstation'].'--'.$rows['tml_Endstation'];

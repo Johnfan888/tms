@@ -28,7 +28,7 @@
 			sset_Remark) values('{$SiteId}','{$SiteName}','{$SiteType}','{$SiteRank}','{$OperateCode}','{$HelpCode}',
 			'{$Region}','{$IsStation}','{$IsTollSite}','{$StationAdOrg}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert);
-		echo ->my_error();
+		echo $class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addsite.php'</script>";
 		}else{

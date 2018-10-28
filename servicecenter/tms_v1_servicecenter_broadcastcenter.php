@@ -193,7 +193,7 @@
 		if($runstime != null){
 		    if($nowtime1 >= $prestop && $nowtime1 < $pre2stop){ //停止检票
 		    	$query3="SELECT * FROM tms_sch_SpeechNoOfRunsAttemp WHERE sa_StopStationTime='$runstime' AND sa_Endstation='$Endstation' AND sa_NoOfRunsID='$NoOfRunsID' AND sa_Check='$CheckTicketWindow' AND sa_CheckState='$str' AND sa_FromStation='$FromStation' AND sa_FromStationID='$FromStationID'";
-		    	$result3 = $class_mysql_default$class_mysql_default->my_query("$query3");
+		    	$result3 = $class_mysql_default->my_query("$query3");
 	  			if(mysqli_num_rows($result3) == 0) {
 				$query="INSERT INTo tms_sch_SpeechNoOfRunsID(sn_StopStationTime,sn_Beginstation,sn_Endstation,sn_NoOfRunsID,sn_Check,sn_PreviousTime,sn_CheckState,sn_NoOfRunsdate,sn_FromStation,sn_FromStationID)
 						values('$runstime','$Beginstation','$Endstation','$NoOfRunsID','$CheckTicketWindow','$pretime2','$str','$nowdate','$FromStation','$FromStationID')";
@@ -206,17 +206,17 @@
 	  				if($row['sa_PreviousTime'] !=0){
 	  					$PreviousTime=$row['sa_PreviousTime']-1;
 	  					$query4="UPDATE tms_sch_SpeechNoOfRunsAttemp SET sa_PreviousTime='$PreviousTime' WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-	  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+	  					$result4=$class_mysql_default->my_query("$query4");
 	  				}
 	  				else{
 	  					$query4="DELETE FROM tms_sch_SpeechNoOfRunsAttemp  WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-	  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+	  					$result4=$class_mysql_default->my_query("$query4");
 	  				}	
 	  			}
 			}
 			if($nowtime1 >= $precurrent && $nowtime1 < $prestop){ //正在检票
 				$query3="SELECT * FROM tms_sch_SpeechNoOfRunsAttemp WHERE sa_StopStationTime='$runstime' AND sa_Endstation='$Endstation' AND sa_NoOfRunsID='$NoOfRunsID' AND sa_Check='$CheckTicketWindow' AND sa_CheckState='$str1' AND sa_FromStation='$FromStation' AND sa_FromStationID='$FromStationID'";
-		    	$result3 = $class_mysql_default$class_mysql_default->my_query("$query3");
+		    	$result3 = $class_mysql_default->my_query("$query3");
 	  			if(mysqli_num_rows($result3) == 0) {
 	  				
 				$query="INSERT INTo tms_sch_SpeechNoOfRunsID(sn_StopStationTime,sn_Beginstation,sn_Endstation,sn_NoOfRunsID,sn_Check,sn_PreviousTime,sn_CheckState,sn_NoOfRunsdate,sn_FromStation,sn_FromStationID)
@@ -233,19 +233,19 @@
 		  					echo $NoOfRunsID;
 		  					echo $runstime;*/
 		  					$query4="UPDATE tms_sch_SpeechNoOfRunsAttemp SET sa_PreviousTime='$PreviousTime' WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-		  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+		  					$result4=$class_mysql_default->my_query("$query4");
 		  				}
 		  				else{
 		  					//echo "h";
 		  					$query4="DELETE FROM tms_sch_SpeechNoOfRunsAttemp  WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-		  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+		  					$result4=$class_mysql_default->my_query("$query4");
 		  				}	
 		  			}
 			}
 			
 			if($nowtime1 >= $prehasten && $nowtime1 < $precurrent){ //等待检票
 				$query3="SELECT * FROM tms_sch_SpeechNoOfRunsAttemp WHERE sa_StopStationTime='$runstime' AND sa_Endstation='$Endstation' AND sa_NoOfRunsID='$NoOfRunsID' AND sa_Check='$CheckTicketWindow' AND sa_CheckState='$str2' AND sa_FromStation='$FromStation' AND sa_FromStationID='$FromStationID'";
-		    	$result3 = $class_mysql_default$class_mysql_default->my_query("$query3");
+		    	$result3 = $class_mysql_default->my_query("$query3");
 	  			if(mysqli_num_rows($result3) == 0) {
 				$query="INSERT INTo tms_sch_SpeechNoOfRunsID(sn_StopStationTime,sn_Beginstation,sn_Endstation,sn_NoOfRunsID,sn_Check,sn_PreviousTime,sn_CheckState,sn_NoOfRunsdate,sn_FromStation,sn_FromStationID)
 						values('$runstime','$Beginstation','$Endstation','$NoOfRunsID','$CheckTicketWindow','$pretime2','$str2','$nowdate','$FromStation','$FromStationID')";
@@ -257,11 +257,11 @@
 			  				$PreviousTime=$row['sa_PreviousTime']-1;
 			  				if($PreviousTime <= $Hasten && $PreviousTime > $Current){
 			  					$query4="UPDATE tms_sch_SpeechNoOfRunsAttemp SET sa_PreviousTime='$PreviousTime' WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-			  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+			  					$result4=$class_mysql_default->my_query("$query4");
 			  				}
 			  				else{
 			  					$query4="DELETE FROM tms_sch_SpeechNoOfRunsAttemp  WHERE sa_StopStationTime='$runstime' AND sa_NoOfRunsID='$NoOfRunsID'";
-			  					$result4=$class_mysql_default$class_mysql_default->my_query("$query4");
+			  					$result4=$class_mysql_default->my_query("$query4");
 			  				}	
 			  			}
 			}

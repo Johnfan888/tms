@@ -198,7 +198,7 @@ $(document).ready(function(){
 		$sql="SELECT * FROM tms_bd_TicketProvide where tp_InceptUserID like '{$InceptUserID}%' AND tp_Type LIKE '{$Type}%' AND tp_UseState='当前' AND tp_InceptTicketNum !='0'".$strsta.$str;
 //			AND tp_ProvideData>='{$DataBeginDate}' AND tp_ProvideData<='{$DataEndDate}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".->my_error();
+	//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 	    $i=0;
 		while ($row = mysqli_fetch_array($query)){
 			$i++;
@@ -222,7 +222,7 @@ $(document).ready(function(){
 	//		}
 		$resetsql="SELECT * FROM tms_sell_ResetTicket where rt_ResetUserID like '{$InceptUserID}%' AND rt_Type LIKE '{$Type}%' AND rt_InceptTicketNum !='0'".$resetstrsta.$resetstr;
 		$resetquery =$class_mysql_default->my_query($resetsql);
-	//	if (!$query) echo "SQL错误：".->my_error();
+	//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		while ($resetrow = mysqli_fetch_array($resetquery)){
 			$i++;
 	?>

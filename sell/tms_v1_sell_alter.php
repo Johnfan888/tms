@@ -31,7 +31,7 @@ if(isset($_GET['tid']))
      foreach (explode(",",$ticketID) as $key =>$ticketIDs){
      
 	     $strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketIDs'";
-	     $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	     $resultselet = $class_mysql_default->my_query("$strsqlselet");
 		 if(!$resultselet) {
 			$class_mysql_default->my_query("ROLLBACK");
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
@@ -44,7 +44,7 @@ if(isset($_GET['tid']))
 	     	tms_bd_PriceDetail.pd_NoOfRunsID = tms_bd_TicketMode.tml_NoOfRunsID AND tms_bd_PriceDetail.pd_NoOfRunsdate = tms_bd_TicketMode.tml_NoOfRunsdate LEFT OUTER JOIN tms_bd_NoRunsInfo 
 	     	ON tms_bd_PriceDetail.pd_NoOfRunsID=tms_bd_NoRunsInfo.nri_NoOfRunsID WHERE pd_FromStation='{$rows['st_FromStation']}' AND  pd_ReachStation='{$rows['st_ReachStation']}' AND 
 	     	pd_NoOfRunsdate = '{$alertdate}' AND tml_NoOfRunsID = '{$NoOfRunsID}'";
-	     $resultprice = $class_mysql_default ->my_query("$selectprice");
+	     $resultprice = $class_mysql_default->my_query("$selectprice");
 	  	 if(!$resultprice) {
 			$class_mysql_default->my_query("ROLLBACK");
 	  	 	echo "<script>alert('查询票价数据失败！');history.back();</script>";
@@ -123,7 +123,7 @@ if(isset($_GET['tid']))
 		         	'{$rows['st_otherFee2']}', '{$rows['st_otherFee3']}', '{$rows['st_otherFee4']}', '{$rows['st_otherFee5']}', '{$rows['st_otherFee6']}', '{$altersiteID}', '{$altersite}', 
 		         	'{$rows['st_SellDate']}', '{$rows['st_SellTime']}', '{$rows['st_BusModelID']}', '{$rows['st_BusModel']}', '{$rows['st_SeatID']}', '{$rows['st_SellID']}', 
 		         	'{$rows['st_SellName']}', '{$rows['st_FreeSeats']}', '{$rows['st_SafetyTicketNumber']}','{$rows['st_SafetyTicketMoney']}', '$nowtime', '$alterID', '$alterer', '$alterremark');";
-	        $resultselet1 = $class_mysql_default ->my_query("$strsqlselet1");
+	        $resultselet1 = $class_mysql_default->my_query("$strsqlselet1");
 	     	if(!$resultselet1) {
 				$class_mysql_default->my_query("ROLLBACK");
 				echo "<script>alert('插入改签数据失败！');history.back();</script>";
@@ -133,7 +133,7 @@ if(isset($_GET['tid']))
 	     	if($rows['st_TicketState']=='9'){
 	     		$selectandrun="SELECT anr_AndNoOfRunsID, anr_AndNoOfRunsdate,anr_AndSeatID,anr_Seats,anr_HalfSeats FROM tms_sch_AndNoOfRuns WHERE anr_NoOfRunsID='{$rows['st_NoOfRunsID']}' AND 
 	     			anr_NoOfRunsdate='{$rows['st_NoOfRunsdate']}'";
-	     		$queryandrun=$class_mysql_default ->my_query("$selectandrun");
+	     		$queryandrun=$class_mysql_default->my_query("$selectandrun");
 	     		if(!$queryandrun){
 	     			$class_mysql_default->my_query("ROLLBACK");
 					echo "<script>alert('查询并班数据失败！');history.back();</script>";
@@ -181,7 +181,7 @@ if(isset($_GET['tid']))
 	        	st_BeginStationTime='{$rowsprice['pd_BeginStationTime']}',st_StopStationTime='{$rowsprice['pd_StopStationTime']}',st_Distance='{$rowsprice['pd_Distance']}',
 	        	st_SeatID='{$seatID}',st_TicketState='0' WHERE st_TicketID = '$ticketIDs';";
 	     //   $strsqlselet = "UPDATE `tms_sell_SellTicket` SET `st_AlterTicket` = '1' WHERE `st_TicketID` = '$ticketID';";
-	        $resultselet2 = $class_mysql_default ->my_query("$strsqlselet2");
+	        $resultselet2 = $class_mysql_default->my_query("$strsqlselet2");
 	     	if(!$resultselet2) {
 				$class_mysql_default->my_query("ROLLBACK");
 				echo "<script>alert('更新原票数据失败！');history.back();</script>";
@@ -482,8 +482,8 @@ if(isset($_GET['tid']))
 			$ticketIDs=trim($ticketIDs);
 			$selectticket="SELECT st_NoOfRunsID,st_NoOfRunsdate,st_FromStation, st_ReachStation,st_BeginStationTime,st_SellPrice,st_SellPriceType,st_TotalMan,
 				st_BusModel,st_SeatID,nri_Allticket FROM tms_sell_SellTicket LEFT OUTER JOIN tms_bd_NoRunsInfo ON st_NoOfRunsID=nri_NoOfRunsID WHERE st_TicketID='{$ticketIDs}'";
-			$resultticket = $class_mysql_default ->my_query("$selectticket");
-			if(!$resultticket) echo ->my_error();
+			$resultticket = $class_mysql_default->my_query("$selectticket");
+			if(!$resultticket) echo $class_mysql_default->my_error();
 			$rowsticket = @mysqli_fetch_array($resultticket);
 ?>
 	<tr bgcolor="#CCCCCC">
@@ -547,7 +547,7 @@ if(isset($_GET['tid']))
 		LEFT OUTER JOIN tms_sch_Report ON pd_NoOfRunsID=rt_NoOfRunsID AND pd_NoOfRunsdate=rt_NoOfRunsdate AND pd_FromStationID=rt_FromStationID AND rt_Register!='已发车'
 		WHERE pd_FromStation='{$rowsticket['st_FromStation']}' AND  pd_ReachStation='{$rowsticket['st_ReachStation']}' AND pd_NoOfRunsdate = '{$alertdate}' AND tml_AllowSell = '1' 
 		AND tml_LeaveSeats > 0 ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";
-  $resultnoruns = $class_mysql_default ->my_query("$selectnoruns");
+  $resultnoruns = $class_mysql_default->my_query("$selectnoruns");
   while($rowsnoruns = @mysqli_fetch_array($resultnoruns))
   {
 ?>

@@ -14,7 +14,7 @@ switch ($op)
 			$queryString="SELECT bi_BusNumber,bi_SeatS FROM tms_bd_BusInfo WHERE bi_BusNumber LIKE '%$BusNumber%'";
 			$result = $class_mysql_default->my_query("$queryString");
 			if(!mysqli_num_rows($result)) {
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.->my_error(), 'sql' => $queryString);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 				echo json_encode($retData);
 				exit();
 			}

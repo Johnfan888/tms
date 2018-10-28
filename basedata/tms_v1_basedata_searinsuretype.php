@@ -237,7 +237,7 @@ function delinsuretype(){
 				   it_AgentCode,it_VisaCode,it_Perfix,it_AInsuranceValue,it_BInsuranceValue
 				   FROM `tms_bd_InsureType` where it_InsureProductName like '%{$INSUREPRODUCTNAME}%'";
 			$query =$class_mysql_default->my_query($sql);
-			if (!$query) echo "SQL错误：".->my_error();
+			if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'INSUREPRODUCTNAME1')">

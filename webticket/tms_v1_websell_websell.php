@@ -158,8 +158,8 @@ $(document).click(function(){
 			AND tml_NoOfRunsdate=pd_NoOfRunsdate LEFT OUTER JOIN tms_bd_NoRunsInfo ON tml_NoOfRunsID=nri_NoOfRunsID
 			WHERE pd_FromStation='{$FromStation}' AND pd_ReachStation='{$ReachStation}' AND pd_NoOfRunsdate='{$Selldate}' AND 
 			tml_NoOfRunsdate='{$Selldate}' AND tml_AllowSell='1' AND pd_IsPass='1' ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";  
-		$resultsql = $class_mysql_default ->my_query($sql); 
-	//	if (!$resultsql) echo "SQL错误：".->my_error();
+		$resultsql = $class_mysql_default->my_query($sql); 
+	//	if (!$resultsql) echo "SQL错误：".$class_mysql_default->my_error();
  	 	while($rows = mysqli_fetch_array($resultsql)){
    	?>
   <tr align="center" onmouseover ="this.style.backgroundColor='#F1E6C2'" onmouseout ="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF">

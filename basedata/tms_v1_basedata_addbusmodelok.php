@@ -23,7 +23,7 @@
 				'{$ModelName}','{$Rank}','{$Category}','{$Seating}','{$AddSeating}','{$AllowHalfSeats}','{$Weight}',
 				'{$userID}','{$userName}','{$CurTime}','{$Closing}','{$Remark}')";
 			$query = $class_mysql_default->my_query($insert);
-		//	if (!$query) echo "SQL错误：".->my_error();
+		//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			if($query){
 				echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addbusmodel.php'</script>";
 			}else{

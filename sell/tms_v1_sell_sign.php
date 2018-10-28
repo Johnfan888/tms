@@ -32,7 +32,7 @@ if(isset($_GET['tid']))
 	foreach (explode(",",$ticketID) as $key =>$ticketIDs){
 	//	echo "<script>alert($ticketIDs)</script>";
 		$strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketIDs'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		if(!$resultselet){
 			$class_mysql_default->my_query("ROLLBACK");
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
@@ -79,7 +79,7 @@ if(isset($_GET['tid']))
 		    	'$returnSXprice', '$rows[1]' ,'$rows[3]' , '$rows[4]' , '$rows[5]' , '$rows[15]' , '$rows[16]', '$rows[32]' , '$rows[33]' ,
 		    	'$rows[36]' , NULL ,'$rows[40]', '$rows[7]' , '$rows[8]' , '$rows[9]' , '$rows[10]' , '$rows[11]' , '$rows[12]', '$rows[13]', 
 		    	'$rows[14]', '$rows[30]', '$rows[31]' ,'0')";
-		    $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		    $resultselet = $class_mysql_default->my_query("$strsqlselet");
 		    if(!$resultselet){
 		    	$class_mysql_default->my_query("ROLLBACK");
 		    	echo "<script>alert('签票失败！');history.back();</script>";	
@@ -90,7 +90,7 @@ if(isset($_GET['tid']))
 	echo "<script>alert('签票成功！')</script>";
 	echo "<script>window.location.href ='tms_v1_sell_sign.php';</script>";
 /*	$strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketID'";
-	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	$resultselet = $class_mysql_default->my_query("$strsqlselet");
 	$rows = @mysqli_fetch_array($resultselet);
 	if(!empty($rows[0]))
 	{
@@ -104,7 +104,7 @@ if(isset($_GET['tid']))
 	    	'$returnSXprice', '$rows[1]' ,'$rows[3]' , '$rows[4]' , '$rows[5]' , '$rows[15]' , '$rows[16]', '$rows[32]' , '$rows[33]' ,
 	    	'$rows[36]' , NULL ,'$rows[40]', '$rows[7]' , '$rows[8]' , '$rows[9]' , '$rows[10]' , '$rows[11]' , '$rows[12]', '$rows[13]', 
 	    	'$rows[14]', '$rows[30]', '$rows[31]' ,'0')";
-	    $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	    $resultselet = $class_mysql_default->my_query("$strsqlselet");
 		if($resultselet ){
         	echo "<script>alert('签票成功！')</script>";
         }else{
@@ -385,7 +385,7 @@ if(isset($_GET['tid']))
 		}
 		$now=date('Y-m-d');
         $strsqlselet = "SELECT `rte_ReturnType`,`rte_ReturnRate` FROM `tms_sell_ReturnType` WHERE rte_ReturnTimeBegin<='{$now}' AND rte_ReturnTimeEnd>='{$now}'";
-        $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+        $resultselet = $class_mysql_default->my_query("$strsqlselet");
         while($rows = @mysqli_fetch_array($resultselet)){
         	if( $rows['rte_ReturnRate'].','.$rows['rte_ReturnType']!=$returntickettype1){
    // 	$statArray = array(0 => array(	"rte_ReturnType" => "发车前48-2小时","rte_ReturnRate" => 0.5), 
@@ -469,7 +469,7 @@ if(isset($_GET['tid']))
 <tbody> 
 <?
  // $strsqlselet = "SELECT * FROM `tms_sell_ReturnTicket` WHERE rtk_SignUserID LIKE '{$signuserID}' AND rtk_IsBalance='0'";
- // $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+ // $resultselet = $class_mysql_default->my_query("$strsqlselet");
  // while($rows = @mysqli_fetch_array($resultselet))
  // {
 ?>
@@ -531,7 +531,7 @@ if(isset($_GET['tid']))
 				$strsqlselet="SELECT st_TicketID,st_NoOfRunsID,st_NoOfRunsdate,st_BeginStationTime,st_FromStation,st_ReachStation,st_SellPrice,
 				 	st_SellPriceType,st_SellDate,st_SellTime,st_SeatID FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
 				//echo $strsqlselet;
-				$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+				$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			}
  			while($rows = @mysqli_fetch_array($resultselet)){
 ?>

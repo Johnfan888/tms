@@ -51,9 +51,9 @@
 					$class_mysql_default->my_query("COMMIT");
 					echo"<script>alert('添加成功！');window.location.href='tms_v1_basedata_addfeetype.php?num=$num'</script>";
 				}else{
-//					if (!$query) echo "SQL错误1：".->my_error();
-//					if (!$query1) echo "SQL错误2：".->my_error();
-					echo ->my_error();
+//					if (!$query) echo "SQL错误1：".$class_mysql_default->my_error();
+//					if (!$query1) echo "SQL错误2：".$class_mysql_default->my_error();
+					echo $class_mysql_default->my_error();
 					$class_mysql_default->my_query("ROLLBACK");
 					echo"<script>alert('添加失败！');window.location.href='tms_v1_basedata_addfeetype.php?num=$num'</script>";
 				}

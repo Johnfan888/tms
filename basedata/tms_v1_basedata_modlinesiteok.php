@@ -38,7 +38,7 @@
 			si_otherFee3='{$otherFee3}',si_otherFee4='{$otherFee4}',si_otherFee5='{$otherFee5}',si_otherFee6='{$otherFee6}',si_Remark='{$Remark}'
 			where si_LineID='{$LineID}' and si_SectionID='{$SectionID}' ";
 		$query =$class_mysql_default->my_query($updata);
-	//	if (!$query) echo "SQL错误：".->my_error();
+	//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_linesite.php?op=see&clnumber=$LineID'</script>";
 		}else{

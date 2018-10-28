@@ -281,8 +281,8 @@ if(isset($_POST['Busnumber'])){
 		LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID = rt_NoOfRunsID AND tml_NoOfRunsdate = rt_NoOfRunsdate
 		LEFT OUTER JOIN tms_bd_PriceDetail ON rt_NoOfRunsID=pd_NoOfRunsID AND rt_NoOfRunsdate=pd_NoOfRunsdate 
 		WHERE rt_AttemperStation  like '{$schStation}%'  AND pd_FromStation like '{$schStation}%' AND rt_BusCard LIKE '{$busnumber}%' AND rt_Allticket like '$state%'".$strdate.$strStatus." GROUP BY rt_NoOfRunsID,rt_NoOfRunsdate,rt_ReportDateTime ORDER BY rt_ReportDateTime";
-	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo ->my_error();
+	$resultselet = $class_mysql_default->my_query("$strsqlselet");
+	if(!$resultselet) echo $class_mysql_default->my_error();
 	while($rows = @mysqli_fetch_array($resultselet))	{
 		$reportnum=$reportnum+1;
 		if($rows['bht_BalanceNO']!='' || $rows['bh_BalanceNO']!=''){

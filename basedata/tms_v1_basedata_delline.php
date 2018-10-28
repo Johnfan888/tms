@@ -32,16 +32,16 @@
 /*		$class_mysql_default->my_query("START TRANSACTION");
 		$sql1 = "DELETE FROM `tms_bd_LineInfo` WHERE li_LineID='{$LineID}'";
 		$query1= $class_mysql_default->my_query($sql1);
-	//	if (!$query1) echo "SQL错误：".->my_error();
+	//	if (!$query1) echo "SQL错误：".$class_mysql_default->my_error();
 		$sql2 = "DELETE FROM `tms_bd_SectionInfo` WHERE si_LineID='{$LineID}'";
 		$query2= $class_mysql_default->my_query($sql2);
-	//	if (!$query2) echo "SQL错误：".->my_error();
+	//	if (!$query2) echo "SQL错误：".$class_mysql_default->my_error();
 		$sql3 = "DELETE FROM `tms_bd_NoRunsAdjustPrice` WHERE nrap_LineAdjust='{$LineID}'";
 		$query3= $class_mysql_default->my_query($sql3);
-//		if (!$query3) echo "SQL错误：".->my_error();
+//		if (!$query3) echo "SQL错误：".$class_mysql_default->my_error();
 		$sql4 = "DELETE FROM `tms_bd_ServiceFeeAdjust` WHERE sfa_LineAdjust ='{$LineID}'";
 		$query4= $class_mysql_default->my_query($sql4);
-//		if (!$query4) echo "SQL错误：".->my_error();
+//		if (!$query4) echo "SQL错误：".$class_mysql_default->my_error();
 		if ($query1 && $query2 && $query3 && $query4) {
 			$class_mysql_default->my_query("COMMIT");
 			$retData = array(

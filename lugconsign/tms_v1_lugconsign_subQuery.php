@@ -249,7 +249,7 @@ if(isset($_POST['resultquery']) || isset($_POST['exceldoc'])) {
 					//echo "'$queryString'";
 					//exit();
 					$result = $class_mysql_default->my_query("$queryString");
-					if(!$result) echo ->my_error();
+					if(!$result) echo $class_mysql_default->my_error();
 					while ($row = mysqli_fetch_array($result)) {
 					//	$SumUpMoney += $row['sp_UpMoney'];
 					//	$SumPayMoney += $row['sp_PayMoney'];

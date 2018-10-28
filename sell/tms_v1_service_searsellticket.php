@@ -66,7 +66,7 @@
 	$query=$class_mysql_default->my_query($select);
 	$all=0;
 	$checknum=0;
-	//if(!$query) echo ->my_error();
+	//if(!$query) echo $class_mysql_default->my_error();
 	while($rows = mysqli_fetch_array($query)){
 		$all=$all+1;
 		if($rows['ctt_CheckDate'] || $rows['ct_CheckDate']){

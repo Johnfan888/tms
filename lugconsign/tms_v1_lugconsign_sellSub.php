@@ -41,8 +41,8 @@ if (isset($_POST['subPay'])) {
 	$class_mysql_default->my_query("BEGIN");
 	$result1 = $class_mysql_default->my_query("$queryString1"); 
 	$result2 = $class_mysql_default->my_query("$queryString2");
-	if(!$result1) echo "SQL错误：".->my_error(); 
-	if(!$result2) echo "SQL错误：".->my_error(); 
+	if(!$result1) echo "SQL错误：".$class_mysql_default->my_error(); 
+	if(!$result2) echo "SQL错误：".$class_mysql_default->my_error(); 
 	//	$result3 = $class_mysql_default->my_query("$queryString3"); 
 	//	$result4 = $class_mysql_default->my_query("$queryString4"); 
 	//	if($result1 && $result2 && $result3 && $result4) {

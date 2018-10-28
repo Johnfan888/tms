@@ -200,7 +200,7 @@
      		<?php 
        /*			$selects="SELECT tt_TypeName FROM tms_bd_TicketType";
       			$querys=$class_mysql_default->my_query($selects);
-      		//	if(!$querys) echo "SQL错误：".->my_error();
+      		//	if(!$querys) echo "SQL错误：".$class_mysql_default->my_error();
       			while($results=mysqli_fetch_array($querys)){
       				if($results['tt_TypeName']!=$Type){    */
       		?>

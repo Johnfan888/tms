@@ -18,7 +18,7 @@ if(!empty($_POST['submitm']))
         // $strsqlselet="call AND_noofruns($$noofrunsID,$andnoofrunsID);";
         $strsqlselet="UPDATE tms_bd_TicketMode SET tml_StopRun='0' WHERE tml_NoOfRunsID= '$andnoofrunsID' AND tml_NoOfRunsdate='$nowdate';";
         //echo $strsqlselet;
-        $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+        $resultselet = $class_mysql_default->my_query("$strsqlselet");
     }
     echo "<script>location.href='tms_v1_schedule_noofrun.php?op=&on=&oo=an';</script>"; 
 }
@@ -84,7 +84,7 @@ function GetXmlHttpObject(){
 </table>
 <?
 $strsqlselet = "SELECT `tml_NoOfRunsdate`,`tml_NoOfRunsID`,`tml_NoOfRunstime`,`tml_Endstation`,`tml_BusModel`,`tml_TotalSeats`,`tml_SeatStatus`  FROM `tms_bd_TicketMode` WHERE `tml_NoOfRunsID`='$noofrunsID';";
-$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+$resultselet = $class_mysql_default->my_query("$strsqlselet");
 $rowsA = @mysqli_fetch_array($resultselet);
 ?>
 <form id="addpro" name="addpro" method="post" action="">
@@ -97,7 +97,7 @@ $rowsA = @mysqli_fetch_array($resultselet);
         <td width="10%" bgcolor="#FFFFFF"><select name="andnoofrusnID" id="andnoofrusnID" onchange="startRequest('andnoofrusnID');">
             <?php
                      $strsqlselet ="SELECT `tml_NoOfRunsID` FROM `tms_bd_TicketMode` WHERE tml_NoOfRunsdate='$nowdate';";
-                     $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+                     $resultselet = $class_mysql_default->my_query("$strsqlselet");
                      while($rows = @mysqli_fetch_array($resultselet)){
                          if($andnoofrusnID==$rows[0])
                          {

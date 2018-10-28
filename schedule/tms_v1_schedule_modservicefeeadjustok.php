@@ -31,7 +31,7 @@
 			AND sfa_DepartureSiteID='{$DepartureSiteID}' AND sfa_GetToSiteID='{$GetToSiteID}' AND sfa_ModelID='{$ModelID}' AND sfa_ID!='{$ID}'";
 		$query=$class_mysql_default->my_query($select);
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败！'.->my_error(), 'sql' => $selects);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败！'.$class_mysql_default->my_error(), 'sql' => $selects);
 			echo json_encode($retData);
 			exit();
 		}
@@ -91,7 +91,7 @@
 			sfa_GetToSite='{$GetToSite}',sfa_ModelID='{$ModelID}',sfa_ModelName='{$ModelName}',sfa_BeginDate='{$BeginDate}',sfa_EndDate='{$EndDate}',
 			sfa_BeginTime='{$BeginTime}',sfa_EndTime='{$EndTime}',sfa_RunPrice='{$RunPrice}',sfa_Remark='{$Remark}' WHERE sfa_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($update); 
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searservicefeeadjust.php?clnumber=$NoRunsAdjust'</script>";
 		}else{

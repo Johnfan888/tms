@@ -77,7 +77,7 @@
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_searbusloop.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{
-			echo ->my_error();
+			echo $class_mysql_default->my_error();
 			echo"<script>alert('添加失败');window.location.href='tms_v1_basedata_searbusloop.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}
 	}else{

@@ -581,7 +581,7 @@ if(isset($_POST['resultquery']))
 				`ct_EndStation`, `ct_TotalSeats`, `ct_SoldTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, `ct_Flag`, 
 				`li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '0' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result))
 	    {
 	?>
@@ -639,7 +639,7 @@ if(isset($_POST['resultquery']))
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '1' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    if($rows = mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -720,7 +720,7 @@ if(isset($_POST['resultquery']))
 					tms_chk_CheckTicketTemp.ctt_CheckTime,tms_sell_SellTicket.st_Station FROM tms_chk_CheckTicketTemp,
 					tms_sell_SellTicket WHERE tms_chk_CheckTicketTemp.ctt_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND tms_chk_CheckTicketTemp.ctt_CheckTicketWindow = '$checkWindow'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		while($rows2 = mysqli_fetch_array($resultselet)) {
 	?>
 	<tr align="center" bgcolor="#CCCCCC">
@@ -769,7 +769,7 @@ if(isset($_POST['resultquery']))
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '2' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -841,7 +841,7 @@ if(isset($_POST['resultquery']))
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '3' AND 
 				ct_CheckTicketWindow = '$checkWindow' ORDER BY ct_NoOfRunsTime ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">

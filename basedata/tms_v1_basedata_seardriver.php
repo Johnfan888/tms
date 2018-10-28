@@ -216,7 +216,7 @@ $(document).ready(function(){
  	if($RegionCode2 == ''){
 		$sql="SELECT * FROM tms_bd_DriverInfo where  di_DriverID like '{$DriverID}%' and IFNULL(di_Name, '') like '{$Name}%' AND di_DriverCard like '$DriverCard%'";
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		while ($row = mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'DriverID1')">

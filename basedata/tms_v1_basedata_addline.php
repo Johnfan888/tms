@@ -345,7 +345,7 @@ $(document).ready(function(){
 				if($userStationName == "全部车站"){
 					?><option></option><?php 
 					$sql = "select sset_SiteID, sset_SiteName, sset_Region FROM tms_bd_SiteSet where sset_IsStation=1";
-					$query = $class_mysql_default$class_mysql_default->my_query($sql);
+					$query = $class_mysql_default->my_query($sql);
 					//$result=mysqli_fetch_array($query);
 					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){

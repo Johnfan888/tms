@@ -66,7 +66,7 @@ else {
 	$selectweb = "SELECT wst_BeginStationTime,wst_NoOfRunsdate,wst_FromStation,wst_ReachStation,wst_TotalMan,wst_SellPrice,wst_FullNumber,wst_HalfNumber,
 		wst_NoOfRunsID,wst_SeatID,wst_CertificateNumber FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 	$queryweb = $class_mysql_default->my_query($selectweb);
-	//if (!$queryweb) echo "SQL错误：".->my_error();
+	//if (!$queryweb) echo "SQL错误：".$class_mysql_default->my_error();
 	$rowweb=mysqli_fetch_array($queryweb);
 
 	//取得剩余座位数

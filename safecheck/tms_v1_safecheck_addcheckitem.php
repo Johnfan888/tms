@@ -101,7 +101,7 @@ function search(){
 			$insert="INSERT INTO `tms_sf_CheckItem` (`ci_CheckItem`,`ci_CheckContent`,`ci_AdderID`,`ci_Adder`,`ci_Addertime`,`ci_Remark`) 
 				VALUES ('{$CheckItem}', '{$CheckContent}','{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 			$query = $class_mysql_default->my_query($insert);
-			if (!$query) echo "SQL错误：".->my_error();
+			if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			if($query){
 				echo"<script>alert('添加成功!')</script>";
 			}else{

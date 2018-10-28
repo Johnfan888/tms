@@ -132,7 +132,7 @@ function search(){
 		if($query){
 				echo"<script>alert('修改成功！');window.location.href='tms_v1_basedata_modbusfee.php?op=mod&clnumber=$clnumber'</script>";
 			}else{
-				echo ->my_error();
+				echo $class_mysql_default->my_error();
 				echo"<script>alert('修改失败！');window.location.href='tms_v1_basedata_modbusfee.php?op=mod&clnumber=$clnumber'</script>";
 			}
 	}

@@ -9,7 +9,7 @@ $NoOfRunsdate=$_GET['nrDate'];
 $LineName=$_GET['line'];
 $select="SELECT tml_NoOfRunstime,tml_TotalSeats,tml_LeaveSeats,tml_StopRun,tml_AllowSell,tml_HalfSeats FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoOfRunsID}' 
 	AND tml_NoOfRunsdate='{$NoOfRunsdate}'";
-$query=$class_mysql_default ->my_query($select);
+$query=$class_mysql_default->my_query($select);
 $row=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" > 
@@ -124,7 +124,7 @@ $row=mysqli_fetch_array($query);
 				LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID=nri_NoOfRunsID AND tml_NoOfRunsdate='{$NoOfRunsdate}'
 				LEFT OUTER JOIN tms_sch_Report ON rt_NoOfRunsID=tml_NoOfRunsID AND rt_NoOfRunsdate=tml_NoOfRunsdate AND rt_AttemperStationID='{$userStationID}'  
 				WHERE nri_LineName='{$LineName}' AND tml_AllowSell='1' AND tml_StopRun!='3' AND nri_NoOfRunsID!='{$NoOfRunsID}'";
-			$queryadd=$class_mysql_default ->my_query($selectadd);
+			$queryadd=$class_mysql_default->my_query($selectadd);
 			$i=0;
 			while($rowadd=mysqli_fetch_array($queryadd)){
 				$i++;

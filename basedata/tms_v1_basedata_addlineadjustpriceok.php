@@ -31,7 +31,7 @@
 			nrap_GetToSiteID='{$GetToSiteID}' AND nrap_ModelID='{$ModelID}' AND (nrap_NoRunsAdjust is NULL)";
 		$query=$class_mysql_default->my_query($selects);
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.->my_error(), 'sql' => $selects);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.$class_mysql_default->my_error(), 'sql' => $selects);
 			echo json_encode($retData);
 			exit();
 		}
@@ -94,7 +94,7 @@
 			'NULL','{$DepartureSiteID}','{$DepartureSite}','{$GetToSiteID}','{$GetToSite}','{$ModelID}','{$ModelName}','{$BeginDate}',
 			'{$EndDate}','{$BeginTime}','{$EndTime}','{$ReferPrice}','{$PriceUpPercent}','{$RunPrice}','{$HalfPrice}','{$BalancePrice}','{$Remark}')";
 		$query =$class_mysql_default->my_query($insert); 
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addlineadjustprice.php?clnumber=$LineAdjust'</script>";
 		}else{

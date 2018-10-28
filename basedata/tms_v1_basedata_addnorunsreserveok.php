@@ -20,7 +20,7 @@
 			sr_SellerID,sr_Seller,sr_Remark) VALUES ('{$NoOfRunsID}', '{$ModelID}','{$ModelName}','{$ReserveSeatNO}','{$ReserveSeatS}',
 			'{$SellerID}','{$Seller}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert);
-		if (!$query) echo "SQL错误：".->my_error();
+		if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addnorunsreserve.php?NoOfRunsID=$NoOfRunsID'</script>";
 		}else{

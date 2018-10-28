@@ -99,7 +99,7 @@ function mod(){
 		
 		$sqls = "SELECT * FROM tms_bd_TicketPriceFactor where tpf_ModelID='{$clnumber}'";
 		$querys =$class_mysql_default->my_query($sqls);
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		while ($row = mysqli_fetch_array($querys)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'PriceProject1')">

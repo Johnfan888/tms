@@ -9,7 +9,7 @@ $WebSellID=$_GET['WebSellID'];
 $select="SELECT wst_WebSellID,wst_UserName,wst_CertificateType,wst_CertificateNumber,wst_FullNumber,wst_HalfNumber,
 	wst_SellPrice,wst_SeatID,wst_NoOfRunsdate,wst_NoOfRunsID,wst_FromStation,wst_ReachStation,wst_SellPrice,wst_BeginStationTime,
 	wst_StopStationTime FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
-$result=$class_mysql_default ->my_query("$select");
+$result=$class_mysql_default->my_query("$select");
 $rows=@mysqli_fetch_array($result);
 
 

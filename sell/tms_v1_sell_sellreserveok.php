@@ -29,7 +29,7 @@ if(isset($_POST['AllPrice'])) {
 	
 	$selectprice="SELECT * FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$NoofrunsID}' AND pd_NoOfRunsdate='{$NoOfRunsdate}' AND 
 		pd_FromStation='{$Fromstation}' AND pd_ReachStation='{$Reachstation}'";
-	$resultprice=$class_mysql_default ->my_query("$selectprice");
+	$resultprice=$class_mysql_default->my_query("$selectprice");
 	$rowsprice= @mysqli_fetch_array($resultprice);
 	
 	//还需要锁表或锁记录

@@ -271,7 +271,7 @@ require_once("../ui/user/topnoleft.inc.php");
   			FROM tms_bd_PriceDetail	LEFT OUTER JOIN tms_bd_TicketMode ON tms_bd_PriceDetail.pd_NoOfRunsID = tms_bd_TicketMode.tml_NoOfRunsID 
   			WHERE pd_FromStation = '$fromstation' AND pd_ReachStation = '$reachstation' AND pd_NoOfRunsdate = '$selldate' 
   			AND tml_NoOfRunsdate = '$selldate' AND tml_AllowSell = '1' AND tml_LeaveSeats > 0 ORDER BY STR_TO_DATE(pd_BeginStationTime,'%H:%i') ASC";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		$lineNum = 0;
 		while($rows = @mysqli_fetch_array($resultselet)) {
 			$lineNum++;

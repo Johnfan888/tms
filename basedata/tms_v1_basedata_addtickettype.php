@@ -85,7 +85,7 @@ if(isset($_POST['TypeName'])) {
 	if(!mysqli_fetch_array($sele)){
 		$insert="INSERT INTO `tms_bd_TicketType` (`tt_TypeName`,`tt_AdderID`,`tt_Adder`,`tt_AddTime`,`tt_Remark`) VALUES ('{$TypeName}', '{$userID}','{$userName}','{$CurTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert);
-	//	if (!$query) echo "SQL错误：".->my_error();
+	//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('添加成功!');window.location.href='tms_v1_basedata_addtickettype.php'</script>";
 		}else{

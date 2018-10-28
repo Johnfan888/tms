@@ -50,7 +50,7 @@
 			'{$IsServiceFee}','{$ServiceFee}','{$otherFee1}','{$otherFee2}','{$otherFee3}','{$otherFee4}','{$otherFee5}','{$otherFee6}',
 			'{$StintSell}','{$StintTime}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert); 
-			//if (!$query) echo "SQL错误：".->my_error();
+			//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query1 && $query){
 			$class_mysql_default->my_query("COMMIT");
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addnorunsdock.php?NoOfRunsID=$NoOfRunsID&LineID=$LineID'</script>";

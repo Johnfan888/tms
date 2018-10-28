@@ -33,7 +33,7 @@
 			$querydelete=$class_mysql_default->my_query($delete);
 			if(!$querydelete){
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '删除站务费数据失败！'.->my_error(), 'sql' => $selects);
+				$retData = array('retVal' => 'FAIL', 'retString' => '删除站务费数据失败！'.$class_mysql_default->my_error(), 'sql' => $selects);
 				echo json_encode($retData);
 				exit();
 			}
@@ -46,7 +46,7 @@
 			$queryinsert1=$class_mysql_default->my_query($insert1);
 			if(!$queryinsert1){
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '插入站务费数据失败1！'.->my_error(), 'sql' => $insert1);
+				$retData = array('retVal' => 'FAIL', 'retString' => '插入站务费数据失败1！'.$class_mysql_default->my_error(), 'sql' => $insert1);
 				echo json_encode($retData);
 				exit();
 			} 
@@ -59,7 +59,7 @@
 				AND sfa_DepartureSiteID='{$DepartureSiteID}' AND sfa_GetToSiteID='{$GetToSiteID}' AND sfa_ModelID='{$ModelID}'";
 			$query=$class_mysql_default->my_query($selects);
 			if(!$query){
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败1！'.->my_error(), 'sql' => $selects);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询站务费数据失败1！'.$class_mysql_default->my_error(), 'sql' => $selects);
 				echo json_encode($retData);
 				exit();
 			}
@@ -120,7 +120,7 @@
 			'{$NoRunsAdjust}','{$DepartureSiteID}','{$DepartureSite}','{$GetToSiteID}','{$GetToSite}','{$ModelID}','{$ModelName}','{$BeginDate}',
 			'{$EndDate}','{$BeginTime}','{$EndTime}','{$RunPrice}','{$Remark}')";
 		$query = $class_mysql_default->my_query($insert); 
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！添加成功!');window.location.href='tms_v1_basedata_addservicefeeadjust.php?clnumber1=$NoRunsAdjust&clnumber2=$LineAdjust'</script>";
 		}else{

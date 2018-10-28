@@ -16,7 +16,7 @@
 			$j=$i+1;
 		$update="UPDATE tms_acct_BusRate SET br_Rate".$i."=br_Rate".$j." where br_BusID!='' ";
 		$query1 =  $class_mysql_default->my_query($update);
-		if (!$query1) echo "SQL错误：".->my_error();
+		if (!$query1) echo "SQL错误：".$class_mysql_default->my_error();
 		}
 		$sele=$class_mysql_default->my_query($select);
 		if ($query&&$query1) {

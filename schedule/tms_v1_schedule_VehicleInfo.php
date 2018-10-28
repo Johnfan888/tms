@@ -26,14 +26,14 @@ $rowdriver2 = mysqli_fetch_array($resultdriver2);
 $driver = $rows['bi_DriverID'];
 $strsqlselet="SELECT di_Name,di_Sex,di_Tel,di_DriverCard,di_DriverCheckDate,di_AllowBusType,di_CYZGZNumber,di_CYZGZCheckDate 
 			FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
-$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+$resultselet = $class_mysql_default->my_query("$strsqlselet");
 $rowsd = @mysqli_fetch_array($resultselet);
 
 // 副驾驶员信息
 $driver = $rows['bi_Driver1ID'];
 $strsqlselet="SELECT di_Name,di_Sex,di_Tel,di_DriverCard,di_DriverCheckDate,di_AllowBusType,di_CYZGZNumber,di_CYZGZCheckDate 
 			FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
-$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+$resultselet = $class_mysql_default->my_query("$strsqlselet");
 $rowsd1 = @mysqli_fetch_array($resultselet);  */
 ?>
 

@@ -14,7 +14,7 @@ require_once("../ui/inc/init.inc.php");
 //$UserRegisterName=$_GET['UserRegisterName'];
 
 //$selectuser="SELECT wur_CertificateType,wur_CertificateNumber FROM tms_bd_WebUserRegister WHERE wur_UserRegisterName='{$UserRegisterName}'";
-//$resultuser=$class_mysql_default ->my_query("$selectuser");
+//$resultuser=$class_mysql_default->my_query("$selectuser");
 //$rowsuser=@mysqli_fetch_array($resultuser);
 
 //获取查询界面参数
@@ -158,7 +158,7 @@ if(isset($_POST['selldate'])){
  			AND wst_CertificateNumber='{$CertificateNumber}' AND wst_FromStation LIKE '{$FromStation}%' 
  			AND wst_ReachStation LIKE '{$ReachStation}%' AND wst_NoOfRunsdate LIKE '{$Selldate}%' AND wst_WebSellID LIKE '{$bookID}%'";
 		$result=$class_mysql_default->my_query("$select");
-		if (!$result) echo "SQL错误：".->my_error();
+		if (!$result) echo "SQL错误：".$class_mysql_default->my_error();
  	 	while($rows=mysqli_fetch_array($result)){
  	 ?>
  	 <tr>

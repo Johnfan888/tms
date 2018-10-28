@@ -16,7 +16,7 @@ $rowline= mysqli_fetch_array($queryline);
 $selectID="SELECT ndst_ID FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsID='{$NoOfRunsID}' AND ndst_NoOfRunsdate='{$NoOfRunsdate}'
 	AND ndst_SiteID='{$userStationID}'";
 $queryID=$class_mysql_default->my_query($selectID);
-if(!$queryID) echo ->my_error();
+if(!$queryID) echo $class_mysql_default->my_error();
 $rowID=mysqli_fetch_array($queryID);
 //$del="DELETE FROM tms_bd_NoRunsDockSiteTemp WHERE ndst_NoOfRunsdate<'{$NoOfRunsdate}'";
 //$querydel=$class_mysql_default->my_query($del);
@@ -27,7 +27,7 @@ if(mysqli_num_rows($querydocktemp)==0){
 		ndst_DepartureTime,ndst_RunHours,ndst_StintSell,ndst_StintTime) SELECT nds_NoOfRunsID,'{$NoOfRunsdate}',nds_ID,nds_SiteName,nds_SiteID,nds_IsDock,nds_GetOnSite,
 		nds_CheckInSite,nds_DepartureTime,nds_RunHours,nds_StintSell,nds_StintTime FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$NoOfRunsID}'";
 	$queryinsert=$class_mysql_default->my_query($insertdocktemp);
-	if(!$queryinsert) echo ->my_error();
+	if(!$queryinsert) echo $class_mysql_default->my_error();
 }*/
 //$selectticketmode="SELECT li_LineName,tml_NoOfRunstime,tml_BeginstationID FROM tms_bd_TicketMode  LEFT OUTER JOIN tms_bd_LineInfo 
 //	ON tml_LineID = li_LineID WHERE tml_NoOfRunsID = '$NoOfRunsID' AND tml_NoOfRunsdate = '$NoOfRunsdate'";
@@ -404,7 +404,7 @@ if(mysqli_num_rows($querydocktemp)==0){
 						}
 					}
 					$querydocktemp=$class_mysql_default->my_query($updatedocktemp);
-					if(!$querydocktemp) echo ->my_error();
+					if(!$querydocktemp) echo $class_mysql_default->my_error();
 					if(!$querydocktemp){
 						$class_mysql_default->my_query("ROLLBACK");
 						echo "<script>alert('更新临时停靠点数据失败！');window.location.href='tms_v1_schedule_modrunhours.php?nrID=$NoOfRunsID&nrDate=$NoOfRunsdate&dtime=$Departuretime'</script>";

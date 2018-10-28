@@ -10,9 +10,9 @@
 	if ($_GET['op'] == "del" ){
 		$class_mysql_default->my_query("START TRANSACTION");
 		$sql = "DELETE FROM tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID='{$NoOfRunsID}' and nds_ID='{$noid}'";
-		$query =$class_mysql_default$class_mysql_default->my_query($sql);
+		$query =$class_mysql_default->my_query($sql);
 		$update="UPDATE tms_bd_NoRunsDockSite SET nds_ID=nds_ID-1 WHERE nds_NoOfRunsID='{$NoOfRunsID}'and nds_ID>'{$noid}' ";
-		$query1 =  $class_mysql_default$class_mysql_default->my_query($update);
+		$query1 =  $class_mysql_default->my_query($update);
 		if ($query && $query1) {
 			$class_mysql_default->my_query("COMMIT");
 		//	exit("<div style=\"padding:100px;\"><h2 align=\"center\">

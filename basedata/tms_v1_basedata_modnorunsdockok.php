@@ -47,7 +47,7 @@
 			nds_otherFee4='{$otherFee4}',nds_otherFee5='{$otherFee5}',nds_otherFee6='{$otherFee6}',nds_StintSell='{$StintSell}',
 			nds_StintTime='{$StintTime}',nds_Remark='{$Remark}'where nds_NoOfRunsID='{$NoOfRunsID}' and nds_ID='{$ID}'";
 		$query = $class_mysql_default->my_query($updata); 
-		//	if (!$query) echo "SQL错误：".->my_error();
+		//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searrunsdock.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{

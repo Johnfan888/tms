@@ -65,7 +65,7 @@ if(isset($_POST['sureAdd'])) {
 		echo "<script>alert('用户添加成功!');</script>";
 	}
 	else {
-		// die('Error: ' . ->my_error());
+		// die('Error: ' . $class_mysql_default->my_error());
 		echo "<script>alert('用户添加失败!');location.assign('tms_v1_system_userquery.php?ADDDONE=1');</script>";
 	}
 }

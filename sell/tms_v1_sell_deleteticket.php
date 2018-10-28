@@ -17,7 +17,7 @@ if(isset($_GET['tid']))
      $class_mysql_default->my_query("START TRANSACTION");
 	 foreach (explode(",",$ticketID) as $key =>$ticketIDs){
 	     $strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketIDs'";
-	     $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	     $resultselet = $class_mysql_default->my_query("$strsqlselet");
 	 	 if(!$resultselet){
 			$class_mysql_default->my_query("ROLLBACK");
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
@@ -34,7 +34,7 @@ if(isset($_GET['tid']))
 //	         		'$rows[15]' , '$rows[16]', '$rows[32]' , '$rows[33]' ,'$rows[36]' , NULL, NULL, '$errcause', '$nowtime', '$nowdate', '$errID', 
 //	         		'$errer', '$rows[7]' , '$rows[8]' , '$rows[9]' , '$rows[10]' , '$rows[11]' , '$rows[12]', '$rows[13]' , '$rows[14]', '$rows[30]', 
 //	         		'$rows[31]' ,'$rows[45]', '$rows[46]');";
-//	         $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+//	         $resultselet = $class_mysql_default->my_query("$strsqlselet");
 //	     	 if(!$resultselet){
 //		    	$class_mysql_default->my_query("ROLLBACK");
 //		    	echo "<script>alert('插入销票失败！');history.back();</script>";	
@@ -43,7 +43,7 @@ if(isset($_GET['tid']))
 	     }else{
 	     	$strsqlselet = "INSERT INTO `tms_sell_ErrTicket` (`et_TicketID`,`et_SellPrice`,`et_Cause`, `et_ErrTime`, `et_ErrDate`, `et_ErrUserID`, `et_ErrUser`,
 	         		`et_StationID`,`et_Station`) VALUES ('$ticketIDs','0','$errcause', '$nowtime', '$nowdate', '$errID', '$errer','$userStationID','$userStationName')";
-	         $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	         $resultselet = $class_mysql_default->my_query("$strsqlselet");
 	     	 if(!$resultselet){
 		    	$class_mysql_default->my_query("ROLLBACK");
 		    	echo "<script>alert('插入销票失败！');history.back();</script>";	
@@ -260,7 +260,7 @@ if(isset($_GET['tid']))
 			if($ticketIDs!=''){
 				$ticketIDs=trim($ticketIDs);
 				$strsqlselet="SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
-					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+					$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			}
  				    while($rows = @mysqli_fetch_array($resultselet))
   {

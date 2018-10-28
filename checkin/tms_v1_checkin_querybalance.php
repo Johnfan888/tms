@@ -7,7 +7,7 @@ $i=0;
 require_once("../ui/inc/init.inc.php");
 $selectTicketProvide="SELECT tp_CurrentTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$userID}' AND tp_InceptTicketNum>0 AND tp_Type='结算单' ORDER BY tp_ProvideData ASC";
 $queryTicketProvide=$class_mysql_default->my_query("$selectTicketProvide");
-if(!$queryTicketProvide) echo ->my_error();
+if(!$queryTicketProvide) echo $class_mysql_default->my_error();
 $rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 if($userStationName != "全部车站"){
 	$Station=$userStationName;
@@ -419,8 +419,8 @@ if(isset($_POST['LineName']))
 		bht_PriceTotal, bht_Date, bht_Time, bht_State,bht_BusID,li_LineName FROM tms_acct_BalanceInHandTemp LEFT OUTER JOIN tms_bd_LineInfo ON li_LineID=bht_LineID WHERE (bht_Date >= '{$Begindate}') AND (bht_Date <= '{$Enddate}') 
 		AND bht_BusNumber LIKE '{$Busnumber}%' AND li_LineName LIKE '{$LineName}%' AND IFNULL(bht_Station, '') like '{$Station}%'".$checkinerIDstring.$BalanceNOstring;
 //	echo $strsqlselet;
-	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-	if(!$resultselet) echo ->my_error();
+	$resultselet = $class_mysql_default->my_query("$strsqlselet");
+	if(!$resultselet) echo $class_mysql_default->my_error();
 	while($rows = @mysqli_fetch_array($resultselet))	{
 		$number=$number+1;
 		if($rows['bht_State']=='正常'){

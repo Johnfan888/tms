@@ -74,7 +74,7 @@ switch ($op)
 			$selectbusmodel="SELECT DISTINCT bi_BusTypeID,bi_BusType FROM tms_bd_BusInfo WHERE bi_BusUnit='{$Unit}' AND bi_BusTypeID LIKE '{$ModelID}%' ";
 			$querybusmodel=$class_mysql_default->my_query("$selectbusmodel");
 			if(!$querybusmodel){
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询车型数据失败！'.$selectbusmodel.->my_error(), 'sql' => $selectbusmodel);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询车型数据失败！'.$selectbusmodel.$class_mysql_default->my_error(), 'sql' => $selectbusmodel);
 				echo json_encode($retData);
 				exit();
 			}else{
@@ -160,7 +160,7 @@ switch ($op)
 			sfa_ISLineAdjust='{$ISLineAdjust}' AND sfa_LineAdjust='{$LineAdjust}' AND sfa_Unit='{$Unit}' AND (sfa_NoRunsAdjust IS NULL)";
 		$query=$class_mysql_default->my_query("$select");
 		if(!$query){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次站务费车型数据失败！'.->my_error(), 'sql' => $select);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次站务费车型数据失败！'.$class_mysql_default->my_error(), 'sql' => $select);
 			echo json_encode($retData);
 			exit();
 		}else{
@@ -272,7 +272,7 @@ switch ($op)
 		case "addbus": //判断车辆编码唯一
 		$Code=trim($_GET['code']);
 		$str = "SELECT bi_BusNumber FROM tms_bd_BusInfo where bi_BusID='$Code'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['bi_BusNumber'] != null) {
 			$retData = array(
@@ -287,7 +287,7 @@ switch ($op)
 		case "addbusnum": //判断车牌号唯一
 		$carnum=trim($_GET['carnum']);
 		$str = "SELECT bi_BusID FROM tms_bd_BusInfo where bi_BusNumber='$carnum'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['bi_BusID'] != null) {
 			$retData = array(
@@ -303,7 +303,7 @@ switch ($op)
 		case "addbusmodel": //判断车型编号唯一
 		$ModelID=trim($_GET['ModelID']);
 		$str = "SELECT bm_ModelName FROM tms_bd_BusModel where bm_ModelID='$ModelID'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['bm_ModelName'] != null) {
 			$retData = array(
@@ -318,7 +318,7 @@ switch ($op)
 		case "adddriver": //判断驾驶员编号唯一
 		$DriverID=trim($_GET['DriverID']);
 		$str = "SELECT di_Name FROM tms_bd_DriverInfo where di_DriverID='$DriverID'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['di_Name'] != null) {
 			$retData = array(
@@ -333,7 +333,7 @@ switch ($op)
 		case "addbusunit": //车属单位
 		$UnitName=trim($_GET['UnitName']);
 		$str = "SELECT bu_UnitName FROM tms_bd_BusUnit where bu_UnitName='$UnitName'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['bu_UnitName'] != null) {
 			$retData = array(
@@ -348,7 +348,7 @@ switch ($op)
 		case "addfeetype": //车辆收费类型
 		$FeeTypeName=trim($_GET['FeeTypeName']);
 		$str = "select ft_FeeTypeName from tms_bd_FeeType where ft_FeeTypeName='{$FeeTypeName}'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['ft_FeeTypeName'] != null) {
 			$retData = array(
@@ -363,7 +363,7 @@ switch ($op)
 		case "addbusfee": //车辆收费项目
 		$BusNumber=trim($_GET['BusNumber']);
 		$str = "select br_BusNumber from tms_acct_BusRate where br_BusNumber='{$BusNumber}'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['br_BusNumber'] != null) {
 			$retData = array(
@@ -379,7 +379,7 @@ switch ($op)
 		case "addtickettype": //票据类型
 		$TypeName=trim($_GET['TypeName']);
 		$str = "select tt_ID from tms_bd_TicketType where tt_TypeName='{$TypeName}'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['tt_ID'] != null) {
 			$retData = array(
@@ -395,7 +395,7 @@ switch ($op)
 		case "addreturntickettype": 
 		$ReturnType=trim($_GET['ReturnType']);
 		$str = "select rte_ReturnType from tms_sell_ReturnType  where rte_ReturnType='{$ReturnType}'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['rte_ReturnType'] != null) {
 			$retData = array(
@@ -411,7 +411,7 @@ switch ($op)
 		case "addinsuretype": 
 		$INSUREPRODUCTNAME=trim($_GET['INSUREPRODUCTNAME']);
 		$str = "select it_InsureProductName from tms_bd_InsureType  where it_InsureProductName='{$INSUREPRODUCTNAME}'";
-		$select = ->my_query($str);
+		$select = $class_mysql_default->my_query($str);
 		$rows = mysqli_fetch_array($select);
 		if ($rows['it_InsureProductName'] != null) {
 			$retData = array(

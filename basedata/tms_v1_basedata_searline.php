@@ -29,7 +29,7 @@
 		$sql1 = "SELECT COUNT(li_LineName) AS number FROM tms_bd_LineInfo where IFNULL(li_Station, '') like '{$Station}%' and 
 					li_BeginSite like '{$BeginStite}%' and li_EndSite like '{$EndSite}%' and IFNULL(li_Linestate, '') like'{$Linestate}%' 
 					and IFNULL(li_InRegion, '') like '%{$Region}%'";		
-		$query1 = $class_mysql_default$class_mysql_default->my_query($sql1);
+		$query1 = $class_mysql_default->my_query($sql1);
 		$rows = mysqli_fetch_array($query1);
 //	}
 	   if($RegionCode2 == 'excel'){
@@ -51,7 +51,7 @@
 						 FROM tms_bd_LineInfo where IFNULL(li_Station, '') like '{$Station}%' and 
 						 li_BeginSite like '{$BeginStite}%' and li_EndSite like '{$EndSite}%' and IFNULL(li_Linestate, '') like'{$Linestate}%' 
 						 and IFNULL(li_InRegion, '') like '%{$Region}%'";
-		  $result = $class_mysql_default$class_mysql_default->my_query("$queryString");
+		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
 		  while ($row = mysqli_fetch_array($result)) {
 		  	$sql2="SELECT GROUP_CONCAT(DISTINCT si_SiteName ORDER BY si_SectionID) AS SiteName from tms_bd_SectionInfo WHERE si_LineID = '{$row['li_LineID']}' GROUP BY  si_LineID"; 
@@ -477,7 +477,7 @@ $(document).ready(function(){
 			$sql = "SELECT * FROM tms_bd_LineInfo where IFNULL(li_Station, '') like '{$Station}%' and 
 					li_BeginSite like '{$BeginStite}%' and li_EndSite like '{$EndSite}%' and IFNULL(li_Linestate, '') like'{$Linestate}%' 
 					and IFNULL(li_InRegion, '') like '%{$Region}%'";		
-			$query = $class_mysql_default$class_mysql_default->my_query($sql);
+			$query = $class_mysql_default->my_query($sql);
 			while ($row = mysqli_fetch_array($query)) {
 				$i++;
 			$sql2="SELECT GROUP_CONCAT(DISTINCT si_SiteName ORDER BY si_SectionID) AS SiteName from tms_bd_SectionInfo WHERE si_LineID = '{$row['li_LineID']}' GROUP BY  si_LineID"; 

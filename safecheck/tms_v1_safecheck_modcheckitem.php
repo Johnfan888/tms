@@ -68,7 +68,7 @@ function search(){
 			$insert="UPDATE `tms_sf_CheckItem` SET  ci_CheckContent='{$CheckItem}',ci_CheckContent='{$CheckContent}',ci_ModerID='{$userID}',ci_Moder='{$userName}', 
 				ci_Modertime='{$CurTime}',ci_Remark='{$Remark}' WHERE ci_CheckItem='{$CheckItem}' AND ci_CheckContent='{$CheckContent1}'";
 			$query = $class_mysql_default->my_query($insert);
-			if (!$query) echo "SQL错误：".->my_error();
+			if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			if($query){
 				echo"<script>alert('修改成功！'); window.location.href='tms_v1_safecheck_modcheckitem.php?op=mod&clnumber1=$CheckItem&clnumber2=$CheckContent'</script>";
 			}else{

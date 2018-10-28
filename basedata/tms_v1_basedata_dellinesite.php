@@ -9,9 +9,9 @@
 	if ($_GET['op'] == "dellinesite" ){
 		$class_mysql_default->my_query("START TRANSACTION");
 		$sql = "DELETE FROM `tms_bd_SectionInfo` WHERE si_LineID='{$clnumber}' and si_SectionID='{$section}'";
-		$query =  $class_mysql_default$class_mysql_default->my_query($sql);
+		$query =  $class_mysql_default->my_query($sql);
 		$update="UPDATE tms_bd_SectionInfo SET si_SectionID=si_SectionID-1 WHERE si_LineID='{$clnumber}'and si_SectionID>'{$section}' ";
-		$query1 =  $class_mysql_default$class_mysql_default->my_query($update);
+		$query1 =  $class_mysql_default->my_query($update);
 		if ($query && $query1) {
 			$class_mysql_default->my_query("COMMIT");
 			//exit("<div style=\"padding:100px;\"><h2 align=\"center\">

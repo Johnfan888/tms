@@ -17,7 +17,7 @@
 			echo json_encode($retData);
 		}else{
 			$retData = array(
-				'sucess' => '0', 'error'=>"SQL错误：".->my_error());
+				'sucess' => '0', 'error'=>"SQL错误：".$class_mysql_default->my_error());
 			echo json_encode($retData);
 		}
 	}

@@ -37,7 +37,7 @@
 		    $queryString = "SELECT di_Name,di_DriverCard FROM tms_bd_DriverInfo WHERE di_DriverCard LIKE '%{$dcard}%'";
 			$result = $class_mysql_default->my_query("$queryString");
 		  	if(!mysqli_num_rows($result)) {
-				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.->my_error(), 'sql' => $queryString);
+				$retData = array('retVal' => 'FAIL', 'retString' => '查询驾驶员数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 				echo json_encode($retData);
 				exit();
 			}
@@ -55,7 +55,7 @@
 		$busid = trim($_GET['busid']);
 		$queryString = "SELECT bi_BusNumber FROM tms_bd_BusInfo WHERE bi_BusID='{$busid}'";
 		$result = $class_mysql_default->my_query("$queryString");
-		if (!$result) echo "SQL错误：".->my_error();
+		if (!$result) echo "SQL错误：".$class_mysql_default->my_error();
 		if(!$result) {
 			$retData = array('retVal' => 'FAIL', 'retString' => '查询车辆数据失败！', 'sql' => $queryString);
 			echo json_encode($retData);

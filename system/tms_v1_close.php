@@ -7,7 +7,7 @@
         $LogoutTime = date("Y-m-d   H:i:s");
         //UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing'WHERE LastName = 'Wilson'                 
         $strsql = "update tms_sys_OnlineUser set ui_UserState = '$uiState', ui_LoginTime = NULL, ui_LogoutTime = '$LogoutTime' where ui_UserID = '$userID'";
-        $query = $class_mysql_default ->my_query($strsql);                
+        $query = $class_mysql_default->my_query($strsql);                
 
 		if ($query) {
 			$retData = array(

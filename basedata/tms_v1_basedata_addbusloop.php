@@ -188,7 +188,7 @@ function append(){
     	/*			$selectunit="SELECT DISTINCT nrap_Unit FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ISUnitAdjust='1' AND nrap_LineAdjust='{$results1['nri_LineID']}' 
     					AND (!nrap_NoRunsAdjust)";
     				$selunit =$class_mysql_default->my_query($selectunit);
-    				if(!$selunit) echo ->my_error();
+    				if(!$selunit) echo $class_mysql_default->my_error();
 					while($resultunit=mysqli_fetch_array($selunit)){
 						if($resultunit['nrap_Unit']) { */
     				$selectbusunit="SELECT DISTINCT bi_BusUnit FROM tms_bd_BusInfo";

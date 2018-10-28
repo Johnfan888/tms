@@ -39,7 +39,7 @@
 			it_Handler1Code='{$HANDLER1CODE}',it_OperatorCode='{$OPERATORCODE}',it_ApporverCode='{$APPORVERCODE}'";
 		$result = $class_mysql_default->my_query("$queryString");
 		if(!$result) {
-			// echo "SQL错误：".->my_error()
+			// echo "SQL错误：".$class_mysql_default->my_error()
 			$retData = array('retVal' => 'FAIL', 'retString' =>  '更新保险数据失败！', 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();

@@ -39,7 +39,7 @@
 		$NoOfRunsID=$_POST['NoOfRunsID'];
 		$sql1="SELECT COUNT(nri_NoOfRunsID) AS number FROM tms_bd_NoRunsInfo where  nri_NoOfRunsID like '{$NoOfRunsID}%'and nri_LineName like '{$LineName}%'
 			   and IFNULL(nri_BeginSite, '') like '{$BeginSite}%' and IFNULL(nri_EndSite, '') like'{$EndSite}%'".$strsta.$str;
-		$query1 =$class_mysql_default$class_mysql_default->my_query($sql1);
+		$query1 =$class_mysql_default->my_query($sql1);
 		$rows = mysqli_fetch_array($query1);
 //	}
 	  if($RegionCode2 == 'excel'){
@@ -62,7 +62,7 @@
 						  nri_IsSucceedLine,nri_Allticket,nri_AllowSell,nri_AddNoRuns,nri_AdderID,nri_Adder,nri_AddTime,nri_ModerID,nri_Moder,nri_ModTime,nri_Remark
  						  FROM tms_bd_NoRunsInfo LEFT OUTER JOIN tms_bd_ScheduleLong ON sl_NoOfRunsID=nri_NoOfRunsID AND sl_BeginDate<='{$curdate}' AND sl_EndDate>='{$curdate}' 
 						  WHERE  nri_NoOfRunsID LIKE '{$NoOfRunsID}%'AND nri_LineName LIKE '{$LineName}%'AND IFNULL(nri_BeginSite, '') LIKE '{$BeginSite}%' AND IFNULL(nri_EndSite, '') LIKE '{$EndSite}%'".$strsta.$str;
-		  $result = $class_mysql_default$class_mysql_default->my_query("$queryString");
+		  $result = $class_mysql_default->my_query("$queryString");
 		  $i=0;
 		  while ($row = mysqli_fetch_array($result)) {
 		  	$i++;
@@ -485,8 +485,8 @@ $(document).ready(function(){
   		$curdate=date('Y-m-d');
 		$sql="SELECT * FROM tms_bd_NoRunsInfo LEFT OUTER JOIN tms_bd_ScheduleLong ON sl_NoOfRunsID=nri_NoOfRunsID AND sl_BeginDate<='{$curdate}' AND sl_EndDate>='{$curdate}' 
 			  WHERE  nri_NoOfRunsID LIKE '{$NoOfRunsID}%'AND nri_LineName LIKE '{$LineName}%'AND IFNULL(nri_BeginSite, '') LIKE '{$BeginSite}%' AND IFNULL(nri_EndSite, '') LIKE '{$EndSite}%'".$strsta.$str."GROUP BY nri_NoOfRunsID";
-  		$query =$class_mysql_default$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".->my_error();
+  		$query =$class_mysql_default->my_query($sql);
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		while ($row = mysqli_fetch_array($query)){
 			$i++;
 		$sql2="SELECT GROUP_CONCAT(DISTINCT nds_SiteName ORDER BY nds_ID) AS SiteName from tms_bd_NoRunsDockSite WHERE nds_NoOfRunsID = '{$row['nri_NoOfRunsID']}' GROUP BY  nds_NoOfRunsID"; 

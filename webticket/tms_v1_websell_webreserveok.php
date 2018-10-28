@@ -30,7 +30,7 @@ $rowsprice= @mysqli_fetch_array($resultprice);
 
 /*$selectmodel="SELECT tml_BusModelID,tml_BusModel FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoofrunsID}' AND 
 	tml_NoOfRunsdate='{$NoOfRunsdate}'";
-$resultmodel=$class_mysql_default ->my_query("$selectmodel");
+$resultmodel=$class_mysql_default->my_query("$selectmodel");
 $rowsmodle=@mysqli_fetch_array($resultmodel); */
 
 //还需要锁表或锁记录
@@ -39,7 +39,7 @@ $class_mysql_default->my_query("BEGIN");
 $queryString="SELECT tml_SeatStatus,tml_LeaveSeats,tml_BusModelID,tml_BusModel FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoofrunsID}'
 	AND tml_NoOfRunsdate='{$NoOfRunsdate}' FOR UPDATE";
 $resultquery = $class_mysql_default->my_query("$queryString"); 
-//if (!$resultselect) echo "SQL错误：".->my_error();
+//if (!$resultselect) echo "SQL错误：".$class_mysql_default->my_error();
 $rows = @mysqli_fetch_array($resultquery);
 $rows[1]=$rows[1]-$seats;
 
@@ -57,7 +57,7 @@ for($i=0; $i<$seats; $i++){
 
 $update="UPDATE tms_bd_TicketMode SET tml_LeaveSeats='{$rows[1]}',tml_SeatStatus='{$rows[0]}' WHERE tml_NoOfRunsID='{$NoofrunsID}'
 	AND tml_NoOfRunsdate='{$NoOfRunsdate}'";
-$queryupdate = $class_mysql_default ->my_query("$update");
+$queryupdate = $class_mysql_default->my_query("$update");
 
 $insert="INSERT INTO tms_websell_WebSellTicket (wst_WebSellID,wst_UserName,wst_CertificateType,wst_CertificateNumber,wst_NoOfRunsID,
 	wst_LineID,wst_NoOfRunsdate,wst_BeginStationTime,wst_StopStationTime,wst_Distance,wst_BeginStationID,wst_BeginStation,wst_FromStationID,
@@ -71,7 +71,7 @@ $insert="INSERT INTO tms_websell_WebSellTicket (wst_WebSellID,wst_UserName,wst_C
 	'{$rowsprice[21]}','{$rowsprice[22]}','{$rowsprice[23]}','{$rowsprice[24]}',CURDATE(), CURTIME(),'{$rows[2]}','{$rows[3]}',
 	'{$seatno}','0')";
 $queryinsert = $class_mysql_default->my_query("$insert"); 
-//if (!$queryinsert) echo "SQL错误：".->my_error();
+//if (!$queryinsert) echo "SQL错误：".$class_mysql_default->my_error();
 if($resultquery && $queryupdate && $queryinsert){
 //if($queryupdate ){
 	$class_mysql_default->my_query("COMMIT");

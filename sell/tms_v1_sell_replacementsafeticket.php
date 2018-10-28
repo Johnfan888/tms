@@ -636,7 +636,7 @@ if(isset($_POST['ticketnum'])){
 						`st_SellDate`, `st_SellTime`, `st_BusModelID`, `st_BusModel`, `st_SeatID`, `st_SellID`, `st_SellName`, `st_FreeSeats`, 
 						`st_SafetyTicketID`, `st_SafetyTicketNumber`, `st_SafetyTicketMoney`, `st_SafetyTicketPassengerID`, `st_TicketState`, `st_IsBalance`, 
 						`st_BalanceDateTime`, `st_AlterTicket` FROM `tms_sell_SellTicket` WHERE `st_TicketID`='$ticketIDs'";
-					$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+					$resultselet = $class_mysql_default->my_query("$strsqlselet");
 					$rows = @mysqli_fetch_array($resultselet);
 	?>
 			<tr>

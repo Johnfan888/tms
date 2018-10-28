@@ -11,7 +11,7 @@ if($userGroupID == "3")	require_once("../ui/user/topnoleft.inc.php");
 
 $selectTicketProvide="SELECT tp_CurrentTicket FROM tms_bd_TicketProvide WHERE tp_InceptUserID='{$userID}' AND tp_InceptTicketNum>0 AND tp_Type='结算单' ORDER BY tp_ProvideData ASC";
 $queryTicketProvide=$class_mysql_default->my_query("$selectTicketProvide");
-if(!$queryTicketProvide) echo ->my_error();
+if(!$queryTicketProvide) echo $class_mysql_default->my_error();
 $rowTicketProvide=mysqli_fetch_array($queryTicketProvide);
 $willcheck="style='display:'";
 $checking="style='display:none'";
@@ -719,7 +719,7 @@ if(isset($_POST['resultquery']))
 				LEFT OUTER JOIN tms_bd_TicketMode ON ct_NoOfRunsID=tml_NoOfRunsID AND ct_NoOfRunsdate=tml_NoOfRunsdate 
 				WHERE ct_Flag = '0' AND ct_CheckTicketWindow = '$checkWindow' AND ct_NoOfRunsdate = '$nowdate' AND rt_AttemperStationID='{$userStationID}' AND tml_StopRun!='3'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result))
 	    {
 	?>
@@ -863,11 +863,11 @@ if(isset($_POST['resultquery']))
 					FROM tms_chk_CheckTicketTemp,tms_sell_SellTicket
 					WHERE tms_chk_CheckTicketTemp.ctt_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND tms_chk_CheckTicketTemp.ctt_CheckTicketWindow = '$checkWindow' AND ctt_CheckDate = '$nowdate' AND ctt_FromStationID='{$userStationID}'"; 
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		while($rows2 = mysqli_fetch_array($resultselet)) {
 			$strsqlselet3 = "SELECT tml_Allticket from tms_bd_TicketMode WHERE (tml_NoOfRunsID = '{$rows2['ctt_NoOfRunsID']}') 
 						AND (tml_NoOfRunsdate = '{$rows2['ctt_NoOfRunsdate']}')";
-			$resultselet3 = $class_mysql_default ->my_query("$strsqlselet3");
+			$resultselet3 = $class_mysql_default->my_query("$strsqlselet3");
 			$rows3 = mysqli_fetch_array($resultselet3);			
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -924,7 +924,7 @@ if(isset($_POST['resultquery']))
 				LEFT OUTER JOIN tms_sch_Report ON rt_NoOfRunsID=ct_NoOfRunsID AND rt_NoOfRunsdate=ct_NoOfRunsdate AND rt_BusID=ct_BusID AND rt_ReportDateTime=ct_ReportDateTime  
 				WHERE (ct_Flag = '2' || ct_Flag = '3') AND ct_CheckTicketWindow = '$checkWindow' AND ct_NoOfRunsdate = '$nowdate' AND  rt_AttemperStationID='{$userStationID}'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
@@ -989,7 +989,7 @@ if(isset($_POST['resultquery']))
 				LEFT OUTER JOIN tms_sch_Report ON rt_NoOfRunsID=ct_NoOfRunsID AND rt_NoOfRunsdate=ct_NoOfRunsdate AND rt_BusID=ct_BusID AND rt_ReportDateTime=ct_ReportDateTime   
 				WHERE ct_Flag = '3' AND ct_CheckTicketWindow = '$checkWindow' AND rt_AttemperStationID='{$userStationID}'
 				ORDER BY STR_TO_DATE(ct_NoOfRunsTime,'%H:%i') ASC";
-		$result = $class_mysql_default ->my_query("$queryString");
+		$result = $class_mysql_default->my_query("$queryString");
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">

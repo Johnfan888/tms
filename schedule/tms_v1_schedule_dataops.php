@@ -285,11 +285,11 @@ switch ($op)
 		$rtID=$_REQUEST['rtID'];
 		//$strsqlselet="DELETE FROM tms_sch_Report WHERE rt_NoOfRunsID='$NoOfRunsID' AND rt_NoOfRunsdate='$NoOfRunsdate' AND rt_BusCard='$reportBusNumber'";
 		$strsqlselet="DELETE FROM tms_sch_Report WHERE rt_ID='$rtID'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		$str1="DELETE FROM tms_chk_CheckTemp where ct_ID='$ctID'";
-		$result2=$class_mysql_default ->my_query("$str1");
+		$result2=$class_mysql_default->my_query("$str1");
 		if (!$resultselet || !$result2){
-			$retData = array('retVal' => 'FAIL', 'retString' => '撤销报班失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '撤销报班失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}else{
@@ -307,7 +307,7 @@ switch ($op)
 		$remark='';
 		
 		$selectSafetyCheck="SELECT sc_Result FROM tms_sf_SafetyCheck WHERE sc_BusCard='{$reportBusCard}' AND  period_diff(curdate(),sc_CheckDate)<=1 ";
-		$resultSafetyCheck = $class_mysql_default ->my_query("$selectSafetyCheck");
+		$resultSafetyCheck = $class_mysql_default->my_query("$selectSafetyCheck");
 		$rowSafetyCheck= @mysqli_fetch_array($resultSafetyCheck);
 		if($rowSafetyCheck['sc_Result']==''){
 			$remark=$remark.'没安检；';
@@ -319,7 +319,7 @@ switch ($op)
 		$strsqlselet="SELECT bi_DriverID,bi_Driver,bi_Driver1ID,bi_Driver1,bi_Driver2ID,bi_Driver2,bi_SeatS,bi_AllowHalfSeats,bi_BusTypeID,bi_BusType,
 			bi_BusUnit,bi_BusNumber,bi_RoadTransport,bi_RoadTransportEndDate,bi_LineLicense,bi_LineLicenseAttached,bi_AttachedEndDate,
 			bi_VehicleDriving,bi_VehicleDrivingEndDate FROM `tms_bd_BusInfo` WHERE `bi_BusID`='$reportBusID'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		$bi_rows = @mysqli_fetch_array($resultselet);
 		if($bi_rows['bi_RoadTransport']==''){
 			$remark=$remark.'无道路运输证；';
@@ -348,7 +348,7 @@ switch ($op)
 		// 主驾驶员信息
 			$driver = $bi_rows['bi_DriverID'];
 			$strsqlselet="SELECT di_DriverID, di_Name,di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			if(mysqli_num_rows($resultselet) == 1){
 				$rowsd = @mysqli_fetch_array($resultselet);
 				$remarkdriver=$rowsd['di_Name'].'('.$rowsd['di_DriverID'].')';
@@ -374,7 +374,7 @@ switch ($op)
 			// 副驾驶员1信息
 			$driver = $bi_rows['bi_Driver1ID'];
 			$strsqlselet="SELECT di_DriverID, di_Name,di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			if(mysqli_num_rows($resultselet) == 1){
 				$rowsd1 = @mysqli_fetch_array($resultselet);
 				$remarkdriver1=$rowsd1['di_Name'].'('.$rowsd1['di_DriverID'].')';
@@ -399,7 +399,7 @@ switch ($op)
 			// 副驾驶员2信息
 			$driver = $bi_rows['bi_Driver2ID'];
 			$strsqlselet="SELECT di_DriverID, di_Name,di_CYZGZNumber,di_DriverCard,di_DriverCheckDate,di_CYZGZCheckDate FROM tms_bd_DriverInfo WHERE di_DriverID='$driver'";
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			if(mysqli_num_rows($resultselet) == 1){
 				$rowsd2 = @mysqli_fetch_array($resultselet);
 				$remarkdriver2=$rowsd2['di_Name'].'('.$rowsd2['di_DriverID'].')';
@@ -489,7 +489,7 @@ switch ($op)
 			$result = $class_mysql_default->my_query("$queryString");
 			if(!$result) {
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '更新票版数据失败！'.->my_error(), 'sql' => $queryString);
+				$retData = array('retVal' => 'FAIL', 'retString' => '更新票版数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 				echo json_encode($retData);
 				exit();
 			}  
@@ -654,7 +654,7 @@ switch ($op)
 		$selectline="SELECT li_LineID,li_LineName FROM tms_bd_LineInfo WHERE li_BeginSite='{$BeginStation}' AND li_EndSite='{$EndStation}'";
 		$resultline = $class_mysql_default->my_query("$selectline");
 		if(!$resultline) {
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询线路数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询线路数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -688,7 +688,7 @@ switch ($op)
 			nri_IsNightAddition,nri_IsSucceedLine,nri_IsThroughAddition,nri_IsExclusive,nri_IsReturn FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$NoOfRunsID1}'";
 		$resultrun = $class_mysql_default->my_query("$selectrun");
 		if(!$resultrun) {
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -699,7 +699,7 @@ switch ($op)
 			FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID LIKE '{$NoOfRunsIDADD}%') ORDER BY nri_NoOfRunsID DESC LIMIT 1";
 		$resultnorun= $class_mysql_default->my_query("$selectnorun");
 		if(!$resultnorun) {
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次1数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次1数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -729,7 +729,7 @@ switch ($op)
 		$query=$class_mysql_default->my_query("$insert");
 		if(!$query) {
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -737,7 +737,7 @@ switch ($op)
 		$querydock=$class_mysql_default->my_query($selectdock);
 		if(!$querydock) {
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -759,7 +759,7 @@ switch ($op)
 			$querydock1=$class_mysql_default->my_query("$insertdock");
 			if(!$querydock1) {
 				$class_mysql_default->my_query("ROLLBACK");
-				$retData = array('retVal' => 'FAIL', 'retString' => '插入班次停靠点数据失败！'.->my_error(), 'sql' => $queryString);
+				$retData = array('retVal' => 'FAIL', 'retString' => '插入班次停靠点数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 				echo json_encode($retData);
 				exit();
 			}
@@ -770,7 +770,7 @@ switch ($op)
 		$queryloop=$class_mysql_default->my_query($insertloop);
 		if (!$queryloop){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次车辆循环数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次车辆循环数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -783,7 +783,7 @@ switch ($op)
 		$queryadjustprice1=$class_mysql_default->my_query($insertadjustprice1);
 		if (!$queryadjustprice1){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次票价调整数据1失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次票价调整数据1失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -796,7 +796,7 @@ switch ($op)
 		$queryadjustprice2=$class_mysql_default->my_query($insertadjustprice2);
 		if (!$queryadjustprice2){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次票价调整数据2失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次票价调整数据2失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -808,7 +808,7 @@ switch ($op)
 		$queryserverfeeadjust1=$class_mysql_default->my_query($insertserverfeeadjust1);
 		if (!$queryserverfeeadjust1){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次站务费调整数据1失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次站务费调整数据1失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -820,7 +820,7 @@ switch ($op)
 		$queryserverfeeadjust2=$class_mysql_default->my_query($insertserverfeeadjust2);
 		if (!$queryserverfeeadjust2){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次站务费调整数据2失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入班次站务费调整数据2失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}  
@@ -850,7 +850,7 @@ switch ($op)
 			exit();
 		}else{
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '删除失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '删除失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -998,7 +998,7 @@ switch ($op)
 		$queryinsert=$class_mysql_default->my_query("$insert");
 		if(!$queryinsert){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '插入并班数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '插入并班数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -1018,7 +1018,7 @@ switch ($op)
 		$querywebticket=$class_mysql_default->my_query("$updatewebticket");
 		if(!$querywebticket) {
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '更新订票数据失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '更新订票数据失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		} */
@@ -1111,7 +1111,7 @@ switch ($op)
 		$query1 =  $class_mysql_default->my_query($update);
 		if(!$querydel || !$query1){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '删除停靠点失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '删除停靠点失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -1125,7 +1125,7 @@ switch ($op)
 		$del="DELETE FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ID='{$ID}'";
 		$querydel=$class_mysql_default->my_query("$del");
 		if(!$querydel){
-			$retData = array('retVal' => 'FAIL', 'retString' => '删除票价失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '删除票价失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -1138,7 +1138,7 @@ switch ($op)
 		$del="DELETE FROM tms_bd_ServiceFeeAdjust WHERE sfa_ID='{$ID}'";
 		$querydel=$class_mysql_default->my_query("$del");
 		if(!$querydel){
-			$retData = array('retVal' => 'FAIL', 'retString' => '删除站务费失败！'.->my_error(), 'sql' => $queryString);
+			$retData = array('retVal' => 'FAIL', 'retString' => '删除站务费失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}
@@ -1153,7 +1153,7 @@ switch ($op)
 			pd_NoOfRunsdate='{$NoOfRunsdate}' AND pd_FromStationID='{$FromStationID}'";
 		$queryprice=$class_mysql_default->my_query("$selectprice");
 		if(!$queryprice){
-			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.->my_error(), 'sql' => $selectprice);
+			$retData = array('retVal' => 'FAIL', 'retString' => '查询票价数据失败！'.$class_mysql_default->my_error(), 'sql' => $selectprice);
 			echo json_encode($retData);
 			exit();
 		}
@@ -1172,11 +1172,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 	$selectline="SELECT li_StationID, li_Station FROM tms_bd_LineInfo WHERE li_LineID='{$LineID}'";
 	$queryline=$class_mysql_default->my_query($selectline);
 	if (!$queryline){
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
 		$stringf=$stringf.'查询线路数据失败！';
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		return $stringf;
 	}
@@ -1188,11 +1188,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 		FROM tms_bd_NoRunsInfo WHERE nri_NoOfRunsID='{$NoOfRunsID}'";
 	$querynoofruns=$class_mysql_default->my_query($selectnoofruns);
 	if (!$querynoofruns){
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
 		$stringf=$stringf.'查询班次数据失败！';
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		return $stringf;
 	}
@@ -1200,11 +1200,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 	$selectnorunsloop="SELECT nrl_ModelID,nrl_ModelName,nrl_Seating,nrl_AddSeating,nrl_AllowHalfSeats,nrl_Loads,nrl_Unit FROM tms_bd_NoRunsLoop WHERE nrl_NoOfRunsID='{$NoOfRunsID}'";
 	$querynorunsloop=$class_mysql_default->my_query($selectnorunsloop);
 	if (!$querynorunsloop){
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班循环次失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班循环次失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
 		$stringf=$stringf.'查询班次循环失败！';
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		return $stringf;
 	}
@@ -1227,11 +1227,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 	$queryinsertticketmode=$class_mysql_default->my_query($insertticketmode);
 	if (!$queryinsertticketmode){
 	//	$class_mysql_default->my_query("ROLLBACK");
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '插入票版失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '插入票版失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
 		$stringf=$stringf.'插入票版失败！';
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		$class_mysql_default->my_query("ROLLBACK");
 		return $stringf;
@@ -1243,11 +1243,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 	$queryinsert=$class_mysql_default->my_query($insertdoktemp);
 	if(!$queryinsert){
 	//	$class_mysql_default->my_query("ROLLBACK");
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '插入临时停靠点失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '插入临时停靠点失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
-		$stringf=$stringf.'插入临时停靠点失败！'.->my_error();
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$stringf=$stringf.'插入临时停靠点失败！'.$class_mysql_default->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		$class_mysql_default->my_query("ROLLBACK");
 		return $stringf;
@@ -1257,11 +1257,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 	$querynorunsdocksite=$class_mysql_default->my_query($selectnorunsdocksite);
 	if (!$querynorunsdocksite){
 	//	$class_mysql_default->my_query("ROLLBACK");
-	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点失败！'.->my_error(), 'sql' => $queryString);
+	//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 	//	echo json_encode($retData);
 	//	exit();
 		$stringf=$stringf.'查询班次停靠点失败！';
-		$string=$string.$NoOfRunsID.$stringf.->my_error();
+		$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 		writelog($string);
 		$class_mysql_default->my_query("ROLLBACK");
 		return $stringf;
@@ -1281,11 +1281,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 		$querysectioninfor=$class_mysql_default->my_query($Selectsectioninfor);
 		if (!$querysectioninfor){
 		//	$class_mysql_default->my_query("ROLLBACK");
-		//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路站点失败！'.->my_error(), 'sql' => $queryString);
+		//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路站点失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 		//	echo json_encode($retData);
 		//	exit();
 			$stringf=$stringf.'查询线路站点失败！';
-			$string=$string.$NoOfRunsID.$stringf.->my_error();
+			$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 			writelog($string);
 			$class_mysql_default->my_query("ROLLBACK");
 			return $stringf;
@@ -1295,11 +1295,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 		$querynorunsdocksite1=$class_mysql_default->my_query($selectnorunsdocksite1);
 		if (!$querynorunsdocksite1){
 		//	$class_mysql_default->my_query("ROLLBACK");
-		//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点1失败！'.->my_error(), 'sql' => $queryString);
+		//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次停靠点1失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 		//	echo json_encode($retData);
 		//	exit();
 			$stringf=$stringf.'查询班次停靠点1失败！';
-			$string=$string.$NoOfRunsID.$stringf.->my_error();
+			$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 			writelog($string);
 			$class_mysql_default->my_query("ROLLBACK");
 			return $stringf;
@@ -1314,11 +1314,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 			$querysectioninfor1=$class_mysql_default->my_query($Selectsectioninfor1);
 			if (!$querysectioninfor1){
 			//	$class_mysql_default->my_query("ROLLBACK");
-			//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路站点1失败！'.->my_error(), 'sql' => $queryString);
+			//	$retData = array('retVal' => 'FAIL', 'retString' => '查询线路站点1失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			//	echo json_encode($retData);
 			//	exit();
 				$stringf=$stringf.'查询线路站点1失败！';
-				$string=$string.$NoOfRunsID.$stringf.->my_error();
+				$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 				writelog($string);
 				$class_mysql_default->my_query("ROLLBACK");
 				return $stringf;
@@ -1349,7 +1349,7 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 			$querypricedate1=$class_mysql_default->my_query($selectpricedate1);
 			if(!$querypricedate1){
 				$stringf=$stringf.'查询班次价格日期1失败！';
-				$string=$string.$NoOfRunsID.$stringf.->my_error();
+				$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 				writelog($string);
 				$class_mysql_default->my_query("ROLLBACK");
 				return $stringf;
@@ -1369,7 +1369,7 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 			$querypricedate2=$class_mysql_default->my_query($selectpricedate2);
 			if(!$querypricedate2){
 				$stringf=$stringf.'查询班次价格日期2失败！';
-				$string=$string.$NoOfRunsID.$stringf.->my_error();
+				$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 				writelog($string);
 				$class_mysql_default->my_query("ROLLBACK");
 				return $stringf;
@@ -1389,7 +1389,7 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 			$querypricedate3=$class_mysql_default->my_query($selectpricedate3);
 			if(!$querypricedate3){
 				$stringf=$stringf.'查询班次价格日期3失败！';
-				$string=$string.$NoOfRunsID.$stringf.->my_error();
+				$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 				writelog($string);
 				$class_mysql_default->my_query("ROLLBACK");
 				return $stringf;
@@ -1414,11 +1414,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 			$querynorunsadjustPrice1=$class_mysql_default->my_query($selectnorunsadjustPrice1);
 			if(!$querynorunsadjustPrice1){
 			//	$class_mysql_default->my_query("ROLLBACK");
-			//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据1失败！'.->my_error(), 'sql' => $queryString);
+			//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据1失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 			//	echo json_encode($retData);
 			//	exit();
 				$stringf=$stringf.'查询班次价格数据1失败！';
-				$string=$string.$NoOfRunsID.$stringf.->my_error();
+				$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 				writelog($string);
 				$class_mysql_default->my_query("ROLLBACK");
 				return $stringf;
@@ -1443,11 +1443,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 				$querynorunsadjustPrice2=$class_mysql_default->my_query($selectnorunsadjustPrice2);
 				if(!$querynorunsadjustPrice2){
 				//	$class_mysql_default->my_query("ROLLBACK");
-				//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据2失败！'.->my_error(), 'sql' => $queryString);
+				//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据2失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 				//	echo json_encode($retData);
 				//	exit();
 					$stringf=$stringf.'查询班次价格数据2失败！';
-					$string=$string.$NoOfRunsID.$stringf.->my_error();
+					$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 					writelog($string);
 					$class_mysql_default->my_query("ROLLBACK");
 					return $stringf;
@@ -1472,11 +1472,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 					$querynorunsadjustPrice3=$class_mysql_default->my_query($selectnorunsadjustPrice3);
 					if(!$querynorunsadjustPrice3){
 					//	$class_mysql_default->my_query("ROLLBACK");
-					//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据3失败！'.->my_error(), 'sql' => $queryString);
+					//	$retData = array('retVal' => 'FAIL', 'retString' => '查询班次价格数据3失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 					//	echo json_encode($retData);
 					//	exit();
 						$stringf=$stringf.'查询班次价格数据3失败！';
-						$string=$string.$NoOfRunsID.$stringf.->my_error();
+						$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 						writelog($string);
 						$class_mysql_default->my_query("ROLLBACK");
 						return $stringf;
@@ -1508,11 +1508,11 @@ function Creatticketmodel($NoOfRunsID,$RunDate,$User,$LineID,$class_mysql_defaul
 				$querypricedetail=$class_mysql_default->my_query($insertpricedetail);
 				if (!$querypricedetail){
 				//	$class_mysql_default->my_query("ROLLBACK");
-				//	$retData = array('retVal' => 'FAIL', 'retString' => '插入票价失败！'.$insertpricedetail.->my_error(), 'sql' => $queryString);
+				//	$retData = array('retVal' => 'FAIL', 'retString' => '插入票价失败！'.$insertpricedetail.$class_mysql_default->my_error(), 'sql' => $queryString);
 				//	echo json_encode($retData);
 				//	exit();
 					$stringf=$stringf.'插入票价数据失败！';
-					$string=$string.$NoOfRunsID.$stringf.->my_error();
+					$string=$string.$NoOfRunsID.$stringf.$class_mysql_default->my_error();
 					writelog($string);
 					$class_mysql_default->my_query("ROLLBACK");
 					return $stringf;

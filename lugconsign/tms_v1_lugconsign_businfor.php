@@ -91,8 +91,8 @@ $NoOfRunsdate=$_GET['date'];
 			LEFT OUTER JOIN tms_bd_LineInfo ON rt_LineID=li_LineID
 			WHERE rt_NoOfRunsdate='{$NoOfRunsdate}' AND rt_Register='未发车' AND pd_FromStation='{$FromStation}' AND pd_ReachStation='{$Destination}' AND pd_FromStation = '{$userStationName}'
 			AND rt_AttemperStationID='{$userStationID}'";
-		$querybus=$class_mysql_default ->my_query($selectbus);
-		if(!$querybus) echo ->my_error();
+		$querybus=$class_mysql_default->my_query($selectbus);
+		if(!$querybus) echo $class_mysql_default->my_error();
 		while($rowbus=mysqli_fetch_array($querybus)){
 	?>
 	<tr align="center" bgcolor="#CCCCCC" ondblclick="doubleclick(this,'RegionCode1')">

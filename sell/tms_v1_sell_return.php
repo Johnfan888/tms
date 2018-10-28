@@ -28,7 +28,7 @@ if(isset($_GET['tid']))
 	//	echo "<script>alert($ticketIDs)</script>";
 		$strsqlselet = "SELECT st_NoOfRunsID, st_NoOfRunsdate, st_SellPrice, st_SellPriceType, st_SeatID, st_TicketState FROM `tms_sell_SellTicket` 
 			WHERE `st_TicketID` = '$ticketIDs'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		if(!$resultselet){
 			$class_mysql_default->my_query("ROLLBACK");
 		    echo "<script>alert('查询售票失败！');history.back();</script>";	
@@ -67,7 +67,7 @@ if(isset($_GET['tid']))
 	     	if($rows['st_TicketState']=='9'){
 	     		$selectandrun="SELECT anr_AndNoOfRunsID, anr_AndNoOfRunsdate,anr_AndSeatID,anr_Seats,anr_HalfSeats FROM tms_sch_AndNoOfRuns WHERE anr_NoOfRunsID='{$rows['st_NoOfRunsID']}' AND 
 	     			anr_NoOfRunsdate='{$rows['st_NoOfRunsdate']}'";
-	     		$queryandrun=$class_mysql_default ->my_query("$selectandrun");
+	     		$queryandrun=$class_mysql_default->my_query("$selectandrun");
 	     		if(!$queryandrun){
 	     			$class_mysql_default->my_query("ROLLBACK");
 					echo "<script>alert('查询并班数据失败！');history.back();</script>";
@@ -112,7 +112,7 @@ if(isset($_GET['tid']))
 	     	}
 			$strsqlselet="UPDATE tms_sell_ReturnTicket SET rtk_ReturnTime='{$nowtime}',rtk_ReturnDate='{$nowdate}', rtk_ReturnUserID='{$returnerID}',
 	    		rtk_ReturnUser='{$returner}',rtk_IsBalance='2' WHERE rtk_TicketID='{$ticketIDs}'";
-	   		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	   		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 			if(!$resultselet ){
 				$class_mysql_default->my_query("ROLLBACK");
 				echo "<script>alert('退票失败！');history.back();</script>";
@@ -123,7 +123,7 @@ if(isset($_GET['tid']))
 /*	$class_mysql_default->my_query("START TRANSACTION");
 	foreach (explode(",",$ticketID) as $key =>$ticketIDs){
 	//$strsqlselet = "SELECT * FROM `tms_sell_SellTicket` WHERE `st_TicketID` = '$ticketID'";
-	//$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	//$resultselet = $class_mysql_default->my_query("$strsqlselet");
 	//$rows = @mysqli_fetch_array($resultselet);
 	//if(!empty($rows[0]))
 	//{
@@ -137,10 +137,10 @@ if(isset($_GET['tid']))
 	//    	$returnSXprice, '$rows[1]' ,'$rows[3]' , '$rows[4]' , '$rows[5]' , '$rows[15]' , '$rows[16]', '$rows[32]' , '$rows[33]' ,
 	//    	'$rows[36]' , NULL ,'$rows[40]', '$rows[7]' , '$rows[8]' , '$rows[9]' , '$rows[10]' , '$rows[11]' , '$rows[12]', '$rows[13]', 
 	//    	'$rows[14]', '$rows[30]', '$rows[31]' ,'$rows[45]', '$rows[46]')";
-	//    $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	//    $resultselet = $class_mysql_default->my_query("$strsqlselet");
 	    $strsqlselet="UPDATE tms_sell_ReturnTicket SET rtk_ReturnTime='{$nowtime}',rtk_ReturnDate='{$nowdate}', rtk_ReturnUserID='{$returnerID}',
 	    	rtk_ReturnUser='{$returner}',rtk_IsBalance='2' WHERE rtk_TicketID='{$ticketIDs}'";
-	    $resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	    $resultselet = $class_mysql_default->my_query("$strsqlselet");
 		if(!$resultselet ){
 			$class_mysql_default->my_query("ROLLBACK");
 			echo "<script>alert('退票失败！');history.back();</script>";
@@ -456,7 +456,7 @@ if(isset($_GET['tid']))
 				rtk_SellPriceType,rtk_SellDate,rtk_SellTime,rtk_SeatID,rtk_ReturnType,rtk_ReturnPrice,rtk_ReturnRate,rtk_SXPrice FROM `tms_sell_ReturnTicket` 
 				WHERE `rtk_TicketID`='$ticketIDs'";
 			//echo $strsqlselet;
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		}
  		while($rows = @mysqli_fetch_array($resultselet)){
 ?>

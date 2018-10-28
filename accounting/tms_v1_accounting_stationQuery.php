@@ -207,13 +207,13 @@ if(isset($_POST['resultquery'])){
 				rtk_StationID='{$FromStationID}' AND rtk_SellDate>='{$CheckBeginDate}' AND rtk_SellDate<='{$CheckEndDate}') AND st_TicketID NOT IN (SELECT et_TicketID 
 				FROM tms_sell_ErrTicket WHERE et_FromStationID='{$ReachStationID}' AND et_StationID='{$FromStationID}' AND et_SellDate>='{$CheckBeginDate}' AND 
 				et_SellDate<='{$CheckEndDate}')";
-			$query1=$class_mysql_default ->my_query("$select1");
+			$query1=$class_mysql_default->my_query("$select1");
 			$row1=mysqli_fetch_array($query1);
 			$selectLuggageCons1="SELECT COUNT(lc_TicketNumber)AS number,IFNULL(SUM(lc_ConsignMoney),0) AS ConsignMoney,IFNULL(SUM(lc_PackingMoney),0) AS PackingMoney,IFNULL(SUM(lc_LabelMoney),0) AS LabelMoney,
 				IFNULL(SUM(lc_HandlingMoney),0) AS HandlingMoney,IFNULL(SUM(lc_InsureFee),0) AS InsureFee FROM tms_lug_LuggageCons WHERE lc_DestinationID='{$FromStationID}' AND lc_StationID='{$ReachStationID}' AND 
 				lc_PayStyle='收货人付款' AND lc_DeliveryDate>='{$CheckBeginDate}' AND lc_DeliveryDate<='{$CheckEndDate}' AND lc_StationBalance!='8'";
-			$queryLuggageCons1=$class_mysql_default ->my_query("$selectLuggageCons1");
-			if(!$queryLuggageCons1) echo ->my_error();
+			$queryLuggageCons1=$class_mysql_default->my_query("$selectLuggageCons1");
+			if(!$queryLuggageCons1) echo $class_mysql_default->my_error();
 			$rowLuggageCons1=mysqli_fetch_array($queryLuggageCons1);
 			$allLuggagemoney1=$rowLuggageCons1['ConsignMoney']+$rowLuggageCons1['PackingMoney']+$rowLuggageCons1['LabelMoney']+$rowLuggageCons1['HandlingMoney']+$rowLuggageCons1['InsureFee'];
 			$select2="SELECT COUNT(st_TicketID)AS number, IFNULL(SUM(st_SellPrice),0) AS allprice FROM tms_sell_SellTicket WHERE st_FromStationID='{$FromStationID}' 
@@ -222,13 +222,13 @@ if(isset($_POST['resultquery'])){
 				rtk_StationID='{$ReachStationID}' AND rtk_SellDate>='{$CheckBeginDate}' AND rtk_SellDate<='{$CheckEndDate}') AND st_TicketID NOT IN (SELECT et_TicketID 
 				FROM tms_sell_ErrTicket WHERE et_FromStationID='{$FromStationID}' AND et_StationID='{$ReachStationID}' AND et_SellDate>='{$CheckBeginDate}' AND  
 				et_SellDate<='{$CheckEndDate}')";
-			$query2=$class_mysql_default ->my_query("$select2");
+			$query2=$class_mysql_default->my_query("$select2");
 			$row2=mysqli_fetch_array($query2);
 			$selectLuggageCons2="SELECT COUNT(lc_TicketNumber)AS number,IFNULL(SUM(lc_ConsignMoney),0) AS ConsignMoney,IFNULL(SUM(lc_PackingMoney),0) AS PackingMoney,IFNULL(SUM(lc_LabelMoney),0) AS LabelMoney,
 				IFNULL(SUM(lc_HandlingMoney),0) AS HandlingMoney,IFNULL(SUM(lc_InsureFee),0) AS InsureFee FROM tms_lug_LuggageCons WHERE lc_DestinationID='{$ReachStationID}' AND lc_StationID='{$FromStationID}' AND 
 				lc_PayStyle='收货人付款' AND lc_DeliveryDate>='{$CheckBeginDate}' AND lc_DeliveryDate<='{$CheckEndDate}' AND lc_StationBalance!='8'";
-			$queryLuggageCons2=$class_mysql_default ->my_query("$selectLuggageCons2");
-			if(!$queryLuggageCons2) echo ->my_error();
+			$queryLuggageCons2=$class_mysql_default->my_query("$selectLuggageCons2");
+			if(!$queryLuggageCons2) echo $class_mysql_default->my_error();
 			$rowLuggageCons2=mysqli_fetch_array($queryLuggageCons2);
 			$allLuggagemoney2=$rowLuggageCons2['ConsignMoney']+$rowLuggageCons2['PackingMoney']+$rowLuggageCons2['LabelMoney']+$rowLuggageCons2['HandlingMoney']+$rowLuggageCons2['InsureFee'];
 			?>		

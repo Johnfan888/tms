@@ -516,8 +516,8 @@ else{
 						   LEFT OUTER JOIN tms_chk_CheckTemp on ct_NoOfRunsID=rt_NoOfRunsID AND ct_NoOfRunsdate=rt_NoOfRunsdate AND ct_BusNumber=rt_BusCard AND ct_ReportDateTime=rt_ReportDateTime
 						   LEFT OUTER JOIN tms_bd_TicketMode ON tml_NoOfRunsID = rt_NoOfRunsID AND tml_NoOfRunsdate = rt_NoOfRunsdate
 						   WHERE rt_NoOfRunsID='{$NoOfRunsID}' AND rt_NoOfRunsdate='{$NoOfRunsdate}' AND rt_AttemperStationID='{$userStationID}'";
-			$queryreport=$class_mysql_default ->my_query($selectreport);
-			if(!$queryreport) echo ->my_error();
+			$queryreport=$class_mysql_default->my_query($selectreport);
+			if(!$queryreport) echo $class_mysql_default->my_error();
 			while($rows=mysqli_fetch_array($queryreport)){
 			if($rows['bht_BalanceNO']!='' || $rows['bh_BalanceNO']!=''){
 			$allbalancenum=$allbalancenum+1;

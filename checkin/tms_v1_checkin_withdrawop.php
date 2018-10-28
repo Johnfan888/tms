@@ -290,7 +290,7 @@ $rowbht=mysqli_fetch_array($querybht);
 					ct_NoOfRunsdate,ct_BusID,ct_CheckDate,ct_CheckTime,tms_sell_SellTicket.st_Station FROM tms_chk_CheckTicket,
 					tms_sell_SellTicket WHERE tms_chk_CheckTicket.ct_TicketID=tms_sell_SellTicket.st_TicketID 
 					AND ct_BalanceNO='{$rowbht['bht_BalanceNO']}'";
-		$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+		$resultselet = $class_mysql_default->my_query("$strsqlselet");
 		while($rows2 = mysqli_fetch_array($resultselet)) {		
 	?>
 		<tr align="center" bgcolor="#CCCCCC">

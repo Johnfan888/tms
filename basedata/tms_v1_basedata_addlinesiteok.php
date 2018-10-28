@@ -35,7 +35,7 @@
 				echo"<script>alert('更新序号失败');window.location.href='tms_v1_basedata_addlinesite.php?op=see&LineID=$LineID&LineName=$LineName'</script>";
 				exit();
 			}
-		//	if (!$query1) echo "SQL错误：".->my_error();
+		//	if (!$query1) echo "SQL错误：".$class_mysql_default->my_error();
 		$insert="insert into tms_bd_SectionInfo (si_LineID,si_LineName,si_SectionID,si_SiteNameID,si_SiteName,si_Kilometer,
 			si_IsDock,si_IsGetOnSite,si_IsCheckInSite,si_IsTollInSite,si_IsServiceFee,si_ServiceFee,si_otherFee1,
 			si_otherFee2,si_otherFee3,si_otherFee4,si_otherFee5,si_otherFee6,si_Remark) values('{$LineID}',

@@ -125,7 +125,7 @@
 					  pd_ReachStationID FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$row['tml_NoOfRunsID']}' AND
 					  pd_NoOfRunsdate='{$row['tml_NoOfRunsdate']}'))
 					  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";
-				$result2 = $class_mysql_default ->my_query("$str");
+				$result2 = $class_mysql_default->my_query("$str");
 				$rows2=mysqli_fetch_array($result2);
 			$cnt++; 
 			if ($limit == $cnt) { //刷新输出buffer
@@ -382,8 +382,8 @@
 							LEFT OUTER JOIN tms_bd_NoRunsInfo ON tml_NoOfRunsID=nri_NoOfRunsID 
 							LEFT OUTER JOIN tms_chk_CheckTemp ON ct_NoOfRunsID=rt_NoOfRunsID AND ct_NoOfRunsdate=rt_NoOfRunsdate AND ct_BusID=rt_BusID AND ct_ReportDateTime=rt_ReportDateTime
 							WHERE pd_FromStation like '$schStation%'".$strDate.$strsta.$strStatus.$strstate.$strRuned.$strChecked."GROUP BY pd_NoOfRunsID,pd_NoOfRunsdate";	
-			$resultselet = $class_mysql_default ->my_query("$strsqlselet");
-			if(!$resultselet) echo ->my_error();
+			$resultselet = $class_mysql_default->my_query("$strsqlselet");
+			if(!$resultselet) echo $class_mysql_default->my_error();
 			$i = 0;
 			while($rows = @mysqli_fetch_array($resultselet))	{
 				$i++;
@@ -396,7 +396,7 @@
 					  pd_ReachStationID FROM tms_bd_PriceDetail WHERE pd_NoOfRunsID='{$rows['tml_NoOfRunsID']}' AND
 					  pd_NoOfRunsdate='{$rows['tml_NoOfRunsdate']}'))
 					  GROUP BY ndst_NoOfRunsID,ndst_NoOfRunsdate";
-				$result2 = $class_mysql_default ->my_query("$str");
+				$result2 = $class_mysql_default->my_query("$str");
 				$rows2=mysqli_fetch_array($result2);
 				/*if($rows['tml_AllowSell']==0 && $rows['tml_StopRun']==0) $curStatus = '暂停';  //蓝色
 				if($rows['tml_AllowSell']==1 && $rows['tml_StopRun']==0) $curStatus = '在售';  //绿色

@@ -299,7 +299,7 @@ function delbus(){
 		$sql="SELECT * FROM tms_bd_BusInfo where  IFNULL(bi_InStation, '') like '{$Station}%' and bi_BusID like '{$BusID}%' and IFNULL(bi_BusNumber, '') like '%{$BusNumber}%'
 			and IFNULL(bi_BusTypeID, '') like '{$BusTypeID}%' and IFNULL(bi_ManagementLine, '') like'{$ManagementLine}%'";
 		$query =$class_mysql_default->my_query($sql);
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		while ($row = mysqli_fetch_array($query)){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'BusID1')">

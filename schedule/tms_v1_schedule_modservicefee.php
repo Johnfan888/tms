@@ -119,7 +119,7 @@ function modservicefeeadjust(){
   	$i=0;
 	$sql="SELECT * FROM tms_bd_ServiceFeeAdjust where  sfa_NoRunsAdjust='{$clnumber}'";
 	$query =$class_mysql_default->my_query($sql);
-//	if (!$query) echo "SQL错误：".->my_error();
+//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 	while ($row = mysqli_fetch_array($query)){
 		$i++;
 	?>

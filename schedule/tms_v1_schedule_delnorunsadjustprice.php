@@ -12,7 +12,7 @@
 		$del = "DELETE FROM tms_bd_NoRunsAdjustPrice WHERE nrap_ID='{$ID}'";
 		$querydel =$class_mysql_default->my_query($del);
 		if(!$querydel){
-			$retData = array('retVal' => 'FAIL', 'retString' => '删除班次票价数据失败！'.->my_error(), 'sql' => $del);
+			$retData = array('retVal' => 'FAIL', 'retString' => '删除班次票价数据失败！'.$class_mysql_default->my_error(), 'sql' => $del);
 			echo json_encode($retData);
 			exit();	
 		}

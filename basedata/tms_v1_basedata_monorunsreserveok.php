@@ -24,7 +24,7 @@
 			re_OnStationID='{$OnStationID}',re_OnStation='{$OnStation}',re_ReserveUserID='{$ReserveUserID}', re_ReserveUser='{$ReserveUser}',
 			re_DateTime='{$DateTime}',re_Remark='{$Remark}'WHERE  re_NoOfRunsID='{$NoOfRunsID}' and re_OnStationID='{$OnStationI}'";
 		$query =$class_mysql_default->my_query($updata);
-		//if (!$query) echo "SQL错误：".->my_error();
+		//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 		if($query){
 			echo"<script>alert('恭喜您！修改成功!');window.location.href='tms_v1_basedata_searnorunsreserve.php?op=see&clnumber=$NoOfRunsID'</script>";
 		}else{

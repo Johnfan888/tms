@@ -106,7 +106,7 @@ if($op == 'reprint'){
 			IFNULL(SUM(ct_otherFee6),0) AS ct_sumOtherFee6 FROM tms_chk_CheckTicket WHERE ct_BalanceNO='{$BalanceNo}' GROUP BY ct_BalanceNO";
 	}
 	$result = $class_mysql_default->my_query("$queryString");
-	if(!$result) echo ->my_error();
+	if(!$result) echo $class_mysql_default->my_error();
 	$rows = mysqli_fetch_array($result);
 	$passengerNum = $rows['ct_sumPerson'];
 	$sumServiceFee=$rows['ct_sumServiceFee'];

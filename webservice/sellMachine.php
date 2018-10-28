@@ -249,7 +249,7 @@ class test
 		$queryinsert=$class_mysql_default->my_query("$insertsellticket");
 		if(!$queryinsert){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('Result' => '10072' ,'Msg' =>'售票更新失败'.->my_error());
+			$retData = array('Result' => '10072' ,'Msg' =>'售票更新失败'.$class_mysql_default->my_error());
 			return json_encode($retData);
 		}
 		$TicketNo=$CTicketNo+1;

@@ -18,18 +18,18 @@ require_once("../ui/inc/init.inc.php");
 	$op = $_REQUEST['op'];
 	if($op="GETPASSENGERINFO"){
 		$query="SELECT * FROM tms_sch_ReportInfo where ri_FromStation='$userStationName' limit 1";
-		$result = $class_mysql_default$class_mysql_default->my_query("$query");
+		$result = $class_mysql_default->my_query("$query");
 	  	if(mysqli_num_rows($result) == 0) {
 	  		$query1="SELECT sn_StopStationTime,sn_Beginstation,sn_Endstation,sn_NoOfRunsID,sn_Check,sn_PreviousTime,sn_CheckState,sn_FromStation,sn_FromStationID FROM tms_sch_SpeechNoOfRunsID where sn_FromStation='$userStationName' order by sn_PreviousTime limit 1 FOR UPDATE";
 			$result1 = $class_mysql_default->my_query($query1);
 	 /* 	if(!$result1) {
-			$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
+			$class_mysql_default->my_query("ROLLBACK");
 			$retData = array('retVal' => 'FAIL', 'retString' => '锁定票版数据失败！', 'sql' => $queryString);
 			echo json_encode($retData);
 			exit();
 		}*/
 			if(!$result1){
-				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
+				$class_mysql_default->my_query("ROLLBACK");
 				$retData = array('retVal' =>'FAIL1','retString' => '锁定数据失败！', 'sql' => $query);
 				echo json_encode($retData);
 				exit();
@@ -74,7 +74,7 @@ require_once("../ui/inc/init.inc.php");
 		  			$retData[] = array('retVal' => 'SUCC1', 'CheckState' => $CheckState, 'StopStationTime' => $StopStationTime, 'Endstation' => $Endstation, 'NoOfRunsID' => $NoOfRunsID, 'Check' => $Check, 'PreviousTime' => $PreviousTime, 'repeat' => $repeat);
 		  			}
 						echo json_encode($retData);
-						$class_mysql_default$class_mysql_default->my_query("COMMIT");
+						$class_mysql_default->my_query("COMMIT");
 						exit();
 	  		
 	  	}
@@ -93,7 +93,7 @@ require_once("../ui/inc/init.inc.php");
 	  			$str="DELETE FROM tms_sch_SpeechNoOfRunsID WHERE sn_StopStationTime='$StopStationTime' AND sn_Endstation='$Endstation' AND sn_NoOfRunsID='$NoOfRunsID' AND sn_Check='$Check' AND sn_PreviousTime='$PreviousTime' AND sn_CheckState='$CheckState' AND sn_FromStation='$FromStation' AND sn_FromStationID='$FromStationID'";
 	  			$result2 = $class_mysql_default->my_query($str);
 	  			if(!$result2){
-	  				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
+	  				$class_mysql_default->my_query("ROLLBACK");
 	  				$retData = array('retVal' => 'FAIL','retString' => '写入数据失败！', 'sql' => $str);
 	  				echo json_encode($retData);
 	  				exit();
@@ -101,7 +101,7 @@ require_once("../ui/inc/init.inc.php");
 	  			$str="INSERT INTO tms_sch_SpeechNoOfRunsAttemp(sa_StopStationTime,sa_Endstation,sa_NoOfRunsID,sa_Check,sa_PreviousTime,sa_CheckState,sa_NoOfRunsdate,sa_FromStation,sa_FromStationID) values('$StopStationTime','$Endstation','$NoOfRunsID','$Check','$PreviousTime','$CheckState','$date','$FromStation','$FromStationID')";
 	  			$result2 = $class_mysql_default->my_query($str);
 	  			if(!$result2){
-	  				$class_mysql_default$class_mysql_default->my_query("ROLLBACK");
+	  				$class_mysql_default->my_query("ROLLBACK");
 	  				$retData = array('retVal' => 'FAIL','retString' => '写入数据失败！', 'sql' => $str);
 	  				echo json_encode($retData);
 	  				exit();
@@ -120,7 +120,7 @@ require_once("../ui/inc/init.inc.php");
 	  			$retData[] = array('retVal' => 'SUCC1', 'CheckState' => $CheckState, 'StopStationTime' => $StopStationTime, 'Endstation' => $Endstation, 'NoOfRunsID' => $NoOfRunsID, 'Check' => $Check, 'PreviousTime' => $PreviousTime, 'repeat' => $repeat);
 	  			}
 					echo json_encode($retData);
-					$class_mysql_default$class_mysql_default->my_query("COMMIT");
+					$class_mysql_default->my_query("COMMIT");
 					exit();
 		  }
 	  	}

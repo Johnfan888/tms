@@ -231,7 +231,7 @@ function backp(){
 		$sql="SELECT * FROM tms_bd_TicketProvide where tp_InceptUserID like '{$InceptUserID}%' AND tp_Type LIKE '{$Type}%'".$strsta.$str.$str1;
 //			AND tp_ProvideData>='{$DataBeginDate}' AND tp_ProvideData<='{$DataEndDate}'";
 		$query =$class_mysql_default->my_query($sql);
-	//	if (!$query) echo "SQL错误：".->my_error();
+	//	if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 	    $i=0;
 		while ($row = mysqli_fetch_array($query)){
 			$i++;

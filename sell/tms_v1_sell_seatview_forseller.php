@@ -12,7 +12,7 @@ $NoOfRunsdate = $_GET['nrDate'];
 if(!empty($NoOfRunsID)) {
 	$strsqlselet = "SELECT `tml_TotalSeats`, `tml_SeatStatus` FROM `tms_bd_TicketMode` WHERE 
 			`tml_NoOfRunsID` = '$NoOfRunsID' AND `tml_NoOfRunsdate`='$NoOfRunsdate'";
-	$resultselet = $class_mysql_default ->my_query("$strsqlselet");
+	$resultselet = $class_mysql_default->my_query("$strsqlselet");
 	if ($rows = @mysqli_fetch_array($resultselet)){
 		$seatNum = $rows['tml_TotalSeats'];
 		$seatStatus = substr($rows['tml_SeatStatus'], 0, 1);

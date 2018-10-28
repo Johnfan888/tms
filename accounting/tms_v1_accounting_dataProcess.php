@@ -523,7 +523,7 @@ switch ($op)
 		$queryLuggageCons2= $class_mysql_default->my_query("$updateLuggageCons2");
 		if(!$queryLuggageCons2){
 			$class_mysql_default->my_query("ROLLBACK");
-			$retData = array('retVal' => 'FAIL', 'retString' => '更新行包数据2失败！'.->my_error(), 'sql' => $updateLuggageCons1);
+			$retData = array('retVal' => 'FAIL', 'retString' => '更新行包数据2失败！'.$class_mysql_default->my_error(), 'sql' => $updateLuggageCons1);
 			echo json_encode($retData);
 			exit();
 		}

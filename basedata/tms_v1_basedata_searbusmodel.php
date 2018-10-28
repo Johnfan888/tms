@@ -268,7 +268,7 @@ function delbusmodel(){
 					bm_Weight,bm_AdderID,bm_Adder,bm_AddTime,bm_ModerID,bm_Moder,bm_ModTime,bm_Remark
 			 	    FROM tms_bd_BusModel where bm_ModelID like '{$ModelID}%'and IFNULL(bm_Rank, '') like '{$Rank}%' and IFNULL(bm_Category, '') like '{$Category}%' ";
 			$query =$class_mysql_default->my_query($sql);
-			//if (!$query) echo "SQL错误：".->my_error();
+			//if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ModelID1')">

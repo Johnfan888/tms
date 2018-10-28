@@ -123,7 +123,7 @@ function modreturntickettype(){
 			$ReturnType= $_POST['ReturnType'];
 			$sql = "SELECT rte_ReturnType,rte_ReturnRate,rte_ReturnTimeBegin,rte_ReturnTimeEnd FROM `tms_sell_ReturnType` where rte_ReturnType like'$ReturnType%'";
 			$query =$class_mysql_default->my_query($sql);
-			if (!$query) echo "SQL错误：".->my_error();
+			if (!$query) echo "SQL错误：".$class_mysql_default->my_error();
 			while ($row = mysqli_fetch_array($query)) {
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ReturnType1')">

@@ -228,7 +228,7 @@ $(document).click(function(){
 			if($query){
 				echo"<script>alert('添加成功！')</script>";
 			}else{
-				echo ->my_error();
+				echo $class_mysql_default->my_error();
 				echo"<script>alert('添加失败！')</script>";
 			}
 		}else{

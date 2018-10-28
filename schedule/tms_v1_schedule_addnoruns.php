@@ -24,7 +24,7 @@ else if(isset($_GET['op'])) {
 //	$BusUnit=$_GET['bUnit'];
 	$selectmode="SELECT tml_BusModelID,tml_BusModel,tml_BusUnit,tml_LineID FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$NoOfRunsID}' AND 
 		tml_NoOfRunsdate='{$NoOfRunsdate}'";
-	$querymode=$class_mysql_default ->my_query($selectmode);
+	$querymode=$class_mysql_default->my_query($selectmode);
 	$rowmode=mysqli_fetch_array($querymode);
 	$BusUnit=$rowmode['tml_BusUnit'];
 	$BusModel=$rowmode['tml_BusModel'];
@@ -495,10 +495,10 @@ else {
 				nrl_Seating, nrl_AllowHalfSeats,nds_otherFee3 FROM tms_bd_NoRunsInfo LEFT OUTER JOIN tms_bd_NoRunsLoop ON nri_NoOfRunsID=nrl_NoOfRunsID 
 				AND nrl_LoopID='1' LEFT OUTER JOIN tms_bd_NoRunsDockSite ON nri_NoOfRunsID=nds_NoOfRunsID AND nds_ID=1 
 				WHERE nri_NoOfRunsID LIKE '{$NoOfRunsID1}%' ORDER BY STR_TO_DATE(nri_LoopDate,'%Y-%m-%d') DESC";
-			$queryadd=$class_mysql_default ->my_query($selectadd);
+			$queryadd=$class_mysql_default->my_query($selectadd);
 			while($rowadd=mysqli_fetch_array($queryadd)){
 				$selectmode1="SELECT tml_NoOfRunsID FROM tms_bd_TicketMode WHERE tml_NoOfRunsID='{$rowadd['nri_NoOfRunsID']}' AND tml_NoOfRunsdate='{$Curdate}'";
-				$querymode1=$class_mysql_default ->my_query($selectmode1);
+				$querymode1=$class_mysql_default->my_query($selectmode1);
 	?>
 
 	<tr align="center" bgcolor="#CCCCCC">

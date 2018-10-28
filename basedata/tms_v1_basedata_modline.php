@@ -7,7 +7,7 @@
 	require_once("../ui/inc/init.inc.php");
 	$clnumber = $_GET['clnumber'];
 	$sqll="select * FROM tms_bd_LineInfo WHERE li_LineID='{$clnumber}'";
-	$queryl =$class_mysql_default$class_mysql_default->my_query($sqll);
+	$queryl =$class_mysql_default->my_query($sqll);
 	$results=mysqli_fetch_array($queryl); 
 ?>
 <script type="text/javascript" src="../js/jquery.js"></script>
@@ -544,7 +544,7 @@ font-family: arial, sans-serif;
 				if($userStationName == "全部车站"){
 				?><option></option><?php 
 					$sql = "select sset_SiteID,sset_SiteName,sset_Region FROM tms_bd_SiteSet where sset_IsStation=1";
-					$query = $class_mysql_default$class_mysql_default->my_query($sql);
+					$query = $class_mysql_default->my_query($sql);
 					//$result=mysqli_fetch_array($query);
 					while($result=mysqli_fetch_array($query)){
 						if($result['sset_SiteName']){

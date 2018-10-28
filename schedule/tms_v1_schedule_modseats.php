@@ -222,7 +222,7 @@ $(document).ready(function(){
 		$queryString = "SELECT tml_Allticket, tml_TotalSeats, tml_LeaveSeats,tml_HalfSeats,tml_ReserveSeats,tml_LeaveHalfSeats,tml_SeatStatus, tml_LineID, tml_EndstationID, tml_Endstation, 
 	  		tml_BusModelID, tml_BusModel, tml_BeginstationID, tml_Beginstation FROM tms_bd_TicketMode WHERE (tml_NoOfRunsID = '$NoOfRunsID') AND (tml_NoOfRunsdate = '$NoOfRunsdate') FOR UPDATE";
 	  	$result = $class_mysql_default->my_query("$queryString");
-		if(!$result) echo ->my_error()."锁定票版失败"; 
+		if(!$result) echo $class_mysql_default->my_error()."锁定票版失败"; 
 		else{
 			$queryupdate="UPDATE tms_bd_TicketMode SET tml_TotalSeats='{$Seatnum1}',tml_LeaveSeats='{$LeaveSeats}',tml_LeaveHalfSeats='{$LeaveHalfSeats}',tml_SeatStatus='{$SeatStatus}',tml_HalfSeats='$HalfSeatnum1',
 				tml_Updated='{$reportDatatime}', tml_Updatedby='{$userName}' WHERE tml_NoOfRunsID='{$NoOfRunsID}' AND tml_NoOfRunsdate='{$NoOfRunsdate}'";

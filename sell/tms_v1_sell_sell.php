@@ -590,7 +590,7 @@ switch ($op)
 				$queryInsureTicket=$class_mysql_default->my_query("$insertInsureTicket");
 				if(!$queryInsureTicket) {
 					$class_mysql_default->my_query("ROLLBACK");
-					$retData = array('retVal' => 'FAIL', 'retString' => '插入保险票表失败！'.->my_error(), 'sql' => $queryString);
+					$retData = array('retVal' => 'FAIL', 'retString' => '插入保险票表失败！'.$class_mysql_default->my_error(), 'sql' => $queryString);
 					echo json_encode($retData);
 					exit();
 				}

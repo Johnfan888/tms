@@ -107,7 +107,7 @@ if(isset($_POST['TypeName'])) {
 		if($query){
 			echo"<script>alert('修改成功!');window.location.href='tms_v1_basedata_seartickettype.php'</script>";
 		}else{
-		//	echo "SQL错误：".->my_error();
+		//	echo "SQL错误：".$class_mysql_default->my_error();
 			echo"<script>alert('修改失败');window.location.href='tms_v1_basedata_seartickettype.php'</script>";
 			}
 	}else{

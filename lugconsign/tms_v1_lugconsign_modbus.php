@@ -137,8 +137,8 @@ $row = mysqli_fetch_array($result);
 						LEFT OUTER JOIN tms_bd_BusInfo ON rt_BusCard=bi_BusNumber
 						WHERE rt_NoOfRunsdate='{$CurDate}' AND rt_Register='未发车' AND pd_FromStation='{$row['lc_Station']}'AND pd_ReachStation='{$row['lc_Destination']}' 
 						AND rt_AttemperStationID='{$userStationID}' AND rt_BusID!='{$row['lc_BusID']}'";
-					$querybus=$class_mysql_default ->my_query($selectbus);
-					if(!$querybus) echo ->my_error();
+					$querybus=$class_mysql_default->my_query($selectbus);
+					if(!$querybus) echo $class_mysql_default->my_error();
 					while($rowbus=mysqli_fetch_array($querybus)){
 				?>
 				<tr align="center" bgcolor="#CCCCCC">

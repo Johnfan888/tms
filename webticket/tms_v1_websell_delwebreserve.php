@@ -25,7 +25,7 @@ $update="UPDATE tms_bd_TicketMode SET tml_SeatStatus='{$rowmode[0]}',tml_LeaveSe
 $queryupdate =$class_mysql_default->my_query($update);
 //echo $rowmode[0];
 //echo $rowmode[1];
-//if (!$queryupdate) echo "SQL错误：".->my_error();
+//if (!$queryupdate) echo "SQL错误：".$class_mysql_default->my_error();
 $del="DELETE FROM tms_websell_WebSellTicket WHERE wst_WebSellID='{$WebSellID}'";
 $querydel =$class_mysql_default->my_query($del);
 if ($querymode && $querydel && $queryupdate) {
