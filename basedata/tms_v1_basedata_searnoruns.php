@@ -494,7 +494,7 @@ $(document).ready(function(){
 		$row2=mysqli_fetch_array($query2);
 	?>
 	<tr id="tr" bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'NoOfRunsID1')">
-        <td nowrap="nowrap" align="center"><?=$i?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i?></td>
         <td nowrap="nowrap" align="left"><?php echo $row['nri_NoOfRunsID'];?></td>
         <!--<td nowrap="nowrap" align="center"><?php echo $row['nri_LineID'];?></td>
         --><td nowrap="nowrap" align="left"><?php echo $row['nri_LineName'];?></td>

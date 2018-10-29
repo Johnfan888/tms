@@ -442,28 +442,28 @@ if(isset($_POST['LineName']))
 		}  */
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$rows['bht_BalanceNO']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BusNumber']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BusUnit']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BusModel']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_NoOfRunsID']?></td>
-		<td nowrap="nowrap"><?=$rows['li_LineName']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_NoOfRunsdate']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BeginStationTime']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BeginStation']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_EndStation']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_ServiceFee']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BalanceNO']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BusNumber']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BusUnit']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BusModel']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_NoOfRunsID']?></td>
+		<td nowrap="nowrap"><?php echo $rows['li_LineName']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_NoOfRunsdate']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BeginStationTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BeginStation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_EndStation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_ServiceFee']?></td>
 	<!--  
-		<td nowrap="nowrap"><?=$rows['bht_otherFee3']*100?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_otherFee3']*100?></td>
 	-->
-		<td nowrap="nowrap"><?=$rows['bht_ConsignMoney']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_CheckTotal']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_PriceTotal']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_BalanceMoney']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_Date']?></td>
-		<td nowrap="nowrap"><?=$rows['bht_Time']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_ConsignMoney']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_CheckTotal']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_PriceTotal']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_BalanceMoney']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_Date']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_Time']?></td>
 	<!-- 
-		<td nowrap="nowrap"><?=$rows['bht_State']?></td>
+		<td nowrap="nowrap"><?php echo $rows['bht_State']?></td>
 	 -->	
 		<td nowrap="nowrap">
 			<?php  echo $rows['bht_State'];
@@ -478,15 +478,15 @@ if(isset($_POST['LineName']))
 			 	} */
 			?>
 		</td>
-		<td nowrap="nowrap" style="display: none"><?=$rows['bht_BusID']?></td>
-		<td nowrap="nowrap" style="display: none"><?=$rows['bht_ReportDateTime']?></td>
+		<td nowrap="nowrap" style="display: none"><?php echo $rows['bht_BusID']?></td>
+		<td nowrap="nowrap" style="display: none"><?php echo $rows['bht_ReportDateTime']?></td>
 	</tr>
 	<?php
 	}
 	?>
 	<tr align="center" bgcolor="#CCCCCC">
 		<td nowrap="nowrap">总计</td>
-		<td nowrap="nowrap"><?=$number?></td>
+		<td nowrap="nowrap"><?php echo $number?></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
@@ -495,14 +495,14 @@ if(isset($_POST['LineName']))
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
-		<td nowrap="nowrap"><?=$allServiceFee?></td>
+		<td nowrap="nowrap"><?php echo $allServiceFee?></td>
 	<!--  
-		<td nowrap="nowrap"><?=$allotherFee3?></td>
+		<td nowrap="nowrap"><?php echo $allotherFee3?></td>
 	-->
-		<td nowrap="nowrap"><?=$allConsignMoney?></td>
-		<td nowrap="nowrap"><?=$allCheckTotal?></td>
-		<td nowrap="nowrap"><?=$allPriceTotal?></td>
-		<td nowrap="nowrap"><?=$allbanlence?></td>
+		<td nowrap="nowrap"><?php echo $allConsignMoney?></td>
+		<td nowrap="nowrap"><?php echo $allCheckTotal?></td>
+		<td nowrap="nowrap"><?php echo $allPriceTotal?></td>
+		<td nowrap="nowrap"><?php echo $allbanlence?></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>

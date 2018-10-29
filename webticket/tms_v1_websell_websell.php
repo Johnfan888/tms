@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php 
 //网上售票界面
 
 define("WEBAUTH", "TRUE");
@@ -145,7 +145,7 @@ $(document).click(function(){
   </tr>
     </thead> 
 <tbody class="scrollContent"> 
-<?
+<?php 
 	if(isset($_POST['submit'])){
 		$FromStation=$_POST['FromStation']; 
 		$FromStationID=$_POST['FromStationID'];
@@ -163,24 +163,24 @@ $(document).click(function(){
  	 	while($rows = mysqli_fetch_array($resultsql)){
    	?>
   <tr align="center" onmouseover ="this.style.backgroundColor='#F1E6C2'" onmouseout ="this.style.backgroundColor='#FFFFFF'" bgcolor="#FFFFFF">
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[0]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows['nri_LineName']?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[1]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[2]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$Selldate?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[3]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[4]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[5]?></td>
-    <td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[6]?></td>
-  	<td nowrap="nowrap" bgcolor="#cccccc"><?=$rows[7]?></td>
-	<td nowrap="nowrap" bgcolor="#cccccc"><? if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[0]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows['nri_LineName']?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[1]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[2]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $Selldate?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[3]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[4]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[5]?></td>
+    <td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[6]?></td>
+  	<td nowrap="nowrap" bgcolor="#cccccc"><?php echo $rows[7]?></td>
+	<td nowrap="nowrap" bgcolor="#cccccc"><?php if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
 <!-- 
-	<td ><?=$rows[8]?></td>
-    <td><?=$rows[9]?></td>
+	<td ><?php echo $rows[8]?></td>
+    <td><?php echo $rows[9]?></td>
 -->    
-    <td align="center" nowrap="nowrap" bgcolor="#cccccc">[<a href="tms_v1_websell_webreserve.php?NoofrunsID=<?=$rows[0]?>&Selldate=<?=$Selldate?>&FromStation=<?=$FromStation?>&ReachStation=<?=$ReachStation?>">预定</a>]</td>
+    <td align="center" nowrap="nowrap" bgcolor="#cccccc">[<a href="tms_v1_websell_webreserve.php?NoofrunsID=<?php echo $rows[0]?>&Selldate=<?php echo $Selldate?>&FromStation=<?php echo $FromStation?>&ReachStation=<?php echo $ReachStation?>">预定</a>]</td>
   </tr>
-  <?
+  <?php  
   		}
 	} 
   ?>

@@ -62,7 +62,7 @@ function websell(){
     	<td width="10%" nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><?php echo $rows['wst_HalfNumber'];?></span></td>
   		<td width="10%" nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><?php echo $rows['wst_SellPrice'];?> 元</span></td>
   		<td width="10%" nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><?php echo $rows['wst_SeatID'];?></span></td>
-  		<td  nowrap="nowrap"  bgcolor="#FFFFFF" align="center">[<a href="tms_v1_websell_delwebreserve.php?UserRegisterName=<?=$UserRegisterName?>&WebSellID=<?=$rows['wst_WebSellID']?>"]>取消预定</a>]</td>	
+  		<td  nowrap="nowrap"  bgcolor="#FFFFFF" align="center">[<a href="tms_v1_websell_delwebreserve.php?UserRegisterName=<?php echo $UserRegisterName?>&WebSellID=<?php echo $rows['wst_WebSellID']?>"]>取消预定</a>]</td>	
  	 </tr>
  	 <tr>
  	 	<td align="center" colspan="9" bgcolor="#FFFFFF"><input name="button" type="button" value="确定" onclick="return websell()">

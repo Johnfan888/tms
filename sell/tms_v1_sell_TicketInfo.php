@@ -65,27 +65,27 @@ $rows = @mysqli_fetch_array($resultselet); */
 	</tr>
 	<tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 客票号:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_TicketID" id="st_TicketID" value="<?=$ticketIDs //$rows['st_TicketID']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_TicketID" id="st_TicketID" value="<?php echo $ticketIDs //$rows['st_TicketID']?>" readonly="readonly"/></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 班次:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_NoOfRunsID" id="st_NoOfRunsID" value="<?=$rows['st_NoOfRunsID']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_NoOfRunsID" id="st_NoOfRunsID" value="<?php echo $rows['st_NoOfRunsID']?>" readonly="readonly"/></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 发车日期:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_NoOfRunsdate" id="st_NoOfRunsdate" value="<?=$rows['st_NoOfRunsdate']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_NoOfRunsdate" id="st_NoOfRunsdate" value="<?php echo $rows['st_NoOfRunsdate']?>" readonly="readonly"/></td>
 	</tr>
 	<tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 发车时间:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_BeginStationTime" id="st_BeginStationTime" value="<?=$rows['st_BeginStationTime']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_BeginStationTime" id="st_BeginStationTime" value="<?php echo $rows['st_BeginStationTime']?>" readonly="readonly"/></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 上车站:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_FromStation" id="st_FromStation" value="<?=$rows['st_FromStation']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_FromStation" id="st_FromStation" value="<?php echo $rows['st_FromStation']?>" readonly="readonly"/></td>
     	<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 到达站:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_ReachStation" id="st_ReachStation" value="<?=$rows['st_ReachStation']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_ReachStation" id="st_ReachStation" value="<?php echo $rows['st_ReachStation']?>" readonly="readonly"/></td>
     </tr>
 	<tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 票价:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SellPrice" id="st_SellPrice" value="<?=$rows['st_SellPrice']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SellPrice" id="st_SellPrice" value="<?php echo $rows['st_SellPrice']?>" readonly="readonly"/></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 票型:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SellPriceType" id="st_SellPriceType" value="<?=$rows['st_SellPriceType']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SellPriceType" id="st_SellPriceType" value="<?php echo $rows['st_SellPriceType']?>" readonly="readonly"/></td>
     	<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 座位号:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SeatID" id="st_SeatID" value="<?=$rows['st_SeatID']?>" readonly="readonly"/></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="st_SeatID" id="st_SeatID" value="<?php echo $rows['st_SeatID']?>" readonly="readonly"/></td>
     </tr>
     <?php }?>
     <tr>

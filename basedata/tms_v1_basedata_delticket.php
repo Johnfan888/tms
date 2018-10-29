@@ -205,7 +205,7 @@ $(document).ready(function(){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
         <td nowrap="nowrap" align="center" style="display:none;"><?php echo $row['tp_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i ?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i ?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['tp_InceptUserID'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['tp_InceptUser'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['tp_UserSation'];?></td>
@@ -228,7 +228,7 @@ $(document).ready(function(){
 	?>
 	<tr id="tr1"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID2')">
         <td nowrap="nowrap" align="center" style="display:none;"><?php echo $resetrow['rt_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i ?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i ?></td>
         <td nowrap="nowrap" align="center"><?php echo $resetrow['rt_ResetUserID'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $resetrow['rt_ResetUser'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $resetrow['rt_UserSation'];?></td>

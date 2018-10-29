@@ -188,11 +188,11 @@ if(isset($_POST['selldate'])){
   	<?php if($rows['wst_TicketState'] == '0'){?>
   		<td align="center" nowrap="nowrap" ><span class="form_title"><?php echo "";?></span></td>
   		<td align="center" nowrap="nowrap" >
-			[<a href="tms_v1_websell_delwebreserve.php?WebSellID=<?=$rows['wst_WebSellID']?>">取消预定</a>]
+			[<a href="tms_v1_websell_delwebreserve.php?WebSellID=<?php echo $rows['wst_WebSellID']?>">取消预定</a>]
 		<!-- 
-			[<a href="alipaydualfun/tms_v1_websell_onlinepay.php?bID=<?=$rows['wst_WebSellID']?>&d=<?=$rows['wst_NoOfRunsdate']?>&t=<?=$rows['wst_BeginStationTime']?>&f=<?=$rows['wst_FromStation']?>&r=<?=$rows['wst_ReachStation']?>&fNum=<?=$rows['wst_FullNumber']?>&hNum=<?=$rows['wst_HalfNumber']?>&price=<?=$rows['wst_SellPrice']?>">网上支付</a>]
+			[<a href="alipaydualfun/tms_v1_websell_onlinepay.php?bID=<?php echo $rows['wst_WebSellID']?>&d=<?php echo $rows['wst_NoOfRunsdate']?>&t=<?php echo $rows['wst_BeginStationTime']?>&f=<?php echo $rows['wst_FromStation']?>&r=<?php echo $rows['wst_ReachStation']?>&fNum=<?php echo $rows['wst_FullNumber']?>&hNum=<?php echo $rows['wst_HalfNumber']?>&price=<?php echo $rows['wst_SellPrice']?>">网上支付</a>]
 		-->	
-			[<a href="alipaydirect/tms_v1_websell_onlinepay.php?bID=<?=$rows['wst_WebSellID']?>&d=<?=$rows['wst_NoOfRunsdate']?>&t=<?=$rows['wst_BeginStationTime']?>&f=<?=$rows['wst_FromStation']?>&r=<?=$rows['wst_ReachStation']?>&fNum=<?=$rows['wst_FullNumber']?>&hNum=<?=$rows['wst_HalfNumber']?>&price=<?=$rows['wst_SellPrice']?>">网上支付</a>]
+			[<a href="alipaydirect/tms_v1_websell_onlinepay.php?bID=<?php echo $rows['wst_WebSellID']?>&d=<?php echo $rows['wst_NoOfRunsdate']?>&t=<?php echo $rows['wst_BeginStationTime']?>&f=<?php echo $rows['wst_FromStation']?>&r=<?php echo $rows['wst_ReachStation']?>&fNum=<?php echo $rows['wst_FullNumber']?>&hNum=<?php echo $rows['wst_HalfNumber']?>&price=<?php echo $rows['wst_SellPrice']?>">网上支付</a>]
   		</td>
   	<?php } elseif($rows['wst_TicketState'] == '1'){?>
   		<td align="center" nowrap="nowrap" ><span class="form_title"><?php echo $rows['wst_PayTradeNo'];?></span></td>

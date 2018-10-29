@@ -92,7 +92,7 @@ $rowsA = @mysqli_fetch_array($resultselet);
 
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 班次:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="noofrunsID" id="noofrunsID" value="<?=$rowsA[1]?>" /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="noofrunsID" id="noofrunsID" value="<?php echo $rowsA[1]?>" /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并班次:</span></td>      
         <td width="10%" bgcolor="#FFFFFF"><select name="andnoofrusnID" id="andnoofrusnID" onchange="startRequest('andnoofrusnID');">
             <?php
@@ -114,31 +114,31 @@ $rowsA = @mysqli_fetch_array($resultselet);
     </tr>
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 发车日期:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="senddate" id="senddate" value="<?=$rowsA[0]?>" /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="senddate" id="senddate" value="<?php echo $rowsA[0]?>" /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并发车日期:</span></td>
         <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendanddate" id="sendanddate" /></td>
     </tr>
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 发车时间:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendtime" id="sendtime" value="<?=$rowsA[2]?>"  /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendtime" id="sendtime" value="<?php echo $rowsA[2]?>"  /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并发车时间:</span></td>
         <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendandtime" id="sendandtime" /></td>
     </tr>
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 终点站:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendend" id="sendend" value="<?=$rowsA[3]?>" /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendend" id="sendend" value="<?php echo $rowsA[3]?>" /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并终点站:</span></td>
         <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendandend" id="sendandend" /></td>
     </tr>
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 售票车型:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="bustype" id="bustype" value="<?=$rowsA[4]?>" /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="bustype" id="bustype" value="<?php echo $rowsA[4]?>" /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并售票车型:</span></td>
         <td width="10%" bgcolor="#FFFFFF"><input type="text" name="andbustype" id="andbustype" /></td>
     </tr>
     <tr>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 座位数:</span></td>
-        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendseat" id="sendseat" value="<?=$rowsA[5]?>" /></td>
+        <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendseat" id="sendseat" value="<?php echo $rowsA[5]?>" /></td>
         <td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 合并座位数:</span></td>
         <td width="10%" bgcolor="#FFFFFF"><input type="text" name="sendandseat" id="sendandseat" /></td>
     </tr>

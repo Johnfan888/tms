@@ -578,8 +578,8 @@ if(isset($_POST['ticketnum'])){
 		<input type="hidden" id="safeUserAddress" name="safeUserAddress" value="unknown" />
 	</td>
 	<td  nowrap="nowrap" bgcolor="#FFFFFF">
-		<input type="text" name="safeUserIDCardIn" id="safeUserIDCardIn" value="<?php echo $safeUserIDCard?>" <?=$readonly?> />
-		<input type="button" name="readIDCard" id="readIDCard" style="font-size:13px;"value="读卡" onclick="readCard()" <?=$viewenable?> />
+		<input type="text" name="safeUserIDCardIn" id="safeUserIDCardIn" value="<?php echo $safeUserIDCard?>" <?php echo $readonly?> />
+		<input type="button" name="readIDCard" id="readIDCard" style="font-size:13px;"value="读卡" onclick="readCard()" <?php echo $viewenable?> />
 	</td>
 	<td colspan="3" nowrap="nowrap" bgcolor="#FFFFFF">
 		<span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 实收金额：</span>
@@ -742,9 +742,9 @@ if(isset($_POST['ticketnum'])){
 	<input type="hidden" name="topHandlerCode" id="topHandlerCode" value="<?php echo $topHandlerCode;?>"/>
 <div id="showIDs" style="margin-left:5px;">
 	<img src="../ui/images/sj.gif" width="6" height="7" />&nbsp;所有身份证号：
-	<input type="text" name="safeUserIDCards" id="safeUserIDCards" size="100" value="<?=$safeUserIDCards?>" style="height:18;border:none" />
-	<input type="hidden" name="safeUsers" id="safeUsers" size="100" value="<?=$safeUsers?>" style="height:18;" />
-	<input type="hidden" name="safeUserAddresses" id="safeUserAddresses" size="100" value="<?=$safeUserAddresses?>" style="height:18;" />
+	<input type="text" name="safeUserIDCards" id="safeUserIDCards" size="100" value="<?php echo $safeUserIDCards?>" style="height:18;border:none" />
+	<input type="hidden" name="safeUsers" id="safeUsers" size="100" value="<?php echo $safeUsers?>" style="height:18;" />
+	<input type="hidden" name="safeUserAddresses" id="safeUserAddresses" size="100" value="<?php echo $safeUserAddresses?>" style="height:18;" />
 </div>
 </form>
 </body>

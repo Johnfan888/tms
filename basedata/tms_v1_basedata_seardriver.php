@@ -240,7 +240,7 @@ $(document).ready(function(){
         	<td nowrap="nowrap" align="center"><?php echo "未上传";?></td>
 		<?php } else { 
 		?>
-        	<td nowrap="nowrap" align="center">[<a href="tms_v1_basedata_download.php?scanpath=<?=$row['di_ScanPath']?>&filename=<?=$row['di_fileName']?>">查看]</a></td>
+        	<td nowrap="nowrap" align="center">[<a href="tms_v1_basedata_download.php?scanpath=<?php echo $row['di_ScanPath']?>&filename=<?php echo $row['di_fileName']?>">查看]</a></td>
 		<?php 
 		}
 		?>

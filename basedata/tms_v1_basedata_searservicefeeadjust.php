@@ -125,7 +125,7 @@ function modservicefeeadjust(){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
         <td nowrap="nowrap" align="center" style="display:none"><?php echo $row['sfa_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i?></td>
         <td nowrap="nowrap" align="center"><?php if($row['sfa_ISUnitAdjust']=='0') echo '否'; else echo '是';?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['sfa_Unit'];?></td>
         <!--<td nowrap="nowrap" align="center"><?php echo $row['sfa_LineAdjust'];?></td>

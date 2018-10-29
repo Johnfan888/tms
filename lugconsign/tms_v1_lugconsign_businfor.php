@@ -96,16 +96,16 @@ $NoOfRunsdate=$_GET['date'];
 		while($rowbus=mysqli_fetch_array($querybus)){
 	?>
 	<tr align="center" bgcolor="#CCCCCC" ondblclick="doubleclick(this,'RegionCode1')">
-					<td><?=$rowbus['rt_BusID']?></td>
-					<td><?=$rowbus['rt_BusCard']?></td>
-					<td><?=$rowbus['rt_ReportDateTime']?></td>
-					<td><?=$rowbus['rt_LineID']?></td>
-					<td><?=$FromStation?></td>
-					<td><?=$Destination?></td>
-					<td><?=$rowbus['pd_BeginStationTime']?></td>
-					<td><?=$rowbus['rt_NoOfRunsID']?></td>
-					<td><?=$rowbus['li_LineName']?></td>
-					<td><?=$rowbus['bi_BusUnit']?></td>					
+					<td><?php echo $rowbus['rt_BusID']?></td>
+					<td><?php echo $rowbus['rt_BusCard']?></td>
+					<td><?php echo $rowbus['rt_ReportDateTime']?></td>
+					<td><?php echo $rowbus['rt_LineID']?></td>
+					<td><?php echo $FromStation?></td>
+					<td><?php echo $Destination?></td>
+					<td><?php echo $rowbus['pd_BeginStationTime']?></td>
+					<td><?php echo $rowbus['rt_NoOfRunsID']?></td>
+					<td><?php echo $rowbus['li_LineName']?></td>
+					<td><?php echo $rowbus['bi_BusUnit']?></td>					
 		</tr>
 	<?php 
 			} 

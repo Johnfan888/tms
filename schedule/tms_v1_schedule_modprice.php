@@ -170,7 +170,7 @@ function delprice(){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow1(this,'ID1','ModelID1','ModelName1')">
         <td nowrap="nowrap" align="center" style="display:none"><?php echo $row['nrap_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i?></td>
         <td nowrap="nowrap" align="center"><?php if($row['nrap_ISUnitAdjust']=='0') echo '否'; else echo '是';?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['nrap_Unit'];?></td>
         <!--<td nowrap="nowrap" align="center"><?php echo $row['nrap_LineAdjust'];?></td>

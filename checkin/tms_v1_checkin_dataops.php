@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //检票操作界面
 
 //定义页面必须验证是否登录	
@@ -24,7 +24,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$retVal = fwrite($fp, "<?\r\n\$checkWindow='$checkWindow';\r\n");
+		$retVal = fwrite($fp, "<?php\r\n\$checkWindow='$checkWindow';\r\n");
 		$retVal = fwrite($fp, "\$checkboxStatus='$checkboxStatus';\r\n?>");
 		if(!$retVal) {
 			fclose($fp);

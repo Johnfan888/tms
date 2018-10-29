@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //座位预览界面
 
 define("AUTH", "TRUE");
@@ -28,37 +28,37 @@ if(!empty($NoOfRunsID)) {
 			switch ($seatStatus){
 				case '0':
 ?>
-					<img src="../ui/images/seat.png" width="18" height="18" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/seat.png" width="18" height="18" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '1':
 ?>
-					<img src="../ui/images/seatlock.png" width="20" height="20" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/seatlock.png" width="20" height="20" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '2':
 ?>
-					<img src="../ui/images/seatreserve.png" width="24" height="24" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/seatreserve.png" width="24" height="24" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '3':
 ?>
-					<img src="../ui/images/seatpeople.png" width="24" height="24" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/seatpeople.png" width="24" height="24" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '4':
 ?>
-					<img src="../ui/images/seatpeoplecheck.png" width="20" height="20" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/seatpeoplecheck.png" width="20" height="20" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '5':
 ?>
-					<img src="../ui/images/webseatreserve.png" width="28" height="28" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/webseatreserve.png" width="28" height="28" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				case '6':
 ?>
-					<img src="../ui/images/webseatpeople.png" width="24" height="24" /><?echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
+					<img src="../ui/images/webseatpeople.png" width="24" height="24" /><?php echo $showSeatNo;?>&nbsp;&nbsp;&nbsp;
 <?php
 				break;
 				default:

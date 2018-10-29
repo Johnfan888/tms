@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //调度操作界面
 
 //定义页面必须验证是否登录	
@@ -28,7 +28,7 @@ switch ($op)
 			echo json_encode($retData);
 			exit();
 		}
-		$retVal = fwrite($fp, "<?\r\n\$schStation='$schStation';\r\n");
+		$retVal = fwrite($fp, "<?php\r\n\$schStation='$schStation';\r\n");
 		$retVal = fwrite($fp, "\$schDate='$schDate';\r\n");
 		$retVal = fwrite($fp, "\$LineName='$LineName';\r\n");
 		$retVal = fwrite($fp, "\$BusUnit='$BusUnit';\r\n");

@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //调度界面
 
 //定义页面必须验证是否登录	
@@ -145,7 +145,7 @@ if(isset($_POST['Busnumber'])){
 		<td nowrap="nowrap"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" />班次状态</span></td>
 		<td nowrap="nowrap">
 			<select name="statusselect" id="statusselect" style="width:100px">
-				<?
+				<?php
 				if ($noofrunStatus == "1")	echo "<option selected=\"selected\" value=\"1\">全部</option>";
 				else						echo "<option  value=\"1\">全部</option>";
 				if ($noofrunStatus == "2")	echo "<option selected=\"selected\" value=\"2\">在售</option>";
@@ -199,7 +199,7 @@ if(isset($_POST['Busnumber'])){
 	</tr>
 	</thead>
 
-<?	
+<?php
 if(isset($_POST['Busnumber'])){
 	$allSupTicketRen=0;
 	$allPriceTotal=0;
@@ -305,36 +305,36 @@ if(isset($_POST['Busnumber'])){
 ?>
 <tbody class="scrollContent"> 
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$rows['rt_BusCard']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_NoOfRunsID']?></td>
-		<td nowrap="nowrap"><?=$rows['li_LineName']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_NoOfRunsdate']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_ReportDateTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_BusCard']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_NoOfRunsID']?></td>
+		<td nowrap="nowrap"><?php echo $rows['li_LineName']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_NoOfRunsdate']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_ReportDateTime']?></td>
 		<td nowrap="nowrap"> <?php if($rows['rt_Allticket'] == 0) echo "否";else echo "是"?></td>
 		<?php 
 		if($curStatus == '暂停'){  //蓝色
 		?>
-		<td nowrap="nowrap"><span style="color:#0000FF"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#0000FF"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '在售'){  //绿色
 		?>
-		<td nowrap="nowrap"><span style="color:#009900"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#009900"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '发班'){  //红色
 		?>
-		<td nowrap="nowrap"><span style="color:#FF0000"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#FF0000"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '检票'){  //黄色
 		?>
-		<td nowrap="nowrap"><span style="color:#FFFF00"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#FFFF00"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '并班'){  //紫色
 		?>
-		<td nowrap="nowrap"><span style="color:#6633FF"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#6633FF"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		?>
@@ -381,10 +381,10 @@ if(isset($_POST['Busnumber'])){
 				} 
 			?>
 		</td>
-		 <td nowrap="nowrap"><?=$rows['rt_AttemperStation']?></td>  <!-- 调度车站 -->
-		 <td nowrap="nowrap"><?=$rows['rt_AttemperStationID']?></td>  <!-- 调度站编号 -->
-		 <td nowrap="nowrap"><?=$rows['rt_ReportUser']?></td>  <!-- 调度员 -->
-		<td nowrap="nowrap"><?=$rows['rt_Remark']?></td>
+		 <td nowrap="nowrap"><?php echo $rows['rt_AttemperStation']?></td>  <!-- 调度车站 -->
+		 <td nowrap="nowrap"><?php echo $rows['rt_AttemperStationID']?></td>  <!-- 调度站编号 -->
+		 <td nowrap="nowrap"><?php echo $rows['rt_ReportUser']?></td>  <!-- 调度员 -->
+		<td nowrap="nowrap"><?php echo $rows['rt_Remark']?></td>
 	</tr>
 	<?php
 	}
@@ -392,16 +392,16 @@ if(isset($_POST['Busnumber'])){
 ?>
 	<tr  bgcolor="#CCCCCC">
 		<td nowrap="nowrap">总计</td>
-		<td nowrap="nowrap" align="center"><?=$reportnum?></td>
+		<td nowrap="nowrap" align="center"><?php echo $reportnum?></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
 		<td nowrap="nowrap"></td>
-		<td nowrap="nowrap" align="center"><?=$allSupTicketRen?></td>
-		<td nowrap="nowrap" align="center"><?=$allPriceTotal?></td>
-		<td nowrap="nowrap" align="center"><?=$allbalance?></td>
-		<td nowrap="nowrap" align="center"><?=$allbalancenum?></td>
+		<td nowrap="nowrap" align="center"><?php echo $allSupTicketRen?></td>
+		<td nowrap="nowrap" align="center"><?php echo $allPriceTotal?></td>
+		<td nowrap="nowrap" align="center"><?php echo $allbalance?></td>
+		<td nowrap="nowrap" align="center"><?php echo $allbalancenum?></td>
 		<td ></td>
 		<td ></td>
 		<td ></td>

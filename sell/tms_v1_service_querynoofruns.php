@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //班次查询界面
 
 //定义页面必须验证是否登录	
@@ -180,20 +180,20 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
             ?>
 			</select>
 		</td>
-	<!-- <td nowrap="nowrap"><input id="isrefresh" name="isrefresh" type="checkbox" <?=$checkboxStatus?> /> 自动刷新</td> -->
+	<!-- <td nowrap="nowrap"><input id="isrefresh" name="isrefresh" type="checkbox" <?php echo $checkboxStatus?> /> 自动刷新</td> -->
 	</tr>
 	<tr bgcolor="#FFFFFF">
 		<td nowrap="nowrap"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 发车日期：</span></td>
 		<td nowrap="nowrap"><input name="schDateIn" id="schDateIn" class="Wdate" value="<?php ($schDate == "")? print date('Y-m-d') : print $schDate;?>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
 		<td nowrap="nowrap"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 发车时间：</span></td>
 		<td nowrap="nowrap">
-			<input type="text" name="BeginTime" id="BeginTime" size="5" value="<?=$BeginTime?>" />
-			&nbsp;&nbsp;至&nbsp;&nbsp;<input type="text" name="EndTime" id="EndTime" size="5" value="<?=$EndTime?>" />
+			<input type="text" name="BeginTime" id="BeginTime" size="5" value="<?php echo $BeginTime?>" />
+			&nbsp;&nbsp;至&nbsp;&nbsp;<input type="text" name="EndTime" id="EndTime" size="5" value="<?php echo $EndTime?>" />
 		</td>
 		<td nowrap="nowrap"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 状态：</span></td>
 		<td nowrap="nowrap">
 			<select name="statusselect" id="statusselect">
-			<?
+			<?php
 				if ($noofrunStatus == "1")	echo "<option selected=\"selected\" value=\"1\">全部</option>";
 				else						echo "<option  value=\"1\">全部</option>";
 				if ($noofrunStatus == "2")	echo "<option selected=\"selected\" value=\"2\">在售</option>";
@@ -262,7 +262,7 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 	</tr>
 	</thead>
 <tbody class="scrollContent"> 
-<?	
+<?php	
     $strRun="";
     $strRuned="";
     $strChecked="";
@@ -431,18 +431,18 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 		$rowprice=@mysqli_fetch_array($resultprice);
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$RealBusUnit?></td>
-		<td nowrap="nowrap"><?=$rows['nri_LineName']?></td>
-		<td nowrap="nowrap"><?=$rows['tml_Endstation']?></td>
+		<td nowrap="nowrap"><?php echo $RealBusUnit?></td>
+		<td nowrap="nowrap"><?php echo $rows['nri_LineName']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_Endstation']?></td>
 	<!--  
-		<td nowrap="nowrap"><?=$userStationName?></td>
+		<td nowrap="nowrap"><?php echo $userStationName?></td>
 	-->
-		<td nowrap="nowrap"><?=$rows['pd_FromStation']?></td>
-		<td nowrap="nowrap"><?=$rows['nri_OperateCode']?></td>
+		<td nowrap="nowrap"><?php echo $rows['pd_FromStation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['nri_OperateCode']?></td>
 	<!--  	
-		<td nowrap="nowrap"><?=$rows['tml_NoOfRunstime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_NoOfRunstime']?></td>
 	-->
-		<td nowrap="nowrap"><?=$rows['pd_BeginStationTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['pd_BeginStationTime']?></td>
 		<td nowrap="nowrap">
 			<?php 
 				$Hours='';
@@ -453,60 +453,60 @@ if($schStation == '全部车站'){ //admin登录时查询的是最后一次报�
 	        	echo $Hours.$Minutes;
 			?>
 		</td>
-		<td nowrap="nowrap"><?=$rows['rt_ReportDateTime']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_BusCard']?></td>
-		<td nowrap="nowrap"><?=$rows['tml_TotalSeats']?></td>
-		<td nowrap="nowrap"><?=$rows['tml_TotalSeats']-$rows['tml_LeaveSeats']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_ReportDateTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_BusCard']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_TotalSeats']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_TotalSeats']-$rows['tml_LeaveSeats']?></td>
 		<?php 
 		if($curStatus == '暂停'){  //蓝色
 		?>
-		<td nowrap="nowrap"><span style="color:#0000FF"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#0000FF"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '在售'){  //绿色
 		?>
-		<td nowrap="nowrap"><span style="color:#009900"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#009900"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '发班'){  //红色
 		?>
-		<td nowrap="nowrap"><span style="color:#FF0000"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#FF0000"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '检票'){  //黄色
 		?>
-		<td nowrap="nowrap"><span style="color:#FFFF00"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#FFFF00"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		if($curStatus == '并班'){  //紫色
 		?>
-		<td nowrap="nowrap"><span style="color:#6633FF"><?=$curStatus?></span></td>
+		<td nowrap="nowrap"><span style="color:#6633FF"><?php echo $curStatus?></span></td>
 		<?php 
 		}
 		?>
-		<td nowrap="nowrap"><?=$rows['tml_BusModel']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_BusModel']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_SeatNum']?></td>
-		<td nowrap="nowrap"><? if($rows['tml_Allticket']==0){echo '否';} else {echo '是';}?></td>
-		<td nowrap="nowrap"><? if($rows['nri_AddNoRuns']==0) echo '否'; else echo '是';?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_BusModel']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_BusModel']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_SeatNum']?></td>
+		<td nowrap="nowrap"><?php if($rows['tml_Allticket']==0){echo '否';} else {echo '是';}?></td>
+		<td nowrap="nowrap"><?php if($rows['nri_AddNoRuns']==0) echo '否'; else echo '是';?></td>
 <!--  
-		<td nowrap="nowrap"><??></td>
+		<td nowrap="nowrap"><?php ?></td>
 -->
-		<td nowrap="nowrap"><?=$RealCheckTicketWindow?></td>
+		<td nowrap="nowrap"><?php echo $RealCheckTicketWindow?></td>
 <!-- 		
-		<td nowrap="nowrap"><??></td>
+		<td nowrap="nowrap"><?php ?></td>
 -->
-		<td nowrap="nowrap"><?=$rows['rt_Driver']?></td>
-		<td nowrap="nowrap"><?=$rows['rt_Driver1']?></td>
-		<td nowrap="nowrap"><? if($userStationName==$rows['tml_Beginstation'] || $userID=='admin') echo '是'; else echo '否';?></td>
-		<td nowrap="nowrap"><?=$rows['tml_Beginstation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_Driver']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rt_Driver1']?></td>
+		<td nowrap="nowrap"><?php if($userStationName==$rows['tml_Beginstation'] || $userID=='admin') echo '是'; else echo '否';?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_Beginstation']?></td>
 	<!-- 	
-		<td nowrap="nowrap"><?=$rows['tml_Beginstation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_Beginstation']?></td>
 	 -->
-		<td nowrap="nowrap"><?=$rows['pd_FromStation']?></td> 
-		<td nowrap="nowrap"><?=$rows1['SiteName']?></td>
-		<td nowrap="nowrap"><?=$rows['tml_NoOfRunsID']?></td>
- 		<td nowrap="nowrap" style="display: none"><?=$rows['tml_AllowSell']?></td> 
+		<td nowrap="nowrap"><?php echo $rows['pd_FromStation']?></td> 
+		<td nowrap="nowrap"><?php echo $rows1['SiteName']?></td>
+		<td nowrap="nowrap"><?php echo $rows['tml_NoOfRunsID']?></td>
+ 		<td nowrap="nowrap" style="display: none"><?php echo $rows['tml_AllowSell']?></td> 
 	</tr>
 	<?php 
 	}

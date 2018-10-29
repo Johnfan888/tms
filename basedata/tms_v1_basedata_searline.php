@@ -485,7 +485,7 @@ $(document).ready(function(){
 			$row2=mysqli_fetch_array($query2);
 	?>
 	<tr bgcolor="#CCCCCC">
-        <td nowrap="nowrap" align="center"><?=$i?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i?></td>
         <td nowrap="nowrap" align="left"><?php echo $row['li_LineID'];?></td>
         <td nowrap="nowrap" align="left"><?php echo $row['li_LineName'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['li_LineKind'];?></td>

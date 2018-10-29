@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //留票界面
 
 define("AUTH", "TRUE");
@@ -247,7 +247,7 @@ require_once("../ui/inc/init.inc.php");
 	</tr>
 </thead>
 <tbody class="scrollContent"> 	
-<?
+<?php
 	if(isset($_POST['selldate'])){
 		$FromStation=$_POST['FromStation']; 
 		$ReachStation=$_POST['ReachStation'];
@@ -263,20 +263,20 @@ require_once("../ui/inc/init.inc.php");
   			$lineNum++;
 ?>
   <tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">
-    <td align="center"><?=$rows['pd_NoOfRunsID']?></td>
-    <td align="center"><?=$rows['pd_FromStation']?></td>
-    <td align="center"><?=$rows['pd_ReachStation']?></td>
-    <td align="center"><?=$Selldate?></td>
-    <td align="center"><?=$rows['pd_BeginStationTime']?></td>
-    <td align="center"><?=$rows['pd_StopStationTime']?></td>
-    <td align="center"><?=$rows['pd_FullPrice']?></td>
-    <td align="center"><?=$rows['tml_BusModel']?></td>
-    <td align="center"><?=$rows['tml_LeaveSeats']?></td>
-    <td align="center"><?=$rows['tml_LeaveHalfSeats']?></td>
-	<td align="center"><? if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
-    <td align="center">[<a href="tms_v1_sell_sellreserveok.php?NoofrunsID=<?=$rows[0]?>&Selldate=<?=$Selldate?>&FromStation=<?=$FromStation?>&ReachStation=<?=$ReachStation?>"]>预定</a>]</td> 
+    <td align="center"><?php echo $rows['pd_NoOfRunsID']?></td>
+    <td align="center"><?php echo $rows['pd_FromStation']?></td>
+    <td align="center"><?php echo $rows['pd_ReachStation']?></td>
+    <td align="center"><?php echo $Selldate?></td>
+    <td align="center"><?php echo $rows['pd_BeginStationTime']?></td>
+    <td align="center"><?php echo $rows['pd_StopStationTime']?></td>
+    <td align="center"><?php echo $rows['pd_FullPrice']?></td>
+    <td align="center"><?php echo $rows['tml_BusModel']?></td>
+    <td align="center"><?php echo $rows['tml_LeaveSeats']?></td>
+    <td align="center"><?php echo $rows['tml_LeaveHalfSeats']?></td>
+	<td align="center"><?php if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
+    <td align="center">[<a href="tms_v1_sell_sellreserveok.php?NoofrunsID=<?php echo $rows[0]?>&Selldate=<?php echo $Selldate?>&FromStation=<?php echo $FromStation?>&ReachStation=<?php echo $ReachStation?>"]>预定</a>]</td> 
   </tr>
-<?
+<?php
   		}
 	} 
 ?>

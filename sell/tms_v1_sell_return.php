@@ -461,21 +461,21 @@ if(isset($_GET['tid']))
  		while($rows = @mysqli_fetch_array($resultselet)){
 ?>
   <tr align="center" bgcolor="#CCCCCC" id="table1">
-    <td><?=$rows['rtk_TicketID']?></td>
-    <td><?=$rows['rtk_NoOfRunsID']?></td>
-    <td><?=$rows['rtk_NoOfRunsdate']?></td>
-    <td><?=$rows['rtk_BeginStationTime']?></td>
-    <td><?=$rows['rtk_FromStation']?></td>
-    <td><?=$rows['rtk_ReachStation']?></td>
-    <td><?=$rows['rtk_SellPrice']?></td>
-    <td><?=$rows['rtk_SellPriceType']?></td>
-    <td><?=$rows['rtk_ReturnType']?></td>
-    <td><?=$rows['rtk_ReturnRate']?></td>
-    <td><?=$rows['rtk_SXPrice']?></td>
-    <td><?=$rows['rtk_ReturnPrice']?></td>
-    <td><?=$rows['rtk_SellDate']?></td>
-    <td><?=$rows['rtk_SellTime']?></td>
-    <td><?=$rows['rtk_SeatID']?></td>
+    <td><?php echo $rows['rtk_TicketID']?></td>
+    <td><?php echo $rows['rtk_NoOfRunsID']?></td>
+    <td><?php echo $rows['rtk_NoOfRunsdate']?></td>
+    <td><?php echo $rows['rtk_BeginStationTime']?></td>
+    <td><?php echo $rows['rtk_FromStation']?></td>
+    <td><?php echo $rows['rtk_ReachStation']?></td>
+    <td><?php echo $rows['rtk_SellPrice']?></td>
+    <td><?php echo $rows['rtk_SellPriceType']?></td>
+    <td><?php echo $rows['rtk_ReturnType']?></td>
+    <td><?php echo $rows['rtk_ReturnRate']?></td>
+    <td><?php echo $rows['rtk_SXPrice']?></td>
+    <td><?php echo $rows['rtk_ReturnPrice']?></td>
+    <td><?php echo $rows['rtk_SellDate']?></td>
+    <td><?php echo $rows['rtk_SellTime']?></td>
+    <td><?php echo $rows['rtk_SeatID']?></td>
   </tr>
   <?php
   		}

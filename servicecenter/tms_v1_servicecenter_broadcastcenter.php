@@ -283,21 +283,21 @@
 				$i++;
     	?>
     	<tr bgcolor="#CCCCCC">
-    		<td align="center" nowrap="nowrap"><?=$i?></td>
-    		<td align="center" nowrap="nowrap"> <?=$rows['sn_StopStationTime']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_Beginstation']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_Endstation']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_NoOfRunsID']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_Check']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_PreviousTime']?></td>
-    		<td align="center" nowrap="nowrap"><?=$rows['sn_CheckState']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $i?></td>
+    		<td align="center" nowrap="nowrap"> <?php echo $rows['sn_StopStationTime']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_Beginstation']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_Endstation']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_NoOfRunsID']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_Check']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_PreviousTime']?></td>
+    		<td align="center" nowrap="nowrap"><?php echo $rows['sn_CheckState']?></td>
     	</tr>
     	
  	  	<?php 
 			}
     	?>
     	<tr>
-    		<td bgcolor="#FFFFFF" align="center" colspan="8"><span style="color:#FF0000">共有<?=$amount2?>条待播信息:&nbsp;&nbsp;&nbsp;&nbsp;其中有<?=$amount1?>条催客信息</span>
+    		<td bgcolor="#FFFFFF" align="center" colspan="8"><span style="color:#FF0000">共有<?php echo $amount2?>条待播信息:&nbsp;&nbsp;&nbsp;&nbsp;其中有<?php echo $amount1?>条催客信息</span>
     		</td>
     	</tr>
     </table>

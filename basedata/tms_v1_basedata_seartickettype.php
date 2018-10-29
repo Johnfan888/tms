@@ -176,7 +176,7 @@ function delregion(){
 	?> 
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
 		<td align="center" style="display:none"><?php echo $row['tt_ID'];?></td>
-		<td align="center"><?=$i?></td>
+		<td align="center"><?php echo $i?></td>
 		<td align="center"><?php echo $row['tt_TypeName'];?></td>
 		<td align="center"><?php echo $row['tt_AdderID'];?></td>
 		<td align="center"><?php echo $row['tt_Adder'];?></td>

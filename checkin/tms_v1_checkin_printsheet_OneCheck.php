@@ -219,76 +219,76 @@ $curBalanceNo = $rows[0];
 	</tr>
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 班次:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsID" id="NoOfRunsID" value="<?=$NoOfRunsID?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsID" id="NoOfRunsID" value="<?php echo $NoOfRunsID?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 日期:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsdate" id="NoOfRunsdate" value="<?=$NoOfRunsdate?>" readonly="readonly"/></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsdate" id="NoOfRunsdate" value="<?php echo $NoOfRunsdate?>" readonly="readonly"/></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 终点站:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="EndStation" id="EndStation" value="<?=$EndStation?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="EndStation" id="EndStation" value="<?php echo $EndStation?>" readonly="readonly" /></td>
 	</tr>
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 车属单位:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusUnit" id="BusUnit" value="<?=$BusUnit?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusUnit" id="BusUnit" value="<?php echo $BusUnit?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 车辆编号:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusID" id="BusID" value="<?=$BusID?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusID" id="BusID" value="<?php echo $BusID?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 车牌号:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusNumber" id="BusNumber" value="<?=$BusNumber?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BusNumber" id="BusNumber" value="<?php echo $BusNumber?>" readonly="readonly" /></td>
 	</tr>
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 人数:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="passengerNum" id="passengerNum" value="<?=$passengerNum?>" readonly="readonly"/></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="passengerNum" id="passengerNum" value="<?php echo $passengerNum?>" readonly="readonly"/></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 结算金额:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BalanceMoney" id="BalanceMoney" value="<?=$BalanceMoney?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="BalanceMoney" id="BalanceMoney" value="<?php echo $BalanceMoney?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 结算单号:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="curBalanceNo" id="curBalanceNo" value="<?=$curBalanceNo?>" />
-										<input type="hidden" name="width" id="width" value="<?=$width?>"/>
-										<input type="hidden" name="height" id="height" value="<?=$height?>" />
-										<input type="hidden" name="left" id="left" value="<?=$left?>" />
-										<input type="hidden" name="top" id="top" value="<?=$top?>" />
-										<input type="hidden" name="fontsize" id="fontsize" value="<?=$fontsize?>"/>
-										<input type="hidden" name="leftstationName" id="leftstationName" value="<?=$leftstationName?>" />
-										<input type="hidden" name="topstationName" id="topstationName" value="<?=$topstationName?>" />
-										<input type="hidden" name="leftSpace1" id="leftSpace1" value="<?=$leftSpace1?>" />
-										<input type="hidden" name="topSpace1" id="topSpace1" value="<?=$topSpace1?>" />
-										<input type="hidden" name="leftSpace2" id="leftSpace2" value="<?=$leftSpace2?>"/>
-										<input type="hidden" name="topSpace2" id="topSpace2" value="<?=$topSpace2?>" />
-										<input type="hidden" name="leftSpace3" id="leftSpace3" value="<?=$leftSpace3?>" />
-										<input type="hidden" name="topSpace3" id="topSpace3" value="<?=$topSpace3?>" />
-										<input type="hidden" name="leftNoOfRunsdate" id="leftNoOfRunsdate" value="<?=$leftNoOfRunsdate?>" />
-										<input type="hidden" name="topNoOfRunsdate" id="topNoOfRunsdate" value="<?=$topNoOfRunsdate?>" />
-										<input type="hidden" name="leftBalanceNo" id="leftBalanceNo" value="<?=$leftBalanceNo?>" />
-										<input type="hidden" name="topBalanceNo" id="topBalanceNo" value="<?=$topBalanceNo?>" />
-										<input type="hidden" name="leftBusUnit" id="leftBusUnit" value="<?=$leftBusUnit?>" />
-										<input type="hidden" name="topBusUnit" id="topBusUnit" value="<?=$topBusUnit?>" />
-										<input type="hidden" name="leftBusNumber" id="leftBusNumber" value="<?=$leftBusNumber?>" />
-										<input type="hidden" name="topBusNumber" id="topBusNumber" value="<?=$topBusNumber?>" />
-										<input type="hidden" name="leftNoOfRunsID" id="leftNoOfRunsID" value="<?=$leftNoOfRunsID?>" />
-										<input type="hidden" name="topNoOfRunsID" id="topNoOfRunsID" value="<?=$topNoOfRunsID?>" />
-										<input type="hidden" name="leftReachStationL" id="leftReachStationL" value="<?=$leftReachStationL?>" />
-										<input type="hidden" name="topReachStationL" id="topReachStationL" value="<?=$topReachStationL?>" />
-										<input type="hidden" name="leftDistance" id="leftDistance" value="<?=$leftDistance?>" />
-										<input type="hidden" name="topDistance" id="topDistance" value="<?=$topDistance?>" />
-										<input type="hidden" name="leftFullNumbers" id="leftFullNumbers" value="<?=$leftFullNumbers?>" />
-										<input type="hidden" name="topFullNumbers" id="topFullNumbers" value="<?=$topFullNumbers?>" />
-										<input type="hidden" name="leftHalfNumbers" id="leftHalfNumbers" value="<?=$leftHalfNumbers?>" />
-										<input type="hidden" name="topHalfNumbers" id="topHalfNumbers" value="<?=$topHalfNumbers?>" />
-										<input type="hidden" name="leftFullPrice" id="leftFullPrice" value="<?=$leftFullPrice?>" />
-										<input type="hidden" name="topFullPrice" id="topFullPrice" value="<?=$topFullPrice?>" />
-										<input type="hidden" name="leftAllPrice" id="leftAllPrice" value="<?=$leftAllPrice?>" />
-										<input type="hidden" name="topAllPrice" id="topAllPrice" value="<?=$topAllPrice?>" />
-										<input type="hidden" name="leftReachStationR" id="leftReachStationR" value="<?=$leftReachStationR?>" />
-										<input type="hidden" name="topReachStationR" id="topReachStationR" value="<?=$topReachStationR?>" />
-										<input type="hidden" name="leftpassengerNum" id="leftpassengerNum" value="<?=$leftpassengerNum?>" />
-										<input type="hidden" name="toppassengerNum" id="toppassengerNum" value="<?=$toppassengerNum?>" />
-										<input type="hidden" name="leftPeopleDistance" id="leftPeopleDistance" value="<?=$leftPeopleDistance?>" />
-										<input type="hidden" name="topPeopleDistance" id="topPeopleDistance" value="<?=$topPeopleDistance?>" />
-										<input type="hidden" name="leftBalanceMoney" id="leftBalanceMoney" value="<?=$leftBalanceMoney?>" />
-										<input type="hidden" name="topBalanceMoney" id="topBalanceMoney" value="<?=$topBalanceMoney?>" />
-										<input type="hidden" name="leftBalanceMoneyB" id="leftBalanceMoneyB" value="<?=$leftBalanceMoneyB?>" />
-										<input type="hidden" name="topBalanceMoneyB" id="topBalanceMoneyB" value="<?=$topBalanceMoneyB?>" />
-										<input type="hidden" name="leftnowtime" id="leftnowtime" value="<?=$leftnowtime?>" />
-										<input type="hidden" name="topnowtime" id="topnowtime" value="<?=$topnowtime?>" />
-										<input type="hidden" name="leftBalancer" id="leftBalancer" value="<?=$leftBalancer?>" />
-										<input type="hidden" name="topBalancer" id="topBalancer" value="<?=$topBalancer?>" />
+		<td width="10%" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="curBalanceNo" id="curBalanceNo" value="<?php echo $curBalanceNo?>" />
+										<input type="hidden" name="width" id="width" value="<?php echo $width?>"/>
+										<input type="hidden" name="height" id="height" value="<?php echo $height?>" />
+										<input type="hidden" name="left" id="left" value="<?php echo $left?>" />
+										<input type="hidden" name="top" id="top" value="<?php echo $top?>" />
+										<input type="hidden" name="fontsize" id="fontsize" value="<?php echo $fontsize?>"/>
+										<input type="hidden" name="leftstationName" id="leftstationName" value="<?php echo $leftstationName?>" />
+										<input type="hidden" name="topstationName" id="topstationName" value="<?php echo $topstationName?>" />
+										<input type="hidden" name="leftSpace1" id="leftSpace1" value="<?php echo $leftSpace1?>" />
+										<input type="hidden" name="topSpace1" id="topSpace1" value="<?php echo $topSpace1?>" />
+										<input type="hidden" name="leftSpace2" id="leftSpace2" value="<?php echo $leftSpace2?>"/>
+										<input type="hidden" name="topSpace2" id="topSpace2" value="<?php echo $topSpace2?>" />
+										<input type="hidden" name="leftSpace3" id="leftSpace3" value="<?php echo $leftSpace3?>" />
+										<input type="hidden" name="topSpace3" id="topSpace3" value="<?php echo $topSpace3?>" />
+										<input type="hidden" name="leftNoOfRunsdate" id="leftNoOfRunsdate" value="<?php echo $leftNoOfRunsdate?>" />
+										<input type="hidden" name="topNoOfRunsdate" id="topNoOfRunsdate" value="<?php echo $topNoOfRunsdate?>" />
+										<input type="hidden" name="leftBalanceNo" id="leftBalanceNo" value="<?php echo $leftBalanceNo?>" />
+										<input type="hidden" name="topBalanceNo" id="topBalanceNo" value="<?php echo $topBalanceNo?>" />
+										<input type="hidden" name="leftBusUnit" id="leftBusUnit" value="<?php echo $leftBusUnit?>" />
+										<input type="hidden" name="topBusUnit" id="topBusUnit" value="<?php echo $topBusUnit?>" />
+										<input type="hidden" name="leftBusNumber" id="leftBusNumber" value="<?php echo $leftBusNumber?>" />
+										<input type="hidden" name="topBusNumber" id="topBusNumber" value="<?php echo $topBusNumber?>" />
+										<input type="hidden" name="leftNoOfRunsID" id="leftNoOfRunsID" value="<?php echo $leftNoOfRunsID?>" />
+										<input type="hidden" name="topNoOfRunsID" id="topNoOfRunsID" value="<?php echo $topNoOfRunsID?>" />
+										<input type="hidden" name="leftReachStationL" id="leftReachStationL" value="<?php echo $leftReachStationL?>" />
+										<input type="hidden" name="topReachStationL" id="topReachStationL" value="<?php echo $topReachStationL?>" />
+										<input type="hidden" name="leftDistance" id="leftDistance" value="<?php echo $leftDistance?>" />
+										<input type="hidden" name="topDistance" id="topDistance" value="<?php echo $topDistance?>" />
+										<input type="hidden" name="leftFullNumbers" id="leftFullNumbers" value="<?php echo $leftFullNumbers?>" />
+										<input type="hidden" name="topFullNumbers" id="topFullNumbers" value="<?php echo $topFullNumbers?>" />
+										<input type="hidden" name="leftHalfNumbers" id="leftHalfNumbers" value="<?php echo $leftHalfNumbers?>" />
+										<input type="hidden" name="topHalfNumbers" id="topHalfNumbers" value="<?php echo $topHalfNumbers?>" />
+										<input type="hidden" name="leftFullPrice" id="leftFullPrice" value="<?php echo $leftFullPrice?>" />
+										<input type="hidden" name="topFullPrice" id="topFullPrice" value="<?php echo $topFullPrice?>" />
+										<input type="hidden" name="leftAllPrice" id="leftAllPrice" value="<?php echo $leftAllPrice?>" />
+										<input type="hidden" name="topAllPrice" id="topAllPrice" value="<?php echo $topAllPrice?>" />
+										<input type="hidden" name="leftReachStationR" id="leftReachStationR" value="<?php echo $leftReachStationR?>" />
+										<input type="hidden" name="topReachStationR" id="topReachStationR" value="<?php echo $topReachStationR?>" />
+										<input type="hidden" name="leftpassengerNum" id="leftpassengerNum" value="<?php echo $leftpassengerNum?>" />
+										<input type="hidden" name="toppassengerNum" id="toppassengerNum" value="<?php echo $toppassengerNum?>" />
+										<input type="hidden" name="leftPeopleDistance" id="leftPeopleDistance" value="<?php echo $leftPeopleDistance?>" />
+										<input type="hidden" name="topPeopleDistance" id="topPeopleDistance" value="<?php echo $topPeopleDistance?>" />
+										<input type="hidden" name="leftBalanceMoney" id="leftBalanceMoney" value="<?php echo $leftBalanceMoney?>" />
+										<input type="hidden" name="topBalanceMoney" id="topBalanceMoney" value="<?php echo $topBalanceMoney?>" />
+										<input type="hidden" name="leftBalanceMoneyB" id="leftBalanceMoneyB" value="<?php echo $leftBalanceMoneyB?>" />
+										<input type="hidden" name="topBalanceMoneyB" id="topBalanceMoneyB" value="<?php echo $topBalanceMoneyB?>" />
+										<input type="hidden" name="leftnowtime" id="leftnowtime" value="<?php echo $leftnowtime?>" />
+										<input type="hidden" name="topnowtime" id="topnowtime" value="<?php echo $topnowtime?>" />
+										<input type="hidden" name="leftBalancer" id="leftBalancer" value="<?php echo $leftBalancer?>" />
+										<input type="hidden" name="topBalancer" id="topBalancer" value="<?php echo $topBalancer?>" />
 		</td>
 	</tr>
 	<tr>

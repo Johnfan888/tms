@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //座位预览界面
 
 define("AUTH", "TRUE");
@@ -40,12 +40,12 @@ p{margin:0;text-align: center;}
 			switch ($seatStatus){
 				case '0':
 ?>
-					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seat.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seat.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '1':
 ?>
-					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seatlock.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seatlock.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '2':
@@ -59,7 +59,7 @@ p{margin:0;text-align: center;}
 						$rowReserveTicket = @mysqli_fetch_array($queryReserveTicket);
 						
 ?>
-				<p style="font-size:15"><?echo $showSeatNo;?></p><p style="font-size:13"><?php echo $rowReserveTicket['wst_FromStation']; ?></p></li>
+				<p style="font-size:15"><?php echo $showSeatNo;?></p><p style="font-size:13"><?php echo $rowReserveTicket['wst_FromStation']; ?></p></li>
 <?php
 				break;
 				case '3':
@@ -72,7 +72,7 @@ p{margin:0;text-align: center;}
 					$querySellTicket=$class_mysql_default->my_query("$selectSellTicket");
 					$rowSellTicket = @mysqli_fetch_array($querySellTicket);
 ?>
-				<p style="font-size:15"><? echo $showSeatNo ?></p><p style="font-size:13"><?php echo $rowSellTicket['st_FromStation'];?></p></li>
+				<p style="font-size:15"><?php echo $showSeatNo ?></p><p style="font-size:13"><?php echo $rowSellTicket['st_FromStation'];?></p></li>
 
 <?php
 				break;
@@ -91,17 +91,17 @@ p{margin:0;text-align: center;}
 				break;
 				case '5':
 ?>
-				<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/webseatreserve.png" width="40" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+				<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/webseatreserve.png" width="40" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '6':
 ?>
-				<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/webseatpeople.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+				<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/webseatpeople.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '7':
 ?>
-					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15">并<?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:100px; margin-right:50px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15">并<?php echo $showSeatNo;?></p></li>
 				
 <?php
 				break;

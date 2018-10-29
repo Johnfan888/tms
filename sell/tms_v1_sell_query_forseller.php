@@ -277,25 +277,25 @@ require_once("../ui/user/topnoleft.inc.php");
 			$lineNum++;
 	?>
 	<tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">
-		<td align="center"><?=$rows['tml_NoOfRunsID']?></td>
-		<td align="center"><?=$rows['pd_BeginStation']?></td>
-		<td align="center"><?=$rows['pd_EndStation']?></td>
-		<td align="center"><?=$selldate?></td>
-		<td align="center"><?=$rows['pd_BeginStationTime']?></td>
-		<td align="center"><?=$rows['pd_FullPrice']?></td>
-		<td align="center"><?=$rows['tml_BusModel']?></td>
-		<td align="center"><?=$rows['tml_LeaveSeats']?></td>
-		<td align="center"><?=$rows['tml_LeaveHalfSeats']?></td>
+		<td align="center"><?php echo $rows['tml_NoOfRunsID']?></td>
+		<td align="center"><?php echo $rows['pd_BeginStation']?></td>
+		<td align="center"><?php echo $rows['pd_EndStation']?></td>
+		<td align="center"><?php echo $selldate?></td>
+		<td align="center"><?php echo $rows['pd_BeginStationTime']?></td>
+		<td align="center"><?php echo $rows['pd_FullPrice']?></td>
+		<td align="center"><?php echo $rows['tml_BusModel']?></td>
+		<td align="center"><?php echo $rows['tml_LeaveSeats']?></td>
+		<td align="center"><?php echo $rows['tml_LeaveHalfSeats']?></td>
 	<!--
-		<td align="center"><?=$rows['tml_BusID']?></td>
-		<td align="center"><?=$rows['tml_BusCard']?></td>
+		<td align="center"><?php echo $rows['tml_BusID']?></td>
+		<td align="center"><?php echo $rows['tml_BusCard']?></td>
 	-->
 	<!--
-		<td align="center">><?=$rows['pd_StintSell']?></td>
-		<td align="center">><?=$rows['pd_StintTime']?></td>
+		<td align="center">><?php echo $rows['pd_StintSell']?></td>
+		<td align="center">><?php echo $rows['pd_StintTime']?></td>
 	-->
 		<td align="center">
-  			[<a href="tms_v1_sell_sellview_forseller.php?i=<?=$rows['tml_NoOfRunsID']?>&d=<?=$selldate?>&f=<?=$fromstation?>&r=<?=$reachstation?>&t=<?=$rows['pd_BeginStationTime']?>&l=<?=$rows['tml_LeaveSeats']?>&h=<?=$rows['tml_LeaveHalfSeats']?>"]">开始售票</a>]
+  			[<a href="tms_v1_sell_sellview_forseller.php?i=<?php echo $rows['tml_NoOfRunsID']?>&d=<?php echo $selldate?>&f=<?php echo $fromstation?>&r=<?php echo $reachstation?>&t=<?php echo $rows['pd_BeginStationTime']?>&l=<?php echo $rows['tml_LeaveSeats']?>&h=<?php echo $rows['tml_LeaveHalfSeats']?>"]">开始售票</a>]
 		</td>
 	</tr>
 <?php 

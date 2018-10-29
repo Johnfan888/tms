@@ -1,4 +1,4 @@
-﻿<?	
+﻿<?php	
 /*
  * 
  * 可售班次查询页面
@@ -407,26 +407,26 @@ if (isset($_POST['FromStation'])) {
 		$lineNum++;
 ?>
 	<tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">
-		<td align="center"><?=$rows['tml_NoOfRunsID']?></td>
-		<td align="center"><?=$rows['pd_BeginStation']?></td>
-		<td align="center"><?=$rows['pd_EndStation']?></td>
-		<td align="center"><?=$selldate?></td>
-		<td align="center"><?=$rows['pd_BeginStationTime']?></td>
-		<td align="center"><?=$rows['pd_StopStationTime']?></td>
-		<td align="center"><?=$rows['pd_FullPrice']?></td>
-		<td align="center"><?=$rows['tml_BusModel']?></td>
-		<td align="center"><?=$rows['tml_LeaveSeats']?></td>
-		<td align="center"><?=$rows['tml_LeaveHalfSeats']?></td>
-		<td style="display:none"><?=$rows['tml_Allticket']?></td>
-		<td style="display:none"><?=$remainMoney?></td>
-		<td style="display:none"><?=$fromstation?></td>
-		<td style="display:none"><?=$reachstation?></td>
-		<td align="center"><?($rows['tml_Allticket'] == "1")? print "是" : print "否";?></td>
+		<td align="center"><?php echo $rows['tml_NoOfRunsID']?></td>
+		<td align="center"><?php echo $rows['pd_BeginStation']?></td>
+		<td align="center"><?php echo $rows['pd_EndStation']?></td>
+		<td align="center"><?php echo $selldate?></td>
+		<td align="center"><?php echo $rows['pd_BeginStationTime']?></td>
+		<td align="center"><?php echo $rows['pd_StopStationTime']?></td>
+		<td align="center"><?php echo $rows['pd_FullPrice']?></td>
+		<td align="center"><?php echo $rows['tml_BusModel']?></td>
+		<td align="center"><?php echo $rows['tml_LeaveSeats']?></td>
+		<td align="center"><?php echo $rows['tml_LeaveHalfSeats']?></td>
+		<td style="display:none"><?php echo $rows['tml_Allticket']?></td>
+		<td style="display:none"><?php echo $remainMoney?></td>
+		<td style="display:none"><?php echo $fromstation?></td>
+		<td style="display:none"><?php echo $reachstation?></td>
+		<td align="center"><?php ($rows['tml_Allticket'] == "1")? print "是" : print "否";?></td>
 		<td align="center">
 	<!--	
-			[<a href="tms_v1_sell_sellview_oldUI.php?i=<?=$rows['tml_NoOfRunsID']?>&d=<?=$selldate?>&f=<?=$fromstation?>&r=<?=$reachstation?>&t=<?=$rows['pd_BeginStationTime']?>&l=<?=$rows['tml_LeaveSeats']?>&h=<?=$rows['tml_LeaveHalfSeats']?>">开始售票</a>]
+			[<a href="tms_v1_sell_sellview_oldUI.php?i=<?php echo $rows['tml_NoOfRunsID']?>&d=<?php echo $selldate?>&f=<?php echo $fromstation?>&r=<?php echo $reachstation?>&t=<?php echo $rows['pd_BeginStationTime']?>&l=<?php echo $rows['tml_LeaveSeats']?>&h=<?php echo $rows['tml_LeaveHalfSeats']?>">开始售票</a>]
 	-->
-			[<a href="tms_v1_sell_sellview.php?i=<?=$rows['tml_NoOfRunsID']?>&d=<?=$selldate?>&f=<?=$fromstation?>&r=<?=$reachstation?>&t=<?=$rows['pd_BeginStationTime']?>&l=<?=$rows['tml_LeaveSeats']?>&h=<?=$rows['tml_LeaveHalfSeats']?>&p=<?=$rows['pd_FullPrice']?>&m=<?=$rows['tml_BusModel']?>&a=<?=$rows['tml_Allticket']?>&rm=<?=$remainMoney?>">开始售票</a>]
+			[<a href="tms_v1_sell_sellview.php?i=<?php echo $rows['tml_NoOfRunsID']?>&d=<?php echo $selldate?>&f=<?php echo $fromstation?>&r=<?php echo $reachstation?>&t=<?php echo $rows['pd_BeginStationTime']?>&l=<?php echo $rows['tml_LeaveSeats']?>&h=<?php echo $rows['tml_LeaveHalfSeats']?>&p=<?php echo $rows['pd_FullPrice']?>&m=<?php echo $rows['tml_BusModel']?>&a=<?php echo $rows['tml_Allticket']?>&rm=<?php echo $remainMoney?>">开始售票</a>]
 		</td>
 	</tr>
 <?php 

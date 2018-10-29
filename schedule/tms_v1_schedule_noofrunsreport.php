@@ -481,9 +481,9 @@ else{
 <!-- 
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 待班车编号:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="scheduleBusID" id="scheduleBusID" value="<?=$BusID?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="scheduleBusID" id="scheduleBusID" value="<?php echo $BusID?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 待班车牌号:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="scheduleBusCard" id="scheduleBusCard" value="<?=$BusCard?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="scheduleBusCard" id="scheduleBusCard" value="<?php echo $BusCard?>" readonly="readonly" /></td>
 	</tr>
  -->	
 	<tr>
@@ -537,40 +537,40 @@ else{
 				}
 		?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td><?=$rows['rt_BusCard']?></td>
-			<td><?=$rows['rt_ReportDateTime']?></td>
-			<td><?=$rows['bi_BusUnit']?></td>
+			<td><?php echo $rows['rt_BusCard']?></td>
+			<td><?php echo $rows['rt_ReportDateTime']?></td>
+			<td><?php echo $rows['bi_BusUnit']?></td>
 			<?php 
 			if($curStatus == '暂停'){  //蓝色
 			?>
-			<td nowrap="nowrap"><span style="color:#0000FF"><?=$curStatus?></span></td>
+			<td nowrap="nowrap"><span style="color:#0000FF"><?php echo $curStatus?></span></td>
 			<?php 
 			}
 			if($curStatus == '在售'){  //绿色
 			?>
-			<td nowrap="nowrap"><span style="color:#009900"><?=$curStatus?></span></td>
+			<td nowrap="nowrap"><span style="color:#009900"><?php echo $curStatus?></span></td>
 			<?php 
 			}
 			if($curStatus == '发班'){  //红色
 			?>
-			<td nowrap="nowrap"><span style="color:#FF0000"><?=$curStatus?></span></td>
+			<td nowrap="nowrap"><span style="color:#FF0000"><?php echo $curStatus?></span></td>
 			<?php 
 			}
 			if($curStatus == '检票'){  //黄色
 			?>
-			<td nowrap="nowrap"><span style="color:#FFFF00"><?=$curStatus?></span></td>
+			<td nowrap="nowrap"><span style="color:#FFFF00"><?php echo $curStatus?></span></td>
 			<?php 
 			}
 			if($curStatus == '并班'){  //紫色
 			?>
-			<td nowrap="nowrap"><span style="color:#6633FF"><?=$curStatus?></span></td>
+			<td nowrap="nowrap"><span style="color:#6633FF"><?php echo $curStatus?></span></td>
 			<?php 
 			}
 			?>
-				<td><?=$rows['bi_SeatS']?></td>
-				<td><?=$rows['bi_AddSeatS']?></td>
-				<td style="display:none"><?=$rows['rt_ID']?></td>
-				<td  style="display:none"><?=$rows['ct_ID']?></td>
+				<td><?php echo $rows['bi_SeatS']?></td>
+				<td><?php echo $rows['bi_AddSeatS']?></td>
+				<td style="display:none"><?php echo $rows['rt_ID']?></td>
+				<td  style="display:none"><?php echo $rows['ct_ID']?></td>
 			</tr>
 			<?php }?>
 	</tbody></table>

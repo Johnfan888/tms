@@ -295,7 +295,7 @@ $(document).ready(function(){
 			$i++;
 	?>
 			<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'SiteID1')">
-				<td align="center" nowrap="nowrap" ><?=$i?></td>
+				<td align="center" nowrap="nowrap" ><?php echo $i?></td>
 				<td align="center" nowrap="nowrap" ><?php echo $row['sset_SiteID'];?></td>
 				<td align="center" nowrap="nowrap" ><?php echo $row['sset_SiteName'];?></td>
 				<td align="center" nowrap="nowrap" ><?php echo $row['sset_SiteType'];?></td>

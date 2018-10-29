@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //检票界面
 
 //定义页面必须验证是否登录
@@ -254,7 +254,7 @@ if(!file_exists($configFileName)) {
 		echo "打开文件\"$configFileName\"失败！";
 		exit();
 	}
-	$retVal = fwrite($fp, "<?\r\n\$checkWindow='';\r\n");
+	$retVal = fwrite($fp, "<?php\r\n\$checkWindow='';\r\n");
 	$retVal = fwrite($fp, "\$checkboxStatus='';\r\n?>");
 	if(!$retVal) {
 		fclose($fp);
@@ -527,8 +527,8 @@ if(isset($_POST['resultquery']))
 	<tr bgcolor="#FFFFFF">
 		<td>
 			<span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 检票口：</span>&nbsp;&nbsp;
-			<input type="text" name="checkWindowIn" id="checkWindowIn" value="<?=$checkWindow?>" size="6"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!--<input id="isrefresh" name="isrefresh" type="checkbox" <?=$checkboxStatus?> /> 自动刷新 -->
+			<input type="text" name="checkWindowIn" id="checkWindowIn" value="<?php echo $checkWindow?>" size="6"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<!--<input id="isrefresh" name="isrefresh" type="checkbox" <?php echo $checkboxStatus?> /> 自动刷新 -->
 			<input type="button" name="resultquery" id="resultquery" value="查询待检班次" />
 			<input type="button" name="resultquery1" id="resultquery1" value="查询在检班次" />
 			<input type="button" name="resultquery2" id="resultquery2" value="查询已检班次" />
@@ -576,7 +576,7 @@ if(isset($_POST['resultquery']))
 		</tr>
 		</thead>
 		<tbody>
-	<?
+	<?php
 		$queryString = "SELECT `ct_NoOfRunsID`, `ct_LineID`, `ct_NoOfRunsdate`, `ct_NoOfRunsTime`, `ct_BusID`, `ct_BusNumber`, 
 				`ct_EndStation`, `ct_TotalSeats`, `ct_SoldTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, `ct_Flag`, 
 				`li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '0' AND 
@@ -586,25 +586,25 @@ if(isset($_POST['resultquery']))
 	    {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td><?=$rows['ct_NoOfRunsID']?></td>
-			<td><?=$rows['li_LineName']?></td>
-			<td><?=$rows['ct_NoOfRunsTime']?></td>
-			<td><?=$rows['ct_BusID']?></td>
-			<td><?=$rows['ct_BusNumber']?></td>
-			<td><?=$rows['ct_EndStation']?></td>
-			<td><?=$rows['ct_TotalSeats']?></td>
-			<td><?=$rows['ct_SoldTicketNum']?></td>
-			<td><?($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
-			<td><?=$rows['ct_CheckTicketWindow']?>
+			<td><?php echo $rows['ct_NoOfRunsID']?></td>
+			<td><?php echo $rows['li_LineName']?></td>
+			<td><?php echo $rows['ct_NoOfRunsTime']?></td>
+			<td><?php echo $rows['ct_BusID']?></td>
+			<td><?php echo $rows['ct_BusNumber']?></td>
+			<td><?php echo $rows['ct_EndStation']?></td>
+			<td><?php echo $rows['ct_TotalSeats']?></td>
+			<td><?php echo $rows['ct_SoldTicketNum']?></td>
+			<td><?php ($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
+			<td><?php echo $rows['ct_CheckTicketWindow']?>
 				<input type="hidden" id="NoOfRunsID" value="<?php echo $rows['ct_NoOfRunsID'];?>"/>
 				<input type="hidden" id="NoOfRunsdate" value="<?php echo $rows['ct_NoOfRunsdate'];?>"/>
 				<input type="hidden" id="ID" value="<?php echo $checkWindow;?>"/>
 				<input type="hidden" id="BusID" value="<?php echo $rows['ct_BusID'];?>"/>
 				<input type="hidden" id="Allticket" value="<?php echo $rows['ct_Allticket'];?>"/>
 			</td>
-			<td align="center">[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&cwID=<?=$checkWindow?>&allTkt=<?=$rows['ct_Allticket']?>&busID=<?=$rows['ct_BusID']?>&op=addbus"]">开始检票</a>]</td>
+			<td align="center">[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&cwID=<?php echo $checkWindow?>&allTkt=<?php echo $rows['ct_Allticket']?>&busID=<?php echo $rows['ct_BusID']?>&op=addbus"]">开始检票</a>]</td>
 		</tr>
-	<?
+	<?php
 		}
 	?>
 		</tbody>
@@ -634,7 +634,7 @@ if(isset($_POST['resultquery']))
 		</tr>
 		</thead>
 		<tbody>
-	<?
+	<?php
 		$queryString = "SELECT `ct_NoOfRunsID`, `ct_LineID`, `ct_NoOfRunsdate`, `ct_NoOfRunsTime`, `ct_BusID`, `ct_BusNumber`, `ct_EndStation`, 
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '1' AND 
@@ -643,35 +643,35 @@ if(isset($_POST['resultquery']))
 	    if($rows = mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td><?=$rows['ct_NoOfRunsID']?></td>
-			<td><?=$rows['li_LineName']?></td>
-			<td><?=$rows['ct_NoOfRunsTime']?></td>
-			<td><?=$rows['ct_BusID']?></td>
-			<td><?=$rows['ct_BusNumber']?></td>
-			<td><?=$rows['ct_EndStation']?></td>
-			<td><?=$rows['ct_TotalSeats']?></td>
-			<td><?=$rows['ct_SoldTicketNum']?></td>
-			<td><?=$rows['ct_CheckedTicketNum']?></td>
-			<td><?($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
-			<td><?=$rows['ct_CheckTicketWindow']?></td>
+			<td><?php echo $rows['ct_NoOfRunsID']?></td>
+			<td><?php echo $rows['li_LineName']?></td>
+			<td><?php echo $rows['ct_NoOfRunsTime']?></td>
+			<td><?php echo $rows['ct_BusID']?></td>
+			<td><?php echo $rows['ct_BusNumber']?></td>
+			<td><?php echo $rows['ct_EndStation']?></td>
+			<td><?php echo $rows['ct_TotalSeats']?></td>
+			<td><?php echo $rows['ct_SoldTicketNum']?></td>
+			<td><?php echo $rows['ct_CheckedTicketNum']?></td>
+			<td><?php ($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
+			<td><?php echo $rows['ct_CheckTicketWindow']?></td>
 			<td align="center">
-		<?
+		<?php
 			$frameID = $rows['ct_NoOfRunsID'];
 			if ($rows['ct_Allticket'] == "0"){
 		?>
 		<!-- 
-				[<a href="#" onclick="openShutManager(this,'<?=$frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
+				[<a href="#" onclick="openShutManager(this,'<?php echo $frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
 		-->
 		<?php }?>	
-		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&allTkt=<?=$rows['ct_Allticket']?>&busID=<?=$rows['ct_BusID']?>&op=cancelbus">取消检票</a>]
-		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&allTkt=<?=$rows['ct_Allticket']?>&busID=<?=$rows['ct_BusID']?>&eStat=<?=$rows['ct_EndStation']?>&op=letgo">发班</a>]
+		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&allTkt=<?php echo $rows['ct_Allticket']?>&busID=<?php echo $rows['ct_BusID']?>&op=cancelbus">取消检票</a>]
+		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&allTkt=<?php echo $rows['ct_Allticket']?>&busID=<?php echo $rows['ct_BusID']?>&eStat=<?php echo $rows['ct_EndStation']?>&op=letgo">发班</a>]
 		    </td>
 		</tr>
 	<!--  	  	
 		<tr bgcolor="#CCCCCC">
 			<td colspan="12">
-				<div id="<?=$frameID?>" style="display:none">
-					<iframe frameborder="1" id="heads" width="100%" src="../sell/tms_v1_sell_seatview.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $frameID?>" style="display:none">
+					<iframe frameborder="1" id="heads" width="100%" src="../sell/tms_v1_sell_seatview.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>"></iframe>
 				</div>
 			</td>
 		</tr>
@@ -694,8 +694,8 @@ if(isset($_POST['resultquery']))
 		</tr>
 		<tr bgcolor="#CCCCCC">
 			<td colspan="12">
-				<div id="<?=$frameID?>">
-					<iframe frameborder="1" id="heads" width="100%" src="../sell/tms_v1_sell_seatview.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $frameID?>">
+					<iframe frameborder="1" id="heads" width="100%" src="../sell/tms_v1_sell_seatview.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>"></iframe>
 				</div>
 			</td>
 		</tr>
@@ -713,7 +713,7 @@ if(isset($_POST['resultquery']))
 		<td width="10%" align="center" bgcolor="#006699">检票员</td>
 		<td width="15%" align="center" bgcolor="#006699">操作</td>
 	</tr>
-	<?
+	<?php
 		$strsqlselet = "SELECT tms_chk_CheckTicketTemp.ctt_TicketID,tms_chk_CheckTicketTemp.ctt_ReachStation,tms_chk_CheckTicketTemp.ctt_SellPrice,
 					tms_chk_CheckTicketTemp.ctt_SellPriceType,tms_chk_CheckTicketTemp.ctt_SeatID,tms_chk_CheckTicketTemp.ctt_NoOfRunsID,
 					tms_chk_CheckTicketTemp.ctt_NoOfRunsdate,tms_chk_CheckTicketTemp.ctt_BusID,tms_chk_CheckTicketTemp.ctt_CheckDate,
@@ -724,17 +724,17 @@ if(isset($_POST['resultquery']))
 		while($rows2 = mysqli_fetch_array($resultselet)) {
 	?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td><?=$rows2['ctt_TicketID']?></td>
-		<td><?=$rows2['ctt_ReachStation']?></td>
-		<td><?=$rows2['ctt_SellPrice']?></td>
-		<td><?=$rows2['ctt_SellPriceType']?></td>
-		<td><?($rows['ct_Allticket'] == "1")? print "XX" : print $rows2['ctt_SeatID'];?></td>
-		<td><?=$rows2['st_Station']?></td>
-		<td><?=$rows2['ctt_CheckDate']."  ".$rows2['ctt_CheckTime']?></td>
-		<td><?=$userID?></td>
-		<td align="center">[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows2['ctt_NoOfRunsID']?>&nrDate=<?=$rows2['ctt_NoOfRunsdate']?>&tID=<?=$rows2['ctt_TicketID']?>&sID=<?=$rows2['ctt_SeatID']?>&allTkt=<?=$rows['ct_Allticket']?>&busID=<?=$rows2['ctt_BusID']?>&op=cancelcheck">退检</a>]</td>
+		<td><?php echo $rows2['ctt_TicketID']?></td>
+		<td><?php echo $rows2['ctt_ReachStation']?></td>
+		<td><?php echo $rows2['ctt_SellPrice']?></td>
+		<td><?php echo $rows2['ctt_SellPriceType']?></td>
+		<td><?php ($rows['ct_Allticket'] == "1")? print "XX" : print $rows2['ctt_SeatID'];?></td>
+		<td><?php echo $rows2['st_Station']?></td>
+		<td><?php echo $rows2['ctt_CheckDate']."  ".$rows2['ctt_CheckTime']?></td>
+		<td><?php echo $userID?></td>
+		<td align="center">[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows2['ctt_NoOfRunsID']?>&nrDate=<?php echo $rows2['ctt_NoOfRunsdate']?>&tID=<?php echo $rows2['ctt_TicketID']?>&sID=<?php echo $rows2['ctt_SeatID']?>&allTkt=<?php echo $rows['ct_Allticket']?>&busID=<?php echo $rows2['ctt_BusID']?>&op=cancelcheck">退检</a>]</td>
 	</tr>
-	<?
+	<?php
 		}
 	?>
 	</table>
@@ -764,7 +764,7 @@ if(isset($_POST['resultquery']))
 		</tr>
 		</thead>
 		<tbody>
-	<?
+	<?php
 		$queryString = "SELECT `ct_NoOfRunsID`, `ct_LineID`, `ct_NoOfRunsdate`, `ct_NoOfRunsTime`, `ct_BusID`, `ct_BusNumber`, `ct_EndStation`, 
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '2' AND 
@@ -773,34 +773,34 @@ if(isset($_POST['resultquery']))
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td><?=$rows['ct_NoOfRunsID']?></td>
-			<td><?=$rows['li_LineName']?></td>
-			<td><?=$rows['ct_NoOfRunsdate']?></td>
-			<td><?=$rows['ct_NoOfRunsTime']?></td>
-			<td><?=$rows['ct_BusID']?></td>
-			<td><?=$rows['ct_BusNumber']?></td>
-			<td><?=$rows['ct_EndStation']?></td>
-			<td><?=$rows['ct_TotalSeats']?></td>
-			<td><?=$rows['ct_SoldTicketNum']?></td>
-			<td><?=$rows['ct_CheckedTicketNum']?></td>
-			<td><?($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
-			<td><?=$rows['ct_CheckTicketWindow']?></td>
+			<td><?php echo $rows['ct_NoOfRunsID']?></td>
+			<td><?php echo $rows['li_LineName']?></td>
+			<td><?php echo $rows['ct_NoOfRunsdate']?></td>
+			<td><?php echo $rows['ct_NoOfRunsTime']?></td>
+			<td><?php echo $rows['ct_BusID']?></td>
+			<td><?php echo $rows['ct_BusNumber']?></td>
+			<td><?php echo $rows['ct_EndStation']?></td>
+			<td><?php echo $rows['ct_TotalSeats']?></td>
+			<td><?php echo $rows['ct_SoldTicketNum']?></td>
+			<td><?php echo $rows['ct_CheckedTicketNum']?></td>
+			<td><?php ($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
+			<td><?php echo $rows['ct_CheckTicketWindow']?></td>
 		<!--  
 			<td align="center">
-		<?
+		<?php
 			$frameID = $rows['ct_NoOfRunsID'];
 			if ($rows['ct_Allticket'] == "0"){
 		?>
-				[<a href="#" onclick="openShutManager(this,'<?=$frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
+				[<a href="#" onclick="openShutManager(this,'<?php echo $frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
 		<?php }?>	
-		    	[<a href="tms_v1_checkin_printsheet.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&bID=<?=$rows['ct_BusID']?>&eStat=<?=$rows['ct_EndStation']?>">打印结算单</a>]
+		    	[<a href="tms_v1_checkin_printsheet.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&bID=<?php echo $rows['ct_BusID']?>&eStat=<?php echo $rows['ct_EndStation']?>">打印结算单</a>]
 		    </td>
 		-->
 		</tr>
 		<tr bgcolor="#CCCCCC">
 			<td colspan="13">
-				<div id="<?=$frameID?>" style="display:none">
-					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $frameID?>" style="display:none">
+					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>"></iframe>
 				</div>
 			</td>
 		</tr>
@@ -836,7 +836,7 @@ if(isset($_POST['resultquery']))
 		</tr>
 		</thead>
 		<tbody>
-	<?
+	<?php
 		$queryString = "SELECT `ct_NoOfRunsID`, `ct_LineID`, `ct_NoOfRunsdate`, `ct_NoOfRunsTime`, `ct_BusID`, `ct_BusNumber`, `ct_EndStation`, 
 				`ct_TotalSeats`, `ct_SoldTicketNum`, `ct_CheckedTicketNum`, `ct_Allticket`, `ct_CheckTicketWindow`, `ct_UserID`, `ct_User`, 
 				`ct_Flag`, `li_LineName` FROM tms_chk_CheckTemp LEFT OUTER JOIN tms_bd_LineInfo ON ct_LineID = li_LineID WHERE ct_Flag = '3' AND 
@@ -845,33 +845,33 @@ if(isset($_POST['resultquery']))
 	    while($rows = @mysqli_fetch_array($result)) {
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td><?=$rows['ct_NoOfRunsID']?></td>
-			<td><?=$rows['li_LineName']?></td>
-			<td><?=$rows['ct_NoOfRunsdate']?></td>
-			<td><?=$rows['ct_NoOfRunsTime']?></td>
-			<td><?=$rows['ct_BusID']?></td>
-			<td><?=$rows['ct_BusNumber']?></td>
-			<td><?=$rows['ct_EndStation']?></td>
-			<td><?=$rows['ct_TotalSeats']?></td>
-			<td><?=$rows['ct_SoldTicketNum']?></td>
-			<td><?=$rows['ct_CheckedTicketNum']?></td>
-			<td><?($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
-			<td><?=$rows['ct_CheckTicketWindow']?></td>
+			<td><?php echo $rows['ct_NoOfRunsID']?></td>
+			<td><?php echo $rows['li_LineName']?></td>
+			<td><?php echo $rows['ct_NoOfRunsdate']?></td>
+			<td><?php echo $rows['ct_NoOfRunsTime']?></td>
+			<td><?php echo $rows['ct_BusID']?></td>
+			<td><?php echo $rows['ct_BusNumber']?></td>
+			<td><?php echo $rows['ct_EndStation']?></td>
+			<td><?php echo $rows['ct_TotalSeats']?></td>
+			<td><?php echo $rows['ct_SoldTicketNum']?></td>
+			<td><?php echo $rows['ct_CheckedTicketNum']?></td>
+			<td><?php ($rows['ct_Allticket'] == "1")? print "是" : print "否";?></td>
+			<td><?php echo $rows['ct_CheckTicketWindow']?></td>
 			<td align="center">
-		<?
+		<?php
 			$frameID = $rows['ct_NoOfRunsID'];
 			if ($rows['ct_Allticket'] == "0"){
 		?>
-				[<a href="#" onclick="openShutManager(this,'<?=$frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
+				[<a href="#" onclick="openShutManager(this,'<?php echo $frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
 		<?php }?>	
-		    	[<a href="tms_v1_checkin_printsheet.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&bID=<?=$rows['ct_BusID']?>&eStat=<?=$rows['ct_EndStation']?>">重打结算单</a>]
-		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>&bID=<?=$rows['ct_BusID']?>&op=delbus">删除</a>]
+		    	[<a href="tms_v1_checkin_printsheet.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&bID=<?php echo $rows['ct_BusID']?>&eStat=<?php echo $rows['ct_EndStation']?>">重打结算单</a>]
+		    	[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>&bID=<?php echo $rows['ct_BusID']?>&op=delbus">删除</a>]
 		    </td>
 		</tr>
 		<tr bgcolor="#CCCCCC">
 			<td colspan="13">
-				<div id="<?=$frameID?>" style="display:none">
-					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?=$rows['ct_NoOfRunsID']?>&nrDate=<?=$rows['ct_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $frameID?>" style="display:none">
+					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?php echo $rows['ct_NoOfRunsID']?>&nrDate=<?php echo $rows['ct_NoOfRunsdate']?>"></iframe>
 				</div>
 			</td>
 		</tr>

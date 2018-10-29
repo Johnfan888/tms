@@ -139,19 +139,19 @@ $row=mysqli_fetch_array($query);
 	?>
 	<tbody class="scrollContent"> 
 	<tr align="center" bgcolor="#CCCCCC">
-		<td><?=$i?></td>	
+		<td><?php echo $i?></td>	
 		<td><?php if ($rowadd['nri_AddNoRuns']==1) echo '是'; else echo '否';?></td>
-		<td><?=$rowadd['nri_OperateCode']?></td>
+		<td><?php echo $rowadd['nri_OperateCode']?></td>
 		<td><?php if ($rowadd['tml_AllowSell']=='1') echo '在售'; else echo $rowadd['nri_State'];?></td>
-		<td><?=$LineName?></td>
-		<td><?=$rowadd['nri_DepartureTime']?></td>
-		<td><?=$rowadd['nri_RunRegion']?></td>
-		<td><?=$rowadd['tml_LeaveSeats']?></td>
-		<td><?=$rowadd['tml_LeaveHalfSeats']?></td>
-		<td><?=$rowadd['tml_BusModel']?></td>
-		<td><?=$rowadd['tml_BusUnit']?></td>
-		<td><?=$rowadd['nri_CheckTicketWindow']?></td>
-		<td><?=$rowadd['anr_AndNoOfRunsID']?></td>
+		<td><?php echo $LineName?></td>
+		<td><?php echo $rowadd['nri_DepartureTime']?></td>
+		<td><?php echo $rowadd['nri_RunRegion']?></td>
+		<td><?php echo $rowadd['tml_LeaveSeats']?></td>
+		<td><?php echo $rowadd['tml_LeaveHalfSeats']?></td>
+		<td><?php echo $rowadd['tml_BusModel']?></td>
+		<td><?php echo $rowadd['tml_BusUnit']?></td>
+		<td><?php echo $rowadd['nri_CheckTicketWindow']?></td>
+		<td><?php echo $rowadd['anr_AndNoOfRunsID']?></td>
 	</tr>
 	<?php
 			}

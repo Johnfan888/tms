@@ -245,12 +245,12 @@ $rowbht=mysqli_fetch_array($querybht);
 	<tr bgcolor="#CCCCCC">
 			<td colspan="8">
 		<?php if ($rowbht['tml_Allticket'] == "0") {?>
-				<div id="<?=$rowbht['bht_NoOfRunsID']?>" style="display:">
-					<iframe frameborder="1" id="heads" width="100%" src="tms_v1_checkin_seatview.php?nrID=<?=$rowbht['bht_NoOfRunsID']?>&nrDate=<?=$rowbht['bht_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $rowbht['bht_NoOfRunsID']?>" style="display:">
+					<iframe frameborder="1" id="heads" width="100%" src="tms_v1_checkin_seatview.php?nrID=<?php echo $rowbht['bht_NoOfRunsID']?>&nrDate=<?php echo $rowbht['bht_NoOfRunsdate']?>"></iframe>
 				</div>
 		<?php } else {?>
-				<div id="<?=$rowbht['bht_NoOfRunsID']?>" style="display:none">
-					<iframe frameborder="1" id="heads" width="100%" src="tms_v1_checkin_seatview.php?nrID=<?=$rowbht['bht_NoOfRunsID']?>&nrDate=<?=$rowbht['bht_NoOfRunsdate']?>"></iframe>
+				<div id="<?php echo $rowbht['bht_NoOfRunsID']?>" style="display:none">
+					<iframe frameborder="1" id="heads" width="100%" src="tms_v1_checkin_seatview.php?nrID=<?php echo $rowbht['bht_NoOfRunsID']?>&nrDate=<?php echo $rowbht['bht_NoOfRunsdate']?>"></iframe>
 				</div>
 		<?php }?>
 			</td>
@@ -285,7 +285,7 @@ $rowbht=mysqli_fetch_array($querybht);
 		</tr>
 	</thead>
 	<tbody>
-	<?
+	<?php
 		$strsqlselet = "SELECT ct_TicketID,ct_NoOfRunsID,ct_ReachStation,ct_SellPrice,ct_SellPriceType,ct_SeatID,ct_Checker,
 					ct_NoOfRunsdate,ct_BusID,ct_CheckDate,ct_CheckTime,tms_sell_SellTicket.st_Station FROM tms_chk_CheckTicket,
 					tms_sell_SellTicket WHERE tms_chk_CheckTicket.ct_TicketID=tms_sell_SellTicket.st_TicketID 
@@ -294,20 +294,20 @@ $rowbht=mysqli_fetch_array($querybht);
 		while($rows2 = mysqli_fetch_array($resultselet)) {		
 	?>
 		<tr align="center" bgcolor="#CCCCCC">
-			<td nowrap="nowrap"><?=$rows2['ct_NoOfRunsID']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_TicketID']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_ReachStation']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_SellPrice']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_SellPriceType']?></td>
-			<td nowrap="nowrap"><?($rowbht['tml_Allticket'] == "1")? print "XX" : print $rows2['ct_SeatID'];?></td>
-			<td nowrap="nowrap"><?=$rows2['st_Station']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_CheckDate']."  ".$rows2['ct_CheckTime']?></td>
-			<td nowrap="nowrap"><?=$rows2['ct_Checker']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_NoOfRunsID']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_TicketID']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_ReachStation']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_SellPrice']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_SellPriceType']?></td>
+			<td nowrap="nowrap"><?php ($rowbht['tml_Allticket'] == "1")? print "XX" : print $rows2['ct_SeatID'];?></td>
+			<td nowrap="nowrap"><?php echo $rows2['st_Station']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_CheckDate']."  ".$rows2['ct_CheckTime']?></td>
+			<td nowrap="nowrap"><?php echo $rows2['ct_Checker']?></td>
 		<!--  
-			<td align="center" nowrap="nowrap">[<a href="tms_v1_checkin_checkticket.php?nrID=<?=$rows2['ctt_NoOfRunsID']?>&nrDate=<?=$rows2['ctt_NoOfRunsdate']?>&tID=<?=$rows2['ctt_TicketID']?>&sID=<?=$rows2['ctt_SeatID']?>&allTkt=<?=$rows['ct_Allticket']?>&busID=<?=$rows2['ctt_BusID']?>&op=cancelcheck">退检</a>]</td>
+			<td align="center" nowrap="nowrap">[<a href="tms_v1_checkin_checkticket.php?nrID=<?php echo $rows2['ctt_NoOfRunsID']?>&nrDate=<?php echo $rows2['ctt_NoOfRunsdate']?>&tID=<?php echo $rows2['ctt_TicketID']?>&sID=<?php echo $rows2['ctt_SeatID']?>&allTkt=<?php echo $rows['ct_Allticket']?>&busID=<?php echo $rows2['ctt_BusID']?>&op=cancelcheck">退检</a>]</td>
 		-->
 		</tr>
-	<?
+	<?php
 		}
 	?>
 	</tbody>

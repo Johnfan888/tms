@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //改签界面
 define("AUTH", "TRUE");
 
@@ -471,7 +471,7 @@ if(isset($_GET['tid']))
 	</tr>
 	</thead>
 	<tbody>
-<?
+<?php
 //	if (isset($_POST['ticketnum'])) {
 	//	$TicketID=$_POST['ticketnum'];
 	//	$alertdate=$_POST['alertdate'];
@@ -487,17 +487,17 @@ if(isset($_GET['tid']))
 			$rowsticket = @mysqli_fetch_array($resultticket);
 ?>
 	<tr bgcolor="#CCCCCC">
-		<td align="center"><?=$ticketIDs?></td>
-		<td align="center"><?=$rowsticket['st_NoOfRunsdate']?></td>
-		<td align="center"><?=$rowsticket['st_BeginStationTime']?></td>
-		<td align="center"><?=$rowsticket['st_FromStation']?></td>
-		<td align="center"><?=$rowsticket['st_ReachStation']?></td>
-		<td align="center"><?=$rowsticket['st_NoOfRunsID']?></td>
-		<td align="center"><?=$rowsticket['st_SellPriceType']?></td>
-		<td align="center"><?=$rowsticket['st_SeatID']?></td>
-		<td align="center"><?=$rowsticket['st_TotalMan']?></td>
-		<td align="center"><?=$rowsticket['st_SellPrice']?></td>
-		<td align="center"><?=$rowsticket['st_BusModel']?></td>
+		<td align="center"><?php echo $ticketIDs?></td>
+		<td align="center"><?php echo $rowsticket['st_NoOfRunsdate']?></td>
+		<td align="center"><?php echo $rowsticket['st_BeginStationTime']?></td>
+		<td align="center"><?php echo $rowsticket['st_FromStation']?></td>
+		<td align="center"><?php echo $rowsticket['st_ReachStation']?></td>
+		<td align="center"><?php echo $rowsticket['st_NoOfRunsID']?></td>
+		<td align="center"><?php echo $rowsticket['st_SellPriceType']?></td>
+		<td align="center"><?php echo $rowsticket['st_SeatID']?></td>
+		<td align="center"><?php echo $rowsticket['st_TotalMan']?></td>
+		<td align="center"><?php echo $rowsticket['st_SellPrice']?></td>
+		<td align="center"><?php echo $rowsticket['st_BusModel']?></td>
 	<!--
 		<td align="center">&nbsp;</td>
 		<td align="center">[<a href=""]">修改座号</a>]</td> 
@@ -509,7 +509,7 @@ if(isset($_GET['tid']))
 	   <input type="hidden" name="alertdate1" id="alertdate1" value="<?php echo $rowsticket['st_NoOfRunsdate']; ?>"/>
 	   </td>
 	   	</tr>
-<? 
+<?php 
 		}
 	}
 ?>	
@@ -517,7 +517,7 @@ if(isset($_GET['tid']))
 </table>
  
 <?php //if ($rowsticket['nri_Allticket'] == "0") {?>
-<!--<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?=$rowsticket['st_NoOfRunsID']?>&nrDate=<?=$rowsticket['st_NoOfRunsdate']?>"></iframe>
+<!--<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?php echo $rowsticket['st_NoOfRunsID']?>&nrDate=<?php echo $rowsticket['st_NoOfRunsdate']?>"></iframe>
 --><?php //}?>
 
 <br/>
@@ -540,7 +540,7 @@ if(isset($_GET['tid']))
   </tr>
   </thead>
   <tbody>
-<?
+<?php
 	$selectnoruns="SELECT tml_NoOfRunsID,pd_BeginStation,pd_EndStation,pd_FromStation,pd_ReachStation,pd_FullPrice,pd_HalfPrice,pd_BeginStationTime,tml_BusModel,tml_LeaveSeats,
 		tml_LeaveHalfSeats,nri_LineName,nri_Allticket FROM tms_bd_PriceDetail LEFT OUTER JOIN tms_bd_TicketMode ON tms_bd_PriceDetail.pd_NoOfRunsID = tms_bd_TicketMode.tml_NoOfRunsID 
 		AND tms_bd_PriceDetail.pd_NoOfRunsdate = tms_bd_TicketMode.tml_NoOfRunsdate LEFT OUTER JOIN tms_bd_NoRunsInfo ON tms_bd_PriceDetail.pd_NoOfRunsID=tms_bd_NoRunsInfo.nri_NoOfRunsID
@@ -552,34 +552,34 @@ if(isset($_GET['tid']))
   {
 ?>
   <tr align="center" bgcolor="#CCCCCC">
-    <td nowrap="nowrap" ><?=$alertdate?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['pd_BeginStationTime']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['pd_FromStation']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['pd_ReachStation']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['pd_FullPrice']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['pd_HalfPrice']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['tml_BusModel']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['tml_LeaveSeats']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['tml_LeaveHalfSeats']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['nri_LineName']?></td>
-    <td nowrap="nowrap" ><?=$rowsnoruns['tml_NoOfRunsID']?></td>
+    <td nowrap="nowrap" ><?php echo $alertdate?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['pd_BeginStationTime']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['pd_FromStation']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['pd_ReachStation']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['pd_FullPrice']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['pd_HalfPrice']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['tml_BusModel']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['tml_LeaveSeats']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['tml_LeaveHalfSeats']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['nri_LineName']?></td>
+    <td nowrap="nowrap" ><?php echo $rowsnoruns['tml_NoOfRunsID']?></td>
     <td nowrap="nowrap" >
-    	<?
+    	<?php
 			$frameID = $rowsnoruns['tml_NoOfRunsID'];
 			if ($rowsnoruns['nri_Allticket'] == "0"){
 		?>
-				[<a href="#" onclick="openShutManager(this,'<?=$frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
-		<?}?>
+				[<a href="#" onclick="openShutManager(this,'<?php echo $frameID?>',false,'座位预览关闭','座位预览展开')"]">座位预览展开</a>]
+		<?php } ?>
     </td>
   </tr>
   <tr bgcolor="#CCCCCC">
 			<td colspan="13">
-				<div id="<?=$frameID?>" style="display:none">
-					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?=$rowsnoruns['tml_NoOfRunsID']?>&nrDate=<?=$alertdate?>"></iframe>
+				<div id="<?php echo $frameID?>" style="display:none">
+					<iframe frameborder="1" id="heads" width="100% "src="../sell/tms_v1_sell_seatview.php?nrID=<?php echo $rowsnoruns['tml_NoOfRunsID']?>&nrDate=<?php echo $alertdate?>"></iframe>
 				</div>
 			</td>
 		</tr>
-  <?
+  <?php
   }
   ?>
   </tbody>

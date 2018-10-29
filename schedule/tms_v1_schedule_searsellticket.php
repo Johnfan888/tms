@@ -36,7 +36,7 @@
 	</tr>
 </table>
 <?php if ($isAllTicket == "否") {?>
-<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_schedule_seatview.php?nrID=<?=$NoOfRunsID?>&nrDate=<?=$NoOfRunsdate?>"></iframe>
+<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_schedule_seatview.php?nrID=<?php echo $NoOfRunsID?>&nrDate=<?php echo $NoOfRunsdate?>"></iframe>
 <?php }?>
 <div id="tableContainer" class="tableContainer" > 
 <table class="main_tableboder" id="table1" > 
@@ -56,8 +56,8 @@
 		$all=$all+$rows['Numbers'];
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$rows['st_ReachStation']?></td>
-		<td nowrap="nowrap"><?=$rows['Numbers']?></td>
+		<td nowrap="nowrap"><?php echo $rows['st_ReachStation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['Numbers']?></td>
 	</tr>
 	<?php }?>
 	<tr align="center" bgcolor="#CCCCCC">

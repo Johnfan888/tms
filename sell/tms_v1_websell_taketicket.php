@@ -223,7 +223,7 @@ require_once("../ui/inc/init.inc.php");
   ?>
  	 <tr id="<?php echo $lineNum?>" bgcolor="#CCCCCC">
  	 	<td align="center" nowrap="nowrap"><?php echo $rows['wst_WebSellID'];?></td>
-  		<td style="display:none"><?=$rows['wst_TicketState']?></td>
+  		<td style="display:none"><?php echo $rows['wst_TicketState']?></td>
     	<td align="center" nowrap="nowrap"><?php echo $rows['wst_UserName'];?></td>
    		<td align="center" nowrap="nowrap"><?php echo $rows['wst_CertificateType'];?></td>
     	<td align="center" nowrap="nowrap"><?php echo $rows['wst_CertificateNumber'];?></td>
@@ -249,9 +249,9 @@ require_once("../ui/inc/init.inc.php");
   	<?php 
 		if($rows['wst_TicketState'] == '2') {	//网上已支付，仅打票
   	?>
-  		<td align="center" nowrap="nowrap" >[<a href="tms_v1_websell_printpaidticket.php?WebSellID=<?=$rows['wst_WebSellID']?>&safeUser=<?=$CertificateUser?>&safeUserAddress=<?=$CertificateUserAddress?>">打票</a>]</td>	
+  		<td align="center" nowrap="nowrap" >[<a href="tms_v1_websell_printpaidticket.php?WebSellID=<?php echo $rows['wst_WebSellID']?>&safeUser=<?php echo $CertificateUser?>&safeUserAddress=<?php echo $CertificateUserAddress?>">打票</a>]</td>	
   	<?php } else {?>	
-  		<td align="center" nowrap="nowrap" >[<a href="tms_v1_websell_taketicketview.php?WebSellID=<?=$rows['wst_WebSellID']?>">取票</a>]</td>	
+  		<td align="center" nowrap="nowrap" >[<a href="tms_v1_websell_taketicketview.php?WebSellID=<?php echo $rows['wst_WebSellID']?>">取票</a>]</td>	
   	<?php }?>
  	 </tr>
   <?php 

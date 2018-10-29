@@ -103,8 +103,8 @@ require_once("../ui/inc/init.inc.php");
       	   while($row=mysqli_fetch_array($result)){
       	   ?>
       	   <tr  bgcolor="#CCCCCC" onMouseOver="rowOver(this)" onMouseOut="rowOut(this)" onClick="selectRow(this,'RegionCode1')" onDblClick="doubleclick(this,'RegionCode1')">
-      	  	 <td  align="center" id="select" nowrap="nowrap"><?=$row['rr_Desp']?></td>
-      	  	 <td  align="center" id="select" nowrap="nowrap"><?=$row['rr_mncode']?></td>
+      	  	 <td  align="center" id="select" nowrap="nowrap"><?php echo $row['rr_Desp']?></td>
+      	  	 <td  align="center" id="select" nowrap="nowrap"><?php echo $row['rr_mncode']?></td>
       	  </tr>
       	  </tbody>
       	  <?php 

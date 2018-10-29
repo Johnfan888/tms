@@ -305,7 +305,7 @@ function stationtake(){
 	?>
 	<tr bgcolor="#CCCCCC">
         <td nowrap="nowrap" align="center" style="display:none;"><?php echo $row['ta_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['ta_Data'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['ta_Time'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['ta_BeginTicket'];?></td>

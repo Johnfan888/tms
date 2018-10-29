@@ -204,7 +204,7 @@ else{
 						<option value="" selected="selected">请选择售票员</option>
 					<?php } else{ ?>
 						<option value="">请选择售票员</option>
-						<option value="<?php echo $sellerID?>" selected="selected"><?=$sellerID?></option>
+						<option value="<?php echo $sellerID?>" selected="selected"><?php echo $sellerID?></option>
 					<?php 
 					}
 					?>
@@ -214,7 +214,7 @@ else{
 					while ($row = mysqli_fetch_array($result)) {
 						if($sellerID != $row['ui_UserID']){
 					?>
-						<option value="<?php echo $row['ui_UserID']?>"><?=$row['ui_UserID']?></option>
+						<option value="<?php echo $row['ui_UserID']?>"><?php echo $row['ui_UserID']?></option>
 					<?php 
 						}
 					}

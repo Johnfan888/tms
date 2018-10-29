@@ -197,35 +197,35 @@ if (empty($rows[0])) {
 <table width="100%" align="center" class="main_tableboder" border="0" cellpadding="3" cellspacing="1">
 	<tr>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 乘车日期：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuredate" id="departuredate" size="12" value="<?=$norunsdate?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuredate" id="departuredate" size="12" value="<?php echo $norunsdate?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 发车时间：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuretime" id="departuretime" size="8"value="<?=$norunstime?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuretime" id="departuretime" size="8"value="<?php echo $norunstime?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 乘车站：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fromstation" id="fromstation" value="<?=$fromplace?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fromstation" id="fromstation" value="<?php echo $fromplace?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 到达站：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="reachstation" id="reachstation" value="<?=$reachplace?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="reachstation" id="reachstation" value="<?php echo $reachplace?>" readonly="readonly" /></td>
 	</tr>
 	<tr>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 全票张数：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fullTicketNumIn" id="fullTicketNumIn" value="<?=$tnum?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fullTicketNumIn" id="fullTicketNumIn" value="<?php echo $tnum?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 半票张数：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="halfTicketNumIn" id="halfTicketNumIn" size="12" value="<?=$htnum?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="halfTicketNumIn" id="halfTicketNumIn" size="12" value="<?php echo $htnum?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 班次：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="noofrun" id="noofrun" value="<?=$noofrunsID?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="noofrun" id="noofrun" value="<?php echo $noofrunsID?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 座位号：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="seatno" id="seatno" value="<?=$seatno?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="seatno" id="seatno" value="<?php echo $seatno?>" readonly="readonly" /></td>
 	</tr>
 </table>
 	<input type="hidden" id="WebSellID" name="WebSellID" value="<?php echo $WebSellID?>" />
 	<input type="hidden" id="leftTicketIDNum" name="leftTicketIDNum" value="<?php echo $leftTicketNum?>" />
 </form>
 <?php if ($isAllTicket == "0") {?>
-<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?=$noofrunsID?>&nrDate=<?=$norunsdate?>"></iframe>
+<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?php echo $noofrunsID?>&nrDate=<?php echo $norunsdate?>"></iframe>
 <?php }?>
 <br/><br/>
 <div style="margin-left:5px;">
 	<img src="../ui/images/sj.gif" width="6" height="7" />&nbsp;当前票号：
-	<input type="text" name="curTicketID" id="curTicketID" size="10" value="<?=$curTicketID?>" readonly="readonly" style="height:18;border:none"/>
+	<input type="text" name="curTicketID" id="curTicketID" size="10" value="<?php echo $curTicketID?>" readonly="readonly" style="height:18;border:none"/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="confirmprint" id="confirmprint" style="height:18;text-align:center;font-size:12px;" value="确 认 打 票" />
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="back" id="back" style="height:18;text-align:center;font-size:12px;" value="返 回" onclick="location.assign('tms_v1_websell_taketicket.php')" />
 </div>

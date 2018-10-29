@@ -191,7 +191,7 @@ function delregion(){
 				$i++;
 	?> 
 	<tr  id="tr" bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'RegionCode1')">
-		<td align="center" nowrap="nowrap" ><?=$i?></td>
+		<td align="center" nowrap="nowrap" ><?php echo $i?></td>
 		<td align="center" nowrap="nowrap" ><?php echo $row['rs_RegionCode'];?></td>
 		<td align="center" nowrap="nowrap" > <?php echo $row['rs_RegionName'];?></td>
 		<td align="center" nowrap="nowrap" ><?php echo $row['rs_RegionFullName'];?></td>

@@ -1,4 +1,4 @@
-﻿<? 
+﻿<?php 
 //线路站点详细
 	//定义页面必须验证是否登录
 	define("AUTH", "TRUE");
@@ -78,7 +78,7 @@ function modlinesite(){
         <li><a href="#" onclick="searchline()">返回</a></li>       
     </ul>   
 </div>  
-<?
+<?php
 
 ?>
 <form method="get" name="aaa" action="tms_v1_basedata_addlinesite.php">

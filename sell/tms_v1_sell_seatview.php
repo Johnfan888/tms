@@ -42,42 +42,42 @@ p{margin: 0;text-align:center;}
 			switch ($seatStatus){
 				case '0':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seat.png" width="30" height="30" /><p class="relative" style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seat.png" width="30" height="30" /><p class="relative" style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '1':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatlock.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatlock.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '2':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatreserve.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatreserve.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '3':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '4':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeoplecheck.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeoplecheck.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '5':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/webseatreserve.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/webseatreserve.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '6':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/webseatpeople.png" width="30" height="30" /><p style="font-size:15"><?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/webseatpeople.png" width="30" height="30" /><p style="font-size:15"><?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				case '7':
 ?>
-					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15">并<?echo $showSeatNo;?></p></li>
+					<li style="float:left; width:60px; height:60px; margin-right:30px;"><img src="../ui/images/seatpeople.png" width="30" height="30" /><p style="font-size:15">并<?php echo $showSeatNo;?></p></li>
 <?php
 				break;
 				default:
@@ -94,6 +94,4 @@ p{margin: 0;text-align:center;}
 	}
 }
 ?>
-
-
 	

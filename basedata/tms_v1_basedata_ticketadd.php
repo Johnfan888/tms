@@ -166,7 +166,7 @@
     <span class="graytext" style="margin-left:8px;">票 据 入 库  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="tms_v1_basedata_ticketaddok.php" method="post">
@@ -205,7 +205,7 @@
       				if($results['tt_TypeName']!=$Type){    */
       		?>
       			<!-- 
-      					<option value="<? //php echo $results['tt_TypeName'];?>"><? //php echo $results['tt_TypeName'];?></option>
+      					<option value="<?php //php echo $results['tt_TypeName'];?>"><?php //php echo $results['tt_TypeName'];?></option>
       			-->
       		<?php
       		//		}

@@ -74,12 +74,12 @@
 		}
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$rows['st_TicketID']?></td>
-		<td nowrap="nowrap"><?=$rows['st_SeatID']?></td>	
-		<td nowrap="nowrap"><?=$rows['st_SellDate'].' '.$rows['st_SellTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['st_TicketID']?></td>
+		<td nowrap="nowrap"><?php echo $rows['st_SeatID']?></td>	
+		<td nowrap="nowrap"><?php echo $rows['st_SellDate'].' '.$rows['st_SellTime']?></td>
 	<!-- 
-		<td nowrap="nowrap"><?=$rows['rtk_SignDate'].' '.$rows['rtk_SignTime']?></td>
-		<td nowrap="nowrap"><?=$rows['rtk_ReturnDate'].' '.$rows['rtk_ReturnTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rtk_SignDate'].' '.$rows['rtk_SignTime']?></td>
+		<td nowrap="nowrap"><?php echo $rows['rtk_ReturnDate'].' '.$rows['rtk_ReturnTime']?></td>
 	 -->
 		<td nowrap="nowrap">
 			<?php 
@@ -106,7 +106,7 @@
 					
 			?>
 		</td>
-		<td nowrap="nowrap"><?=$rows['st_ReachStation']?></td>
+		<td nowrap="nowrap"><?php echo $rows['st_ReachStation']?></td>
 	</tr>
 	<?php 
 		}
@@ -135,12 +135,12 @@
 		}
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td nowrap="nowrap"><?=$rowsand['st_TicketID']?></td>
+		<td nowrap="nowrap"><?php echo $rowsand['st_TicketID']?></td>
 		<td nowrap="nowrap"></td>
-		<td nowrap="nowrap"><?=$rowsand['st_SellDate'].' '.$rowsand['st_SellTime']?></td>
+		<td nowrap="nowrap"><?php echo $rowsand['st_SellDate'].' '.$rowsand['st_SellTime']?></td>
 	<!--  
-		<td nowrap="nowrap"><?=$rowsand['rtk_SignDate'].' '.$rowsand['rtk_SignTime']?></td>
-		<td nowrap="nowrap"><?=$rowsand['rtk_ReturnDate'].' '.$rowsand['rtk_ReturnTime']?></td>
+		<td nowrap="nowrap"><?php echo $rowsand['rtk_SignDate'].' '.$rowsand['rtk_SignTime']?></td>
+		<td nowrap="nowrap"><?php echo $rowsand['rtk_ReturnDate'].' '.$rowsand['rtk_ReturnTime']?></td>
 	-->
 		<td nowrap="nowrap">
 			<?php 
@@ -167,7 +167,7 @@
 					
 			?>
 		</td>
-		<td nowrap="nowrap"><?=$rowsand['st_ReachStation']?></td>
+		<td nowrap="nowrap"><?php echo $rowsand['st_ReachStation']?></td>
 	</tr>
 	<?php 
 		}
@@ -180,7 +180,7 @@
 	</tr>
 </table>
 <?php if ($isAllTicket == "否") {?>
-<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="../schedule/tms_v1_schedule_seatview.php?nrID=<?=$NoOfRunsID?>&nrDate=<?=$NoOfRunsdate?>"></iframe>
+<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="../schedule/tms_v1_schedule_seatview.php?nrID=<?php echo $NoOfRunsID?>&nrDate=<?php echo $NoOfRunsdate?>"></iframe>
 <?php }?>
 </form>
 </body>

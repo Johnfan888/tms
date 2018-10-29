@@ -169,7 +169,7 @@ $(document).ready(function(){
 	?>
 	<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'ID1')">
         <td nowrap="nowrap" align="center" style="display:none;"><?php echo $row['dt_ID'];?></td>
-        <td nowrap="nowrap" align="center"><?=$i ?></td>
+        <td nowrap="nowrap" align="center"><?php echo $i ?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['dt_InceptUserID'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['dt_InceptUser'];?></td>
         <td nowrap="nowrap" align="center"><?php echo $row['dt_UserSation'];?></td>

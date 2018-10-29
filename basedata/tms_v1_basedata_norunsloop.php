@@ -1,4 +1,4 @@
-﻿<?PHP
+﻿<?php
 	//班次循环界面
 	//定义页面必须验证是否登录
 	define("AUTH", "TRUE");
@@ -58,7 +58,7 @@ function retur(){
     <span class="graytext" style="margin-left:8px;">班 次 循 环 设 置 </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="aaa" action="tms_v1_basedata_norunsloopok.php">

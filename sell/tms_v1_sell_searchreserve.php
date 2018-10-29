@@ -197,7 +197,7 @@ if(isset($_POST['selldate'])){
   	<?php }?>
   	<?php if($rows['wst_TicketState'] == '3'){?>
   		<td align="center" nowrap="nowrap" bgcolor="#cccccc">
-			[<a href="tms_v1_sell_delreserve.php?WebSellID=<?=$rows['wst_WebSellID']?>" style="bgcolor:#cccccc">取消订票</a>]
+			[<a href="tms_v1_sell_delreserve.php?WebSellID=<?php echo $rows['wst_WebSellID']?>" style="bgcolor:#cccccc">取消订票</a>]
   		</td>
   	<?php } elseif ($rows['wst_TicketState'] == '4'){?>
   		<td align="center" nowrap="nowrap" bgcolor="#cccccc">已取票</td>

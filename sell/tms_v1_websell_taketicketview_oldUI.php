@@ -379,27 +379,27 @@ else {
 <table width="100%" align="center" class="main_tableboder" border="0" cellpadding="3" cellspacing="1">
 	<tr>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 乘车日期：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuredate" id="departuredate" size="12" value="<?=$norunsdate?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuredate" id="departuredate" size="12" value="<?php echo $norunsdate?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 发车时间：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuretime" id="departuretime" size="8"value="<?=$norunstime?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="departuretime" id="departuretime" size="8"value="<?php echo $norunstime?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 乘车站：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fromstation" id="fromstation" value="<?=$fromplace?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fromstation" id="fromstation" value="<?php echo $fromplace?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 到达站：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="reachstation" id="reachstation" value="<?=$reachplace?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="reachstation" id="reachstation" value="<?php echo $reachplace?>" readonly="readonly" /></td>
 	</tr>
 	<tr>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 全票张数：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fullTicketNumIn" id="fullTicketNumIn" value="<?=$tnum?>" <?=$readonly?> /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="fullTicketNumIn" id="fullTicketNumIn" value="<?php echo $tnum?>" <?php echo $readonly?> /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 半票张数：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="halfTicketNumIn" id="halfTicketNumIn" size="12" value="<?=$htnum?>" <?=$readonly?> /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="halfTicketNumIn" id="halfTicketNumIn" size="12" value="<?php echo $htnum?>" <?php echo $readonly?> /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 班次：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="noofrun" id="noofrun" value="<?=$noofrunsID?>" readonly="readonly" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="noofrun" id="noofrun" value="<?php echo $noofrunsID?>" readonly="readonly" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 当前票号：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="curTicketID" id="curTicketID" value="<?=$curTicketID?>" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="curTicketID" id="curTicketID" value="<?php echo $curTicketID?>" /></td>
 	</tr>
 	<tr>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 当前保险票号：</span></td>
-		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="curSafeTicketID" id="curSafeTicketID" value="<?=$curSafeTicketID?>" /></td>
+		<td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="curSafeTicketID" id="curSafeTicketID" value="<?php echo $curSafeTicketID?>" /></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 保险类型及金额：</span></td>
 		<td nowrap="nowrap" bgcolor="#FFFFFF">
 			<select name="safeticketmoneyselect" id="safeticketmoneyselect">
@@ -424,7 +424,7 @@ else {
 		<td bgcolor="#FFFFFF">
 			<input id="sellInsureTicket" name="sellInsureTicket" type="checkbox" checked="checked"/>售保险票
 		</td>
-		<td colspan="2" align="center" bgcolor="#FFFFFF"><input type="submit" name="sellview" id="sellview" value="售 票 预 览" <?=$viewenable?> /></td>
+		<td colspan="2" align="center" bgcolor="#FFFFFF"><input type="submit" name="sellview" id="sellview" value="售 票 预 览" <?php echo $viewenable?> /></td>
 	</tr>
 </table>
 <table width="100%" border="0" align="center" cellpadding="4" cellspacing="1" class="main_tableboder" id="table1">
@@ -448,15 +448,15 @@ else {
 		if ($tnum > 0) {
 ?>
 	<tr bgcolor="#CCCCCC">
-		<td align="center"><?=$norunsdate?></td>
-		<td align="center"><?=$norunstime?></td>
-		<td align="center"><?=$fromplace?></td>
-		<td align="center"><?=$reachplace?></td>
-		<td align="center"><?=$noofrunsID?></td>
+		<td align="center"><?php echo $norunsdate?></td>
+		<td align="center"><?php echo $norunstime?></td>
+		<td align="center"><?php echo $fromplace?></td>
+		<td align="center"><?php echo $reachplace?></td>
+		<td align="center"><?php echo $noofrunsID?></td>
 		<td align="center">全票</td>
-		<td align="center"><?=$tnum?></td>
-		<td align="center"><?=$fullPrice?></td>
-		<td align="center"><?=$busModel?></td>
+		<td align="center"><?php echo $tnum?></td>
+		<td align="center"><?php echo $fullPrice?></td>
+		<td align="center"><?php echo $busModel?></td>
 	<!--
 		<td align="center">&nbsp;</td>
 		<td align="center">[<a href=""]">修改座号</a>]</td> 
@@ -466,15 +466,15 @@ else {
 		if ($htnum > 0) {
 ?>
 	<tr bgcolor="#CCCCCC">
-		<td align="center"><?=$norunsdate?></td>
-		<td align="center"><?=$norunstime?></td>
-		<td align="center"><?=$fromplace?></td>
-		<td align="center"><?=$reachplace?></td>
-		<td align="center"><?=$noofrunsID?></td>
+		<td align="center"><?php echo $norunsdate?></td>
+		<td align="center"><?php echo $norunstime?></td>
+		<td align="center"><?php echo $fromplace?></td>
+		<td align="center"><?php echo $reachplace?></td>
+		<td align="center"><?php echo $noofrunsID?></td>
 		<td align="center">半票</td>
-		<td align="center"><?=$htnum?></td>
-		<td align="center"><?=$fullPrice/2?></td>
-		<td align="center"><?=$busModel?></td>
+		<td align="center"><?php echo $htnum?></td>
+		<td align="center"><?php echo $fullPrice/2?></td>
+		<td align="center"><?php echo $busModel?></td>
 	<!--
 		<td align="center">&nbsp;</td>
 		<td align="center">[<a href=""]">修改座号</a>]</td> 
@@ -497,7 +497,7 @@ else {
 	<input type="hidden" id="leftSafeTicketIDNum" name="leftSafeTicketIDNum" value="<?php echo $leftSafeTicketNum?>" />
 </form>
 <?php if ($isAllTicket == "0") {?>
-<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?=$noofrunsID?>&nrDate=<?=$norunsdate?>"></iframe>
+<iframe frameborder="1" id="heads" width="100%" scrolling="auto" src="tms_v1_sell_seatview.php?nrID=<?php echo $noofrunsID?>&nrDate=<?php echo $norunsdate?>"></iframe>
 <?php }?>
 <table width="100%" align="center" class="main_tableboder" border="0" cellpadding="3" cellspacing="1">
 	<tr>
@@ -508,17 +508,17 @@ else {
 			$totalmoney = $totalticketmoney + $totalinsureticketmoney;
 		?>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 总售票张数：</span></td>
-	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalticketnum" id="totalticketnum" value="<?=$totalticketnum?>" readonly="readonly" /></td>
+	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalticketnum" id="totalticketnum" value="<?php echo $totalticketnum?>" readonly="readonly" /></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 总保险张数：</span></td>
-	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalsafenum" id="totalsafenum" value="<?=$totalticketnum?>" readonly="readonly" /></td>
+	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalsafenum" id="totalsafenum" value="<?php echo $totalticketnum?>" readonly="readonly" /></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 总客票金额：</span></td>
-	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalticketmoney" id="totalticketmoney" value="<?=$totalticketmoney?>" readonly="readonly" /></td>
+	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalticketmoney" id="totalticketmoney" value="<?php echo $totalticketmoney?>" readonly="readonly" /></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 总保险金额：</span></td>
-	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalsafemoney" id="totalsafemoney" value="<?=$totalinsureticketmoney?>" readonly="readonly" /></td>
+	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input type="text" name="totalsafemoney" id="totalsafemoney" value="<?php echo $totalinsureticketmoney?>" readonly="readonly" /></td>
     </tr>
     <tr>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 应收款(元)：</span></td>
-	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="realticketmoney" id="realticketmoney" value="<?=$totalmoney?>" readonly="readonly" /></td>
+	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="realticketmoney" id="realticketmoney" value="<?php echo $totalmoney?>" readonly="readonly" /></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 实收款(元)：</span></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="getticketmoney" id="getticketmoney" /></td>
 	    <td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 找补(元)：</span></td>
@@ -597,9 +597,9 @@ else {
 											<input type="hidden" name="topHandlerCode" id="topHandlerCode" value="<?php echo $topHandlerCode;?>"/>
 	    									</td>
 	    <td colspan="2" align="center" bgcolor="#FFFFFF">
-	    	<input type="button" name="confirmsell" id="confirmsell" value="确 认 出 票" <?=$subcancelenable?> />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    	<input type="button" name="confirmsell" id="confirmsell" value="确 认 出 票" <?php echo $subcancelenable?> />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--     	
-	    	<input type="button" name="cancelsell" id="cancelsell" value="取 消 " <?=$subcancelenable?> />
+	    	<input type="button" name="cancelsell" id="cancelsell" value="取 消 " <?php echo $subcancelenable?> />
  -->	
 	    </td>
 	</tr>

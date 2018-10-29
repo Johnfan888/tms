@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 //通票调度界面
 
 //定义页面必须验证是否登录	
@@ -87,7 +87,7 @@ if(!file_exists($configFileName)) {
 		echo "打开文件\"$configFileName\"失败！";
 		exit();
 	}
-	$retVal = fwrite($fp, "<?\r\n\$schStation='';\r\n");
+	$retVal = fwrite($fp, "<?php\r\n\$schStation='';\r\n");
 	$retVal = fwrite($fp, "\$schDate='';\r\n");
 	$retVal = fwrite($fp, "\$noofrunsID='';\r\n");
 	$retVal = fwrite($fp, "\$busID='';\r\n");
@@ -227,18 +227,18 @@ if(isset($_POST['resultquery']))
 		<td width="10%"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 发车日期：</span></td>
 		<td width="10%"><input name="schDateIn" id="schDateIn" class="Wdate" value="<?php ($schDate == "")? print date('Y-m-d') : print $schDate;?>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
 		<td width="10%"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 班次：</span></td>
-		<td width="15%"><input type="text" name="noofrunIn" id="noofrunIn" value="<?=$noofrunsID?>" /></td>
-		<td colspan="2"><input id="isrefresh" name="isrefresh" type="checkbox" <?=$checkboxStatus?> /> 自动刷新</td>
+		<td width="15%"><input type="text" name="noofrunIn" id="noofrunIn" value="<?php echo $noofrunsID?>" /></td>
+		<td colspan="2"><input id="isrefresh" name="isrefresh" type="checkbox" <?php echo $checkboxStatus?> /> 自动刷新</td>
 	</tr>
 	<tr bgcolor="#FFFFFF">
 		<td width="10%"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 车辆编号：</span></td>
-		<td width="15%"><input type="text" name="busIDIn" id="busIDIn" value="<?=$busID?>"/></td>
+		<td width="15%"><input type="text" name="busIDIn" id="busIDIn" value="<?php echo $busID?>"/></td>
 		<td width="10%"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 终点站：</span></td>
-		<td width="15%"><input type="text" name="endStationIn" id="endStationIn"  value="<?=$endStation?>"/></td>
+		<td width="15%"><input type="text" name="endStationIn" id="endStationIn"  value="<?php echo $endStation?>"/></td>
 		<td width="10%"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 状态：</span></td>
 		<td width="10%">
 			<select name="statusselect" id="statusselect">
-			<?
+			<?php
 				if ($noofrunStatus == "1")	echo "<option selected=\"selected\" value=\"1\">全部</option>";
 				else						echo "<option  value=\"1\">全部</option>";
 				if ($noofrunStatus == "2")	echo "<option selected=\"selected\" value=\"2\">开班</option>";
@@ -276,7 +276,7 @@ if(isset($_POST['resultquery']))
 	</tr>
 	</thead>
 	<tbody class="scrollContent">
-<?
+<?php
     $i=0;
 	if ($noofrunStatus == "2") 		$StopRun = "1";
 	else if ($noofrunStatus == "3") $StopRun = "0";
@@ -303,43 +303,43 @@ if(isset($_POST['resultquery']))
 		else $qryCheckWindow = $rows['tml_CheckTicketWindow'];
 ?>
 	<tr align="center" bgcolor="#CCCCCC">
-		<td><?=$i?></td>
-		<td><?=$rows['tml_NoOfRunsID']?></td>
-		<td><?=$rows['tml_LineID']?></td>
-		<td><?=$LineName?></td>
-		<td><?=$qryBusID?></td>
-		<td><?=$qryBusCard?></td>
-		<td><?=$rows['tml_NoOfRunsdate']?></td>
-		<td><?=$rows['tml_NoOfRunstime']?></td>
-		<td><?=$rows['rt_ReportDateTime']?></td>
-		<td><?=$rows['rt_Register']?></td>
-		<td><?($rows['tml_StopRun'] == "1")? print "开" : print "停";?></td>
-		<td><?=$rows['tml_Beginstation']?></td>
-		<td><?=$rows['tml_Endstation']?></td>
-		<td><?=$rows['rt_SeatNum']?></td>
-		<td><?=$rows['tml_TotalSeats']?></td>
-		<td><?=$rows['tml_LeaveSeats']?></td>
-		<td><?=$qryCheckWindow?></td>
+		<td><?php echo $i?></td>
+		<td><?php echo $rows['tml_NoOfRunsID']?></td>
+		<td><?php echo $rows['tml_LineID']?></td>
+		<td><?php echo $LineName?></td>
+		<td><?php echo $qryBusID?></td>
+		<td><?php echo $qryBusCard?></td>
+		<td><?php echo $rows['tml_NoOfRunsdate']?></td>
+		<td><?php echo $rows['tml_NoOfRunstime']?></td>
+		<td><?php echo $rows['rt_ReportDateTime']?></td>
+		<td><?php echo $rows['rt_Register']?></td>
+		<td><?php ($rows['tml_StopRun'] == "1")? print "开" : print "停";?></td>
+		<td><?php echo $rows['tml_Beginstation']?></td>
+		<td><?php echo $rows['tml_Endstation']?></td>
+		<td><?php echo $rows['rt_SeatNum']?></td>
+		<td><?php echo $rows['tml_TotalSeats']?></td>
+		<td><?php echo $rows['tml_LeaveSeats']?></td>
+		<td><?php echo $qryCheckWindow?></td>
 		
 	<?php
 		if($rows['rt_Register'] != "已发车") {
 			if($rows['tml_StopRun'] == "1") {
 	?>
 		<td align="center">
-			[<a href="tms_v1_schedule_noofrunsreportall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&ln=<?=$LineName?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&qCW=<?=$qryCheckWindow?>"]>报班</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&bID=<?=$qryBusID?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&busSeats=<?=$rows['rt_SeatNum']?>&allowed=<?=$isCancelAllowed?>&op=cancel"]>撤销报班</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&op=run"]>开班</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&allowed=<?=$isStopAllowed?>&op=stop"]>停班</a>]
+			[<a href="tms_v1_schedule_noofrunsreportall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&ln=<?php echo $LineName?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&qCW=<?php echo $qryCheckWindow?>"]>报班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&bID=<?php echo $qryBusID?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&busSeats=<?php echo $rows['rt_SeatNum']?>&allowed=<?php echo $isCancelAllowed?>&op=cancel"]>撤销报班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&op=run"]>开班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&allowed=<?php echo $isStopAllowed?>&op=stop"]>停班</a>]
 		<!--
-			[<a href="tms_v1_schedule_noofrunall.php?NoOfRunsID=<?=$rows['tml_NoOfRunsID']?>&NoOfRunstime=<?=$rows['tml_NoOfRunstime']?>&op=delay"]>延时</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?NoOfRunsID=<?=$rows['tml_NoOfRunsID']?>&op=combine"]">并班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?NoOfRunsID=<?php echo $rows['tml_NoOfRunsID']?>&NoOfRunstime=<?php echo $rows['tml_NoOfRunstime']?>&op=delay"]>延时</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?NoOfRunsID=<?php echo $rows['tml_NoOfRunsID']?>&op=combine"]">并班</a>]
 		-->
 		</td>
 	<?php } else {?>
 		<td align="center">
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&bID=<?=$qryBusID?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&busSeats=<?=$rows['rt_SeatNum']?>&allowed=<?=$isCancelAllowed?>&op=cancel"]>撤销报班</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&op=run"]>开班</a>]
-			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?=$rows['tml_NoOfRunsID']?>&nrDate=<?=$rows['tml_NoOfRunsdate']?>&allowed=<?=$isStopAllowed?>&op=stop"]>停班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&bID=<?php echo $qryBusID?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&busSeats=<?php echo $rows['rt_SeatNum']?>&allowed=<?php echo $isCancelAllowed?>&op=cancel"]>撤销报班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&op=run"]>开班</a>]
+			[<a href="tms_v1_schedule_noofrunall.php?nrID=<?php echo $rows['tml_NoOfRunsID']?>&nrDate=<?php echo $rows['tml_NoOfRunsdate']?>&allowed=<?php echo $isStopAllowed?>&op=stop"]>停班</a>]
 		</td>
 	<?php	}
 		} else {

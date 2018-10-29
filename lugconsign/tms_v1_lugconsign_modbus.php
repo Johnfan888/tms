@@ -142,13 +142,13 @@ $row = mysqli_fetch_array($result);
 					while($rowbus=mysqli_fetch_array($querybus)){
 				?>
 				<tr align="center" bgcolor="#CCCCCC">
-					<td><?=$rowbus['rt_BusID']?></td>
-					<td><?=$rowbus['rt_BusCard']?></td>
-					<td><?=$rowbus['bi_BusUnit']?></td>
-					<td><?=$rowbus['rt_ReportDateTime']?></td>
-					<td><?=$rowbus['pd_BeginStationTime']?></td>
-					<td><?=$rowbus['rt_NoOfRunsID']?></td>
-					<td><?=$rowbus['rt_LineID']?></td>
+					<td><?php echo $rowbus['rt_BusID']?></td>
+					<td><?php echo $rowbus['rt_BusCard']?></td>
+					<td><?php echo $rowbus['bi_BusUnit']?></td>
+					<td><?php echo $rowbus['rt_ReportDateTime']?></td>
+					<td><?php echo $rowbus['pd_BeginStationTime']?></td>
+					<td><?php echo $rowbus['rt_NoOfRunsID']?></td>
+					<td><?php echo $rowbus['rt_LineID']?></td>
 				</tr>
 				<?php } ?>
 			</tbody>

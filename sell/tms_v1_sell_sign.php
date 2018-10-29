@@ -536,17 +536,17 @@ if(isset($_GET['tid']))
  			while($rows = @mysqli_fetch_array($resultselet)){
 ?>
   <tr align="center" bgcolor="#CCCCCC" id="table1">
-    <td><?=$rows['st_TicketID']?></td>
-    <td><?=$rows['st_NoOfRunsID']?></td>
-    <td><?=$rows['st_NoOfRunsdate']?></td>
-    <td><?=$rows['st_BeginStationTime']?></td>
-    <td><?=$rows['st_FromStation']?></td>
-    <td><?=$rows['st_ReachStation']?></td>
-    <td><?=$rows['st_SellPrice']?></td>
-    <td><?=$rows['st_SellPriceType']?></td>
-    <td><?=$rows['st_SellDate']?></td>
-    <td><?=$rows['st_SellTime']?></td>
-    <td><?=$rows['st_SeatID']?></td>
+    <td><?php echo $rows['st_TicketID']?></td>
+    <td><?php echo $rows['st_NoOfRunsID']?></td>
+    <td><?php echo $rows['st_NoOfRunsdate']?></td>
+    <td><?php echo $rows['st_BeginStationTime']?></td>
+    <td><?php echo $rows['st_FromStation']?></td>
+    <td><?php echo $rows['st_ReachStation']?></td>
+    <td><?php echo $rows['st_SellPrice']?></td>
+    <td><?php echo $rows['st_SellPriceType']?></td>
+    <td><?php echo $rows['st_SellDate']?></td>
+    <td><?php echo $rows['st_SellTime']?></td>
+    <td><?php echo $rows['st_SeatID']?></td>
   </tr>
   <?php
 		}

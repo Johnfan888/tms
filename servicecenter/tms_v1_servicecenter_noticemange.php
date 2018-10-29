@@ -172,9 +172,9 @@ require_once("../ui/inc/init.inc.php");
 			$i++;
 		?>
 		<tr id="tr"  bgcolor="#CCCCCC" onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this,'RegionCode1','info')">
-			<td align="center"><?=$i?></td>
-			<td align="center" style="display:none"><?=$rows['ni_id']?></td>
-			<td align="center"><?=$rows['ni_info']?></td>
+			<td align="center"><?php echo $i?></td>
+			<td align="center" style="display:none"><?php echo $rows['ni_id']?></td>
+			<td align="center"><?php echo $rows['ni_info']?></td>
 			<td align="center">
 			<?php 
 			echo "<input type=checkbox name='$i' value='$i'  id='$i'></input>";

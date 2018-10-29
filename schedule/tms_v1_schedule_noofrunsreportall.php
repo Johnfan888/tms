@@ -149,7 +149,7 @@ $CheckWindow = $_GET['qCW'];
 	</tr>
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 发车日期:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input name="NoOfRunsdate" id="NoOfRunsdate" value="<?=$NoOfRunsdate?>" readonly="readonly"/></td>
+		<td width="10%" bgcolor="#FFFFFF"><input name="NoOfRunsdate" id="NoOfRunsdate" value="<?php echo $NoOfRunsdate?>" readonly="readonly"/></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 报班车编号:</span></td>
 		<td width="10%" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="reportBusID" id="reportBusID" value=""/></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 报班车牌号:</span></td>
@@ -157,11 +157,11 @@ $CheckWindow = $_GET['qCW'];
 	</tr>
 	<tr>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 班次:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsID" id="NoOfRunsID" value="<?=$NoOfRunsID?>" readonly="readonly"/></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="NoOfRunsID" id="NoOfRunsID" value="<?php echo $NoOfRunsID?>" readonly="readonly"/></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 线路:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="LineName" id="LineName" value="<?=$LineName?>" readonly="readonly" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input type="text" name="LineName" id="LineName" value="<?php echo $LineName?>" readonly="readonly" /></td>
 		<td width="10%" bgcolor="#FFFFFF"><span><img src="../ui/images/sj.gif" width="6" height="7" /> 检票口:</span></td>
-		<td width="10%" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="reportCheckWindow" id="reportCheckWindow" value="<?=$CheckWindow?>" /></td>
+		<td width="10%" bgcolor="#FFFFFF"><input style="background-color:#F1E6C2" type="text" name="reportCheckWindow" id="reportCheckWindow" value="<?php echo $CheckWindow?>" /></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="6">
