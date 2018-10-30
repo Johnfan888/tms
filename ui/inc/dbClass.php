@@ -1,6 +1,7 @@
 <?php
 class Class_Mysql_conn
 {
+	var $myconn;
 	var $dbhost;
 	var $dbuser;
 	var $dbpass;
@@ -53,12 +54,12 @@ class Class_Mysql_conn
 	function getmysqlinfo()
 	{
 		if($this->mysql_conn_type == "mysqli") {
-            $this -> mysqlinfo = mysqli_get_server_info($this->myconn);
-            $this -> mysqlinfo = substr($this->mysqlinfo,0,2);
+            		$this -> mysqlinfo = mysqli_get_server_info($this->myconn);
+            		$this -> mysqlinfo = substr($this->mysqlinfo,0,2);
 		
 		} else {
-            $this -> mysqlinfo = mysql_get_server_info($this->myconn);
-            $this -> mysqlinfo = substr($this->mysqlinfo,0,2);
+            		$this -> mysqlinfo = mysql_get_server_info($this->myconn);
+            		$this -> mysqlinfo = substr($this->mysqlinfo,0,2);
 		}
     }
 
