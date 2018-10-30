@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //退票界面
 define("AUTH", "TRUE");
 

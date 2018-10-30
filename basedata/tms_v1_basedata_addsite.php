@@ -118,7 +118,7 @@ $(document).ready(function(){
     <span class="graytext" style="margin-left:8px;">添 加 站 点</span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form id="addsite" name="addsite" action="tms_v1_basedata_addsiteok.php" method="post">

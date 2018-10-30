@@ -101,7 +101,7 @@ function delprice(){
         <li><a href="#" onclick="retur()">关闭</a></li>       
     </ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="aaa" action="">

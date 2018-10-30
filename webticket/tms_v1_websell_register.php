@@ -119,7 +119,7 @@ require_once("../ui/inc/init.inc.php");
     <span class="graytext" style="margin-left:8px;">用 户 注 册  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div>

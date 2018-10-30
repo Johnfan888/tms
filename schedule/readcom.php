@@ -1,9 +1,9 @@
-<?
+<?php
 require_once("../ui/inc/config.inc.php");
 require_once("../ui/inc/config.db.php");
 require_once('../ui/inc/fun.inc.php');
 ?>
-<?
+<?php
 echo "test";
 ?>
 

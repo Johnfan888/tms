@@ -154,7 +154,7 @@ $(document).ready(function(){
     <span class="graytext" style="margin-left:8px;">修 改 驾 驶 员  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div>

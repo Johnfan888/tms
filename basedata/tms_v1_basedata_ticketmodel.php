@@ -185,7 +185,7 @@
     <span class="graytext" style="margin-left:8px;"> 生 成 票 版  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form name="addL" id="addL" action="" method="post">

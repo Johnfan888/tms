@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //rtk_IsBalance：0-已签票；1-已结算；2-已退票；
 //退票界面
 define("AUTH", "TRUE");
@@ -467,7 +467,7 @@ if(isset($_GET['tid']))
 </tr>
   </thead> 
 <tbody> 
-<?
+<?php
  // $strsqlselet = "SELECT * FROM `tms_sell_ReturnTicket` WHERE rtk_SignUserID LIKE '{$signuserID}' AND rtk_IsBalance='0'";
  // $resultselet = $class_mysql_default->my_query("$strsqlselet");
  // while($rows = @mysqli_fetch_array($resultselet))
@@ -497,7 +497,7 @@ if(isset($_GET['tid']))
 		<td nowrap="nowrap"><?php echo $rows['rtk_SellDate'];?></td>
 		<td nowrap="nowrap"><?php echo $rows['rtk_SellTime'];?></td>
 	  </tr>
-<?
+<?php
  // }
 ?>
 </tbody>

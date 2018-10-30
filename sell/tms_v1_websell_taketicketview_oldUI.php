@@ -1,4 +1,4 @@
-﻿<?
+<?php
 /*
  * 售票预览页面
  * 	
@@ -443,7 +443,7 @@ else {
 		<td width="15%" align="center" bgcolor="#006699">操作</td> 
 	-->
 	</tr>
-<?
+<?php
 	if (isset($_POST['sellview'])) {
 		if ($tnum > 0) {
 ?>
@@ -501,7 +501,7 @@ else {
 <?php }?>
 <table width="100%" align="center" class="main_tableboder" border="0" cellpadding="3" cellspacing="1">
 	<tr>
-		<?
+<?php
 			$totalticketnum = $tnum + $htnum;
 			$totalticketmoney = $fullPrice * $tnum + ($fullPrice/2) * $htnum;
 			$totalinsureticketmoney = $safeTicketMoney * $totalticketnum;

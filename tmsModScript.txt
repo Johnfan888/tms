@@ -15,4 +15,5 @@ sed -i "s/mysql_fetch_object/mysqli_fetch_object/g" `grep 'mysql_fetch_object' {
 sed -i "s/mysql_fetch_row/mysqli_fetch_row/g" `grep 'mysql_fetch_row' {accounting,charterbus,lugdeposit,query,safecheck,sell,statistic,webservice,basedata,checkin,lugconsign,outcheck,schedule,servicecenter,system,webticket} -rl`
  
 grep --color=always '[^_]mysql_' {accounting,charterbus,lugdeposit,query,safecheck,sell,statistic,webservice,basedata,checkin,lugconsign,outcheck,schedule,servicecenter,system,webticket} -R
- 
+
+sed -i "s/^.*<?$/<?php/g" `grep '<?$' {accounting,charterbus,lugdeposit,query,safecheck,sell,statistic,webservice,basedata,checkin,lugconsign,outcheck,schedule,servicecenter,system,webticket} -rl` 

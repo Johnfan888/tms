@@ -410,7 +410,7 @@ $(document).ready(function(){ //匹配驾照信息
     <span class="graytext" style="margin-left:8px;">修 改 车 辆  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div>

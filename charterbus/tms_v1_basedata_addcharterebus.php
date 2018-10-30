@@ -173,7 +173,7 @@ $(document).ready(function(){
     <span class="graytext" style="margin-left:8px;">包 车 </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form action="tms_v1_basedata_addcharterebusok.php" method="post">

@@ -1,4 +1,4 @@
-﻿<?
+<?php
 define("AUTH", "TRUE");
 
 //载入初始化文件

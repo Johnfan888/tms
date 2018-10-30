@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //销票管理查询界面
 	//定义页面必须验证是否登录
 	define("AUTH", "TRUE");
@@ -106,7 +106,7 @@ $(document).ready(function(){
         <li><a href="#" onclick="seardelticket()">销票查询</a></li>         
     </ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="form1" action="">

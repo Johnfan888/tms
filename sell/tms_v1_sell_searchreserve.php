@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //网上预定查询界面
 
 define("AUTH", "TRUE");

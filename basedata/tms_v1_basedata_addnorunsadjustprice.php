@@ -271,7 +271,7 @@ function append(){
     <span class="graytext" style="margin-left:8px;">添 加 班 次 调 价 </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="" method="post">

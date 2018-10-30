@@ -214,7 +214,7 @@ font-family: arial, sans-serif;
     <span class="graytext" style="margin-left:8px;">添 加 线 路 站 点  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form name="form1" action="tms_v1_basedata_addlinesiteok.php" method="post">

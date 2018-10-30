@@ -86,7 +86,7 @@ function addlinesite(){
     <span class="graytext" style="margin-left:8px;">修 改 班 次 停 靠 点 </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div id="addlinesite">

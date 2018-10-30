@@ -35,7 +35,7 @@ function search(){
     <span class="graytext" style="margin-left:8px;">添 加 票 价 因 素  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="tms_v1_basedata_addticketpricefactorok.php" method="post">

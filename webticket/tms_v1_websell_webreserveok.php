@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //网上预定界面
 
 define("WEBAUTH", "TRUE");

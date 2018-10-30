@@ -152,7 +152,7 @@
     <span class="graytext" style="margin-left:8px;">销 票  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="tms_v1_basedata_adddelticketok.php" method="post">

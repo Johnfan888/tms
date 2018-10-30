@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //定义页面必须验证是否登录	
 define("AUTH", "TRUE");
 
@@ -82,7 +82,7 @@ function GetXmlHttpObject(){
     <span class="graytext" style="margin-left:8px;">合并班次</span></td>
   </tr>
 </table>
-<?
+<?php
 $strsqlselet = "SELECT `tml_NoOfRunsdate`,`tml_NoOfRunsID`,`tml_NoOfRunstime`,`tml_Endstation`,`tml_BusModel`,`tml_TotalSeats`,`tml_SeatStatus`  FROM `tms_bd_TicketMode` WHERE `tml_NoOfRunsID`='$noofrunsID';";
 $resultselet = $class_mysql_default->my_query("$strsqlselet");
 $rowsA = @mysqli_fetch_array($resultselet);

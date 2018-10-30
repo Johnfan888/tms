@@ -1,4 +1,4 @@
-<?
+<?php
 
 require_once('../ui/inc/init.inc.php');
 require_once('../ui/inc/templates.lang.php');

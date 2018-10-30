@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //留票界面
 
 define("AUTH", "TRUE");

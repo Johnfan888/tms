@@ -1,4 +1,4 @@
-﻿<?
+<?php
 /*
  * 可售班次查询页面
  * 	
@@ -261,7 +261,7 @@ require_once("../ui/user/topnoleft.inc.php");
 	-->	
 		<td nowrap="nowrap" align="center">操作</td>
 	</tr>
-	<?
+<?php
 	if (isset($_REQUEST['FromStation'])) {
 		$selldate = $_REQUEST['selldate'];
 		$fromstation = $_REQUEST['FromStation'];

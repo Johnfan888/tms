@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //销票界面
 define("AUTH", "TRUE");
 
@@ -252,7 +252,7 @@ if(isset($_GET['tid']))
   </tr>
   	  </thead> 
 <tbody class="scrollContent"> 
-<?
+<?php
 		$ticketid1=$_POST['ticketnum'];
   		$i=0;
 		foreach (explode("\n",$ticketid1) as $key =>$ticketIDs){
@@ -278,7 +278,7 @@ if(isset($_GET['tid']))
     <td><?php echo $rows['st_SellTime']?></td>
     <td><?php echo $rows['st_SeatID']?></td>
   </tr>
-  <?
+<?php
   }
 		}
   ?>

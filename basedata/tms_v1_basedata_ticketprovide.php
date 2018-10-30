@@ -160,7 +160,7 @@
     <span class="graytext" style="margin-left:8px;">票 据 领 用  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="tms_v1_basedata_ticketprovideok.php" method="post">

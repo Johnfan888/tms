@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //票据领用查询界面
 	//定义页面必须验证是否登录
 	define("AUTH", "TRUE");
@@ -112,7 +112,7 @@ function backp(){
         <li><a href="#" onclick="retur()">返回</a></li>         
     </ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="form1" action="">

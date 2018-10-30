@@ -28,7 +28,7 @@ function search(){
     <span class="graytext" style="margin-left:8px;">添 加 所 属 机 构  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form id="addpro" name="addpro" method="post" action="" >

@@ -55,7 +55,7 @@ function search(){
     <span class="graytext" style="margin-left:8px;">添 加 车 属 单 位  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form id="addunit" name="addunit" method="post" action="" >

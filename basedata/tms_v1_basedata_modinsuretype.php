@@ -83,7 +83,7 @@ function search(){
     <span class="graytext" style="margin-left:8px;">修 改 保 险 产 品   </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form id="addpro" name="addpro" method="post" action="" >

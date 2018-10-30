@@ -76,7 +76,7 @@ function modnorunsdock(){
         <li><a href="#" onclick="retur()">返回</a></li>       
     </ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="get" name="aaa" action="tms_v1_basedata_addnorunsdock.php?">

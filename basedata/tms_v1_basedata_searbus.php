@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //车辆界面
 	//定义页面必须验证是否登录
 	define("AUTH", "TRUE");
@@ -192,7 +192,7 @@ function delbus(){
         <!--<li><a href="#" onclick="addbuscard()">车辆卡信息</a></li>       
     --></ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="form1" action="">

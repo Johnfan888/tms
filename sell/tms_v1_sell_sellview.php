@@ -1,4 +1,4 @@
-﻿<?
+<?php
 /*
  *  	
  * 票版座位状态：0-可售；1-锁定待售；2-预留（电话订票；班次预留现在不用）；3-已售；4-已检；5-网上预订（未支付）；6-网上订票已支付；
@@ -727,7 +727,7 @@ else {
 </div>
 <br/>
 <div style="margin-left:5px;">
-<?
+<?php
 	if (isset($_POST['fromstation'])) {
 		$totalticketnum = $tnum + $htnum;
 		$totalticketmoney = $fullPrice * $tnum + ($fullPrice/2) * $htnum;

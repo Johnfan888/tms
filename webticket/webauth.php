@@ -1,4 +1,4 @@
-﻿<?
+<?php
 $UserRegisterName=$_COOKIE["{$config_cookie_head}_WebUserID"];
 $Password = $_COOKIE["{$config_cookie_head}_WebUserPassword"];
 $UserName = $_COOKIE["{$config_cookie_head}_WebUserName"];

@@ -1,4 +1,4 @@
-﻿<?
+<?php
 /*
  * 售票预览页面
  * 	
@@ -552,7 +552,7 @@ else {
 	</div>
 	<br/>
 	<div style="margin-left:5px;">
-	<?
+<?php
 		if (isset($_POST['fromstation'])) {
 			$totalticketnum = $tnum + $htnum;
 			$totalticketmoney = $fullPrice * $tnum + ($fullPrice/2) * $htnum;

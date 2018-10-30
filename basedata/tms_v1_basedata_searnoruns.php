@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //班次查询界面
 
 	//定义页面必须验证是否登录
@@ -333,7 +333,7 @@ $(document).ready(function(){
         <li><a href="#" onclick="norunsservicefeeadjust()">班次站务费</a></li>      
     </ul>   
 </div> 
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form method="post" name="form1" action="">

@@ -162,7 +162,7 @@ font-family: arial, sans-serif;
     <span class="graytext" style="margin-left:8px;">修 改 线 路  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form name="addL" id="addL" action="tms_v1_basedata_modlineok.php" method="post">

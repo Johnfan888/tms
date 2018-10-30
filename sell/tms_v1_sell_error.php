@@ -1,4 +1,4 @@
-﻿<?
+<?php
 //废票界面
 define("AUTH", "TRUE");
 

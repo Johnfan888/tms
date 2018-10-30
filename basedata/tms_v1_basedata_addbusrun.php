@@ -321,7 +321,7 @@
     <span class="graytext" style="margin-left:8px;">添 加 车 辆  </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div>

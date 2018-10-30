@@ -57,7 +57,7 @@ function sear(){
     <span class="graytext" style="margin-left:8px;">修 改 班 次 </span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <div><form  action="tms_v1_basedata_modnorunsok.php" method="post">

@@ -89,7 +89,7 @@ $(document).ready(function(){
     <span class="graytext" style="margin-left:8px;">修 改 站 点</span></td>
   </tr>
 </table>
-<?
+<?php
 //连接数据库，获取班次信息
 ?>
 <form id="modsite" name="modsite" action="tms_v1_basedata_modsiteok.php" method="post">

@@ -1,4 +1,4 @@
-﻿<?
+<?php
 /*
  * 售票预览页面
  * 	
@@ -555,7 +555,7 @@ else {
 		<td width="15%" align="center">操作</td> 
 	-->
 	</tr>
-<?
+<?php
 	if (isset($_POST['fromstation'])) {
 		if ($tnum > 0) {
 ?>
@@ -609,7 +609,7 @@ else {
 <?php }?>
 <table width="100%" align="center" class="main_tableboder" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<?
+<?php
 			$totalticketnum = $tnum + $htnum;
 			$totalticketmoney = $fullPrice * $tnum + ($fullPrice/2) * $htnum;
 			if($safeTicketMoney == 0) {
