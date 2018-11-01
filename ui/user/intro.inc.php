@@ -1,22 +1,19 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" type="text/css" href="images/style_admin.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=$DefaultLang" />
+	<link rel="stylesheet" type="text/css" href="images/style_admin.css"/>
+	<title><?=$config_web_title?></title>
 </head>
-<body>
-	<table width="100%" align="center" class="main_tableboder" border="0" cellpadding="0" cellspacing="0" style="margin:0;padding:0">
-		<tr>
-			<td width="100%" bgcolor="#4C4C4C">
-				<img src="images/tb.gif" style="position:relative;" width="14" height="14" />
-				<span class="graytext" style="margin-left:8px;">系 统 说 明</span>
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</table>
-</body>
+<frameset cols="75%,25%" >
+	<frameset rows="60%,40%">
+		<frame name="noruns" src="intro_noruns.php" frameborder="1" scrolling="no" />
+		<frame name="link" src="intro_link.php" frameborder="1"  />
+	</frameset>
+	<frameset rows="50%,50%">	
+		<frame name="state" src="intro_state.php" frameborder="1" />
+		<frame name="system" src="intro_system.php" frameborder="1" />
+	</frameset>
+</frameset>
 </html>
