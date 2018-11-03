@@ -17,8 +17,8 @@
 					<?php //echo $menu_href[$menutype."-".$itemkey]; ?>
 					<div class="left_menu">
 						<a href="<?php echo $menu_href[$menutype."-".$itemkey] ?>" title="<?php echo $menu_title[$menutype."-".$itemkey] ?>" target="main">
-							<span style="float:left;"><img src="<?php echo $menu_src[$menutype."-".$itemkey] ?>" border="0" /></span>
-							<span style="float:left; margin-left:5px; margin-top:8px;"><?php echo $itemname ?></span>
+							<span style="float:left; margin-left:5px; margin-top:2px;"><img src="<?php echo $menu_src[$menutype."-".$itemkey] ?>" width="10" height="10" border="0" /></span>
+							<span style="margin-left:5px; margin-top:8px;"><?php echo $itemname ?></span>
 						</a>
 		    		</div>
 	    			<?php } ?>

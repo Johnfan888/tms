@@ -49,14 +49,16 @@ $groupid = $_GET["groupid"];
 .a2{BACKGROUND-COLOR: A4B6D7;}
 .tableContainer{height:expression(document.body.clientHeight-document.getElementById("mytable").offsetTop);}
 </style>
-	<script>
+<script>
 	function switchSysBar(){
-	if (switchPoint.innerText==3){
-	switchPoint.innerText=4
-	document.all("frmTitle").style.display="none"
+	var content = document.getElementById("switchPoint");  
+	//alert(content.innerHTML);
+	if (switchPoint.innerHTML=='&lt;'){	// &#9668; &#9658;
+		document.all("frmTitle").style.display="none";
+		switchPoint.innerHTML='>';	
 	}else{
-	switchPoint.innerText=3
-	document.all("frmTitle").style.display=""
+		document.all("frmTitle").style.display="";
+		switchPoint.innerHTML='<';
 	}}
 
 	// 使用方法
@@ -85,27 +87,29 @@ $groupid = $_GET["groupid"];
 			}
 		}
 	}
-	</script>
+</script>
 	
 <script type="text/javascript" src="../js/tms_v1_close.js"></script>
 </head>
 <body style="overflow:hidden;">
-<table class="tableContainer" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;margin:0; padding:0" id="mytable">
+<table class="tableContainer" height="92%" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;margin:0; padding:0" id="mytable">
     <tr style="width:100% height:100%">
         <td width="140" valign="top" id="frmTitle">
-            <iframe id="carnoc" name="carnoc" width="200px" height="100%" style="VISIBILITY: inherit;" frameborder="1" scrolling="auto" src='<?=$strsrcleft?>'></iframe>
+		<iframe id="carnoc" name="carnoc" width="100%" height="100%" style="VISIBILITY: inherit;" frameborder="1" scrolling="auto" src='<?=$strsrcleft?>'></iframe>
         </td>
-        <td width="30" bgcolor="#ffffff" style="WIDTH: 5pt">
-　　<table width="5" height="100%" border="0" cellpadding="0" cellspacing="0" >
-　　　<tr>
-　　　　<td style="HEIGHT: 100%" onClick="switchSysBar()" class="navPoint1" title="关闭/打开菜单栏" >
-　　　　　　<font style="FONT-SIZE: 9pt; CURSOR: default; COLOR: #708EC7">
-　　　　　　<span class="navPoint" id="switchPoint" title="关闭/打开菜单栏">3</span></font></td>
-　　　</tr>
-　　</table>
-		</td>
-		<td valign="top">
-			<iframe id="main" name="main" width="100%" height="100%" frameborder="1" src="<?=$strsrcintro?>" style="padding-right:0px;"></iframe>
+        <td bgcolor="#ffffff" style="WIDTH: 7pt">
+　　		<table width="5" height="100%" border="0" cellpadding="0" cellspacing="0" >
+　　　			<tr>
+　　　　			<td style="HEIGHT: 100%" onClick="switchSysBar()" class="navPoint1" title="关闭/打开菜单栏" >
+　　　　　　				<font style="FONT-SIZE: 7pt; CURSOR: default; COLOR: #708EC7">
+　　　　　　					<span class="navPoint" id="switchPoint" title="关闭/打开菜单栏">&lt;</span>
+					</font>
+				</td>
+　　　			</tr>
+　　		</table>
+	</td>
+	<td valign="top">
+		<iframe id="main" name="main" width="100%" height="100%" frameborder="1" src="<?=$strsrcintro?>" style="padding-right:0px;"></iframe>
         </td>
     </tr>
 </table>
