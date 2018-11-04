@@ -25,6 +25,7 @@ define("AUTH", "TRUE");
 require_once("inc/init.inc.php");
 
 $groupid = $_GET["groupid"];
+$userid = $_GET["userid"];
 //if($groupid == "2")	header('Location:../sell/tms_v1_sell_query.php'); //售票窗口不要导航菜单
 //else if($groupid == "3") header('Location:../checkin/tms_v1_checkin_checkticket.php'); //检票窗口不要导航菜单
 //else if($groupid == "4") header('Location:../schedule/tms_v1_schedule_noofrun.php'); //调度窗口不要导航菜单
@@ -32,12 +33,18 @@ $groupid = $_GET["groupid"];
 //else if($groupid == "A") header('Location:../sell/tms_v1_service_querynoofruns.php'); //客服窗口不要导航菜单
 //if($groupid == "E") header('Location:../basedata/tms_v1_basedata_searticketadd.php'); //票据窗口不要导航菜单
 //else {
-	//$left = "left" . $groupid;
-	$left = "left";
-	$conf = "config" . $groupid;
 	require_once("user/top.inc.php");
-	$strsrcleft="user.php?conf=$conf&left=$left";
-	$strsrcintro="user.php?main=intro";
+	if($userid == 'guest') {
+		//$strsrcintro="user.php?main=intro";
+		$strsrcintro="user/intro.inc.php";
+	}
+	else
+	{
+		//$left = "left" . $groupid;
+		$left = "left";
+		$conf = "config" . $groupid;
+		$strsrcleft="user.php?conf=$conf&left=$left";
+	}
 //}
 ?>
 <html>
@@ -94,9 +101,10 @@ $groupid = $_GET["groupid"];
 <body style="overflow:hidden;">
 <table class="tableContainer" height="92%" width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;margin:0; padding:0" id="mytable">
     <tr style="width:100% height:100%">
+      <?php if($userid != "guest") { ?>  
         <td width="140" valign="top" id="frmTitle">
-		<iframe id="carnoc" name="carnoc" width="100%" height="100%" style="VISIBILITY: inherit;" frameborder="1" scrolling="auto" src='<?=$strsrcleft?>'></iframe>
-        </td>
+		<iframe id="carnoc" name="carnoc" width="100%" height="100%" style="VISIBILITY: inherit;" frameborder="1" scrolling="auto" src='<?php echo $strsrcleft ?>'></iframe>
+	</td>
         <td bgcolor="#ffffff" style="WIDTH: 7pt">
 　　		<table width="5" height="100%" border="0" cellpadding="0" cellspacing="0" >
 　　　			<tr>
@@ -108,8 +116,9 @@ $groupid = $_GET["groupid"];
 　　　			</tr>
 　　		</table>
 	</td>
+      <?php } ?>
 	<td valign="top">
-		<iframe id="main" name="main" width="100%" height="100%" frameborder="1" src="<?=$strsrcintro?>" style="padding-right:0px;"></iframe>
+		<iframe id="main" name="main" width="100%" height="100%" frameborder="1" src="<?php echo $strsrcintro ?>" style="padding-right:0px;"></iframe>
         </td>
     </tr>
 </table>

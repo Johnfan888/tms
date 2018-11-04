@@ -1,0 +1,4 @@
+<?php
+$checkWindow='';
+$checkboxStatus='';
+?>

@@ -103,7 +103,7 @@ if($action == "login")
         */		
 	    //登录成功
 	    
-	    $uiState = "在线";	  
+	$uiState = "在线";	  
         $strsql = "select * from tms_sys_OnlineUser where ui_UserID = '$userid' and ui_UserState = '$uiState'";
         $query = $class_mysql_default ->my_query($strsql);
         if(mysqli_num_rows($query)==1)
@@ -156,7 +156,7 @@ if($action == "login")
                         	VALUES ('$userid', '$userName', '$userGroupID', '$userGroup', '$userStationID', '$userStation', '$uiState','$loginTime', NULL, '$ip')"; 		
                 	    $query=$class_mysql_default->my_query($sql);                	      
                 }
-                $str1 = "Location:main.php?groupid=".$userGroupID;
+                $str1 = "Location:main.php?groupid=".$userGroupID."&userid=".$userid;
                 header($str1); 
         }
 	}

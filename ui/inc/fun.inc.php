@@ -9,7 +9,7 @@ function funmessage($backurl, $messagelang, $waittime)
 	</tr>
 	<tr>
 		<td height="88" bgcolor="#f9f9f9">
-			<? echo "$messagelang";echo "<br>页面正在跳转，请等待........<br><br><br><a  href='"."$backurl"."'>如果页面没有自动跳转请点击这里</a>";	?>
+			<?php echo "$messagelang"; echo "<br>页面正在跳转，请等待........<br><br><br><a  href='"."$backurl"."'>如果页面没有自动跳转请点击这里</a>";	?>
     	</td>
     </tr>
 </table>

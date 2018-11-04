@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=$DefaultLang" />
 	<link rel="stylesheet" type="text/css" href="images/style_admin.css"/>
-	<title><?=$config_web_title?></title>
+	<title><?php echo $config_web_title ?></title>
 </head>
 <frameset cols="75%,25%" >
 	<frameset rows="60%,40%">

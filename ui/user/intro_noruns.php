@@ -142,7 +142,7 @@
 	    <td  bgcolor="#FFFFFF"><span class="form_title"><img src="../ui/images/sj.gif" width="6" height="7" /> 班次状态：</span></td>
 	    <td bgcolor="#FFFFFF">
 	    	<select name="statusselect" id="statusselect" style="width:100px">
-			<?
+			<?php
 				if ($noofrunStatus == "1")	echo "<option selected=\"selected\" value=\"1\">全部</option>";
 				else						echo "<option  value=\"1\">全部</option>";
 				if ($noofrunStatus == "2")	echo "<option selected=\"selected\" value=\"2\">在售</option>";
@@ -303,10 +303,10 @@
 					else $RealCheckTicketWindow = $rows['tml_CheckTicketWindow'];
 		?>
 			<tr align="center" bgcolor="#CCCCCC">
-				<td nowrap="nowrap"><?=$i?></td>
-				<td nowrap="nowrap"><?=$rows['tml_NoOfRunsID']?></td>
-				<td nowrap="nowrap"><?=$rows['nri_LineName']?></td>
-				<td nowrap="nowrap"><?=$rows['pd_BeginStationTime']?></td>
+				<td nowrap="nowrap"><?php echo $i?></td>
+				<td nowrap="nowrap"><?php echo $rows['tml_NoOfRunsID']?></td>
+				<td nowrap="nowrap"><?php echo $rows['nri_LineName']?></td>
+				<td nowrap="nowrap"><?php echo $rows['pd_BeginStationTime']?></td>
 				<td nowrap="nowrap">
 					<?php 
 						$Hours='';
@@ -317,41 +317,41 @@
 	        			echo $Hours.$Minutes;
 					?>
 				</td>
-				<td nowrap="nowrap"><?=$rows['rt_BusCard']?></td>
-				<td nowrap="nowrap"><?=$rows['tml_TotalSeats']?></td>
-				<td nowrap="nowrap"><?=$rows['tml_TotalSeats']-$rows['tml_LeaveSeats']?></td>
+				<td nowrap="nowrap"><?php echo $rows['rt_BusCard']?></td>
+				<td nowrap="nowrap"><?php echo $rows['tml_TotalSeats']?></td>
+				<td nowrap="nowrap"><?php echo $rows['tml_TotalSeats']-$rows['tml_LeaveSeats']?></td>
 				<?php 
 				if($curStatus == '暂停'){  //蓝色
 				?>
-				<td nowrap="nowrap"><span style="color:#0000FF"><?=$curStatus?></span></td>
+				<td nowrap="nowrap"><span style="color:#0000FF"><?php echo $curStatus?></span></td>
 				<?php 
 				}
 				if($curStatus == '在售'){  //绿色
 				?>
-				<td nowrap="nowrap"><span style="color:#009900"><?=$curStatus?></span></td>
+				<td nowrap="nowrap"><span style="color:#009900"><?php echo $curStatus?></span></td>
 				<?php 
 				}
 				if($curStatus == '发班'){  //红色
 				?>
-				<td nowrap="nowrap"><span style="color:#FF0000"><?=$curStatus?></span></td>
+				<td nowrap="nowrap"><span style="color:#FF0000"><?php echo $curStatus?></span></td>
 				<?php 
 				}
 				if($curStatus == '检票'){  //黄色
 				?>
-				<td nowrap="nowrap"><span style="color:#FFFF00"><?=$curStatus?></span></td>
+				<td nowrap="nowrap"><span style="color:#FFFF00"><?php echo $curStatus?></span></td>
 				<?php 
 				}
 				if($curStatus == '并班'){  //紫色
 				?>
-				<td nowrap="nowrap"><span style="color:#6633FF"><?=$curStatus?></span></td>
+				<td nowrap="nowrap"><span style="color:#6633FF"><?php echo $curStatus?></span></td>
 				<?php 
 				}
 				?>
-				<td nowrap="nowrap"><?=$RealCheckTicketWindow?></td>
-				<td nowrap="nowrap"><? if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
-				<td nowrap="nowrap"><? if($rows['nri_AddNoRuns']==0) echo '否'; else echo '是';?></td>
-				<td nowrap="nowrap"><? if($userStationName==$rows['tml_Beginstation'] || $userID=='admin') echo '是'; else echo '否';?></td>
-				<td nowrap="nowrap"><?=$rows2['SiteName']?></td>
+				<td nowrap="nowrap"><?php echo $RealCheckTicketWindow?></td>
+				<td nowrap="nowrap"><?php if($rows['tml_Allticket']==0) echo '否'; else echo '是';?></td>
+				<td nowrap="nowrap"><?php if($rows['nri_AddNoRuns']==0) echo '否'; else echo '是';?></td>
+				<td nowrap="nowrap"><?php if($userStationName==$rows['tml_Beginstation'] || $userID=='admin') echo '是'; else echo '否';?></td>
+				<td nowrap="nowrap"><?php echo $rows2['SiteName']?></td>
 				<?php 
 					}
 				?>

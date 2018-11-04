@@ -54,7 +54,7 @@ else
 <div id="background" style="position:absolute;z-index:-1;width:100%;height:100%;top:0px;left:0px;"><img src="ui/images/login_main.jpg" class="alpha" width="100%" height="100%" /></div>
 <div id="content">
 <p>&nbsp;</p>
-<p class="STYLE1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该运输管理系统包括车队相关数据查询统计管理、售退改票管理、客运加班包车调度、检票管理、行包管理、票据管理、财务结算、综合查询（可导出文本、网页、pdf、电子表格等多种文件格式）、系统管理、IC卡进出站、IC卡安检管理、IC卡报班管理、信息发布、导乘、保险管理、广播系统、网上售票网站、统计合并各类上报报表等功能，满足如下要求： </p>
+<p class="STYLE1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运输管理系统包括车队相关数据查询统计管理、售退改票管理、客运加班包车调度、检票管理、行包管理、票据管理、财务结算、综合查询（可导出文本、网页、pdf、电子表格等多种文件格式）、系统管理、IC卡进出站、IC卡安检管理、IC卡报班管理、信息发布、导乘、保险管理、广播系统、网上售票网站、统计合并各类上报报表等功能，满足如下要求： </p>
 <p class="STYLE1" >&nbsp;&nbsp;&nbsp;<img src="ui/images/sj.gif" width="12" height="14" /> 支持多种联网方式，可以是专线或ADSL，也可以是局域网或互联网； </p>
 <p class="STYLE1" >&nbsp;&nbsp;&nbsp;<img src="ui/images/sj.gif" width="12" height="14" /> 支持对客运站使用的客票、货票等票据范围的监督和管理； </p>
 <p class="STYLE1" >&nbsp;&nbsp;&nbsp;<img src="ui/images/sj.gif" width="12" height="14" /> 支持对客运站场的售票数量、营业收入、班次数量等相关数据的实时统计和查询； </p>

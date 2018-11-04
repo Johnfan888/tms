@@ -11,7 +11,8 @@ $DefaultLang = 'utf8';
 $config_web_title = '运输管理系统';
 
 // 设置公司名称
-$config_company_name = '湖南郴汽集团';
+//$config_company_name = '湖南郴汽集团';
+$config_company_name = '汽车运输集团';
 
 // 设置COOKIE前缀
 $config_cookie_head = 'isbtc';
