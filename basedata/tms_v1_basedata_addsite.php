@@ -51,9 +51,11 @@ function selectcheck(str){
 	if (str=='车站'){
 		document.addsite.checkbox1.checked=true;
 		document.addsite.IsStation.value=1;
+		document.addsite.IsTollSite.value=1;
 	}else{
 		document.addsite.checkbox1.checked=false;
 		document.addsite.IsStation.value=0;
+		document.addsite.IsTollSite.value=0;
 	}
 }
 
@@ -175,6 +177,7 @@ $(document).ready(function(){
   	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsStation" /></span></td>
     	<td bgcolor="#FFFFFF"><input type="checkbox" name="checkbox1"  onclick="()" disabled="disabled"/>是否车站</td>
+	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsTollSite" /></span></td>
 	</tr> 
 <!--  	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsTollSite" /></span></td>
@@ -208,7 +211,4 @@ $(document).ready(function(){
   </tr>
 </table>
 </form>
-
-
-
 

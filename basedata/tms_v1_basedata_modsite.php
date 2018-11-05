@@ -51,9 +51,11 @@ function selectcheck(str){
 	if (str=='车站'){
 		document.modsite.checkbox1.checked=true;
 		document.modsite.IsStation.value=1;
+		document.addsite.IsTollSite.value=1;
 	}else{
 		document.modsite.checkbox1.checked=false;
 		document.modsite.IsStation.value=0;
+		document.addsite.IsTollSite.value=0;
 	}
 }
 function search(){
@@ -166,6 +168,7 @@ $(document).ready(function(){
   	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsStation" value="<?php echo$result['sset_IsStation'];?>"/></span></td>
     	<td bgcolor="#FFFFFF"><input type="checkbox" name="checkbox1"  <?php if($result['sset_SiteType'] == "车站") echo "checked"; ?> disabled="disabled"/>是否车站</td>
+    	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsTollSite" value="<?php echo$result['sset_IsTollSite'];?>" /></span></td>
 	</tr> 
 <!--  	<tr> 	
     	<td nowrap="nowrap" bgcolor="#FFFFFF"><span class="form_title"><input type="hidden" name="IsTollSite" value="<?php echo$result['sset_IsTollSite'];?>" /></span></td>
